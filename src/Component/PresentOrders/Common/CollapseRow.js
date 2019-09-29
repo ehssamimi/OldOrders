@@ -6,7 +6,7 @@ class CollapseRow extends Component {
     constructor(props) {
         super(props);
         this.toggle = this.toggle.bind(this);
-        this.state = { collapse: false,store:'',sub:[],Keys:''};
+        this.state = { collapse: true,store:'',sub:[],Keys:''};
     }
 
     componentDidMount() {
@@ -27,7 +27,7 @@ class CollapseRow extends Component {
         let{store,sub,Keys}=this.state;
         // console.log(Keys);
         return (
-            <div className='mt-2'>
+            <div className='mt-2 w-100'>
                 <Card>
                     <CardBody>
                         <div className='d-flex justify-content-start align-items-center ' onClick={this.toggle} >

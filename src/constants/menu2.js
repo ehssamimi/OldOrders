@@ -2,30 +2,56 @@ const data = [
     {
         id: "OldOrders",
         icon: "iconsminds-air-balloon-1",
-        label: "OldOrders",
+        label: "سفارشات ",
         to: "/orders",
         subs: [
             {
                 icon: "simple-icon-layers",
-                label: "Old",
+                label: "سفارشات گذشته",
                 to: "/orders/old",
                 subs: [
                     {
                         icon: "simple-icon-arrow-right",
-                        label: "yesterday",
+                        label: "روز قبل",
                         to: "/orders/old/yesterday"
                     },
                     {
                         icon: "simple-icon-arrow-right",
-                        label: "show",
-                        to: "/resource-management/game-mode/show"
+                        label: "دو روز قبل",
+                        to: "/orders/old/before-yesterday"
+                    }
+                    ,
+                    {
+                        icon: "simple-icon-arrow-right",
+                        label: "هفته جاری",
+                        to: "/orders/old/current-week"
+                    } ,
+                    {
+                        icon: "simple-icon-arrow-right",
+                        label: "هفته گذشته",
+                        to: "/orders/old/past-week"
+                    },
+                    {
+                        icon: "simple-icon-arrow-right",
+                        label: "ماه جاری",
+                        to: "/orders/old/current-month"
+                    },
+                    {
+                        icon: "simple-icon-arrow-right",
+                        label: "ماه گذشته",
+                        to: "/orders/old/past-month"
+                    },
+                    {
+                        icon: "simple-icon-arrow-right",
+                        label: "زمان انتخابی",
+                        to: "/orders/old/select-time"
                     }
                 ]
             },
 
             {
                 icon: "simple-icon-paper-plane",
-                label: "present",
+                label: "سفارشات امروز",
                 to: "/orders/present",
                 subs: [
                     {
