@@ -16,7 +16,7 @@ import {
   changeSelectedMenuHasSubItems
 } from '../../redux/actions';
 
-import originalMenu from '../../constants/menu';
+// import originalMenu from '../../constants/menu';
 import menuItems from '../../constants/menu2';
 
 class Sidebar extends Component {

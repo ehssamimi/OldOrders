@@ -28,21 +28,24 @@ class RowEachDayCollapse extends Component {
         let{store,sub,Keys}=this.state;
         // console.log(Keys);
         return (
-            <div className='mt-2 w-100'>
+            <div className='mt-5 w-100'>
+                {/*<Card>*/}
+                {/*<CardBody>*/}
 
                         <div className=' align-items-center d-flex ' onClick={this.toggle} >
                             {
                                 this.state.collapse?
-                                    <h3 className='simple-icon-arrow-up icon-glyph ml-2 '><span className='fontFamily pl-2'>مشاهده سفارش</span></h3>:
-                                    <h3 className='simple-icon-arrow-down icon-glyph ml-2 '> <span className='fontFamily pl-2'>مشاهده سفارش</span></h3>
+                                    <h3 className='simple-icon-arrow-up icon-glyph ml-2 mb0'></h3>:
+                                    <h3 className='simple-icon-arrow-down icon-glyph ml-2 mb0'> </h3>
                             }
+                            <span className='fontFamily pl-2 Fs1vw'>لیست سفارش</span>
                             <span className='d-flex ml-auto ' dir='rtl'>
                                 <h3 className=''>{this.props.Day}:</h3>
                             </span>
 
                         </div>
-                {/*<Card>*/}
-                    {/*<CardBody>*/}
+                <hr/>
+
                         <Collapse isOpen={this.state.collapse}>
                             <div className='d-flex  w-100 ' style={{'flex-wrap': 'wrap'}}>
                                 <RowCollapseOrders/>

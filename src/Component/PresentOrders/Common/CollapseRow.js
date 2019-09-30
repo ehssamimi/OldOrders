@@ -6,7 +6,7 @@ class CollapseRow extends Component {
     constructor(props) {
         super(props);
         this.toggle = this.toggle.bind(this);
-        this.state = { collapse: true,store:'',sub:[],Keys:''};
+        this.state = { collapse: false,store:'',sub:[],Keys:''};
     }
 
     componentDidMount() {
@@ -27,9 +27,9 @@ class CollapseRow extends Component {
         let{store,sub,Keys}=this.state;
         // console.log(Keys);
         return (
-            <div className='mt-2 w-100'>
-                <Card>
-                    <CardBody>
+            <div className='mt-5 col-12'>
+                {/*<Card>*/}
+                    {/*<CardBody>*/}
                         <div className='d-flex justify-content-start align-items-center ' onClick={this.toggle} >
                             {
                                 this.state.collapse?
@@ -38,7 +38,9 @@ class CollapseRow extends Component {
                                     <h3 className='simple-icon-plus icon-glyph ml-2'/>
 
                             }
-                            <h3>{store.header}:</h3></div>
+                            <h3 className='purpleColor'>{store.header}:</h3>
+                        </div>
+
                         <Collapse isOpen={this.state.collapse}>
                             <div className='d-flex  w-100 ' style={{'flex-wrap': 'wrap'}}>
                                 {Keys ?
@@ -48,10 +50,10 @@ class CollapseRow extends Component {
                                 }
                             </div>
                         </Collapse>
-                    </CardBody>
+                    {/*</CardBody>*/}
 
-                </Card>
-
+                {/*</Card>*/}
+                <hr/>
             </div>
         );
     }

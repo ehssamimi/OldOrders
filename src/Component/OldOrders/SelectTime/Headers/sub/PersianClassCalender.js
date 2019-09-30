@@ -37,7 +37,7 @@ class PersianClassCalender extends Component {
                     border: '0.2px solid #a0a0a0',
                     // borderRadius: '100px',
                     // boxShadow: '0 1.5rem 2rem rgba(156, 136, 255, 0.2)',
-                    color: '#9c88ff',
+                    color: '#922c88',
                     // color: '#a0a0a0',
                     // outline: 'none',
                     // width:'100%'

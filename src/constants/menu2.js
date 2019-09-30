@@ -90,5 +90,33 @@ const data = [
         ]
     },
 
+    {
+        id: "ChchiMan",
+        icon: "iconsminds-digital-drawing",
+        label: "چی چی من",
+        to: "/chichi-man",
+        subs: [{
+            icon: "simple-icon-user-follow",
+            id: "chchiMan-sign",
+            label: "ثبت نام",
+            to: "/chichi-man/sign-in",
+        },
+
+        ]
+    },
+    {
+        id: "Support",
+        icon: "simple-icon-call-in",
+        label: "پشتیبانی",
+        to: "/support",
+        subs: [{
+            icon: "iconsminds-user",
+            id: "users",
+            label: "کاربران",
+            to: "/support/users",
+        },
+        ]
+    },
+
 ];
 export default data;

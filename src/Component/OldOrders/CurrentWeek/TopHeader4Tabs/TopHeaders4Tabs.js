@@ -10,7 +10,7 @@ class TopHeaders4Tabs extends Component {
             checkedCheckboxes: 1,
             dropdownBasicOpen: false,
             title1:'هفته',
-            oneWeek: true,
+            oneWeek: false,
             twoWeek: false,
             threeWeek: false,
             fourthWeek: false,

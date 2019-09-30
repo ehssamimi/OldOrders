@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 
-import {ContextMenuTrigger} from "react-contextmenu";
-import { Card, CustomInput, Badge,Button } from "reactstrap";
+// import {ContextMenuTrigger} from "react-contextmenu";
+import { Card,
+    // CustomInput, Badge,Button
+} from "reactstrap";
 import { NavLink } from "react-router-dom";
 import classnames from "classnames";
-import { Colxx } from "../../../components/common/CustomBootstrap";
+// import { Colxx } from "../../../components/common/CustomBootstrap";
 // const product={id:1,title:'title',category:'category',date:'date',status:'status'};
 
 class RowLeftNav extends Component {

@@ -16,7 +16,8 @@ class EachDropDown extends Component {
         this.setState({
             dropdownBasicOpen:props.isOpen,
             header:props.header
-        })
+        });
+        
     }
     toggleBasic = () => {
         this.setState(prevState => ({

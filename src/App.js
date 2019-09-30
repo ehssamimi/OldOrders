@@ -22,9 +22,16 @@ const ViewApp = React.lazy(() =>
 const MainOrders = React.lazy(() =>
   import(/* webpackChunkName: "views-app" */ './views/Orders/MainOrders')
 );
+const ChichiMan = React.lazy(() =>
+  import(/* webpackChunkName: "views-app" */ './views/ChichiMan/ChichiManMain')
+);
 const ViewError = React.lazy(() =>
   import(/* webpackChunkName: "views-error" */ './views/error')
 );
+const Support = React.lazy(() =>
+    import(/* webpackChunkName: "views-error" */ './views/Support/SupportMain')
+);
+
 const AuthRoute = ({ component: Component, authUser, ...rest }) => {
     return (
         <Route
@@ -57,7 +64,7 @@ class App extends Component {
       document.body.classList.remove('rtl');
     }
     this.state={
-        loginUser:false
+        loginUser:true
     }
   }
 
@@ -81,15 +88,25 @@ class App extends Component {
                     path="/app"
                     render={props => <ViewApp {...props} />}
                   />
-                    {/*<AuthRoute*/}
-                        {/*path="/oldorders"*/}
-                        {/*authUser={this.state.loginUser}*/}
-                        {/*component={OlderOrdersMain}*/}
-                    {/*/>*/}
-                    <Route
+                    <AuthRoute
                         path="/orders"
-                        render={props => <MainOrders {...props} />}
+                        authUser={this.state.loginUser}
+                        component={MainOrders}
                     />
+                    <AuthRoute
+                        path="/chichi-man"
+                        authUser={this.state.loginUser}
+                        component={ChichiMan}
+                    />
+                    <AuthRoute
+                        path="/support"
+                        authUser={this.state.loginUser}
+                        component={Support}
+                    />
+                    {/*<Route*/}
+                        {/*path="/orders"*/}
+                        {/*render={props => <MainOrders {...props} />}*/}
+                    {/*/>*/}
                   <Route
                     path="/error"
                     exact

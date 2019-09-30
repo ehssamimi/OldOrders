@@ -2,36 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98af5402-95b4-4f04-a0d6-06126f2dea54" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/BeforeYesterDay/BeforeYesterDay.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/BeforeYesterDay/Sub/BeforeYesterDayAccept.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/BeforeYesterDay/Sub/BeforeYesterDayFailed.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/CurrentMonth/CurrentMounthMain.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/CurrentWeek.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/Sub/CurrentWeekAccept.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/Sub/CurrentWeekFailed.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/TopHeader4Tabs/TopHeaders4Tabs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/TopHeader4Tabs/sub/EachDropDown.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/PastMonth/PastMonthMain.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/PastWeek/PastWeekMain.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/OneTimeSelection.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/ThreeTabsTime.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/TwoTimesSelected.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/sub/PersianClassCalender.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/sub/SingelSelectedEdit.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/SelectTimeOrderMain.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/TopHeaderyesterday/TopHeaderYesterDay.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/RowCollapseOrders/RowCollapseOrders.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/RowEachDayCollapse.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/YesterDayAccept.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/YesterDayFailed.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/ChichiManSignIn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Sub/WizardBottonNavigations.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Component/Support/Users/SupportUsers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Component/Support/Users/UserInfoCard/UserInfoCard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/ChichiMan/ChichiManMain.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Support/SupportMain.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/YesterDay.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/YesterDay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/TopHeader4Tabs/TopHeaders4Tabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/TopHeader4Tabs/TopHeaders4Tabs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/TopHeader4Tabs/sub/EachDropDown.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/TopHeader4Tabs/sub/EachDropDown.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/ThreeTabsTime.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/ThreeTabsTime.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/sub/PersianClassCalender.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/sub/PersianClassCalender.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/sub/SingelSelectedEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/sub/SingelSelectedEdit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/TopHeaderyesterday/TopHeaderYesterDay.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/TopHeaderyesterday/TopHeaderYesterDay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/RowCollapseOrders/RowCollapseOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/RowCollapseOrders/RowCollapseOrders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/RowEachDayCollapse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/RowEachDayCollapse.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PresentOrders/ChichiWaitingCustomer/sub/LeftChichiWaitingCustomer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PresentOrders/ChichiWaitingCustomer/sub/LeftChichiWaitingCustomer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PresentOrders/Collective/Sub/LeftMainCollective/LeftMainCollective.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PresentOrders/Collective/Sub/LeftMainCollective/LeftMainCollective.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/PresentOrders/Common/CollapseRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PresentOrders/Common/CollapseRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PresentOrders/Deliverded/Sub/LeftDeliverd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PresentOrders/Deliverded/Sub/LeftDeliverd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PresentOrders/RowShowShow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PresentOrders/RowShowShow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PresentOrders/WaitingAcceptChichi/sub/LeftMenuWaitingAccept.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PresentOrders/WaitingAcceptChichi/sub/LeftMenuWaitingAccept.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/PresentOrders/leftNav/RowLeftNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/PresentOrders/leftNav/RowLeftNav.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/defaultValues.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/defaultValues.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/menu2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/menu2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Orders/oldOrders/OldOrdersMain.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Orders/oldOrders/OldOrdersMain.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/navs/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/navs/Sidebar.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,52 +40,53 @@
     <session id="1075702383">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="8" />
+          <entry key="css" value="10" />
           <entry key="html" value="5" />
-          <entry key="js" value="116" />
+          <entry key="js" value="194" />
           <entry key="rnc" value="1" />
-          <entry key="scss" value="6" />
+          <entry key="scss" value="8" />
           <entry key="ts" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="8" />
+          <entry key="CSS" value="10" />
           <entry key="HTML" value="5" />
-          <entry key="JavaScript" value="116" />
+          <entry key="JavaScript" value="194" />
           <entry key="RNG Compact" value="1" />
-          <entry key="SCSS" value="6" />
+          <entry key="SCSS" value="8" />
           <entry key="TypeScript" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="ESLintLanguageService" value="2" />
+          <entry key="ESLintLanguageService" value="3" />
           <entry key="TypeScriptServerServiceImpl" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="72" />
+          <entry key="css" value="86" />
           <entry key="html" value="90" />
-          <entry key="js" value="3654" />
-          <entry key="scss" value="219" />
+          <entry key="js" value="5240" />
+          <entry key="scss" value="389" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="72" />
+          <entry key="CSS" value="86" />
           <entry key="HTML" value="90" />
-          <entry key="JavaScript" value="3654" />
-          <entry key="SCSS" value="219" />
+          <entry key="JavaScript" value="5240" />
+          <entry key="SCSS" value="389" />
         </counts>
       </usages-collector>
     </session>
@@ -96,169 +94,81 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/Orders/oldOrders/OldOrdersMain.js">
+        <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="20" column="96" selection-start-line="20" selection-start-column="96" selection-end-line="20" selection-end-column="96" />
+            <state relative-caret-position="382">
+              <caret line="107" column="45" selection-start-line="107" selection-start-column="45" selection-end-line="107" selection-end-column="45" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
-                <element signature="n#!!block;n#render#0;n#App#0" expanded="true" />
-                <element signature="e#727#2489#0" expanded="true" />
-                <element signature="e#801#2457#0" expanded="true" />
-                <element signature="e#1143#1332#0" expanded="true" />
-                <element signature="e#1361#1542#0" expanded="true" />
-                <element signature="e#1571#1747#0" expanded="true" />
-                <element signature="e#1776#1956#0" expanded="true" />
-                <element signature="e#1985#2162#0" expanded="true" />
-                <element signature="e#2191#2369#0" expanded="true" />
+                <element signature="n#!!block;n#constructor#0;n#App#0" expanded="true" />
+                <element signature="e#2799#2977#0" expanded="true" />
+                <element signature="e#3006#3184#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/PastMonth/PastMonthMain.js">
+        <entry file="file://$PROJECT_DIR$/src/views/Support/SupportMain.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+            <state relative-caret-position="391">
+              <caret line="24" column="53" lean-forward="true" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#0#51#0" expanded="true" />
+                <element signature="e#1109#1283#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/Sub/CurrentWeekFailed.js">
+        <entry file="file://$PROJECT_DIR$/src/Component/Support/Users/SupportUsers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/RowEachDayCollapse.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="49" column="42" lean-forward="true" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <element signature="n#!!block;n#constructor#0;n#RowEachDayCollapse#0" expanded="true" />
-                <element signature="e#931#1627#0" expanded="true" />
-                <element signature="e#1443#1595#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="138">
+              <caret line="6" column="32" lean-forward="true" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/RowCollapseOrders/RowCollapseOrders.js">
+        <entry file="file://$PROJECT_DIR$/src/Component/Support/Users/UserInfoCard/UserInfoCard.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/constants/menu2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="95" column="48" lean-forward="true" selection-start-line="95" selection-start-column="48" selection-end-line="95" selection-end-column="48" />
+            <state relative-caret-position="529">
+              <caret line="116" column="10" selection-start-line="116" selection-start-column="10" selection-end-line="116" selection-end-column="10" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <element signature="n#!!block;n#constructor#0;n#RowCollapseOrders#0" expanded="true" />
-                <element signature="n#!!block;n#componentDidMount#0;n#RowCollapseOrders#0" expanded="true" />
-                <element signature="e#2364#3746#0" expanded="true" />
-                <element signature="e#2443#3714#0" expanded="true" />
-                <element signature="e#2482#3677#0" expanded="true" />
-                <element signature="e#2529#3108#0" expanded="true" />
-                <element signature="e#3150#3633#0" expanded="true" />
-                <element signature="e#5198#5368#0" expanded="true" />
+                <element signature="e#19#3356#0" expanded="true" />
+                <element signature="e#152#3350#0" expanded="true" />
+                <element signature="e#309#1754#0" expanded="true" />
+                <element signature="e#1555#1736#0" expanded="true" />
+                <element signature="e#1783#3340#0" expanded="true" />
+                <element signature="e#1935#3325#0" expanded="true" />
+                <element signature="e#3501#3672#0" expanded="true" />
+                <element signature="e#3502#3660#0" expanded="true" />
+                <element signature="e#3819#3969#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/SelectTime/SelectTimeOrderMain.js">
+        <entry file="file://$PROJECT_DIR$/src/views/Orders/MainOrders.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+            <state relative-caret-position="1357">
+              <caret line="62" column="10" lean-forward="true" selection-end-line="65" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/TwoTimesSelected.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#463#505#0" expanded="true" />
-                <element signature="n#!!block;n#render#0;n#TwoTimesSelected#0" expanded="true" />
-                <element signature="e#128#169#0" expanded="true" />
-                <element signature="e#638#1080#0" expanded="true" />
-                <element signature="e#694#1057#0" expanded="true" />
-                <element signature="e#777#876#0" expanded="true" />
-                <element signature="e#901#1024#0" expanded="true" />
-                <element signature="e#217#908#0" expanded="true" />
-                <element signature="e#301#857#0" expanded="true" />
-                <element signature="e#412#564#0" expanded="true" />
-                <element signature="e#617#796#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/OneTimeSelection.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="25" column="53" lean-forward="true" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="53" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#582#705#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/ThreeTabsTime.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#332#416#0" expanded="true" />
-                <element signature="e#537#654#0" expanded="true" />
-                <element signature="e#689#829#0" expanded="true" />
-                <element signature="n#!!block;n#constructor#0;n#ThreeTabsTime#0" expanded="true" />
-                <element signature="e#540#582#0" expanded="true" />
-                <element signature="e#628#739#0" expanded="true" />
-                <element signature="n#!!block;n#GetDataSelected#0;n#ThreeTabsTime#0" expanded="true" />
-                <element signature="n#!!block;n#render#0;n#ThreeTabsTime#0" expanded="true" />
-                <element signature="e#125#166#0" expanded="true" />
-                <element signature="e#1881#1938#0" expanded="true" />
-                <element signature="e#2099#2294#0" expanded="true" />
-                <element signature="e#2315#2510#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/sub/SingelSelectedEdit.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <element signature="n#!!block;n#constructor#0;n#SIngelSelectedEdit#0" expanded="true" />
-                <element signature="e#340#382#0" expanded="true" />
-                <element signature="e#428#542#0" expanded="true" />
-                <element signature="e#347#441#0" expanded="true" />
-                <element signature="e#466#901#0" expanded="true" />
+                <element signature="e#0#51#0" expanded="true" />
+                <element signature="n#!!block;n#render#0;n#App#0" expanded="true" />
+                <element signature="e#816#2108#0" expanded="true" />
+                <element signature="e#844#2083#0" expanded="true" />
+                <element signature="e#900#2060#0" expanded="true" />
+                <element signature="e#974#2028#0" expanded="true" />
+                <element signature="e#1109#1283#0" expanded="true" />
+                <element signature="e#1312#1494#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -281,7 +191,23 @@
       <find>input</find>
       <find>font-family</find>
       <find>recipe</find>
+      <find>goToNext</find>
+      <find>wizard ul.nav:before</find>
+      <find>wizard-buttons</find>
+      <find>FormikReactSelect</find>
+      <find>gray</find>
+      <find>WizardBottonNavigations</find>
+      <find>z-index</find>
+      <find>calendar</find>
+      <find>object</find>
+      <find>steps</find>
+      <find>has-float-label</find>
+      <find>theme-color-purple</find>
+      <find>fontSize</find>
     </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -289,30 +215,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/views/oldOrders/yesterday.js" />
-        <option value="$PROJECT_DIR$/src/views/oldOrders/OldOrdersMain.js" />
-        <option value="$PROJECT_DIR$/src/containers/navs/Sidebar.js" />
-        <option value="$USER_HOME$/Desktop/23/css/style.css" />
-        <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$USER_HOME$/Desktop/23/homepage.html" />
-        <option value="$PROJECT_DIR$/src/views/Orders/MainOrders.js" />
-        <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/src/layout/AppLayout.js" />
-        <option value="$PROJECT_DIR$/src/Component/PresentOrders/leftNav/RowLeftNav.js" />
-        <option value="$PROJECT_DIR$/src/views/Orders/PresentOrders/PresentOrdersMain.js" />
-        <option value="$PROJECT_DIR$/src/Component/PresentOrders/RowShowShow.js" />
-        <option value="$PROJECT_DIR$/src/Component/PresentOrders/leftNav/LeftNav.js" />
-        <option value="$PROJECT_DIR$/src/Component/PresentOrders/ShowModal.js" />
-        <option value="$PROJECT_DIR$/src/constants/menu2.js" />
-        <option value="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/TopHeaderyesterday/TopHeaderYesterDay.js" />
-        <option value="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/YesterDay.js" />
-        <option value="$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/TopHeader4Tabs/sub/EachDropDown.js" />
-        <option value="$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/TopHeader4Tabs/TopHeaders4Tabs.js" />
-        <option value="$PROJECT_DIR$/src/Component/PresentOrders/Common/CollapseRow.js" />
-        <option value="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/RowEachDayCollapse.js" />
-        <option value="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/YesterDayAccept.js" />
-        <option value="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/YesterDayFailed.js" />
-        <option value="$PROJECT_DIR$/src/Component/OldOrders/BeforeYesterDay/Sub/BeforYesterDayAccept.js" />
         <option value="$PROJECT_DIR$/src/Component/OldOrders/BeforeYesterDay/Sub/BeforeYesterDayFaile.js" />
         <option value="$PROJECT_DIR$/src/Component/OldOrders/BeforeYesterDay/BeforeYesterDay.js" />
         <option value="$PROJECT_DIR$/src/Component/OldOrders/BeforeYesterDay/Sub/BeforeYesterDayAccept.js" />
@@ -325,16 +227,45 @@
         <option value="$PROJECT_DIR$/src/Component/OldOrders/PastMonth/PastMonthMain.js" />
         <option value="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/sub/PersianCalender.js" />
         <option value="$PROJECT_DIR$/src/views/Orders/oldOrders/OldOrdersMain.js" />
-        <option value="$PROJECT_DIR$/node_modules/react-persian-calendar-date-picker/lib/DatePicker.css" />
-        <option value="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/sub/PersianClassCalender.js" />
-        <option value="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" />
         <option value="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/TwoTimesSelected.js" />
         <option value="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/OneTimeSelection.js" />
         <option value="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/SelectTimeOrderMain.js" />
         <option value="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/sub/SIngelSelectedEdit.js" />
-        <option value="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/sub/SingelSelectedEdit.js" />
+        <option value="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/TopHeaderyesterday/TopHeaderYesterDay.js" />
+        <option value="$PROJECT_DIR$/src/containers/navs/Sidebar.js" />
+        <option value="$PROJECT_DIR$/src/Component/PresentOrders/leftNav/RowLeftNav.js" />
         <option value="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/ThreeTabsTime.js" />
+        <option value="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/sub/SingelSelectedEdit.js" />
+        <option value="$PROJECT_DIR$/src/views/ChichiMan/ChichiManMain.js" />
+        <option value="$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Steps/Step1/Step1.js" />
+        <option value="$PROJECT_DIR$/src/constants/defaultValues.js" />
+        <option value="$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/ChichiManSignIn.js" />
+        <option value="$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Sub/ImgComponent.js" />
+        <option value="$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Sub/WizardBottonNavigations.js" />
+        <option value="$PROJECT_DIR$/node_modules/react-persian-calendar-date-picker/lib/DatePicker.css" />
+        <option value="$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/sub/PersianClassCalender.js" />
+        <option value="$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Step6/Step6.js" />
+        <option value="$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Step2/Step2.js" />
+        <option value="$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Step1/Step1.js" />
+        <option value="$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Step3/Step3.js" />
+        <option value="$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Step4/Step4.js" />
+        <option value="$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Step5/Step5.js" />
+        <option value="$PROJECT_DIR$/src/Component/PresentOrders/Common/CollapseRow.js" />
+        <option value="$PROJECT_DIR$/src/Component/PresentOrders/RowShowShow.js" />
         <option value="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/RowCollapseOrders/RowCollapseOrders.js" />
+        <option value="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" />
+        <option value="$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/TopHeader4Tabs/TopHeaders4Tabs.js" />
+        <option value="$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/RowEachDayCollapse.js" />
+        <option value="$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/TopHeader4Tabs/sub/EachDropDown.js" />
+        <option value="$PROJECT_DIR$/src/Component/PresentOrders/ChichiWaitingCustomer/sub/LeftChichiWaitingCustomer.js" />
+        <option value="$PROJECT_DIR$/src/Component/PresentOrders/Collective/Sub/LeftMainCollective/LeftMainCollective.js" />
+        <option value="$PROJECT_DIR$/src/Component/PresentOrders/Deliverded/Sub/LeftDeliverd.js" />
+        <option value="$PROJECT_DIR$/src/Component/PresentOrders/WaitingAcceptChichi/sub/LeftMenuWaitingAccept.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/Component/Support/Users/SupportUsers.js" />
+        <option value="$PROJECT_DIR$/src/views/Support/SupportMain.js" />
+        <option value="$PROJECT_DIR$/src/constants/menu2.js" />
+        <option value="$PROJECT_DIR$/src/Component/Support/Users/UserInfoCard/UserInfoCard.js" />
       </list>
     </option>
   </component>
@@ -354,9 +285,9 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
-    <option name="width" value="1938" />
+    <option name="width" value="1939" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectView">
@@ -364,7 +295,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -392,27 +322,6 @@
               <item name="OldOrders" type="b2602c69:ProjectViewProjectNode" />
               <item name="OldOrders" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OldOrders" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OldOrders" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OldOrders" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OldOrders" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="sass" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OldOrders" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OldOrders" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Component" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -420,59 +329,21 @@
               <item name="OldOrders" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Component" type="462c0819:PsiDirectoryNode" />
-              <item name="OldOrders" type="462c0819:PsiDirectoryNode" />
+              <item name="Support" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="OldOrders" type="b2602c69:ProjectViewProjectNode" />
               <item name="OldOrders" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Component" type="462c0819:PsiDirectoryNode" />
-              <item name="OldOrders" type="462c0819:PsiDirectoryNode" />
-              <item name="SelectTime" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OldOrders" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OldOrders" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Component" type="462c0819:PsiDirectoryNode" />
-              <item name="OldOrders" type="462c0819:PsiDirectoryNode" />
-              <item name="SelectTime" type="462c0819:PsiDirectoryNode" />
-              <item name="Headers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OldOrders" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OldOrders" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Component" type="462c0819:PsiDirectoryNode" />
-              <item name="OldOrders" type="462c0819:PsiDirectoryNode" />
-              <item name="SelectTime" type="462c0819:PsiDirectoryNode" />
-              <item name="Headers" type="462c0819:PsiDirectoryNode" />
-              <item name="sub" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OldOrders" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OldOrders" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Support" type="462c0819:PsiDirectoryNode" />
+              <item name="Users" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="OldOrders" type="b2602c69:ProjectViewProjectNode" />
               <item name="OldOrders" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="constants" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OldOrders" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OldOrders" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OldOrders" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OldOrders" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="navs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="OldOrders" type="b2602c69:ProjectViewProjectNode" />
@@ -497,11 +368,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Orders" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Cafe/AdminPanel-Cafe/cafe-art" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="D:\Project\HandMade\Chichi\Old Orders\OldOrders\node_modules\eslint" />
@@ -511,6 +383,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Project\HandMade\Chichi\Old Orders\OldOrders\src\Component\ChichiMan\ChiChi Man Sign In" />
       <recent name="D:\Project\HandMade\Chichi\Old Orders\OldOrders\src\Component\OldOrders" />
       <recent name="D:\Project\HandMade\Chichi\Old Orders\OldOrders\src\views\Orders" />
     </key>
@@ -538,18 +411,18 @@
       <option name="presentableId" value="Default" />
       <updated>1569652043173</updated>
       <workItem from="1569652045651" duration="14693000" />
-      <workItem from="1569734805252" duration="23739000" />
+      <workItem from="1569734805252" duration="23929000" />
+      <workItem from="1569819839037" duration="24485000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38432000" />
+    <option name="totallyTimeSpent" value="63107000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-10" y="0" width="1938" height="1040" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31702128" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3200213" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -565,7 +438,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="12" visible="true" weight="0.22011173" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.22011173" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -580,548 +453,13 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/views/app/gogo/index.js">
+    <entry file="file://$PROJECT_DIR$/src/views/Orders/oldOrders/OldOrdersMain.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" column="30" lean-forward="true" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/app/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-            <element signature="e#847#967#0" expanded="true" />
-            <element signature="e#982#1115#0" expanded="true" />
-            <element signature="e#1130#1261#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/layout/AppLayout.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="14" column="10" lean-forward="true" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/Collective/Sub/LeftMainCollective/LeftMainCollective.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#LeftMainCollective#0" expanded="true" />
-            <element signature="e#467#1539#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/Collective/Sub/MainCollective.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/Collective/Collective.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/ChichiWaitingCustomer/ChichiWaitingCustomer.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/CollectOrders/SabtOrders.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="13" column="10" lean-forward="true" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#214#430#0" expanded="true" />
-            <element signature="e#289#411#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/leftNav/RowLeftNav.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="45" column="91" lean-forward="true" selection-start-line="45" selection-start-column="91" selection-end-line="45" selection-end-column="91" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#onCheckItem#0;n#RowLeftNav#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/CollectOrders/Main1-2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="26" column="52" lean-forward="true" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
-          <folding>
-            <element signature="n#!!block;n#constructor#0;n#Main12#0" expanded="true" />
-            <element signature="e#322#1456#0" expanded="true" />
-            <element signature="e#2103#2300#0" expanded="true" />
-            <element signature="e#2151#2273#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/ShowModal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="64" column="25" lean-forward="true" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
-          <folding>
-            <element signature="e#39#242#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/leftNav/LeftNav.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="19" column="33" lean-forward="true" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-          <folding>
-            <element signature="e#315#355#0" expanded="true" />
-            <element signature="n#!!block;n#render#0;n#LeftNav#0" expanded="true" />
-            <element signature="e#1042#1651#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="22" column="67" lean-forward="true" selection-start-line="22" selection-start-column="67" selection-end-line="22" selection-end-column="67" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#App#0" expanded="true" />
-            <element signature="e#1799#1830#0" expanded="true" />
-            <element signature="n#!!block;n#render#0;n#App#0" expanded="true" />
-            <element signature="e#1952#3370#0" expanded="true" />
-            <element signature="e#1984#3357#0" expanded="true" />
-            <element signature="e#2108#3333#0" expanded="true" />
-            <element signature="e#2229#3305#0" expanded="true" />
-            <element signature="e#2293#3281#0" expanded="true" />
-            <element signature="e#2318#3257#0" expanded="true" />
-            <element signature="e#2345#2465#0" expanded="true" />
-            <element signature="e#2720#2856#0" expanded="true" />
-            <element signature="e#2875#3025#0" expanded="true" />
-            <element signature="e#3044#3188#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/Deliverded/Deliverd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#209#410#0" expanded="true" />
-            <element signature="e#296#391#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Orders/PresentOrders/PresentOrdersMain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="103" selection-start-line="7" selection-start-column="103" selection-end-line="7" selection-end-column="103" />
+        <state relative-caret-position="225">
+          <caret line="20" column="96" selection-start-line="20" selection-start-column="96" selection-end-line="20" selection-end-column="96" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
             <element signature="n#!!block;n#render#0;n#App#0" expanded="true" />
-            <element signature="e#1413#3195#0" expanded="true" />
-            <element signature="e#1487#3163#0" expanded="true" />
-            <element signature="e#1835#2001#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/SuccessPaid/SuccessPaid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="18" lean-forward="true" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#250#477#0" expanded="true" />
-            <element signature="e#337#458#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/SuccessPaid/OrderList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#render#0;n#OrderList#0" expanded="true" />
-            <element signature="e#748#1192#0" expanded="true" />
-            <element signature="e#780#1173#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/constants/menu2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="46" column="52" lean-forward="true" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="52" />
-          <folding>
-            <element signature="e#322#498#0" expanded="true" />
-            <element signature="e#520#705#0" expanded="true" />
-            <element signature="e#761#952#0" expanded="true" />
-            <element signature="e#956#1135#0" expanded="true" />
-            <element signature="e#1155#1332#0" expanded="true" />
-            <element signature="e#1356#1535#0" expanded="true" />
-            <element signature="e#752#2303#0" expanded="true" />
-            <element signature="e#898#2288#0" expanded="true" />
-            <element signature="e#920#1104#0" expanded="true" />
-            <element signature="e#1126#1300#0" expanded="true" />
-            <element signature="e#1881#2082#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/YesterDay/YesterDay.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="24" column="47" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#YesterDay#0" expanded="true" />
-            <element signature="n#!!block;n#changeField#0;n#YesterDay#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/TopHeader4Tabs/sub/EachDropDown.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-529">
-          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#componentWillReceiveProps#0;n#EachDropDown#0" expanded="true" />
-            <element signature="e#752#806#0" expanded="true" />
-            <element signature="e#545#663#0" expanded="true" />
-            <element signature="e#583#654#0" expanded="true" />
-            <element signature="e#693#1031#0" expanded="true" />
-            <element signature="e#1112#1183#0" expanded="true" />
-            <element signature="e#997#1035#0" expanded="true" />
-            <element signature="e#1146#1184#0" expanded="true" />
-            <element signature="n#!!block;n#render#0;n#EachDropDown#0" expanded="true" />
-            <element signature="e#124#165#0" expanded="true" />
-            <element signature="e#317#2211#0" expanded="true" />
-            <element signature="e#461#660#0" expanded="true" />
-            <element signature="e#681#2183#0" expanded="true" />
-            <element signature="e#883#1441#0" expanded="true" />
-            <element signature="e#961#1410#0" expanded="true" />
-            <element signature="e#1518#2146#0" expanded="true" />
-            <element signature="e#1600#2115#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/TopHeader4Tabs/TopHeaders4Tabs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="28" column="31" lean-forward="true" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#TopHeaders4Tabs#0" expanded="true" />
-            <element signature="e#482#630#0" expanded="true" />
-            <element signature="e#359#360#0" expanded="true" />
-            <element signature="e#397#398#0" expanded="true" />
-            <element signature="e#1184#1364#0" expanded="true" />
-            <element signature="e#1427#1607#0" expanded="true" />
-            <element signature="e#1677#1857#0" expanded="true" />
-            <element signature="e#1923#2103#0" expanded="true" />
-            <element signature="n#!!block;n#GetPropertise#0;n#TopHeaders4Tabs#0" expanded="true" />
-            <element signature="n#!!block;n#render#0;n#TopHeaders4Tabs#0" expanded="true" />
-            <element signature="e#1258#4740#0" expanded="true" />
-            <element signature="e#3971#4719#0" expanded="true" />
-            <element signature="e#4078#4135#0" expanded="true" />
-            <element signature="e#4144#4266#0" expanded="true" />
-            <element signature="e#4266#4388#0" expanded="true" />
-            <element signature="e#4384#4506#0" expanded="true" />
-            <element signature="e#4588#4702#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/YesterDay/TopHeaderyesterday/TopHeaderYesterDay.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="38" column="73" selection-start-line="38" selection-start-column="73" selection-end-line="38" selection-end-column="73" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#TopHeaderYesterDay#0" expanded="true" />
-            <element signature="e#588#589#0" expanded="true" />
-            <element signature="e#626#627#0" expanded="true" />
-            <element signature="e#883#1326#0" expanded="true" />
-            <element signature="e#1348#1793#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/Deliverded/Sub/LeftDeliverd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="36" column="59" lean-forward="true" selection-start-line="36" selection-start-column="59" selection-end-line="36" selection-end-column="59" />
-          <folding>
-            <element signature="n#!!block;n#constructor#0;n#LeftDeliverd#0" expanded="true" />
-            <element signature="e#273#1488#0" expanded="true" />
-            <element signature="e#2531#2744#0" expanded="true" />
-            <element signature="e#2583#2713#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/Common/CollapseRow.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="33" column="29" lean-forward="true" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#1357#1872#0" expanded="true" />
-            <element signature="e#1425#1836#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/RowShowShow.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-          <folding>
-            <element signature="n#!!block;n#render#0;n#RowShowShow#0" expanded="true" />
-            <element signature="e#164#423#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/BeforeYesterDay/BeforeYesterDay.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#BeforeYesterDay#0" expanded="true" />
-            <element signature="n#!!block;n#changeField#0;n#BeforeYesterDay#0" expanded="true" />
-            <element signature="n#!!block;n#render#0;n#BeforeYesterDay#0" expanded="true" />
-            <element signature="e#522#740#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/BeforeYesterDay/Sub/BeforeYesterDayFailed.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="12" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#202#386#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/YesterDayAccept.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="46" lean-forward="true" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/BeforeYesterDay/Sub/BeforeYesterDayAccept.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="56" lean-forward="true" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/YesterDayFailed.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" column="56" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Orders/MainOrders.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-138">
-          <caret line="12" column="38" lean-forward="true" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-            <element signature="n#!!block;n#render#0;n#App#0" expanded="true" />
-            <element signature="e#816#2108#0" expanded="true" />
-            <element signature="e#844#2083#0" expanded="true" />
-            <element signature="e#900#2060#0" expanded="true" />
-            <element signature="e#974#2028#0" expanded="true" />
-            <element signature="e#1109#1283#0" expanded="true" />
-            <element signature="e#1312#1494#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/CurrentWeek.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="29" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#CurrentWeek#0" expanded="true" />
-            <element signature="e#355#384#0" expanded="true" />
-            <element signature="n#!!block;n#changeField#0;n#CurrentWeek#0" expanded="true" />
-            <element signature="e#435#462#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/CurrentMonth/CurrentMounthMain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="26" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#CurrentMounthMain#0" expanded="true" />
-            <element signature="e#378#407#0" expanded="true" />
-            <element signature="n#!!block;n#changeField#0;n#CurrentMounthMain#0" expanded="true" />
-            <element signature="e#458#485#0" expanded="true" />
-            <element signature="e#528#747#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/PastWeek/PastWeekMain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="25" column="40" lean-forward="true" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#PastWeekMain#0" expanded="true" />
-            <element signature="e#302#331#0" expanded="true" />
-            <element signature="n#!!block;n#changeField#0;n#PastWeekMain#0" expanded="true" />
-            <element signature="e#382#409#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/Sub/CurrentWeekAccept.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="35" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/navs/Topnav.EasyAccess.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/IntlMessages.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-persian-calendar-date-picker/lib/DatePicker.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-23">
-          <caret line="17" column="10" lean-forward="true" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/sub/PersianClassCalender.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="44" column="18" lean-forward="true" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#setSelectedDay#0;n#PersianClassCalender#0" expanded="true" />
-            <element signature="e#1033#1545#0" expanded="true" />
-            <element signature="e#1709#2075#0" expanded="true" />
-            <element signature="e#1732#2056#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="8769" column="17" lean-forward="true" selection-start-line="8769" selection-start-column="17" selection-end-line="8769" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/navs/Topnav.DarkSwitch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
-          <folding>
-            <element signature="e#855#1299#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/sub/SingelSelectedEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#SIngelSelectedEdit#0" expanded="true" />
-            <element signature="e#340#382#0" expanded="true" />
-            <element signature="e#428#542#0" expanded="true" />
-            <element signature="e#347#441#0" expanded="true" />
-            <element signature="e#466#901#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/ThreeTabsTime.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#332#416#0" expanded="true" />
-            <element signature="e#537#654#0" expanded="true" />
-            <element signature="e#689#829#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#ThreeTabsTime#0" expanded="true" />
-            <element signature="e#540#582#0" expanded="true" />
-            <element signature="e#628#739#0" expanded="true" />
-            <element signature="n#!!block;n#GetDataSelected#0;n#ThreeTabsTime#0" expanded="true" />
-            <element signature="n#!!block;n#render#0;n#ThreeTabsTime#0" expanded="true" />
-            <element signature="e#125#166#0" expanded="true" />
-            <element signature="e#1881#1938#0" expanded="true" />
-            <element signature="e#2099#2294#0" expanded="true" />
-            <element signature="e#2315#2510#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1137,106 +475,721 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/TwoTimesSelected.js">
+    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/YesterDay/TopHeaderyesterday/TopHeaderYesterDay.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+        <state relative-caret-position="69">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#463#505#0" expanded="true" />
-            <element signature="n#!!block;n#render#0;n#TwoTimesSelected#0" expanded="true" />
-            <element signature="e#128#169#0" expanded="true" />
-            <element signature="e#638#1080#0" expanded="true" />
-            <element signature="e#694#1057#0" expanded="true" />
-            <element signature="e#777#876#0" expanded="true" />
-            <element signature="e#901#1024#0" expanded="true" />
-            <element signature="e#217#908#0" expanded="true" />
-            <element signature="e#301#857#0" expanded="true" />
-            <element signature="e#412#564#0" expanded="true" />
-            <element signature="e#617#796#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#TopHeaderYesterDay#0" expanded="true" />
+            <element signature="e#588#589#0" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+            <element signature="n#!!block;n#render#0;n#TopHeaderYesterDay#0" expanded="true" />
+            <element signature="e#797#1817#0" expanded="true" />
+            <element signature="e#883#1326#0" expanded="true" />
+            <element signature="e#1348#1793#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/navs/Sidebar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="349" column="22" lean-forward="true" selection-start-line="349" selection-start-column="22" selection-end-line="349" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#10087#11312#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/sub/SingelSelectedEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/ThreeTabsTime.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="74" column="5" lean-forward="true" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+          <folding>
+            <element signature="n#!!block;n#constructor#0;n#ThreeTabsTime#0" expanded="true" />
+            <element signature="n#!!block;n#GetDataSelected#0;n#ThreeTabsTime#0" expanded="true" />
+            <element signature="n#!!block;n#render#0;n#ThreeTabsTime#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/wizard/TopNavigation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-intl/lib/index.es.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Const.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/SignUp/SignUpMain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#892#973#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/leftNav/RowLeftNav.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+          <folding>
+            <element signature="e#98#159#0" expanded="true" />
+            <element signature="n#!!block;n#onCheckItem#0;n#RowLeftNav#0" expanded="true" />
+            <element signature="e#849#3268#0" expanded="true" />
+            <element signature="e#1008#2222#0" expanded="true" />
+            <element signature="e#1219#2190#0" expanded="true" />
+            <element signature="e#1290#2155#0" expanded="true" />
+            <element signature="e#1797#2116#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/wizard/BottomNavigation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#216#998#0" expanded="true" />
+            <element signature="e#291#980#0" expanded="true" />
+            <element signature="e#370#652#0" expanded="true" />
+            <element signature="e#674#957#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/ChichiMan/ChichiManMain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="24" column="30" lean-forward="true" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#1109#1283#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/defaultValues.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/vendor/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="5" column="90901" selection-start-line="5" selection-start-column="90901" selection-end-line="5" selection-end-column="90901" />
+          <folding>
+            <element signature="e#72310#72510#2" expanded="true" />
+            <element signature="e#72722#72871#2" expanded="true" />
+            <element signature="e#73383#73529#2" expanded="true" />
+            <element signature="e#73833#73999#1" expanded="true" />
+            <element signature="e#87988#88228#2" expanded="true" />
+            <element signature="e#89103#89349#2" expanded="true" />
+            <element signature="e#117693#117883#2" expanded="true" />
+            <element signature="e#117929#118119#2" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Sub/WizardBottonNavigations.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#render#0;n#WizardBottonNavigations#0" expanded="true" />
+            <element signature="e#132#1611#0" expanded="true" />
+            <element signature="e#239#1561#0" expanded="true" />
+            <element signature="e#364#858#0" expanded="true" />
+            <element signature="e#912#1333#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/SelectTime/SelectTimeOrderMain.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        <state relative-caret-position="207">
+          <caret line="9" column="24" lean-forward="true" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Orders/oldOrders/OldOrdersMain.js">
+    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/TwoTimesSelected.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="20" column="96" selection-start-line="20" selection-start-column="96" selection-end-line="20" selection-end-column="96" />
+        <state relative-caret-position="336">
+          <caret line="20" column="28" lean-forward="true" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
-            <element signature="n#!!block;n#render#0;n#App#0" expanded="true" />
-            <element signature="e#727#2489#0" expanded="true" />
-            <element signature="e#801#2457#0" expanded="true" />
-            <element signature="e#1143#1332#0" expanded="true" />
-            <element signature="e#1361#1542#0" expanded="true" />
-            <element signature="e#1571#1747#0" expanded="true" />
-            <element signature="e#1776#1956#0" expanded="true" />
-            <element signature="e#1985#2162#0" expanded="true" />
-            <element signature="e#2191#2369#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#459#501#0" expanded="true" />
+            <element signature="n#!!block;n#render#0;n#TwoTimesSelected#0" expanded="true" />
+            <element signature="e#595#1559#0" expanded="true" />
+            <element signature="e#636#1078#0" expanded="true" />
+            <element signature="e#692#1055#0" expanded="true" />
+            <element signature="e#1095#1538#0" expanded="true" />
+            <element signature="e#1151#1515#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/PastMonth/PastMonthMain.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/react-persian-calendar-date-picker/lib/DatePicker.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+        <state relative-caret-position="479">
+          <caret line="49" column="12" lean-forward="true" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/SelectTime/Headers/sub/PersianClassCalender.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="46" selection-end-column="14" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#setSelectedDay#0;n#PersianClassCalender#0" expanded="true" />
+            <element signature="e#1033#1546#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/Sub/CurrentWeekFailed.js">
+    <entry file="file://$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Step6/Step6.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        <state relative-caret-position="106">
+          <caret line="139" column="34" selection-start-line="139" selection-start-column="34" selection-end-line="141" selection-end-column="42" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#525#572#0" expanded="true" />
+            <element signature="e#657#1318#0" expanded="true" />
+            <element signature="e#4210#4379#0" expanded="true" />
+            <element signature="e#4250#14837#0" expanded="true" />
+            <element signature="e#5514#14756#0" expanded="true" />
+            <element signature="e#9309#13207#0" expanded="true" />
+            <element signature="e#9389#13156#0" expanded="true" />
+            <element signature="e#9473#10646#0" expanded="true" />
+            <element signature="e#10699#11868#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/RowEachDayCollapse.js">
+    <entry file="file://$PROJECT_DIR$/src/containers/form-validations/FormikFields.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="49" column="42" lean-forward="true" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
+        <state relative-caret-position="-575">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Sub/ImgComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="63" column="52" lean-forward="true" selection-start-line="63" selection-start-column="52" selection-end-line="63" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Step2/Step2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="172" column="65" lean-forward="true" selection-start-line="172" selection-start-column="65" selection-end-line="172" selection-end-column="65" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#RowEachDayCollapse#0" expanded="true" />
-            <element signature="e#931#1627#0" expanded="true" />
-            <element signature="e#1443#1595#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#Step2#0" expanded="true" />
+            <element signature="e#3961#4217#0" expanded="true" />
+            <element signature="e#4009#4171#0" expanded="true" />
+            <element signature="e#7348#7516#0" expanded="true" />
+            <element signature="e#7573#7764#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Step1/Step1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="32" column="46" lean-forward="true" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="99" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#186#300#0" expanded="true" />
+            <element signature="e#1077#1202#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#Step1#0" expanded="true" />
+            <element signature="n#!!block;n#render#0;n#Step1#0" expanded="true" />
+            <element signature="e#3109#9778#0" expanded="true" />
+            <element signature="e#3141#9758#0" expanded="true" />
+            <element signature="e#3184#9735#0" expanded="true" />
+            <element signature="e#3225#9706#0" expanded="true" />
+            <element signature="e#3260#9674#0" expanded="true" />
+            <element signature="e#3303#3566#0" expanded="true" />
+            <element signature="e#3351#3520#0" expanded="true" />
+            <element signature="e#3600#9634#0" expanded="true" />
+            <element signature="e#4620#9553#0" expanded="true" />
+            <element signature="e#4715#7557#0" expanded="true" />
+            <element signature="e#4795#6297#0" expanded="true" />
+            <element signature="e#4875#6242#0" expanded="true" />
+            <element signature="e#4982#5152#0" expanded="true" />
+            <element signature="e#5209#5765#0" expanded="true" />
+            <element signature="e#5921#6111#0" expanded="true" />
+            <element signature="e#6346#7505#0" expanded="true" />
+            <element signature="e#6427#7449#0" expanded="true" />
+            <element signature="e#6552#6719#0" expanded="true" />
+            <element signature="e#6776#6960#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Step4/Step4.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="222" column="53" selection-start-line="222" selection-start-column="53" selection-end-line="226" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#527#574#0" expanded="true" />
+            <element signature="e#729#1197#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#Step4#0" expanded="true" />
+            <element signature="n#!!block;n#GetImag#0;n#Step4#0" expanded="true" />
+            <element signature="e#3652#3910#0" expanded="true" />
+            <element signature="e#3700#3865#0" expanded="true" />
+            <element signature="e#5232#8041#0" expanded="true" />
+            <element signature="e#5312#6457#0" expanded="true" />
+            <element signature="e#5392#6402#0" expanded="true" />
+            <element signature="e#5517#5687#0" expanded="true" />
+            <element signature="e#5744#5937#0" expanded="true" />
+            <element signature="e#6085#6271#0" expanded="true" />
+            <element signature="e#6506#7990#0" expanded="true" />
+            <element signature="e#8086#10561#0" expanded="true" />
+            <element signature="e#8166#9314#0" expanded="true" />
+            <element signature="e#8246#9259#0" expanded="true" />
+            <element signature="e#8371#8536#0" expanded="true" />
+            <element signature="e#9363#10510#0" expanded="true" />
+            <element signature="e#10878#11223#0" expanded="true" />
+            <element signature="e#10985#11160#0" expanded="true" />
+            <element signature="e#11331#11925#0" expanded="true" />
+            <element signature="e#11410#11870#0" expanded="true" />
+            <element signature="e#11753#12100#0" expanded="true" />
+            <element signature="e#11860#12037#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Step5/Step5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="273" column="74" lean-forward="true" selection-start-line="273" selection-start-column="74" selection-end-line="273" selection-end-column="74" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#527#574#0" expanded="true" />
+            <element signature="n#!!block;n#GetData#0;n#Step5#0" expanded="true" />
+            <element signature="e#4452#4712#0" expanded="true" />
+            <element signature="e#4500#4667#0" expanded="true" />
+            <element signature="e#6016#8852#0" expanded="true" />
+            <element signature="e#6096#7241#0" expanded="true" />
+            <element signature="e#8897#12588#0" expanded="true" />
+            <element signature="e#8977#10149#0" expanded="true" />
+            <element signature="e#9057#10094#0" expanded="true" />
+            <element signature="e#9182#9348#0" expanded="true" />
+            <element signature="e#9405#9602#0" expanded="true" />
+            <element signature="e#9768#9963#0" expanded="true" />
+            <element signature="e#10198#11347#0" expanded="true" />
+            <element signature="e#10278#11291#0" expanded="true" />
+            <element signature="e#10403#10567#0" expanded="true" />
+            <element signature="e#11396#12537#0" expanded="true" />
+            <element signature="e#11476#12481#0" expanded="true" />
+            <element signature="e#11601#11765#0" expanded="true" />
+            <element signature="e#11822#12010#0" expanded="true" />
+            <element signature="e#12714#13315#0" expanded="true" />
+            <element signature="e#12795#13259#0" expanded="true" />
+            <element signature="e#12503#12850#0" expanded="true" />
+            <element signature="e#12610#12787#0" expanded="true" />
+            <element signature="e#13364#13957#0" expanded="true" />
+            <element signature="e#13443#13902#0" expanded="true" />
+            <element signature="e#13328#13672#0" expanded="true" />
+            <element signature="e#13435#13609#0" expanded="true" />
+            <element signature="e#14085#14553#0" expanded="true" />
+            <element signature="e#14202#14543#0" expanded="true" />
+            <element signature="e#14309#14480#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/Step3/Step3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="240" column="53" selection-start-line="240" selection-start-column="53" selection-end-line="244" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#525#572#0" expanded="true" />
+            <element signature="e#727#1201#0" expanded="true" />
+            <element signature="e#3478#3737#0" expanded="true" />
+            <element signature="e#3526#3691#0" expanded="true" />
+            <element signature="e#3830#4260#0" expanded="true" />
+            <element signature="e#5138#7593#0" expanded="true" />
+            <element signature="e#5218#6339#0" expanded="true" />
+            <element signature="e#5298#6284#0" expanded="true" />
+            <element signature="e#5423#5581#0" expanded="true" />
+            <element signature="e#5638#5816#0" expanded="true" />
+            <element signature="e#5966#6153#0" expanded="true" />
+            <element signature="e#6388#7542#0" expanded="true" />
+            <element signature="e#6468#7487#0" expanded="true" />
+            <element signature="e#6593#6760#0" expanded="true" />
+            <element signature="e#7638#8896#0" expanded="true" />
+            <element signature="e#7718#8845#0" expanded="true" />
+            <element signature="e#7799#8790#0" expanded="true" />
+            <element signature="e#8941#12606#0" expanded="true" />
+            <element signature="e#9021#10180#0" expanded="true" />
+            <element signature="e#9101#10125#0" expanded="true" />
+            <element signature="e#9226#9396#0" expanded="true" />
+            <element signature="e#9453#9636#0" expanded="true" />
+            <element signature="e#10229#11367#0" expanded="true" />
+            <element signature="e#10309#11312#0" expanded="true" />
+            <element signature="e#10434#10601#0" expanded="true" />
+            <element signature="e#10658#10847#0" expanded="true" />
+            <element signature="e#11416#12554#0" expanded="true" />
+            <element signature="e#11496#12499#0" expanded="true" />
+            <element signature="e#11621#11790#0" expanded="true" />
+            <element signature="e#11847#12037#0" expanded="true" />
+            <element signature="e#12183#12368#0" expanded="true" />
+            <element signature="e#12996#13339#0" expanded="true" />
+            <element signature="e#13103#13276#0" expanded="true" />
+            <element signature="e#13382#13960#0" expanded="true" />
+            <element signature="e#13461#13905#0" expanded="true" />
+            <element signature="e#13636#13765#0" expanded="true" />
+            <element signature="e#13741#13916#0" expanded="true" />
+            <element signature="e#14009#14602#0" expanded="true" />
+            <element signature="e#14089#14547#0" expanded="true" />
+            <element signature="e#14456#14801#0" expanded="true" />
+            <element signature="e#14563#14738#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/ChichiMan/ChiChi Man Sign In/ChichiManSignIn.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1625">
+          <caret line="74" column="35" selection-start-line="74" selection-start-column="35" selection-end-line="74" selection-end-column="35" />
+          <folding>
+            <element signature="e#43#84#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#ChichiManSignIn#0" expanded="true" />
+            <element signature="e#721#781#0" expanded="true" />
+            <element signature="e#817#818#0" expanded="true" />
+            <element signature="e#844#845#0" expanded="true" />
+            <element signature="n#!!block;n#onClickNext#0;n#ChichiManSignIn#0" expanded="true" />
+            <element signature="n#!!block;n#onClickPrev#0;n#ChichiManSignIn#0" expanded="true" />
+            <element signature="e#1411#1412#0" expanded="true" />
+            <element signature="e#1437#1438#0" expanded="true" />
+            <element signature="n#PrevTo#0;n#ChichiManSignIn#0" expanded="true" />
+            <element signature="e#1900#2260#0" expanded="true" />
+            <element signature="e#1972#2228#0" expanded="true" />
+            <element signature="e#2285#2639#0" expanded="true" />
+            <element signature="e#2351#2607#0" expanded="true" />
+            <element signature="e#3047#3404#0" expanded="true" />
+            <element signature="e#3116#3372#0" expanded="true" />
+            <element signature="e#3429#3872#0" expanded="true" />
+            <element signature="e#3584#3840#0" expanded="true" />
+            <element signature="e#3897#4337#0" expanded="true" />
+            <element signature="e#4049#4305#0" expanded="true" />
+            <element signature="e#4362#4721#0" expanded="true" />
+            <element signature="e#4426#4689#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/Common/CollapseRow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-92">
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding>
+            <element signature="n#!!block;n#constructor#0;n#CollapseRow#0" expanded="true" />
+            <element signature="n#!!block;n#componentDidMount#0;n#CollapseRow#0" expanded="true" />
+            <element signature="n#!!block;n#render#0;n#CollapseRow#0" expanded="true" />
+            <element signature="e#757#1997#0" expanded="true" />
+            <element signature="e#863#1338#0" expanded="true" />
+            <element signature="e#1363#1878#0" expanded="true" />
+            <element signature="e#1431#1842#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/RowShowShow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+          <folding>
+            <element signature="e#164#423#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/TopHeader4Tabs/sub/EachDropDown.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="42" lean-forward="true" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
+          <folding>
+            <element signature="n#!!block;n#constructor#0;n#EachDropDown#0" expanded="true" />
+            <element signature="e#301#423#0" expanded="true" />
+            <element signature="n#!!block;n#componentWillReceiveProps#0;n#EachDropDown#0" expanded="true" />
+            <element signature="e#492#579#0" expanded="true" />
+            <element signature="e#611#782#0" expanded="true" />
+            <element signature="e#812#1369#0" expanded="true" />
+            <element signature="e#850#921#0" expanded="true" />
+            <element signature="e#1164#1202#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/YesterDay/YesterDay.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#390#419#0" expanded="true" />
+            <element signature="n#!!block;n#changeField#0;n#YesterDay#0" expanded="true" />
+            <element signature="n#!!block;n#render#0;n#YesterDay#0" expanded="true" />
+            <element signature="e#550#768#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/ChichiOngo/MainChichiOnGo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/RowCollapseOrders/RowCollapseOrders.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="95" column="48" lean-forward="true" selection-start-line="95" selection-start-column="48" selection-end-line="95" selection-end-column="48" />
+        <state relative-caret-position="253">
+          <caret line="20" column="17" lean-forward="true" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#RowCollapseOrders#0" expanded="true" />
+            <element signature="e#649#1791#0" expanded="true" />
             <element signature="n#!!block;n#componentDidMount#0;n#RowCollapseOrders#0" expanded="true" />
-            <element signature="e#2364#3746#0" expanded="true" />
-            <element signature="e#2443#3714#0" expanded="true" />
-            <element signature="e#2482#3677#0" expanded="true" />
+            <element signature="e#1979#2010#0" expanded="true" />
+            <element signature="n#!!block;n#render#0;n#RowCollapseOrders#0" expanded="true" />
+            <element signature="e#2300#5254#0" expanded="true" />
+            <element signature="e#2356#5291#0" expanded="true" />
+            <element signature="e#2383#5266#0" expanded="true" />
+            <element signature="e#2418#3696#0" expanded="true" />
             <element signature="e#2529#3108#0" expanded="true" />
-            <element signature="e#3150#3633#0" expanded="true" />
-            <element signature="e#5198#5368#0" expanded="true" />
+            <element signature="e#2974#3457#0" expanded="true" />
+            <element signature="e#3772#5284#0" expanded="true" />
+            <element signature="e#3840#5248#0" expanded="true" />
+            <element signature="e#3935#5213#0" expanded="true" />
+            <element signature="e#4084#5123#0" expanded="true" />
+            <element signature="e#4783#5076#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/RowEachDayCollapse.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#RowEachDayCollapse#0" expanded="true" />
+            <element signature="n#!!block;n#render#0;n#RowEachDayCollapse#0" expanded="true" />
+            <element signature="e#877#2148#0" expanded="true" />
+            <element signature="e#931#1627#0" expanded="true" />
+            <element signature="e#1443#1595#0" expanded="true" />
+            <element signature="e#1718#2078#0" expanded="true" />
+            <element signature="e#1786#2042#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/ChichiWaitingCustomer/sub/LeftChichiWaitingCustomer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="13" column="104" selection-start-line="13" selection-start-column="104" selection-end-line="13" selection-end-column="104" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/Collective/Sub/LeftMainCollective/LeftMainCollective.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="104" selection-start-line="14" selection-start-column="104" selection-end-line="14" selection-end-column="104" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/Deliverded/Sub/LeftDeliverd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="104" selection-start-line="12" selection-start-column="104" selection-end-line="12" selection-end-column="104" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/Reject/Reject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding>
+            <element signature="e#118#159#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/PresentOrders/WaitingAcceptChichi/sub/LeftMenuWaitingAccept.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="104" selection-start-line="14" selection-start-column="104" selection-end-line="14" selection-end-column="104" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/YesterDay/sub/YesterDayAccept.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="60" lean-forward="true" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/CurrentWeek/TopHeader4Tabs/TopHeaders4Tabs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="92" column="26" lean-forward="true" selection-start-line="92" selection-start-column="26" selection-end-line="92" selection-end-column="26" />
+          <folding>
+            <element signature="n#!!block;n#constructor#0;n#TopHeaders4Tabs#0" expanded="true" />
+            <element signature="e#199#493#0" expanded="true" />
+            <element signature="e#2321#2586#0" expanded="true" />
+            <element signature="e#2607#2871#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/OldOrders/PastMonth/PastMonthMain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#render#0;n#PastMonthMain#0" expanded="true" />
+            <element signature="e#342#480#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="665">
+          <caret line="8811" column="6" selection-start-line="8811" selection-start-column="1" selection-end-line="8811" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/menu2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="116" column="10" selection-start-line="116" selection-start-column="10" selection-end-line="116" selection-end-column="10" />
+          <folding>
+            <element signature="e#19#3356#0" expanded="true" />
+            <element signature="e#152#3350#0" expanded="true" />
+            <element signature="e#309#1754#0" expanded="true" />
+            <element signature="e#1555#1736#0" expanded="true" />
+            <element signature="e#1783#3340#0" expanded="true" />
+            <element signature="e#1935#3325#0" expanded="true" />
+            <element signature="e#3501#3672#0" expanded="true" />
+            <element signature="e#3502#3660#0" expanded="true" />
+            <element signature="e#3819#3969#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Orders/MainOrders.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1357">
+          <caret line="62" column="10" lean-forward="true" selection-end-line="65" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+            <element signature="n#!!block;n#render#0;n#App#0" expanded="true" />
+            <element signature="e#816#2108#0" expanded="true" />
+            <element signature="e#844#2083#0" expanded="true" />
+            <element signature="e#900#2060#0" expanded="true" />
+            <element signature="e#974#2028#0" expanded="true" />
+            <element signature="e#1109#1283#0" expanded="true" />
+            <element signature="e#1312#1494#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Support/SupportMain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="24" column="53" lean-forward="true" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#1109#1283#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="107" column="45" selection-start-line="107" selection-start-column="45" selection-end-line="107" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#App#0" expanded="true" />
+            <element signature="e#2799#2977#0" expanded="true" />
+            <element signature="e#3006#3184#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/Support/Users/SupportUsers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="32" lean-forward="true" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/Support/Users/UserInfoCard/UserInfoCard.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

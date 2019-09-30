@@ -19,8 +19,6 @@ class SingelSelectedEdit extends Component {
     render() {
         return (
             <div className='w-100 form-group has-float-label'>
-
-
                 <label>
                     <IntlMessages id={this.props.title} />
                 </label>
