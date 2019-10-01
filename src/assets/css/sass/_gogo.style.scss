@@ -8716,8 +8716,16 @@ i.large-icon {
   height: 5vw;
   width:5vw ;
 }
+
+.axList7vw{
+  height:7vw;
+  width:7vw ;
+}
 .br05{
   border-radius: 2.5vw;
+}
+.br50{
+  border-radius:50%;
 }
 .fixedBarMainList{
   height: 8vh;
@@ -8788,6 +8796,9 @@ paddingZero{
 .fS1vw{
   font-size: 1vw;
 }
+.fS08vw{
+  font-size: 0.8vw;
+}
 .fontFamily{
 font-family: IRANSans !important;
 }
@@ -8811,4 +8822,14 @@ font-family: IRANSans !important;
 }
 .Fs1vw{
   font-size: 1vw;
+}
+.hidden{
+  visibility:hidden;
+}
+.DRTl{
+  direction: rtl;
+  text-align: justify;
+}
+.spanWithOutBreak{
+  white-space:nowrap;
 }
