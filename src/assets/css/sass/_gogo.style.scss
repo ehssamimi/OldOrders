@@ -8745,6 +8745,9 @@ i.large-icon {
 .height10vh{
   height: 10vh;
 }
+.height20vh{
+  height: 20vh;
+}
 .toRightMenu{
   position:fixed;
 }
@@ -8832,4 +8835,27 @@ font-family: IRANSans !important;
 }
 .spanWithOutBreak{
   white-space:nowrap;
+}
+.height40vh{
+  height: 40vh;
+}
+.imgFav{
+  width: 20vh;
+  height: 20vh;
+}
+.triangle{
+  width: 0;
+  height:0;
+  border-style: solid;
+  border-width: 4vw 4vw 0 0;
+  border-color: $theme-color-1 transparent transparent transparent;
+  position: absolute;
+  left: 0;
+}
+.persentSale{
+  position: absolute;
+  left: 0.5vw;
+  top: 0.5vw;
+  font-size: 1vw;
+  color: white;
 }

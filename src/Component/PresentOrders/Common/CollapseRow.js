@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import RowShowShow from "../RowShowShow";
+import ShowShowline from "../../Support/Users/UserDetails/sub/Support/sub/ReportUserBox/ShowShowLine/ShowShowline";
 
 class CollapseRow extends Component {
     constructor(props) {
@@ -45,7 +46,7 @@ class CollapseRow extends Component {
                             <div className='d-flex  w-100 ' style={{'flex-wrap': 'wrap'}}>
                                 {Keys ?
                                     Keys.map((todo, index) =>
-                                        <RowShowShow label={todo} value={sub[todo]} key={index} col={todo==='ادرس'?'col-12':'col-4'}/>
+                                        <ShowShowline label={todo} value={sub[todo]} key={index} col={'col-4'} className='fS1vw'/>
                                     ) : ''
                                 }
                             </div>

@@ -9,6 +9,8 @@ import CustomSelectInput from "../../../../../../components/common/CustomSelectI
 import Select from "react-select";
 import SingelSelectedEdit from "../../../../../OldOrders/SelectTime/Headers/sub/SingelSelectedEdit";
 import SelectComponentCategories from "./SingelSelectRow/SelectComponentCategories";
+import RowCollapseOrders from "../../../../../OldOrders/YesterDay/sub/RowCollapseOrders/RowCollapseOrders";
+import CollapseRowOrdersHistory from "./CollapseRowOrdersHistory/CollapseRowOrdersHistory";
 const selectData = [
     { label: "رخداد", value: "event" },
     { label: "پیام", value: "message" },
@@ -60,19 +62,6 @@ class HistoryUserOrders extends Component {
                                     <div className="col-4 d-flex align-items-end">
                                         <span className='collapseValue gray d-flex col-4 paddingZero'>{'مرتب سازی'} <span className='pl-2'>:</span></span>
                                         <SelectComponentCategories changeMode={this.changeMode}/>
-                                        {/*<SingelSelectedEdit selectData={selectData} label='categories' GetDataSelected={this.GetDataSelected.bind(this)}/>*/}
-                                        {/*<label>*/}
-                                            {/*<IntlMessages id="نوع پیام" />*/}
-                                        {/*</label>*/}
-                                        {/*<Select*/}
-                                            {/*components={{ Input: CustomSelectInput }}*/}
-                                            {/*className="react-select"*/}
-                                            {/*classNamePrefix="react-select"*/}
-                                            {/*name="form-field-name"*/}
-                                            {/*value={this.state.selectedOption}*/}
-                                            {/*onChange={this.handleChange}*/}
-                                            {/*options={selectData}*/}
-                                        {/*/>*/}
                                     </div>
                                 </div>
 
@@ -83,20 +72,8 @@ class HistoryUserOrders extends Component {
                         <div className='d-flex  w-100 ' style={{'flex-wrap': 'wrap'}}>
                             <div dir='rtl' className='w-100'>
                                 {/*<Card className='OrderList p-3'>*/}
-                                <div className=' justify-content-start flex-column '>
-
-                                    <div className='d-flex  w-100 ' style={{'flex-wrap': 'wrap'}}>
-                                        <RowShowShowColEdit col='col-3' label='شماره موبایل' value='09112561701'/>
-                                        <RowShowShowColEdit col='col-3' label='شماره موبایل' value='09112561701'/>
-                                        <RowShowShowColEdit col='col-3' label='شماره موبایل' value='09112561701'/>
-                                        <RowShowShowColEdit col='col-3' label='شماره موبایل' value='09112561701'/>
-                                        <RowShowShowColEdit col='col-3' label='شماره موبایل' value='09112561701'/>
-                                        <RowShowShowColEdit col='col-3' label='شماره موبایل' value='09112561701'/>
-                                        <RowShowShowColEdit col='col-3' label='شماره موبایل' value='09112561701'/>
-                                        <RowShowShowColEdit col='col-3' label='شماره موبایل' value='09112561701'/>
-                                    </div>
-
-                                </div>
+                                {/*<RowCollapseOrders/>*/}
+                                <CollapseRowOrdersHistory/>
                                 {/*</Card>*/}
 
                             </div>
