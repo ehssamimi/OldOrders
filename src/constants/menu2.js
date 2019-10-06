@@ -117,6 +117,19 @@ const data = [
         },
         ]
     },
+    {
+        id: "HomePages",
+        icon: "iconsminds-monitor---phone",
+        label: "home page",
+        to: "/home-page",
+        subs: [{
+            icon: "iconsminds-smartphone-4",
+            id: "mobilehomepage",
+            label: "صفحه اصلی موبایل",
+            to: "/home-page/main",
+        },
+        ]
+    },
 
 ];
 export default data;

@@ -1,0 +1,13 @@
+<svg id="app-header" xmlns="http://www.w3.org/2000/svg" width="360" height="24" viewBox="0 0 360 24">
+  <rect id="sysbar" width="360" height="24" fill="#eceff1"/>
+  <text id="sysbar_time" data-name="sysbar time" transform="translate(317 16)" fill="#4e4e4e" font-size="14" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">12:30</tspan></text>
+  <g id="sysbar_battery" transform="translate(300 4)">
+    <rect id="rectangle" width="8.615" height="3.231" transform="translate(0 10.769)" fill="#4e4e4e"/>
+    <rect id="rectangle-2" data-name="rectangle" width="8.615" height="3.231" transform="translate(0 7.538)" fill="#4e4e4e"/>
+    <rect id="rectangle-3" data-name="rectangle" width="8.615" height="3.231" transform="translate(0 4.308)" fill="#4e4e4e"/>
+    <rect id="rectangle-4" data-name="rectangle" width="8.615" height="3.231" transform="translate(0 1.077)" fill="#4e4e4e"/>
+    <rect id="rectangle-5" data-name="rectangle" width="4.308" height="1.077" transform="translate(2.154)" fill="#4e4e4e"/>
+  </g>
+  <path id="sysbar_status" data-name="sysbar status" d="M19.8,14h14V0Z" transform="translate(257.7 4)" fill="#4e4e4e"/>
+  <path id="sysbar_wifi" data-name="sysbar wifi" d="M8.8,14,17.6,3.1A14.04,14.04,0,0,0,0,3.1L8.8,14Z" transform="translate(257.5 4)" fill="#4e4e4e" opacity="0.9"/>
+</svg>

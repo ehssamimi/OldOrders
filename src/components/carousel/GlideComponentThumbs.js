@@ -170,9 +170,9 @@ export default class GlideComponentThumbs extends React.Component {
                 this.props.settingsImages.data.map(item => {
                   return (
                     <div key={item.id}>
-                      <div className="glide__slide">
-                        <img alt="detail" src={item.img}
-                          className="responsive border-0 border-radius img-fluid mb-3" />
+                      <div className="glide__slide height">
+                        <img alt="detail " src={item.img}
+                          className="responsive border-0 border-radius img-fluid mb-3 brb2" />
                       </div>
                     </div>
                   );
@@ -182,7 +182,7 @@ export default class GlideComponentThumbs extends React.Component {
           </div>
         </div>
 
-        <div className="glide thumbs" ref={node => this.carouselThumbs = node}>
+        <div className="glide thumbs d-none" ref={node => this.carouselThumbs = node}>
           <div data-glide-el="track" className="glide__track">
             <div className="glide__slides">
               {
