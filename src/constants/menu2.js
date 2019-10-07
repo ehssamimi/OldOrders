@@ -128,6 +128,30 @@ const data = [
             label: "صفحه اصلی موبایل",
             to: "/home-page/main",
         },
+            // {
+            //     icon: "iconsminds-smartphone-4",
+            //     id: "mobilehomepage",
+            //     label: "crop img",
+            //     to: "/home-page/crop-img",
+            // },
+            {
+                icon: "iconsminds-smartphone-4",
+                id: "categories-home-page",
+                label: "دسته بندی",
+                to: "/home-page/categories",
+            },
+            {
+                icon: "iconsminds-smartphone-4",
+                id: "wonder-package-home-page",
+                label: "پکیج های شگقت انگیز",
+                to: "/home-page/wonder-package",
+            },
+            {
+                icon: "iconsminds-smartphone-4",
+                id: "wonder-package-home-page",
+                label: "اسلایدر",
+                to: "/home-page/slider",
+            },
         ]
     },
 

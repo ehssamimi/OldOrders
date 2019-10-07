@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
-import ax1 from './../../../../../assets/img/4th.jpg'
-import ax2 from './../../../../../assets/img/4th.jpg'
-import ax3 from './../../../../../assets/img/4th.jpg'
-import ax4 from './../../../../../assets/img/4th.jpg'
+
 import HeaderSectionHomePage from "../HeaderSectionHomePage/HeaderSectionHomePage";
 
 class CategoriesHomePage extends Component {
     render() {
+        let{ax1,ax2,ax3,ax4}=this.props;
         return (
             <div>
                     <HeaderSectionHomePage header={this.props.header}/>

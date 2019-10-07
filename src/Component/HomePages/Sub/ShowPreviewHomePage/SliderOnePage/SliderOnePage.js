@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import {Colxx} from "../../../../../components/common/CustomBootstrap";
-import GlideComponentThumbs from "../../../../../components/carousel/GlideComponentThumbs";
-import { detailImages, detailThumbs } from "../../../../../data/carouselItems";
+import {  detailThumbs } from "../../../../../data/carouselItems";
 import SliderPageEdit from "./SliderPageEdit/SliderPageEdit";
 
 
@@ -19,7 +17,7 @@ class SliderOnePage extends Component {
                                     startAt: 0,
                                     gap: 5,
                                     perView: 1,
-                                    data: detailImages,
+                                    data: this.props.DetailImages,
                                 }
                             } settingsThumbs={
                                 {
