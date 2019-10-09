@@ -12,11 +12,11 @@ class SliderOnePage extends Component {
                             <SliderPageEdit className='brb2 img-self-fill '  divClass={'height30vh'} settingsImages={
                                 {
                                     bound: true,
-                                    rewind: false,
+                                    rewind: true,
                                     focusAt: 0,
                                     startAt: 0,
                                     gap: 5,
-                                    perView: 1,
+                                    perView: 3,
                                     data: this.props.DetailImages,
                                 }
                             } settingsThumbs={

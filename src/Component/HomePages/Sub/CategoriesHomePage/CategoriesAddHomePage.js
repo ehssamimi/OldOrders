@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import CropImgCropper from "../CropImg/CropImgCropper";
 import CategoriesHomePage from "../../Sub/ShowPreviewHomePage/Categories/CategoriesHomePage";
 import ax from "../../../../assets/img/4th.jpg";
+import AutoSuggestEdit from "../AutoSuggestEdit/AutoSuggestEdit";
+import cakes from "../../../../data/cakes";
+
 
 
 
@@ -17,7 +20,14 @@ class CategoriesAddHomePage extends Component {
             ax2File:'',
             ax3File:'',
             ax4File:'',
+            type:'1',value:''
         }
+    }
+    GetImgType(type){
+        // console.log(type)
+        this.setState({
+            type
+        })
     }
 
     GetImgFile(file,Base64 , label){
@@ -50,18 +60,23 @@ class CategoriesAddHomePage extends Component {
         }
 
     }
+
+
+
+
     render() {
-        let{ax1,ax2,ax3,ax4}=this.state;
+
+        let{ax1,ax2,ax3,ax4,type}=this.state;
         return (
             <div className='w-100 d-flex'>
                 <div className='col-6'>
-                    <CategoriesHomePage header={'دسته بندی'} ax1={ax1||ax} ax2={ax2||ax} ax3={ax3||ax} ax4={ax4||ax}/>
+                    <CategoriesHomePage header={'دسته بندی'} ax1={ax1||ax} ax2={ax2||ax} ax3={ax3||ax} ax4={ax4||ax} ClickImg={this.GetImgType.bind(this)}/>
                 </div>
                 <div className='col-6 d-flex flex-column'>
-                    <CropImgCropper label='عکس اول' aspect={3/2} GetImgFile={this.GetImgFile.bind(this)}/>
-                    <CropImgCropper label='عکس دوم' aspect={3/1} GetImgFile={this.GetImgFile.bind(this)}/>
-                    <CropImgCropper label='عکس سوم' aspect={3/1} GetImgFile={this.GetImgFile.bind(this)}/>
-                    <CropImgCropper label='عکس چهارم' aspect={3/2} GetImgFile={this.GetImgFile.bind(this)}/>
+                    {type==='1'?<CropImgCropper label='عکس اول' aspect={3/2} GetImgFile={this.GetImgFile.bind(this)}/>:''}
+                    {type==='2'?<CropImgCropper label='عکس دوم' aspect={3/1} GetImgFile={this.GetImgFile.bind(this)}/>:''}
+                    {type==='3'?<CropImgCropper label='عکس سوم' aspect={3/1} GetImgFile={this.GetImgFile.bind(this)}/>:''}
+                    {type==='4'?<CropImgCropper label='عکس چهارم' aspect={3/2} GetImgFile={this.GetImgFile.bind(this)}/>:''}
                 </div>
 
             </div>

@@ -152,6 +152,18 @@ const data = [
                 label: "اسلایدر",
                 to: "/home-page/slider",
             },
+            {
+                icon: "iconsminds-smartphone-4",
+                id: "banner-home-page",
+                label: "بنر",
+                to: "/home-page/banner",
+            },
+            {
+                icon: "iconsminds-smartphone-4",
+                id: "item-list-home-page",
+                label: "آیتم",
+                to: "/home-page/item-list",
+            },
         ]
     },
 

@@ -17,6 +17,12 @@ const WonderPackage = React.lazy(() =>
 const Slider = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ '../../Component/HomePages/Sub/SliderAddHomePage/SliderAddHomePage')
 );
+const Banner = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ '../../Component/HomePages/Sub/Banner/AddBanerHomePage')
+);
+const ItemList = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ '../../Component/HomePages/Sub/ItemList/AddItemList')
+);
 
 class App extends Component {
     render() {
@@ -47,6 +53,14 @@ class App extends Component {
                             <Route
                                 path={`${match.url}/slider`}
                                 render={props => <Slider {...props} />}
+                            />
+                            <Route
+                                path={`${match.url}/banner`}
+                                render={props => <Banner {...props} />}
+                            />
+                            <Route
+                                path={`${match.url}/item-list`}
+                                render={props => <ItemList {...props} />}
                             />
                             <Redirect to="/error" />
                         </Switch>

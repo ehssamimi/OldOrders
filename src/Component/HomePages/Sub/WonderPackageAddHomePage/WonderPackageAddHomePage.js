@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import WonderPackageHomePage from "../ShowPreviewHomePage/WonderPackageHomePage/WonderPackageHomePage";
 import ax from "../../../../assets/img/4th.jpg";
 import CropImgCropper from "../CropImg/CropImgCropper";
+import CategoriesHomePage from "../ShowPreviewHomePage/Categories/CategoriesHomePage";
 
 class WonderPackageAddHomePage extends Component {
     constructor(props) {
@@ -17,7 +18,14 @@ class WonderPackageAddHomePage extends Component {
             ax3File:'',
             ax4File:'',
             ax5File:'',
+            type:'1'
         }
+    }
+    GetImgType(type){
+        // console.log(type)
+        this.setState({
+            type
+        })
     }
 
     GetImgFile(file,Base64 , label){
@@ -57,18 +65,25 @@ class WonderPackageAddHomePage extends Component {
 
     }
     render() {
-        let{ax1,ax2,ax3,ax4,ax5}=this.state;
+        let{ax1,ax2,ax3,ax4,ax5,type}=this.state;
         return (
             <div className='w-100 d-flex'>
                 <div className='col-6'>
-                    <WonderPackageHomePage header={'دسته بندی'} ax1={ax1||ax} ax2={ax2||ax} ax3={ax3||ax} ax4={ax4||ax} ax5={ax5||ax}/>
+                    <WonderPackageHomePage header={'دسته بندی'} ax1={ax1||ax} ax2={ax2||ax} ax3={ax3||ax} ax4={ax4||ax} ax5={ax5||ax}  ClickImg={this.GetImgType.bind(this)}/>
                 </div>
                 <div className='col-6 d-flex flex-column'>
-                    <CropImgCropper label='عکس اول' aspect={1.76/1} GetImgFile={this.GetImgFile.bind(this)}/>
-                    <CropImgCropper label='عکس دوم' aspect={1.08/1} GetImgFile={this.GetImgFile.bind(this)}/>
-                    <CropImgCropper label='عکس سوم' aspect={3/1} GetImgFile={this.GetImgFile.bind(this)}/>
-                    <CropImgCropper label='عکس چهارم' aspect={1.08/1} GetImgFile={this.GetImgFile.bind(this)}/>
-                    <CropImgCropper label='عکس پنجم' aspect={1.76/1} GetImgFile={this.GetImgFile.bind(this)}/>
+                    <div className='col-12 d-flex flex-column'>
+                        {type==='1'?<CropImgCropper label='عکس اول' aspect={1.76/1} GetImgFile={this.GetImgFile.bind(this)}/>:''}
+                        {type==='2'?<CropImgCropper label='عکس دوم' aspect={1.08/1} GetImgFile={this.GetImgFile.bind(this)}/>:''}
+                        {type==='3'?<CropImgCropper label='عکس سوم' aspect={3/1} GetImgFile={this.GetImgFile.bind(this)}/>:''}
+                        {type==='4'? <CropImgCropper label='عکس چهارم' aspect={1.08/1} GetImgFile={this.GetImgFile.bind(this)}/>:''}
+                        {type==='5'? <CropImgCropper label='عکس پنجم' aspect={1.76/1} GetImgFile={this.GetImgFile.bind(this)}/>:''}
+                    </div>
+                    {/*<CropImgCropper label='عکس اول' aspect={1.76/1} GetImgFile={this.GetImgFile.bind(this)}/>*/}
+                    {/*<CropImgCropper label='عکس دوم' aspect={1.08/1} GetImgFile={this.GetImgFile.bind(this)}/>*/}
+                    {/*<CropImgCropper label='عکس سوم' aspect={3/1} GetImgFile={this.GetImgFile.bind(this)}/>*/}
+                    {/*<CropImgCropper label='عکس چهارم' aspect={1.08/1} GetImgFile={this.GetImgFile.bind(this)}/>*/}
+                    {/*<CropImgCropper label='عکس پنجم' aspect={1.76/1} GetImgFile={this.GetImgFile.bind(this)}/>*/}
                 </div>
 
             </div>

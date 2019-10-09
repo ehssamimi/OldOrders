@@ -76,27 +76,27 @@ export const items = [
 
 export const detailImages = [
   {
-    id: "large1",
+    // id: "large1",
     img: "/assets/img/parkin.jpg"
   },
   {
-    id: "large2",
+    // id: "large2",
     img: "/assets/img/napoleonshat.jpg"
   },
   {
-    id: "large3",
+    // id: "large3",
     img: "/assets/img/marble-cake.jpg"
   },
   {
-    id: "large4",
+    // id: "large4",
     img: "/assets/img/fruitcake.jpg"
   },
   {
-    id: "large5",
+    // id: "large5",
     img: "/assets/img/magdalena.jpg"
   },
   {
-    id: "large6",
+    // id: "large6",
     img: "/assets/img/tea-loaf.jpg"
   }
 ]

@@ -162,6 +162,7 @@ export default class SliderPageEdit extends React.Component {
 
     render() {
         let{className,divClass}=this.props;
+
         return (
             <div>
                 <div className="glide details" ref={node => this.carouselImages = node}>
