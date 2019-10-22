@@ -103,5 +103,9 @@ export function gregorian_to_jalali(g_y, g_m, g_d) {
     //return jy + "/" + jm + "/" + jd;
 }
 
+export function sendImg(file){
+
+}
+
 
 

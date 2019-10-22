@@ -21,16 +21,16 @@ import WizardBottonNavigations from "../Sub/WizardBottonNavigations";
 // import * as Const from "../../../Const";
 const SignupSchema = Yup.object().shape({
 
-    // TagKind: Yup.object()
-    //     .shape({
-    //         label: Yup.string().required(),
-    //         value: Yup.string().required()
-    //     })
-    //     .nullable()
-    //     .required("نوع وسیله نقلیه اجباری است!"),
-    //
-    // PhoneNumber: Yup.number()
-    //     .required("شماره تلفن اجباری است!").min(1000000000,'شماره تلفن باید یازده کاراکتر باشد')
+    TagKind: Yup.object()
+        .shape({
+            label: Yup.string().required(),
+            value: Yup.string().required()
+        })
+        .nullable()
+        .required("نوع وسیله نقلیه اجباری است!"),
+
+    PhoneNumber: Yup.number()
+        .required("شماره تلفن اجباری است!").min(1000000000,'شماره تلفن باید یازده کاراکتر باشد')
 
 });
 

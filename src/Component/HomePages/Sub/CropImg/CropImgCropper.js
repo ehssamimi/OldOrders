@@ -5,11 +5,13 @@ import 'cropperjs/dist/cropper.css'; // see installation section above for versi
 // var Cropper = require('react-cropper').default
 // import ax from './../../img/2.jpg'
 import {base64StringtoFile,extractImageFileExtensionFromBase64} from './../../../../Component/functions/Functions'
-import {CustomInput, FormGroup, InputGroup, Label} from "reactstrap";
+import {CustomInput, FormGroup, InputGroup, Label ,Input} from "reactstrap";
 import IntlMessages from "../../../../helpers/IntlMessages";
 import ImgComponent from "../../../ChichiMan/ChiChi Man Sign In/Sub/ImgComponent";
 import AutoSuggestEdit from "../AutoSuggestEdit/AutoSuggestEdit";
 import cakes from "../../../../data/cakes";
+import { Formik, Form, Field } from "formik";
+
 
 const cropper = React.createRef(null);
 
@@ -20,10 +22,12 @@ class CropImgCropper extends Component {
             {
                 src: '',
                 cropResult: null,
-                type:'',name:''
+                type:'',name:'',
+                id:''
             };
         this.onChangeImage = this.onChangeImage.bind(this);
         this.cropImage = this.cropImage.bind(this);
+        this.handelChangeName = this.handelChangeName.bind(this);
     }
 
     onChangeImage(e)
@@ -59,8 +63,9 @@ class CropImgCropper extends Component {
             // console.log(this.cropper.getCroppedCanvas());
             let file= base64StringtoFile(this.state.cropResult,this.state.name,this.state.type);
             // ***this is file to set server*********
-            console.log(file);
-            this.props.GetImgFile(file,this.state.cropResult,this.props.label)
+            // console.log(file);
+            this.props.GetImgFile(file,this.state.cropResult,this.props.label);
+            console.log(this.state.id);
             // extractImageFileExtensionFromBase64(this.cropper.getCroppedCanvas())
         });
     }
@@ -107,6 +112,14 @@ class CropImgCropper extends Component {
         // }
 
     }
+    handelChangeName(e){
+        console.log(e.target.value);
+        this.setState({
+            id:e.target.value
+        })
+    }
+
+
 
 
     render(){
@@ -116,14 +129,44 @@ class CropImgCropper extends Component {
         });
         return(
             <div>
-                <div className='col-12'>
-                    <AutoSuggestEdit
-                        placeholder={"type item name"}
-                        data={rightData}
-                        onChange={value => this.handelChange(this, value)
-                        }
-                    />
+                {/***********Suggest********/}
+                {/*<div className='col-12'>*/}
+                    {/*<FormGroup className="form-group  position-relative has-float-label w-100 ">*/}
+                        {/*<Label>*/}
+                            {/*<IntlMessages id={'نوع محصول'} />*/}
+                        {/*</Label>*/}
+
+                        {/*/!*<AutoSuggestEdit*!/*/}
+                            {/*/!*placeholder={"type item name"}*!/*/}
+                            {/*/!*data={rightData}*!/*/}
+                            {/*/!*onChange={value => this.handelChange(this, value)*!/*/}
+                            {/*/!*}*!/*/}
+                        {/*/>*/}
+
+                    {/*</FormGroup>*/}
+                {/*</div>*/}
+                <div className="col-sm-12">
+
+                    <FormGroup className="form-group  position-relative has-float-label w-100">
+                        <div className='d-flex justify-content-end'>
+                            <Label>
+                                <IntlMessages id={"مقصد "} />
+                            </Label>
+                        </div>
+                        <InputGroup className="mb-3">
+                            <Input
+                                type="text"
+                                id="id"
+                                name="id"
+                                onChange={this.handelChangeName}
+                                label={this.state.id ||'انتخاب عکس'}
+                            />
+                         </InputGroup>
+
+                    </FormGroup>
                 </div>
+
+
                 <div className="col-sm-12">
 
                     <FormGroup className="form-group  position-relative ">
@@ -156,7 +199,7 @@ class CropImgCropper extends Component {
                     src={this.state.src}
                     ref={cropper => { this.cropper = cropper; }}
                 />
-                <button onClick={this.cropImage} style={{ float: 'right' }}>
+                <button onClick={this.cropImage} style={{ float: 'right' }} className='btn btn-primary'>
                     crop img
                 </button>
                 {/*<img src={this.state.cropResult} alt="img"/>*/}

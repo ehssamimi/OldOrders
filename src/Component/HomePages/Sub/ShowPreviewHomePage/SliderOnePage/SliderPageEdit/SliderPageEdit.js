@@ -149,6 +149,9 @@ export default class SliderPageEdit extends React.Component {
             resizeTimeOut = -1;
         }, 500);
     }
+    ClickImg(id){
+        console.log(id);
+    }
 
     renderDots() {
         let dots = [];
@@ -169,11 +172,12 @@ export default class SliderPageEdit extends React.Component {
                     <div data-glide-el="track" className="glide__track">
                         <div className="glide__slides">
                             {
-                                this.props.settingsImages.data.map(item => {
+                                this.props.settingsImages.data.map((item, index) => {
                                     return (
-                                        <div key={item.id}>
-                                            <div
-                                                 className={['glide__slide',divClass||''].join(' ')}>
+                                        <div key={item.id} onClick={this.ClickImg.bind(this , item.id)} >
+                                            <div className={index === this.state.activeIndex+1 ? "glide__slide" : ['glide__slide',divClass||''].join(' ')}
+                                                 // className={['glide__slide',divClass||''].join(' ')}
+                                            >
                                                 <img alt="detail " src={item.img}
                                                      className={['responsive','border-0','border-radius' ,'mb-3',className||''].join(' ')}/>
                                                 {/*className="responsive border-0 border-radius img-fluid mb-3 brb2"*/}
