@@ -8814,6 +8814,9 @@ paddingZero{
 .fS1vw{
   font-size: 1vw;
 }
+.fS3vw{
+  font-size: 3vw;
+}
 .fS08vw{
   font-size: 0.8vw;
 }
@@ -8926,4 +8929,37 @@ border: 2px solid #403e40;
     border-radius: 2%;
 
   }
+}
+.point-review{
+  cursor: pointer;
+}
+.backgroundDefault{
+  background: #f8f8f8!important;
+}
+.CategoriesHover{
+  //z-index: 2;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  &:hover{
+    z-index: 2;
+    background: gray;
+    visibility: hidden;
+
+    //opacity: 0.5;
+
+  }
+}
+
+.categoriesIconReview{
+  z-index: 2;
+  opacity: 1 !important;
+  font-size: 4vw;
+  color: white;
+  &:hover{
+    visibility: hidden;
+  }
+  // background-size: cover;
+  //background-blend-mode: saturation;
 }

@@ -12,6 +12,8 @@ import { detailImages } from "../../data/carouselItems";
 
 
 import ax1 from './../../assets/img/4th.jpg'
+import PreviewCategories from "./Sub/CategoriesHomePage/PreviewCategories/PreviewCategories";
+import ax from "../../assets/img/4th.jpg";
 
 
 
@@ -24,7 +26,9 @@ class HomePages extends Component {
                     <HeaderAppHomePage ax={statusHomePage} className='height15vh'/>
                     <SliderOnePage DetailImages={detailImages}/>
                     <ShowItemsHomePages header={'برترین ها'}/>
-                    <CategoriesHomePage header={'دسته بندی'} ax1={ax1} ax2={ax1} ax3={ax1} ax4={ax1}/>
+                    {/*<CategoriesHomePage header={'دسته بندی'} ax1={ax1} ax2={ax1} ax3={ax1} ax4={ax1}/>*/}
+                    <PreviewCategories header={'دسته بندی'} ax1={ax1} ax2={ax1} ax3={ax1} ax4={ax1}/>
+
                     <ShowItemsHomePages header={'لبنیات'}/>
                     <WonderPackageHomePage header={'پکیج های شگفت انگیز'}  ax1={ax1} ax2={ax1} ax3={ax1} ax4={ax1} ax5={ax1}/>
                     <SliderTwoPages/>

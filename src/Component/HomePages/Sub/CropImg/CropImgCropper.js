@@ -64,8 +64,9 @@ class CropImgCropper extends Component {
             let file= base64StringtoFile(this.state.cropResult,this.state.name,this.state.type);
             // ***this is file to set server*********
             // console.log(file);
-            this.props.GetImgFile(file,this.state.cropResult,this.props.label);
-            console.log(this.state.id);
+            // this.props.GetImgFile(file,this.state.cropResult,this.props.label);
+            this.props.GetImgFile(file,this.state.id,this.props.label ,this.state.cropResult);
+            // console.log(this.state.id);
             // extractImageFileExtensionFromBase64(this.cropper.getCroppedCanvas())
         });
     }
@@ -113,7 +114,7 @@ class CropImgCropper extends Component {
 
     }
     handelChangeName(e){
-        console.log(e.target.value);
+        // console.log(e.target.value);
         this.setState({
             id:e.target.value
         })

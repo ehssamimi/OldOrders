@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import HeaderSectionHomePage from "../HeaderSectionHomePage/HeaderSectionHomePage";
+import HeaderCategoriyInput from "../../CategoriesHomePage/HeaderCategoriyInput/HeaderCategoriyInput";
 
 class CategoriesHomePage extends Component {
     OnClickImg(type) {
@@ -9,12 +10,14 @@ class CategoriesHomePage extends Component {
             this.props.ClickImg(type)
         }
     }
+
     render() {
         let{ax1,ax2,ax3,ax4}=this.props;
 
         return (
             <div>
-                    <HeaderSectionHomePage header={this.props.header}/>
+                    {/*<HeaderSectionHomePage header={this.props.header}/>*/}
+                    <HeaderCategoriyInput header={this.props.header} {...this.props}/>
 
                 <div className=' d-flex w-100'>
                     <div className='d-flex col-6 flex-column paddingZero  '>
