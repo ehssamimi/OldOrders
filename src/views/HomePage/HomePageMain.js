@@ -18,7 +18,7 @@ const Slider = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ '../../Component/HomePages/Sub/SliderAddHomePage/SliderAddHomePage')
 );
 const Banner = React.lazy(() =>
-    import(/* webpackChunkName: "viwes-gogo" */ '../../Component/HomePages/Sub/Banner/AddBanerHomePage')
+    import(/* webpackChunkName: "viwes-gogo" */ '../../Component/HomePages/Sub/Banner/MainBaner')
 );
 const ItemList = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ '../../Component/HomePages/Sub/ItemList/AddItemList')

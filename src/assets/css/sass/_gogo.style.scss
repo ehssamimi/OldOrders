@@ -8946,20 +8946,89 @@ border: 2px solid #403e40;
     z-index: 2;
     background: gray;
     visibility: hidden;
-
     //opacity: 0.5;
-
   }
 }
 
 .categoriesIconReview{
   z-index: 2;
   opacity: 1 !important;
-  font-size: 4vw;
-  color: white;
-  &:hover{
-    visibility: hidden;
-  }
-  // background-size: cover;
-  //background-blend-mode: saturation;
+  font-size:2.5vw;
+  //color: #666666;
+  width: 4vw;
+  height: 4vw;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: -webkit-transform .3s,opacity .3s;
+  -moz-transition: -moz-transform .3s,opacity .3s;
+  -o-transition: -o-transform .3s,opacity .3s;
+  transition: transform .3s,opacity .3s;
+  color: rgba(50,50,50,.9);
+}
+.overly{
+  background: rgba(0,0,0,.5);
+  height: 100%;
+  position: absolute;
+  opacity: 1;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  z-index: 2;
+}
+.categoriesbuttin{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  -o-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+.catIcon{
+  background: #fff;
+  -webkit-box-shadow: 0 0 1px rgba(0,0,0,.3);
+  -moz-box-shadow: 0 0 1px rgba(0,0,0,.3);
+  box-shadow: 0 0 1px rgba(0,0,0,.3);
+  -webkt-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  display: inline-block;
+  line-height: 40px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+  -webkit-transform: scale(5);
+  -moz-transform: scale(5);
+  -ms-transform: scale(5);
+  -o-transform: scale(5);
+  transform: scale(5);
+  position: relative;
+  -webkit-transition: -webkit-transform .3s,opacity .3s;
+  -moz-transition: -moz-transform .3s,opacity .3s;
+  -o-transition: -o-transform .3s,opacity .3s;
+  transition: transform .3s,opacity .3s;
+  color: rgba(50,50,50,.9);
+}
+.marginAuto{
+  margin-right: auto;
+  margin-left: auto;
+}
+.vh40{
+  height: 40vh;
+}
+.vh10{
+  height: 10vh;
+}
+.vh15{
+  height: 15vh;
+}
+.vh25{
+  height: 25vh;
 }

@@ -28,6 +28,7 @@ class HeaderCategoriyInput extends Component {
                 <span className='mr-auto fS08vw gray d-flex align-items-center mt-2'><span className='simple-icon-arrow-left' > </span>مشاهده همه </span>
 
                 {/*<span className='fontSize '>{header}<span className='spanlineHeader' > |</span> </span>*/}
+
                 <span dir='rtl'>
                     <input type='text' name="id" id="id" onChange={this.handelChangeName} className='border-0 fS1vw backgroundDefault' placeholder={header} />
                 </span>
