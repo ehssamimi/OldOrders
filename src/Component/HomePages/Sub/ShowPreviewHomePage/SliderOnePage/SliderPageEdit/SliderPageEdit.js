@@ -4,6 +4,8 @@ import Glide from '@glidejs/glide'
 import { getDirection } from "../../../../../../helpers/Utils";
 import "@glidejs/glide/dist/css/glide.core.min.css";
 import "@glidejs/glide/dist/css/glide.theme.min.css";
+import {FormGroup, Input, InputGroup, Label} from "reactstrap";
+import IntlMessages from "../../../../../../helpers/IntlMessages";
 
 let resizeTimeOut = -1;
 let mountTimeOut = -1;
@@ -78,7 +80,8 @@ export default class SliderPageEdit extends React.Component {
             total: this.props.settingsImages.data.length,
             activeIndex: 0,
             thumbsPerView: Math.min(this.props.settingsThumbs.perView, this.props.settingsImages.data.length),
-            renderArrows: true
+            renderArrows: true,
+            name:'نام رو اانتخاب کنید '
         };
         this.updateThumbBreakpoints();
     }
@@ -150,7 +153,8 @@ export default class SliderPageEdit extends React.Component {
         }, 500);
     }
     ClickImg(id){
-        console.log(id);
+        // console.log(id);
+        this.props.GetSliderType(id)
     }
 
     renderDots() {
@@ -162,20 +166,31 @@ export default class SliderPageEdit extends React.Component {
         }
         return dots;
     }
+    handelChangeName(e){
+        // console.log(e.target.value);
+        this.setState({
+            name:e.target.value
+        },()=>{
+            this.props.GetCategoriesName(this.state.name)
+        })
 
+    }
     render() {
         let{className,divClass}=this.props;
 
         return (
             <div>
+               <span dir='rtl' className='d-flex justify-content-start'>
+                    <input type='text' name="id" id="id" onChange={this.handelChangeName.bind(this)} className='border-0 fS1vw backgroundDefault' placeholder={this.props.header} />
+                </span>
                 <div className="glide details" ref={node => this.carouselImages = node}>
                     <div data-glide-el="track" className="glide__track">
                         <div className="glide__slides">
                             {
                                 this.props.settingsImages.data.map((item, index) => {
                                     return (
-                                        <div key={item.id} onClick={this.ClickImg.bind(this , item.id)} >
-                                            <div className={index === this.state.activeIndex+1 ? "glide__slide" : ['glide__slide',divClass||''].join(' ')}
+                                        <div id={item.id} key={item.id} onClick={this.ClickImg.bind(this , item.id)} className={divClass||''} >
+                                            <div className={index === this.state.activeIndex+1 ? "  glide__slide " : ['   glide__slide ',].join(' ')}
                                                  // className={['glide__slide',divClass||''].join(' ')}
                                             >
                                                 <img alt="detail " src={item.img}

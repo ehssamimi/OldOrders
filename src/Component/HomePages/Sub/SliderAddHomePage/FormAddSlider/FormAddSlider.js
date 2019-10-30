@@ -4,12 +4,13 @@ import cakes from "../../../../../data/cakes";
 import {CustomInput, FormGroup, InputGroup, Label} from "reactstrap";
 import IntlMessages from "../../../../../helpers/IntlMessages";
 
-// import { Row } from "reactstrap";
+import { Button } from "reactstrap";
 import Select from "react-select";
 import { Colxx } from "../../../../../components/common/CustomBootstrap";
 // import IntlMessages from "../../helpers/IntlMessages";
 import CustomSelectInput from "../../../../../components/common/CustomSelectInput";
 import CropImgCropper from "../../CropImg/CropImgCropper";
+import Destination from "../../Destination/Destination";
 
 const selectData = [
     { label: "Cake", value: "cake", key: 0 },
@@ -23,7 +24,7 @@ class FormAddSlider extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedOption: ""
+            selectedOption: "",DestinationString:'',file:'',Destination:'' , label:'' ,Base64:''
         };
     }
 
@@ -75,6 +76,21 @@ class FormAddSlider extends Component {
         // }
 
     }
+    GetDestinationString(DestinationString){
+        this.setState({
+            DestinationString
+        })
+    }
+    GetImgFile(file,Destination , label ,Base64){
+        this.setState({
+            file,Destination , label ,Base64
+        })
+    }
+
+    HandelSend() {
+        let {file, Destination, label, Base64, DestinationString} = this.state;
+        this.props.GetData(file, Destination, label, Base64, DestinationString);
+    }
 
     render() {
 
@@ -82,35 +98,25 @@ class FormAddSlider extends Component {
             <div className='col-12'>
 
 
-                <FormGroup className="form-group  position-relative has-float-label w-100 ">
-                    <label>
-                        <IntlMessages id="select" />
-                    </label>
-                    <Select
-                        components={{ Input: CustomSelectInput }}
-                        className="react-select"
-                        classNamePrefix="react-select"
-                        name="form-field-name"
-                        value={this.state.selectedOption}
-                        onChange={this.handleChange}
-                        options={selectData}
-                    />
-                </FormGroup>
+                <Destination GetDestinationString={this.GetDestinationString.bind(this)}/>
+
                 {/*<FormGroup className="form-group  position-relative has-float-label w-100 ">*/}
-                        {/*<Label>*/}
-                            {/*<IntlMessages id={'نوع محصول'} />*/}
-                        {/*</Label>*/}
-
-                        {/*<AutoSuggestEdit*/}
-                            {/*placeholder={"type item name"}*/}
-                            {/*data={rightData}*/}
-                            {/*onChange={value => this.handelChange(this, value)*/}
-                            {/*}*/}
-                        {/*/>*/}
+                    {/*<label>*/}
+                        {/*<IntlMessages id="select" />*/}
+                    {/*</label>*/}
+                    {/*<Select*/}
+                        {/*components={{ Input: CustomSelectInput }}*/}
+                        {/*className="react-select"*/}
+                        {/*classNamePrefix="react-select"*/}
+                        {/*name="form-field-name"*/}
+                        {/*value={this.state.selectedOption}*/}
+                        {/*onChange={this.handleChange}*/}
+                        {/*options={selectData}*/}
+                    {/*/>*/}
                 {/*</FormGroup>*/}
-                <CropImgCropper label='عکس اول' aspect={3/2} GetImgFile={this.GetImgFile.bind(this)}/>
 
-
+                <CropImgCropper label={this.props.header} aspect={3/2} GetImgFile={this.GetImgFile.bind(this)}/>
+                <Button onClick={this.HandelSend.bind(this)}>send</Button>
 
             </div>
         );

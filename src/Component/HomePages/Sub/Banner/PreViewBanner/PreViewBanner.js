@@ -84,14 +84,11 @@ class PreViewBanner extends Component {
                         <div className='height30vh w-100  mt-1 mb-1 pointer   ' >
                             <img src={ax} className='img-self-fill br02'/>
                         </div>
-                        {/*<div className='h-100 col-12  paddingZero '  >*/}
-                            {/*<img src={ax} className='img-self-fill br02' />*/}
-                        {/*</div>*/}
+
                     </div>
 
                 </div>
-                {/*<div className='d-flex flex-column'></div>*/}
-                <Modal
+                 <Modal
                     isOpen={this.state.deleteItem}
                     size="lg"
                     toggle={this.toggleLarge}

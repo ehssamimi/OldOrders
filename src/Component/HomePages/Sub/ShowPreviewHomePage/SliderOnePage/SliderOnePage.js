@@ -9,7 +9,7 @@ class SliderOnePage extends Component {
 
                 <div   className="w-100">
 
-                            <SliderPageEdit className='brb2 img-self-fill '  divClass={'height30vh'} settingsImages={
+                            <SliderPageEdit className='brb2 img-self-fill '  divClass={'NewSlider'} {...this.props} settingsImages={
                                 {
                                     bound: true,
                                     rewind: false,
