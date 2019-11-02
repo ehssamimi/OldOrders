@@ -5,7 +5,9 @@ import MultiFiles from "./MultiFile/MultiFiles";
 import FormAddSlider from "./FormAddSlider/FormAddSlider";
 import {Modal, ModalBody, ModalHeader} from "reactstrap";
 import CropImgCropper from "../CropImg/CropImgCropper";
-import {GetCatNameFunction, sendImg, UpdateCategories} from "../../../functions/ServerConnection";
+import {AddSlider, sendImg, UpdateSliders,allMainSlider,GetSliderDetail} from "../../../functions/ServerConnection";
+import PreViewBanner from "../Banner/PreViewBanner/PreViewBanner";
+import PreviewMainSlider from "./PreviewSliderMAin/PreviewMainSlider";
  class SliderAddHomePage extends Component {
     constructor(props) {
         super(props);
@@ -31,10 +33,19 @@ import {GetCatNameFunction, sendImg, UpdateCategories} from "../../../functions/
                 //     id: "large4",
                 //     img: "/assets/img/marble-cake.jpg"
                 // },
-            ],id:'', modalLarge:false,header:'',Edit:false,Sliders:[{Position:0,Image:'',Destination:''},{Position:1,Image:'',Destination:''}
+            ],id:'', modalLarge:false,header:'',Edit:false,Sliders:[{Position:0,Image:'',Destination:'',DestinationId:''},{Position:1,Image:'',Destination:'',DestinationId:''}
             // ,{Position:2,Image:'',Destination:''}
-            ]
+
+            ],SlidersPrev:[],headerPlaceHolder:''
         }
+    }
+    async componentDidMount(){
+      let Sliders=  await allMainSlider();
+      console.log( Sliders);
+      this.setState({
+          SlidersPrev:Sliders
+      })
+
     }
     handelMultiFiles(files){
         console.log(typeof (files));
@@ -122,7 +133,7 @@ import {GetCatNameFunction, sendImg, UpdateCategories} from "../../../functions/
                 let id = files.length;
                 let img = {id: id, img: Base64};
                 // console.log('aaaaaaaaaaaa')
-                let NewImg = {Position: id, Image: file, Destination: DestinationString};
+                let NewImg = {Position: id, Image: file, Destination: DestinationString,DestinationId:Destination};
                 files.push(img);
                 // Sliders[NewLabel - 1].Image = file;
                 // Sliders[NewLabel - 1].Destination = DestinationString;
@@ -158,30 +169,69 @@ import {GetCatNameFunction, sendImg, UpdateCategories} from "../../../functions/
      }
 
      async HandelSubmit(){
-        console.log(this.state.Sliders)
+         let {Sliders,header}=this.state;
+         let i;
+         let SliderId = await AddSlider(header);
+         console.log('SliderID',SliderId);
+         console.log(SliderId);
+         for (i = 0 ; i < Sliders.length; i++) {
+             let idax1 = await sendImg(Sliders[i].Image, 'Public');
+             let updateCategories1 = await UpdateSliders(header, Sliders[i].Position, idax1 ,Sliders[i].Destination, idax1);
+             console.log(updateCategories1);
+         }
+         console.log(header)
 
-         // let {ax1File, ax2File, ax3File, ax4File, CatName, Destination1, Destination2, Destination3, Destination4} = this.state;
-         // let catNameServer = await GetCatNameFunction(CatName);
-         // let idax1 = await sendImg(ax1File, 'Public');
-         // let idax2 = await sendImg(ax2File, 'Public');
-         // let idax3 = await sendImg(ax3File, 'Public');
-         // let idax4 = await sendImg(ax4File, 'Public');
-         // let updateCategories1 = await UpdateCategories(catNameServer, "0", idax1 , catNameServer);
-         // let updateCategories2 = await UpdateCategories(catNameServer, "1", idax2 , catNameServer);
-         // let updateCategories3 = await UpdateCategories(catNameServer, "2", idax3 , catNameServer);
-         // let updateCategories4 = await UpdateCategories(catNameServer, "3", idax4 , catNameServer);
-         // console.log(updateCategories1);
-         // console.log(updateCategories2);
-         // console.log(updateCategories3);
-         // console.log(updateCategories4);
      }
-     handelEdit(){
+     async handelEdit(){
+        console.log(this.state.Sliders)
+         let{Sliders,headerPlaceHolder}=this.state;
+         let i;
+         for (i = 0 ; i < Sliders.length; i++) {
+             // console.log(Items[i])
+             if (Sliders[i].Image!==''){
+                 let idax1 = await sendImg(Sliders[i].Image, 'Public');
+                 let updateCategories1 = await UpdateSliders(headerPlaceHolder, i, idax1 ,Sliders[i].Destination, idax1);
+                 console.log(updateCategories1);
+             }
 
+         }
+
+     }
+
+     async ClickEdit(name) {
+         console.log(name)
+         let Slider=await GetSliderDetail(name);
+         console.log(Slider);
+         let {Items}=Slider;
+         console.log(Items);
+
+         let i;let files=[];let Sliders=[];
+         for (i = 0 ; i < Items.length; i++) {
+             // console.log(Items[i])
+             let img = {id: Items[i].Position, img: Items[i].Image};
+             let images={Position:i,Image:'',Destination:'',DestinationId:''};
+             Sliders.push(images);
+             // console.log(img);
+             files.push(img);
+         }
+         this.setState({
+             files, Sliders:Sliders,headerPlaceHolder:Slider.Name,Edit:true
+         }, () => {
+             // console.log(this.state.files)
+             // console.log(this.state.Sliders)
+         })
+
+
+         // files.push(img);
+         // Sliders[NewLabel - 1].Image = file;
+         // Sliders[NewLabel - 1].Destination = DestinationString;
+         // Sliders.push(NewImg);
      }
     render() {
 
 
-         console.log( this.state.files);
+         // console.log( this.state.files);
+         let{SlidersPrev,headerPlaceHolder}=this.state;
         return (
             <div className='d-flex'>
                 <div className='col-6' >
@@ -189,16 +239,21 @@ import {GetCatNameFunction, sendImg, UpdateCategories} from "../../../functions/
 
 
                             <SliderOnePage DetailImages={this.state.files} GetSliderType={this.GetSliderType.bind(this)}
-                                           GetCategoriesName={this.GetCategoriesName.bind(this)} header={'انتخاب نام'}/>
+                                           GetCategoriesName={this.GetCategoriesName.bind(this)} header={headerPlaceHolder||'انتخاب نام'}/>
                     <button onClick={this.AddExtraSlider.bind(this)}>add extra slider</button>
                     {this.state.Edit? <button className='btn btn-primary' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}
 
                 </div>
 
-
-                {/*<div className='col-6' >*/}
-                {/*<div className='align-items-center'></div>*/}
-                {/*<div id='dragmulti'>*/}
+                <div className='col-6' >
+                    {
+                        SlidersPrev.length>0?
+                            // AllBanners.map((cat ,index)=><PreViewBanner id={CategoriesList[index]._id} key={index} header={cat.Name} ax1={CategoriesList[index].Items[0].Image}   clickPreview={this.ClickEdit.bind(this)}/>  ):""
+                            SlidersPrev.map((slider ,index)=><PreviewMainSlider id={slider._id} key={index} header={slider.Name}
+                                                                                slider={slider} clickEdit={this.ClickEdit.bind(this)}/>  ):""
+                        // AllBanners.map((cat ,index)=><PreViewBanner id={index} key={index}  ax1={ax}   clickPreview={this.ClickEdit.bind(this)} />  ):""
+                    }
+                </div>
 
                 {/*</div>*/}
                 {/*<MultiFiles MultiFile={this.handelMultiFiles.bind(this)}/>*/}

@@ -71,7 +71,6 @@ class PreviewCategories extends Component {
         return (
             <div   className=' w-100'  onMouseOver={this.handelEnter.bind(this)} onMouseLeave={this.handelLeave.bind(this)} id={this.props.header} >
                 <HeaderSectionHomePage header={this.props.header}/>
-
                 <div className=' d-flex w-100 point-review position-relative'>
                     {
                         this.state.MouseOver? <div className='w-100 h-100   d-flex justify-content-center align-items-center overly'>

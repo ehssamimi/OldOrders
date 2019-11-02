@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { WithWizard } from 'react-albus';
+import {GetDestination, GetQueryKeys} from "../../../../functions/ServerConnection";
+
 // import axios from "axios";
 import {
     Row,
@@ -12,24 +13,24 @@ import {
     Button,
     CardTitle
 } from "reactstrap";
-import IntlMessages from "../../../../helpers/IntlMessages";
-import {Colxx} from "../../../../components/common/CustomBootstrap";
+import IntlMessages from "../../../../../helpers/IntlMessages";
+import {Colxx} from "../../../../../components/common/CustomBootstrap";
 import {
     FormikReactSelect,
-} from "../../../../containers/form-validations/FormikFields";
+} from "../../../../../containers/form-validations/FormikFields";
 // import * as Const from "../../../Const";
 const SignupSchema = Yup.object().shape({
 
-    TagKind: Yup.object()
+    QueryKey: Yup.object()
         .shape({
             label: Yup.string().required(),
             value: Yup.string().required()
         })
         .nullable()
-        .required("نوع وسیله نقلیه اجباری است!"),
+        .required("نوع query اجباری است!"),
 
-    PhoneNumber: Yup.number()
-        .required("شماره تلفن اجباری است!")
+    Title: Yup.string()
+        .required("عنوان اجباری است!")
 
 });
 
@@ -47,8 +48,20 @@ class AddItemList extends Component {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state={
-            loaderActive:true,ChanceTypeOption:[]
+            loaderActive:true,ChanceTypeOption:[],selectData:[]
         }
+    }
+    async componentDidMount(){
+
+        let Destination = await GetQueryKeys();
+        let selectData = [];
+        for (let i = 0; i < Destination.length; i++) {
+             let row = {label: Destination[i], value: Destination[i], key: i};
+            selectData.push(row);
+        }
+        this.setState({
+            selectData
+        })
     }
 
 
@@ -56,45 +69,11 @@ class AddItemList extends Component {
     handleSubmit = (values, { setSubmitting }) => {
         const payload = {
             ...values,
-            TagKind: values.TagKind.value,
-            // ChanceType: values.ChanceType.value,
-            // Name: values.Name.value,
-
+            QueryKey: values.QueryKey.value,
         };
-        console.log(payload);
-        let send=document.getElementById("sendItems");
-        send.click()
-        // window.getElementId('')
-        // let headers = {
-        //     'Id': `${Const.ID}`,
-        //     'Token': `${Const.Token}`
-        // };
-        // let form = new FormData();
-        // form.append('Tag', payload.TagKind);
-        // form.append('ChanceType', payload.ChanceType);
-        // form.append('ItemType', payload.ItemType);
-        // form.append('ImageUrl', payload.ImageUrl);
-        // form.append('Key', payload.KeyItem);
-        // form.append('Name', payload.Name);
-        // axios.post(`${Const.URL}admin/gameitem/add` ,form, {headers:headers}).then(responsive=>
-        // {
-        //     const {Description}=responsive.data;
-        //     if (Description === "D"){
-        //         NotificationManager.success(
-        //             "Success message",
-        //             "Title here",
-        //             3000,
-        //             null,
-        //             null,
-        //             "success"
-        //         );
-        //     }
-        //     setTimeout(function () {
-        //         window.location.reload()
-        //     }, 3000);
-        //     setTimeout(function(){ window.location.reload(); }, 3000);
-        //     console.log(Description)
-        // }).catch(error=>{console.log(error)});
+        // console.log(payload);
+        this.props.GetItemsValue(payload)
+
     };
 
 
@@ -110,15 +89,15 @@ class AddItemList extends Component {
                             <CardBody>
                                 <CardTitle>
                                     <div className='d-flex justify-content-start'>
-                                        <IntlMessages id="ثبت شماره موبایل " />
+                                        <IntlMessages id="اضافه کردن ایتم لیست" />
                                     </div>
 
                                 </CardTitle>
 
                                 <Formik
                                     initialValues={{
-                                        PhoneNumber: "",
-                                        TagKind: { value: "Top", label: "Top" },
+                                        Title: "",
+                                        QueryKey: { value: " ", label: " " },
                                     }}
                                     validationSchema={SignupSchema}
                                     onSubmit={this.handleSubmit}
@@ -139,19 +118,19 @@ class AddItemList extends Component {
                                                 <div className="col-sm-6 ">
                                                     <FormGroup className="form-group has-float-label">
                                                         <Label>
-                                                            <IntlMessages id="نوع وسیله نقلیه" />
+                                                            <IntlMessages id="کلید کوئری" />
                                                         </Label>
                                                         <FormikReactSelect
-                                                            name="TagKind"
-                                                            id="TagKind"
-                                                            value={values.TagKind}
-                                                            options={options}
+                                                            name="QueryKey"
+                                                            id="QueryKey"
+                                                            value={values.QueryKey}
+                                                            options={this.state.selectData}
                                                             onChange={setFieldValue}
                                                             onBlur={setFieldTouched}
                                                         />
-                                                        {errors.TagKind && touched.TagKind ? (
+                                                        {errors.QueryKey && touched.QueryKey ? (
                                                             <div className="invalid-feedback d-block">
-                                                                {errors.TagKind}
+                                                                {errors.QueryKey}
                                                             </div>
                                                         ) : null}
                                                     </FormGroup>
@@ -160,13 +139,13 @@ class AddItemList extends Component {
 
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="شماره موبایل" />
+                                                            <IntlMessages id="عنوان" />
                                                         </Label>
-                                                        <Field className="form-control" name="PhoneNumber"   onBlur={setFieldTouched}
-                                                               placeholder="09**-***-****" />
-                                                        {errors.PhoneNumber && touched.PhoneNumber ? (
+                                                        <Field className="form-control" name="Title"   onBlur={setFieldTouched}
+                                                               placeholder="عنوان را بنویسید" />
+                                                        {errors.Title && touched.Title ? (
                                                             <div className="invalid-feedback d-block">
-                                                                {errors.PhoneNumber}
+                                                                {errors.Title}
                                                             </div>
                                                         ) : null}
                                                     </FormGroup>
@@ -174,8 +153,7 @@ class AddItemList extends Component {
                                                 </div>
 
                                             </div>
-
-
+                                            <button type='submit' className='btn btn-primary'>Send</button>
                                         </Form>
                                     )}
                                 </Formik>

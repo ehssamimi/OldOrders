@@ -180,7 +180,7 @@ export async  function  DeletePackage(ID){
 }
 
 
-// *********Get Destination*********
+// *********Slider*********
 export async  function  GetDestination( ) {
     let headers = {
         'Token': Const.Token,
@@ -190,6 +190,77 @@ export async  function  GetDestination( ) {
     let {data} = res;
     return data
 }
+export async  function  AddSlider(Name){
+    let formData = new FormData();
+    formData.append("Name", Name);
+
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+
+    let res = await axios.post(`${Const.HomePage}admin/slider/add`,formData, {headers: headers});
+    let { ItemId } = res.data ;
+    let { status } = res ;
+    if (status===200) {
+        return ItemId
+    }else {
+        return ""
+    }
+}
+export async  function  UpdateSliders(SliderName,Position,Image,Destination ,DestinationId){
+    let formData = new FormData();
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+        // 'category_id': CatId,
+    };
+    formData.append("Position",Position);
+    formData.append("Image",Image);
+    formData.append("DestinationId",DestinationId);
+    formData.append("Destination",Destination);
+    let res = await axios.put(`http://chichiapp.ir:30036/admin/slider/${SliderName}/items/update`,formData, {headers: headers});
+    // console.log(res);
+    let { ItemId } = res.data ;
+    let { status } = res ;
+    return status
+}
+export async  function  allMainSlider(){
+
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+
+    let res = await axios.get(`${Const.HomePage}admin/sliders`, {headers: headers});
+    let { Items } = res.data ;
+    return Items
+
+}
+export async  function  GetSliderDetail(Name){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID
+        // 'category_name':Name,
+    };
+    let res = await axios.get(`${Const.HomePage}admin/slider/${Name}`, {headers: headers});
+    let { data } = res ;
+    // console.log(res);
+    // console.log(data);
+    return data;
+}
+export async  function  DeleteSlider(Name){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID
+        // 'category_name':Name,
+    };
+    let res = await axios.delete(`${Const.HomePage}admin/slider/${Name}/delete`, {headers: headers});
+    let { status } = res ;
+    console.log(res);
+    return status;
+}
+
 // *****Add Baner******
 
 export async function addBaner(Name,Image,Destination,DestinationId) {
@@ -249,9 +320,6 @@ export async  function  DeleteBanner(id){
 }
 
 export async  function  GetBanerDetail(Name){
-    // console.log(Name);
-    // console.log(`${Const.HomePage}admin/category/${Name}`);
-
     let headers = {
         'Token': Const.Token,
         'Id': Const.ID
@@ -260,8 +328,151 @@ export async  function  GetBanerDetail(Name){
 
     let res = await axios.get(`${Const.HomePage}banners/${Name}`, {headers: headers});
     let { data } = res ;
+
+    return data;
+}
+
+
+
+
+// ****************Query***********
+export async  function  GetQueryKeys(){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID
+        // 'category_name':Name,
+    };
+
+    let res = await axios.get(`${Const.HomePage}admin/query/keys`, {headers: headers});
+    let { Keys } = res.data ;
+
+    return Keys;
+}
+
+// *************Item list*********
+export async function addItemList(Title,QueryKey) {
+    let formData = new FormData();
+    formData.append("Title", Title);
+    formData.append("QueryKey", QueryKey);
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    let res = await axios.post(`${Const.HomePage}admin/item-list/add`, formData, {headers: headers});
+    let {ItemId} = res.data;
+    console.log(res);
+    let {status} = res;
+    if (status === 200) {
+        return ItemId
+    } else {
+        return ""
+    }
+}
+
+export async  function  GetItemList(Name){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID
+    };
+
+    let res = await axios.get(`${Const.HomePage}admin/item-list/${Name}/get`, {headers: headers});
+    let { data } = res ;
+
+    return data;
+}
+export async  function  GetItemDetail(Name){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID
+    };
+
+    let res = await axios.get(`${Const.HomePage}admin/item-list/${Name}/get/loaded`, {headers: headers});
+    let { data } = res ;
+
+    return data;
+}
+
+export async  function  DeleteCitemList(Name){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID
+        // 'category_name':Name,
+    };
+    let res = await axios.delete(`${Const.HomePage}admin/item-list/${Name}/delete`, {headers: headers});
+    let { status } = res ;
+    console.log(res);
+    return status;
+}
+
+// *************headerSlider**********
+// *********Slider*********
+export async  function  AddHeaderSlider(Name){
+    let formData = new FormData();
+    formData.append("Name", Name);
+
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+
+    let res = await axios.post(`${Const.HomePage}admin/slider/add`,formData, {headers: headers});
+    let { ItemId } = res.data ;
+    let { status } = res ;
+    if (status===200) {
+        return ItemId
+    }else {
+        return ""
+    }
+}
+export async  function  UpdateHeaderSliders(SliderName,Position,Image,Destination ,DestinationId){
+    let formData = new FormData();
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+        // 'category_id': CatId,
+    };
+    formData.append("Position",Position);
+    formData.append("Image",Image);
+    formData.append("DestinationId",DestinationId);
+    formData.append("Destination",Destination);
+    let res = await axios.put(`http://chichiapp.ir:30036/admin/slider/${SliderName}/items/update`,formData, {headers: headers});
+    // console.log(res);
+    let { ItemId } = res.data ;
+    let { status } = res ;
+    return status
+}
+export async  function  allHeaderSlider(){
+
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+
+    let res = await axios.get(`${Const.HomePage}admin/header/sliders`, {headers: headers});
+    let { Items } = res.data ;
+    return Items
+
+}
+export async  function  GetHeaderSliderDetail(Name){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID
+        // 'category_name':Name,
+    };
+    let res = await axios.get(`${Const.HomePage}admin/header/slider/${Name}`, {headers: headers});
+    let { data } = res ;
     // console.log(res);
     // console.log(data);
     return data;
 }
-
+export async  function  DeleteHeaderSlider(Name){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID
+        // 'category_name':Name,
+    };
+    let res = await axios.delete(`${Const.HomePage}admin/header/slider/${Name}/delete`, {headers: headers});
+    let { status } = res ;
+    console.log(res);
+    return status;
+}

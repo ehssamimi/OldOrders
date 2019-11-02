@@ -21,7 +21,10 @@ const Banner = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ '../../Component/HomePages/Sub/Banner/MainBaner')
 );
 const ItemList = React.lazy(() =>
-    import(/* webpackChunkName: "viwes-gogo" */ '../../Component/HomePages/Sub/ItemList/AddItemList')
+    import(/* webpackChunkName: "viwes-gogo" */ '../../Component/HomePages/Sub/ItemList/MainItems')
+);
+const HeaderSlider = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ '../../Component/HomePages/Sub/HeaderSlider/HeaderSliderMain')
 );
 
 class App extends Component {
@@ -38,10 +41,10 @@ class App extends Component {
                                 path={`${match.url}/main`}
                                 render={props => <HomePages {...props} />}
                             />
-                            {/*<Route*/}
-                                {/*path={`${match.url}/crop-img`}*/}
-                                {/*render={props => <CropImg {...props} />}*/}
-                            {/*/>*/}
+                            <Route
+                                path={`${match.url}/header-slider`}
+                                render={props => <HeaderSlider {...props} />}
+                            />
                             <Route
                                 path={`${match.url}/categories`}
                                 render={props => <Categories {...props} />}

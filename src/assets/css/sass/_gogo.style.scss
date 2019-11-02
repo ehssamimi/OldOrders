@@ -8931,6 +8931,10 @@ border: 2px solid #403e40;
 
   }
 }
+
+.cursor-pointer{
+  cursor: pointer;
+}
 .point-review{
   cursor: pointer;
 }
@@ -9035,4 +9039,7 @@ border: 2px solid #403e40;
 }
 .vh25{
   height: 25vh;
+}
+.text-line{
+  text-decoration-line: line-through;
 }

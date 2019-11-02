@@ -136,6 +136,12 @@ const data = [
             // },
             {
                 icon: "iconsminds-smartphone-4",
+                id: "header-slider",
+                label: "اسلایدر بالای صفحه",
+                to: "/home-page/header-slider",
+            },
+            {
+                icon: "iconsminds-smartphone-4",
                 id: "categories-home-page",
                 label: "دسته بندی",
                 to: "/home-page/categories",
