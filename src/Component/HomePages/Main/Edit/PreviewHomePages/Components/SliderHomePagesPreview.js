@@ -1,68 +1,45 @@
-import React, { Component, Fragment } from "react";
+import React, {Component} from 'react';
 import {Row, Card, CardBody, CardTitle, Modal, ModalHeader, ModalBody, ModalFooter, Button} from "reactstrap";
 import { Colxx, Separator } from "../../../../../../components/common/CustomBootstrap";
-import Breadcrumb from "../../../../../../containers/navs/Breadcrumb";
-import IntlMessages from "../../../../../../helpers/IntlMessages";
-import {items} from "../../../../../../data/carouselItems";
 import GlideComponent from "../../../../../../components/carousel/GlideComponent";
 import {DeleteCitemList} from "../../../../../functions/ServerConnection";
 import NotificationManager from "../../../../../../components/common/react-notifications/NotificationManager";
 import {TweenMax} from "gsap/TweenMax";
-const NoControlCarouselItem = ({ Name, Images, CurrentPrice, PrevPrice }) => {
+const NoControlCarouselItem = ({ Type, Image }) => {
     return (
         <div className="glide-item">
             <Card>
                 <div className="position-relative vh25">
-                    <img className="card-img-top img-self-fill " src={Images} alt={Name} />
+                    <img className="card-img-top img-self-fill " src={Image} alt={Image} />
                     {/*{badges &&*/}
                     {/*badges.map((b, index) => {*/}
-                        {/*return (*/}
-                            {/*<span*/}
-                                {/*key={index}*/}
-                                {/*className={`badge badge-pill badge-${*/}
-                                    {/*b.color*/}
-                                    {/*} position-absolute ${*/}
-                                    {/*index === 0*/}
-                                        {/*? "badge-top-left"*/}
-                                        {/*: "badge-top-left-" + (index + 1)*/}
-                                    {/*}`}*/}
-                            {/*>*/}
-                  {/*{b.title}*/}
-                {/*</span>*/}
-                        {/*);*/}
+                    {/*return (*/}
+                    {/*<span*/}
+                    {/*key={index}*/}
+                    {/*className={`badge badge-pill badge-${*/}
+                    {/*b.color*/}
+                    {/*} position-absolute ${*/}
+                    {/*index === 0*/}
+                    {/*? "badge-top-left"*/}
+                    {/*: "badge-top-left-" + (index + 1)*/}
+                    {/*}`}*/}
+                    {/*>*/}
+                    {/*{b.title}*/}
+                    {/*</span>*/}
+                    {/*);*/}
                     {/*})}*/}
                 </div>
-                <CardBody>
-                    <h6 className="mb-4">{Name}</h6>
-                    <footer>
-                        {/*<p className="text-muted text-small mb-0 font-weight-light">*/}
-                            {/*{Name}*/}
-                        {/*</p>*/}
-                        <div className='d-flex'  >
-                            <span className='  d-flex mr-auto '>
-                                {CurrentPrice}
-                                تومان
-                            </span>
-                            <span className='ml-auto text-muted text-line' >
-                                <span>{PrevPrice}</span>
-                                <span>تومان</span>
 
 
-
-                            </span>
-
-                        </div>
-
-                    </footer>
-                </CardBody>
             </Card>
+            <span>{Type.Name}</span>
         </div>
     );
 };
 
 
 
-class SliderItems extends Component {
+class SliderHomePagesPreview extends Component {
     constructor(props) {
         super(props);
         this.state={
@@ -71,29 +48,29 @@ class SliderItems extends Component {
     }
 
     async handelDelete() {
-        let data= await DeleteCitemList(this.props.items.Title);
-        // let{Data}=this.props.items;
-        let id=1;
-
-        if(data===200){
-            NotificationManager.success(
-
-                "congratulation",
-                "your categories deleted",
-                3000,
-                null,
-                null,
-                "success"
-            );
-            console.log(data);
-            const $el = document.getElementById(`${id}`);
-            const duration = 2;
-            const from = { opacity: 0};
-            TweenMax.to($el, duration, from);
-            setTimeout(() => {
-                $el.remove();
-            }, 2000)
-        }
+        // let data= await DeleteCitemList(this.props.items.Title);
+        // // let{Data}=this.props.items;
+        // let id=1;
+        //
+        // if(data===200){
+        //     NotificationManager.success(
+        //
+        //         "congratulation",
+        //         "your categories deleted",
+        //         3000,
+        //         null,
+        //         null,
+        //         "success"
+        //     );
+        //     console.log(data);
+        //     const $el = document.getElementById(`${id}`);
+        //     const duration = 2;
+        //     const from = { opacity: 0};
+        //     TweenMax.to($el, duration, from);
+        //     setTimeout(() => {
+        //         $el.remove();
+        //     }, 2000)
+        // }
         this.toggleLarge()
     }
     handelclickDelete() {
@@ -109,8 +86,8 @@ class SliderItems extends Component {
     };
 
     render() {
-        console.log(items);
-        console.log(this.props.items);
+        // console.log(items);
+        // console.log(this.props.items);
         let {Data}=this.props.items;
         console.log(Data);
         return (
@@ -118,11 +95,13 @@ class SliderItems extends Component {
                 <Row>
                     <Colxx xxs="12" id={1}>
                         <CardTitle className='d-flex'>
+                            <div className='mr-auto'>
+                                <span className=' simple-icon-trash cursor-pointer' onClick={this.handelclickDelete.bind(this)}></span>
+                                <span className='  iconsminds-file-edit cursor-pointer' onClick={this.handelclickDelete.bind(this)}></span>
+                            </div>
                             {
-                                this.props.items.Title
+                                `${this.props.items.Title}اسلایدر `
                             }
-                            <span className='ml-auto simple-icon-trash' onClick={this.handelclickDelete.bind(this)}></span>
-
                         </CardTitle>
                     </Colxx>
                     <Colxx xxs="12" className="pl-0 pr-0 mb-5">
@@ -176,4 +155,4 @@ class SliderItems extends Component {
     }
 }
 
-export default SliderItems;
+export default SliderHomePagesPreview;

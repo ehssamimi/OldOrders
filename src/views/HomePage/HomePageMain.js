@@ -2,8 +2,11 @@ import React, { Component, Suspense } from 'react';
 import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AppLayout from './../../layout/AppLayout';
+// const HomePages = React.lazy(() =>
+//     import(/* webpackChunkName: "viwes-gogo" */ './../../Component/HomePages/HomePages')
+// );
 const HomePages = React.lazy(() =>
-    import(/* webpackChunkName: "viwes-gogo" */ './../../Component/HomePages/HomePages')
+    import(/* webpackChunkName: "viwes-gogo" */ './MainHomPages/MainHomPages')
 );
 const CropImg = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ './../../Component/HomePages/Sub/CropImg/CropImgCropper')

@@ -235,9 +235,6 @@ import PreviewMainSlider from "./PreviewSliderMAin/PreviewMainSlider";
         return (
             <div className='d-flex'>
                 <div className='col-6' >
-
-
-
                             <SliderOnePage DetailImages={this.state.files} GetSliderType={this.GetSliderType.bind(this)}
                                            GetCategoriesName={this.GetCategoriesName.bind(this)} header={headerPlaceHolder||'انتخاب نام'}/>
                     <button onClick={this.AddExtraSlider.bind(this)}>add extra slider</button>

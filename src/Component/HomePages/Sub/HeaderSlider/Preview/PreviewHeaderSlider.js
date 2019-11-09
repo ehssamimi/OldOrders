@@ -131,13 +131,18 @@ class PreviewHeaderSlider extends Component {
                                 hideNav: true
                             }
                         }>
-                            { Items.map(item => {
-                                return (
-                                    <div key={item._id}>
+                            { Items.map((item,index) =>
+                            // {
+                            //     return (
+                                    <div key={index}
+                                         id={item._id}
+                                    >
                                         <NoControlCarouselItem {...item} />
                                     </div>
-                                );
-                            })}
+                            //     );
+                            // }
+                            )
+                            }
                         </GlideComponent>
                     </Colxx>
                 </Row>

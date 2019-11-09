@@ -127,6 +127,20 @@ const data = [
             id: "mobilehomepage",
             label: "صفحه اصلی موبایل",
             to: "/home-page/main",
+            subs: [{
+                icon: "simple-icon-plane",
+                label: "create",
+                to: "/home-page/main/create"
+            }, {
+                icon: "simple-icon-plane",
+                label: "edit",
+                to: "/home-page/main/edit"
+            }, {
+                icon: "simple-icon-plane",
+                label: "active",
+                to: "/home-page/main/active"
+            },
+            ]
         },
             // {
             //     icon: "iconsminds-smartphone-4",

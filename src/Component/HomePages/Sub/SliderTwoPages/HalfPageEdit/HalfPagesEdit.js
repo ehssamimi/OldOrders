@@ -1,41 +1,35 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Glide } from "react-glide";
-import "react-glide/lib/reactGlide.css";
-// import "@glidejs/glide/dist/css/glide.core.min.css";
-// import "@glidejs/glide/dist/css/glide.theme.min.css";
+import React, {Component} from 'react';
+import Slider from "react-slick";
+// import "./index.css";
 
 
 
-export default class HalfPagesEdit extends React.Component {
 
+
+class HalfPagesEdit extends Component {
     render() {
+        var settings = {
+            dots: true
+        };
         return (
-            <div>
-                <Glide
-                    height={400}
-                    width={400}
-                    autoPlay={true}
-                    autoPlaySpeed={2000}
-                    dots={true}
-                    infinite={true}
-                    onSlideChange={() => console.log("slide changed")}
-                >
-                    <img src="https://picsum.photos/id/312/400/400" alt="image1" />
-                    <img src="https://picsum.photos/id/313/400/400" alt="image2" />
-                    <img src="https://picsum.photos/id/314/400/400" alt="image3" />
+            <div className="container">
+                <Slider {...settings}>
                     <div>
-                        <iframe
-                            title="video"
-                            width="400"
-                            height="400"
-                            src="https://www.youtube.com/embed/6emElQDVqF4"
-                            frameBorder="0"
-                            allowFullScreen
-                        />
+                        <img src="http://placekitten.com/g/400/200" />
                     </div>
-                </Glide>
+                    <div>
+                        <img src="http://placekitten.com/g/400/200" />
+                    </div>
+                    <div>
+                        <img src="http://placekitten.com/g/400/200" />
+                    </div>
+                    <div>
+                        <img src="http://placekitten.com/g/400/200" />
+                    </div>
+                </Slider>
             </div>
-        )
+        );
     }
 }
+
+export default HalfPagesEdit;

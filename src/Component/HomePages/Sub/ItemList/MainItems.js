@@ -1,13 +1,26 @@
 import React, {Component} from 'react';
 import AddItemList from "./AddItems/AddItemList";
-import {addItemList} from "../../../functions/ServerConnection";
+import {addItemList, GetAllItemList} from "../../../functions/ServerConnection";
 import PreviewItems from "./PreviewItems/PreviewItems";
+import HomePagePreview from "../../Main/Edit/HomePagePreview";
+import PreviewPackages from "../WonderPackageAddHomePage/subPackage/PreviewPackages";
 
 
 class MainItems extends Component {
     constructor(props) {
         super(props);
+        this.state={
+            itemLists:[]
+        };
 
+
+    }
+    async componentDidMount(){
+        let itemLists = await GetAllItemList( );
+        console.log(itemLists);
+        this.setState({
+            itemLists
+        })
     }
 
     async GetItemsValue(payload) {
@@ -19,15 +32,18 @@ class MainItems extends Component {
 
 
     render() {
+        let {itemLists}=this.state;
         return (
             <div className='d-flex'>
                 <div className='col-6'>
                     <AddItemList GetItemsValue={this.GetItemsValue.bind(this)}/>
                 </div>
                 <div className='col-6'>
-                    <PreviewItems/>
-
-                </div>
+                    {
+                        itemLists.length>0?
+                            itemLists.map((cat ,index)=><PreviewItems Title={cat.Title} key={index} {...this.props }/>):""
+                    }
+                 </div>
             </div>
         );
     }

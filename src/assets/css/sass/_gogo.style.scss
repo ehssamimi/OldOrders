@@ -8933,7 +8933,7 @@ border: 2px solid #403e40;
 }
 
 .cursor-pointer{
-  cursor: pointer;
+  cursor: pointer!important;
 }
 .point-review{
   cursor: pointer;
@@ -9031,15 +9031,64 @@ border: 2px solid #403e40;
 .vh40{
   height: 40vh;
 }
+.vh5{
+  height: 5vh;
+}
 .vh10{
   height: 10vh;
 }
 .vh15{
   height: 15vh;
 }
+.vh20{
+  height: 20vh;
+}
 .vh25{
   height: 25vh;
 }
+.primary-color{
+  color: $primary-color;
+}
 .text-line{
   text-decoration-line: line-through;
+}
+.list-newComponent{
+  background: gray;
+  color: black;
+   &:hover{
+    background: white;
+     color:$theme-color-purple;
+  }
+
+}
+.ListActiveHomePages{
+  background: white;
+  color:$theme-color-purple;
+}
+
+.column-container{
+  margin: 8px;
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+}
+.column-title{
+  padding: 8px!important;
+}
+.column-TaskList{
+  padding: 8px;
+  transition: background-color 0.2s ease;
+  background-color:white;
+  flex-grow: 1;
+  min-height: 100px;
+ }
+.task-Container{
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+  padding: 8px;
+  margin-bottom: 8px;
+  transition: background-color 0.2s ease;
+  background-color: #ffc2ef;
 }
