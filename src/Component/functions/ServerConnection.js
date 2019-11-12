@@ -437,7 +437,7 @@ export async  function  UpdateHeaderSliders(SliderName,Position,Image,Destinatio
     formData.append("Image",Image);
     formData.append("DestinationId",DestinationId);
     formData.append("Destination",Destination);
-    let res = await axios.put(`http://chichiapp.ir:30036/admin/header/slider/${SliderName}/items/update`,formData, {headers: headers});
+    let res = await axios.put(`${Const.HomePage}admin/header/slider/${SliderName}/items/update`,formData, {headers: headers});
     // console.log(res);
     let { ItemId } = res.data ;
     let { status } = res ;
@@ -494,3 +494,37 @@ export async  function  GetHomePageTemp(){
     return Body
 
 }
+export async  function  GetHomePageLoad(name){
+
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+
+    let res = await axios.get(`${Const.HomePage}admin/homepage/${name}/load`, {headers: headers});
+    // console.log(res.data);
+    let { Body,Header } = res.data ;
+    // console.log(Body );
+    return Body
+
+}
+
+export async  function  UpdateHomePage(Data){
+    // let formData = new FormData();
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+        // 'category_id': CatId,
+    };
+    // formData.append("Position",Position);
+    // formData.append("Image",Image);
+    // formData.append("DestinationId",DestinationId);
+    // formData.append("Destination",Destination);
+    let res = await axios.put(`${Const.HomePage}admin/homepage/update`, Data, {headers: headers});
+    console.log(res);
+    let { ItemId } = res.data ;
+    let { status } = res ;
+    return status
+}
+
+

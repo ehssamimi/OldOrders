@@ -132,7 +132,7 @@ class AddNewHomePageComponent extends Component {
 
                     {
                         name==='ItemList'?
-                            ItemsList.length>0? ItemsList.map((cat ,index)=><PreviewItems Title={cat.Title} key={index}/>):""
+                            ItemsList.length>0? ItemsList.map((cat ,index)=><PreviewItems Title={cat.Title} key={index} clickPreview={this.ClickEdit.bind(this)}/>):""
                             :''
                     }
                     {

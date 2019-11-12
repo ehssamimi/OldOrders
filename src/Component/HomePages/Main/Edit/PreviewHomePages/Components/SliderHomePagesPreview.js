@@ -32,7 +32,7 @@ const NoControlCarouselItem = ({ Type, Image }) => {
 
 
             </Card>
-            <span>{Type.Name}</span>
+            {/*<span>{Type.Name}</span>*/}
         </div>
     );
 };

@@ -10,7 +10,7 @@ import {
     GetCategorieyDetail,
     GetPackageDetail,
     GetBannersDetail,
-    GetHomePageTemp
+    GetHomePageTemp,GetHomePageLoad
 } from '../../../functions/ServerConnection'
 import SliderItems from "../../Sub/ItemList/PreviewItems/SliderItems/SliderItems";
 import SLiderItemsHomePagePreview from "./PreviewHomePages/Components/SLiderItemsHomePagePreview";
@@ -85,10 +85,12 @@ class HomePagePreview extends Component {
 
     async componentDidMount() {
         let Data = await GetHomePageTemp();
+        let ehsanHomePages = await GetHomePageLoad('ehsan');
         this.setState({
             Data
         })
-        // console.log(data);
+        console.log(Data);
+        console.log(ehsanHomePages);
     }
 
     onDragEnd(result) {

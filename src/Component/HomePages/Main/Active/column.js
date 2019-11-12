@@ -7,7 +7,7 @@ const Container = styled.div`
   margin: 8px;
   border: 1px solid lightgrey;
   border-radius: 2px;
-  width: 250px;
+  width: 30%;
 
   display: flex;
   flex-direction: column;
@@ -37,7 +37,7 @@ export default class Column extends React.Component {
               isDraggingOver={snapshot.isDraggingOver}
             >
               {this.props.tasks.map((task, index) => (
-                <Task key={task.id} task={task} index={index} />
+                  this.props.tasks.length>0? <Task key={task.id} task={task} index={index}/> :''
               ))}
               {provided.placeholder}
             </TaskList>

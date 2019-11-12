@@ -102,7 +102,7 @@ class BannerHomePagePreview extends Component {
     render() {
         let {Data}=this.props.items;
         let {bannersList}=this.state;
-        let {Type}=Data[0];
+        // let {Type}=Data[0];
 
         return (
             <div   className=' w-100 d-flex flex-column  '  onMouseOver={this.handelEnter.bind(this)} onMouseLeave={this.handelLeave.bind(this)} id={this.props.header} >
@@ -121,7 +121,7 @@ class BannerHomePagePreview extends Component {
                             <img src={Data[0].Image} className='img-self-fill br02'/>
                         </div>
                     </div>
-                    <span>{Type.Name}</span>
+                    {/*<span>{Type.Name}</span>*/}
                 </div>
                 <Modal
                     isOpen={this.state.deleteItem}

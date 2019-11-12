@@ -34,7 +34,7 @@ this.state={
         let{items}=this.state;
         return (
             <div>{
-                items?<SliderItems items={items}/>:''
+                items?<SliderItems items={items} {...this.props}/>:''
             }
                 {/*<SliderItems/>*/}
             </div>

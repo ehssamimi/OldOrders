@@ -8,6 +8,8 @@ import GlideComponent from "../../../../../../components/carousel/GlideComponent
 import {DeleteCitemList} from "../../../../../functions/ServerConnection";
 import NotificationManager from "../../../../../../components/common/react-notifications/NotificationManager";
 import {TweenMax} from "gsap/TweenMax";
+import { FaRegEdit } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
 const NoControlCarouselItem = ({ Name, Images, CurrentPrice, PrevPrice }) => {
     return (
         <div className="glide-item">
@@ -35,9 +37,9 @@ const NoControlCarouselItem = ({ Name, Images, CurrentPrice, PrevPrice }) => {
                 <CardBody>
                     <h6 className="mb-4">{Name}</h6>
                     <footer>
-                        {/*<p className="text-muted text-small mb-0 font-weight-light">*/}
-                            {/*{Name}*/}
-                        {/*</p>*/}
+                        <p className="text-muted text-small mb-0 font-weight-light">
+                            {Name}
+                        </p>
                         <div className='d-flex'  >
                             <span className='  d-flex mr-auto '>
                                 {CurrentPrice}
@@ -107,12 +109,16 @@ class SliderItems extends Component {
             deleteItem: !prevState.deleteItem
         }));
     };
+    handelEdit(value){
+        console.log(value)
+        this.props.clickPreview(value,this.props.id);
+    }
 
     render() {
-        console.log(items);
-        console.log(this.props.items);
+        // console.log(items);
+        // console.log(this.props.items);
         let {Data}=this.props.items;
-        console.log(Data);
+        // console.log(Data);
         return (
             <div>
                 <Row>
@@ -121,7 +127,11 @@ class SliderItems extends Component {
                             {
                                 this.props.items.Title
                             }
-                            <span className='ml-auto simple-icon-trash' onClick={this.handelclickDelete.bind(this)}></span>
+                            <div className='d-flex ml-auto  '>
+                                <div className=' d-flex    m-2' onClick={this.handelEdit.bind(this,this.props.Title)}><FaRegEdit /></div>
+                                <div className=' d-flex    m-2' onClick={this.handelclickDelete.bind(this)}><MdDeleteForever/></div>
+                            </div>
+
 
                         </CardTitle>
                     </Colxx>
