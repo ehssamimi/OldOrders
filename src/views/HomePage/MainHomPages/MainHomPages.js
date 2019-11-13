@@ -24,7 +24,7 @@ class App extends Component {
                             <Redirect exact from={`${match.url}/`} to={`${match.url}/edit`} />
                             <Route
                                 path={`${match.url}/create`}
-                                render={props => <AddMainHomePage {...props} />}
+                                render={props => <ActiveMainHomePage  {...props} />}
                             />
                             <Route
                                 path={`${match.url}/edit`}
@@ -32,7 +32,7 @@ class App extends Component {
                             />
                             <Route
                                 path={`${match.url}/active`}
-                                render={props => <ActiveMainHomePage {...props} />}
+                                render={props => <AddMainHomePage {...props} />}
                             />
 
                             <Redirect to="/error" />

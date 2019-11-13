@@ -509,6 +509,26 @@ export async  function  GetHomePageLoad(name){
 
 }
 
+// /admin/homepage/init/{homepage_name}
+export async  function  AddHomePages(Name){
+    let formData = new FormData();
+    formData.append("Name", Name);
+
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+
+    let res = await axios.post(`${Const.HomePage}admin/homepage/init/${Name}`,formData, {headers: headers});
+    let { ItemId } = res.data ;
+    let { status } = res ;
+    if (status===200) {
+        return ItemId
+    }else {
+        return ""
+    }
+}
+
 export async  function  UpdateHomePage(Data){
     // let formData = new FormData();
     let headers = {

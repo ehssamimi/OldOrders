@@ -141,8 +141,8 @@ export default class MoveRowIndex extends React.Component {
 
         // let label="task-" + '4';
         // let value="task-" + '4';
-// console.log('data items');
-// console.log(value['Items']);
+        // console.log('data items');
+        // console.log(value['Items']);
         //   Name: "sghfdshdhj", Items:
 
         let newValue = {id: NewID,
@@ -151,27 +151,6 @@ export default class MoveRowIndex extends React.Component {
             Data: {
                 Title: value['Name'] || value['Title'],
                 Data:value['Items'] ||value['Data'] ||[{Image:value['Image'], Name: "Category",}],
-                // Data: [{
-                //     _id: "id",
-                //     Image: "http://chichiapp.ir:3005/download/5d9884457c1e36d6e452598e",
-                //     Position: 0,
-                //     DestinationId: "Id"
-                // }, {
-                //     _id: "id",
-                //     Image: "http://chichiapp.ir:3005/download/5d9884457c1e36d6e452598e",
-                //     Position: 1,
-                //     DestinationId: "Id"
-                // }, {
-                //     _id: "id",
-                //     Image: "http://chichiapp.ir:3005/download/5d9884457c1e36d6e452598e",
-                //     Position: 2,
-                //     DestinationId: "Id"
-                // }, {
-                //     _id: "id",
-                //     Image: "http://chichiapp.ir:3005/download/5d9884457c1e36d6e452598e",
-                //     Position: 3,
-                //     DestinationId: "Id"
-                // }]
             }};
         console.log('newValue');
         console.log(newValue );
@@ -179,10 +158,8 @@ export default class MoveRowIndex extends React.Component {
         // console.log(tasks)
         this.setState({
             tasks, columns
-        })
+        });
         this.toggleAdd();
-
-
 
     }
     handelChangeText(e){
@@ -268,7 +245,33 @@ export default class MoveRowIndex extends React.Component {
        console.log(AddHomePage);
        let sendHomePages=await UpdateHomePage(JSON.stringify(Data));
        console.log(sendHomePages)
+    }
 
+    handelEditComponent(value ,Kind,Type,Position) {
+        console.log('Value');
+        console.log(value);
+        console.log('Kind');
+        console.log(Kind);
+        console.log('Type');
+        console.log(Type);
+        console.log('Position');
+        console.log(Position);
+        let newValue = {id: Kind,
+            ObjectType: Type,
+            Position: Position,
+            Data: {
+                Title: value['Name'] || value['Title'],
+                Data:value['Items'] ||value['Data'] ||[{Image:value['Image'], Name: "Category",}],
+            }};
+        const newState = {
+            ...this.state,
+            tasks: {
+                ...this.state.tasks,
+                [Kind]: newValue,
+
+            }
+        };
+        this.setState(newState)
     }
 
   render() {
@@ -290,7 +293,7 @@ export default class MoveRowIndex extends React.Component {
                         );
 
                         return (
-                            <Column key={column.id} column={column} tasks={tasks} HandelAdd={this.HandelAdd.bind(this)}/>
+                            <Column key={column.id} column={column} tasks={tasks} HandelAdd={this.HandelAdd.bind(this)} handelEditComponent={this.handelEditComponent.bind(this)}/>
                         )
                     })}
                 </Container>

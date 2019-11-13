@@ -85,12 +85,12 @@ class HomePagePreview extends Component {
 
     async componentDidMount() {
         let Data = await GetHomePageTemp();
-        let ehsanHomePages = await GetHomePageLoad('ehsan');
+        let loadPages = await GetHomePageLoad('ehsan');
         this.setState({
             Data
-        })
+        });
         console.log(Data);
-        console.log(ehsanHomePages);
+        console.log(loadPages);
     }
 
     onDragEnd(result) {
@@ -152,71 +152,71 @@ class HomePagePreview extends Component {
     }
 
      async ChangeComponent(Name,Categories,Position){
-        switch (Categories) {
-            case 'Category':
-                let categorie= await GetCategorieyDetail(Name);
-                let {Items}=categorie;
-                console.log(categorie);
-                this.setState(state => {
-                    let Data=state.Data;
-                    console.log(Data[Position].Data.Data);
-                    let i;
-                    for(i=0;i<Items.length;i++){
-                        Data[Position].Data.Data[i].Image=Items[i].Image;
-                        Data[Position].Data.Data[i].DestinationId=Items[i].DestinationId;
-                    }
-                    return{
-                        Data
-                    }
-                });
-                break;
-            case 'Package':
-                let packages= await GetPackageDetail(Name);
-                let PackageItems=packages.Items;
-                this.setState(state => {
-                    let Data=state.Data;
-                    Data[Position].Data.Data=PackageItems;
-                    // for(i=0;i<(PackageItems.length-1);i++){
-                    //     Data[Position].Data.Data[i].Image=PackageItems[i].Image;
-                    //     Data[Position].Data.Data[i].DestinationId=PackageItems[i].DestinationId;
-                    // }
-                    return{
-                        Data
-                    }
-                });
-                break;
-                case 'Banner':
-                let Banner= await GetBannersDetail(Name);
-                console.log('this is banner');
-                console.log(Banner);
+         switch (Categories) {
+             case 'Category':
+                 let categorie = await GetCategorieyDetail(Name);
+                 let {Items} = categorie;
+                 console.log(categorie);
+                 this.setState(state => {
+                     let Data = state.Data;
+                     console.log(Data[Position].Data.Data);
+                     let i;
+                     for (i = 0; i < Items.length; i++) {
+                         Data[Position].Data.Data[i].Image = Items[i].Image;
+                         Data[Position].Data.Data[i].DestinationId = Items[i].DestinationId;
+                     }
+                     return {
+                         Data
+                     }
+                 });
+                 break;
+             case 'Package':
+                 let packages = await GetPackageDetail(Name);
+                 let PackageItems = packages.Items;
+                 this.setState(state => {
+                     let Data = state.Data;
+                     Data[Position].Data.Data = PackageItems;
+                     // for(i=0;i<(PackageItems.length-1);i++){
+                     //     Data[Position].Data.Data[i].Image=PackageItems[i].Image;
+                     //     Data[Position].Data.Data[i].DestinationId=PackageItems[i].DestinationId;
+                     // }
+                     return {
+                         Data
+                     }
+                 });
+                 break;
+             case 'Banner':
+                 let Banner = await GetBannersDetail(Name);
+                 console.log('this is banner');
+                 console.log(Banner);
 
-                    // Type: {Name: "Package", DestinationId: "id"}
-                    // let PackageItems=packages.Items;
-                this.setState(state => {
-                    let Data=state.Data;
-                    // let bannerData= Data[Position].Data.Data[0];
-                    Data[Position].Data.Data[0].Image=Banner.Image;
-                    Data[Position].Data.Data[0].Type.Name=Banner.Name;
-                    Data[Position].Data.Data[0].Type.DestinationId=Banner.DestinationId;
+                 // Type: {Name: "Package", DestinationId: "id"}
+                 // let PackageItems=packages.Items;
+                 this.setState(state => {
+                     let Data = state.Data;
+                     // let bannerData= Data[Position].Data.Data[0];
+                     Data[Position].Data.Data[0].Image = Banner.Image;
+                     Data[Position].Data.Data[0].Type.Name = Banner.Name;
+                     Data[Position].Data.Data[0].Type.DestinationId = Banner.DestinationId;
 
-                    // Data[Position].Data.Data[0].Image=Banner.Image;
-                    // Data[Position].Data.Data[0].Type.Name=Banner.Name;
-                    // Data[Position].Data.Data[0].Type.DestinationId=Banner.DestinationId;
-                    // for(i=0;i<(PackageItems.length-1);i++){
-                    //     Data[Position].Data.Data[i].Image=PackageItems[i].Image;
-                    //     Data[Position].Data.Data[i].DestinationId=PackageItems[i].DestinationId;
-                    // }
-                    return{
-                        Data
-                    }
-                });
-                break;
-            // case 'categorie':
-            //     text = "Today is Sunday";
-            //     break;
-            default:
-                // text = "Looking forward to the Weekend";
-        }
+                     // Data[Position].Data.Data[0].Image=Banner.Image;
+                     // Data[Position].Data.Data[0].Type.Name=Banner.Name;
+                     // Data[Position].Data.Data[0].Type.DestinationId=Banner.DestinationId;
+                     // for(i=0;i<(PackageItems.length-1);i++){
+                     //     Data[Position].Data.Data[i].Image=PackageItems[i].Image;
+                     //     Data[Position].Data.Data[i].DestinationId=PackageItems[i].DestinationId;
+                     // }
+                     return {
+                         Data
+                     }
+                 });
+                 break;
+             // case 'categorie':
+             //     text = "Today is Sunday";
+             //     break;
+             default:
+             // text = "Looking forward to the Weekend";
+         }
     }
     HandelAdd(){
         this.setState({
