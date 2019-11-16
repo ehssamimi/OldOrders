@@ -494,6 +494,20 @@ export async  function  GetHomePageTemp(){
     return Body
 
 }
+export async  function  GetAllHomePages( ){
+
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+
+    let res = await axios.get(`${Const.HomePage}admin/homepages`, {headers: headers});
+    // console.log(res.data);
+    let { Items } = res.data ;
+    // console.log(Body );
+    return Items
+
+}
 export async  function  GetHomePageLoad(name){
 
     let headers = {
@@ -502,10 +516,11 @@ export async  function  GetHomePageLoad(name){
     };
 
     let res = await axios.get(`${Const.HomePage}admin/homepage/${name}/load`, {headers: headers});
-    // console.log(res.data);
-    let { Body,Header } = res.data ;
+    console.log(res.data);
+    let { Body,Header,Footer } = res.data ;
     // console.log(Body );
-    return Body
+    return res.data
+    // return Body
 
 }
 

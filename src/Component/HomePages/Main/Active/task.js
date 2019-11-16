@@ -52,10 +52,10 @@ export default class Task extends React.Component {
 
 
               {item.ObjectType==="ItemList"?<SLiderItemsHomePagePreview items={item.Data} position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)}/>:""}
-              {item.ObjectType==="Category"?<CategoriesPreviewHomePages  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)}/>:""}
-              {item.ObjectType==="Package"?<PackagePreviewHomePages  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)}/>:""}
-              {item.ObjectType==="Slider"?<SliderHomePagesPreview  items={item.Data}/>:""}
-              {item.ObjectType==="Banner"?<BannerHomePagePreview  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)}/>:""}
+              {item.ObjectType==="Category"?<CategoriesPreviewHomePages  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={true}/>:""}
+              {item.ObjectType==="Package"?<PackagePreviewHomePages  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={true}/>:""}
+              {item.ObjectType==="Slider"?<SliderHomePagesPreview  items={item.Data} edit={true}/>:""}
+              {item.ObjectType==="Banner"?<BannerHomePagePreview  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)}  edit={true}/>:""}
               {item.ObjectType==="HeaderSlider"?<SliderHomePagesPreview  items={item.Data}/>:""}
             {/*{this.props.item.content}*/}
           </Container>

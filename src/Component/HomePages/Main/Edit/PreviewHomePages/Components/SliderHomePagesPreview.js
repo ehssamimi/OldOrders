@@ -5,12 +5,14 @@ import GlideComponent from "../../../../../../components/carousel/GlideComponent
 import {DeleteCitemList} from "../../../../../functions/ServerConnection";
 import NotificationManager from "../../../../../../components/common/react-notifications/NotificationManager";
 import {TweenMax} from "gsap/TweenMax";
-const NoControlCarouselItem = ({ Type, Image }) => {
+import ax from './../../../../../../assets/img/simpleProduct.jpg'
+const NoControlCarouselItem = ({ Type, Image,Position }) => {
     return (
         <div className="glide-item">
             <Card>
                 <div className="position-relative vh25">
-                    <img className="card-img-top img-self-fill " src={Image} alt={Image} />
+                    <img className="card-img-top img-self-fill " src={Image || ax} alt={Image ||ax} />
+                    {/*<span>{Position}</span>*/}
                     {/*{badges &&*/}
                     {/*badges.map((b, index) => {*/}
                     {/*return (*/}
@@ -43,9 +45,32 @@ class SliderHomePagesPreview extends Component {
     constructor(props) {
         super(props);
         this.state={
-            deleteItem:false
+            deleteItem:false,Data:[]
         }
     }
+    static getDerivedStateFromProps(props, state) {
+        if (props.items !== state.Data) {
+            let Data = [];
+            if (props.edit) {
+                // console.log('Data');
+                // console.log(props.items.Data);
+                Data = props.items.Data;
+                return {
+                    Data
+                };
+            } else {
+                // console.log('Data');
+                // console.log(props.items.Data.Items);
+                Data = props.items.Data.Items;
+                return {
+                    Data
+                };
+            }
+        }
+        // Return null if the state hasn't changed
+        return null;
+    }
+
 
     async handelDelete() {
         // let data= await DeleteCitemList(this.props.items.Title);
@@ -88,8 +113,10 @@ class SliderHomePagesPreview extends Component {
     render() {
         // console.log(items);
         // console.log(this.props.items);
-        let {Data}=this.props.items;
-        console.log(Data);
+        // let {Data}=this.props.items;
+        let {Data}=this.state;
+        // console.log('Data');
+        // console.log(Data);
         return (
             <div>
                 <Row>

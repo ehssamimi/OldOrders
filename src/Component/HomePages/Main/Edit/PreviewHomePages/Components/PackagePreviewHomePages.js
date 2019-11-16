@@ -14,9 +14,32 @@ class PackagePreviewHomePages extends Component {
     constructor(props) {
         super(props);
         this.state={
-            deleteItem:false,MouseOver:false,Edit:false,PackageList:[]
+            deleteItem:false,MouseOver:false,Edit:false,PackageList:[],Data:[]
         };
         this.toggleLarge=this.toggleLarge.bind(this)
+    }
+    static getDerivedStateFromProps(props, state) {
+        if (props.items !== state.Data) {
+            let Data = [];
+            if (props.edit) {
+
+                Data = props.items.Data;
+                console.log('Data');
+                console.log(Data);
+                return {
+                    Data
+                };
+            } else {
+                Data = props.items.Data.Items;
+                console.log('Data');
+                console.log(Data);
+                return {
+                    Data
+                };
+            }
+        }
+        // Return null if the state hasn't changed
+        return null;
     }
 
     ClickEdit(Name){
@@ -92,7 +115,9 @@ class PackagePreviewHomePages extends Component {
     }
     render() {
         let{items}=this.props;
-        let{PackageList}=this.state;
+        console.log('items');
+
+        let{PackageList,Data}=this.state;
         return (
             <div   className=' w-100 d-flex flex-column  '  onMouseOver={this.handelEnter.bind(this)} onMouseLeave={this.handelLeave.bind(this)} id={this.props.header} >
                 <CardTitle className='d-flex'>
@@ -107,23 +132,24 @@ class PackagePreviewHomePages extends Component {
                 <div className=' d-flex flex-column w-100 point-review position-relative h-100'>
                     <div className=' vh15 d-flex '>
                         <div className='h-100 col-7  paddingZero '  >
-                            <img src={items.Data[0].Image} className='img-self-fill br02' />
+                            {/*<img src={items.Data[0].Image} className='img-self-fill br02' />*/}
+                            <img src={ Data[0].Image} className='img-self-fill br02' />
                         </div>
                         <div className='h-100 col-5 padding-top-Zero padding-bottom-Zero padding-right-Zero  pl-2 '  >
-                            <img src={items.Data[1].Image} className='img-self-fill br02 '/>
+                            <img src={ Data[1].Image} className='img-self-fill br02 '/>
                         </div>
                     </div>
                     <div className='d-flex vh15 mt-2'   >
                         <div className='h-100 col-12  paddingZero '>
-                            <img src={items.Data[2].Image} className='img-self-fill br02'/>
+                            <img src={ Data[2].Image} className='img-self-fill br02'/>
                         </div>
                     </div>
                     <div className=' vh15 d-flex mt-2 ' >
                         <div className='h-100 col-5 paddingZero '  >
-                            <img src={items.Data[3].Image} className='img-self-fill br02 '/>
+                            <img src={ Data[3].Image} className='img-self-fill br02 '/>
                         </div>
                         <div className='h-100 col-7   padding-top-Zero padding-bottom-Zero padding-right-Zero  pl-2'   >
-                            <img src={typeof items.Data[4] === 'undefined'? ax:items.Data[4].Image} className='img-self-fill br02'/>
+                            <img src={typeof Data[4] === 'undefined'? ax: Data[4].Image} className='img-self-fill br02'/>
                         </div>
                     </div>
                 </div>

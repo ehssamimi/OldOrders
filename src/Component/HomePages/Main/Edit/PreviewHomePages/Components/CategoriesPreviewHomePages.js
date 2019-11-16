@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
+import ax from './../../../../../../assets/img/simpleProduct.jpg'
 import {Modal, ModalBody, ModalHeader, ModalFooter, Button, CardTitle} from "reactstrap";
 import {TweenMax} from "gsap/TweenMax";
 import {DeleteCategoriey, GetCategoriesAll} from "../../../../../functions/ServerConnection";
@@ -11,13 +12,50 @@ class CategoriesPreviewHomePages extends Component {
     constructor(props) {
         super(props);
         this.state={
-            deleteItem:false,MouseOver:false,Edit:false,CategoriesList:[]
+            deleteItem:false,MouseOver:false,Edit:false,CategoriesList:[],
+            Data:[]
         };
         this.toggleLarge=this.toggleLarge.bind(this);
         this.ClickEdit=this.ClickEdit.bind(this);
         this.toggleEdit=this.toggleEdit.bind(this)
     }
 
+    static getDerivedStateFromProps(props, state) {
+        if (props.items !== state.Data) {
+            let Data = [];
+            if (props.edit) {
+                Data = props.items.Data;
+                return {
+                    Data
+                };
+            } else {
+                Data = props.items.Data.Items;
+                 return {
+                    Data
+                };
+            }
+        }
+        // Return null if the state hasn't changed
+        return null;
+    }
+
+    async componentDidMount(){
+        // let Data = [];
+        // console.log('edit');
+        // console.log(this.props.edit);
+        // console.log(this.props.items.Data);
+        // if (this.props.edit) {
+        //     Data = this.props.items.Data.Items;
+        // } else {
+        //     Data = this.props.items.Data;
+        // }
+        // await this.setState({
+        //     Data
+        // },()=>{
+        //     console.log(this.state.Data);
+        // })
+
+    }
     ClickEdit(Name){
         console.log(Name);
         this.props.ChangeComponent(Name,'Category',this.props.position);
@@ -68,6 +106,7 @@ class CategoriesPreviewHomePages extends Component {
 
     }
 
+
     toggleLarge = () => {
         this.setState(prevState => ({
             deleteItem: !prevState.deleteItem
@@ -91,7 +130,12 @@ class CategoriesPreviewHomePages extends Component {
     }
     render() {
         let{items}=this.props;
-        let {CategoriesList}=this.state;
+        // console.log('items');
+        // console.log(items);
+        // console.log('items..Data.Items[0]');
+        // console.log(items.Data.Items[0].Image);
+        let {CategoriesList,Data}=this.state;
+        // console.log(Data);
         return (
             <div   className=' w-100'  onMouseOver={this.handelEnter.bind(this)} onMouseLeave={this.handelLeave.bind(this)} id={this.props.header} >
                 <CardTitle className='d-flex'>
@@ -113,18 +157,19 @@ class CategoriesPreviewHomePages extends Component {
                     {/*}*/}
                     <div className='d-flex col-6 flex-column paddingZero'>
                         <div className='height25vh w-100  mt-1 mb-1'>
-                            <img src={items.Data[0].Image} className='img-self-fill br02'/>
+                            {/*<img src={items.Data[0].Image || items.Data.Items[0].Image || ax} className='img-self-fill br02'/>*/}
+                            <img src={Data[0].Image} className='img-self-fill br02'/>
                         </div>
                         <div className='height20vh w-100  mt-1 mb-1'>
-                            <img src={items.Data[1].Image} className='img-self-fill br02'/>
+                            <img src={Data[1].Image} className='img-self-fill br02'/>
                         </div>
                     </div>
                     <div className='d-flex col-6 flex-column padding-top-Zero padding-bottom-Zero padding-right-Zero pl-2 '>
                         <div className='height20vh w-100 mt-1 mb-1'>
-                            <img src={items.Data[2].Image} className='img-self-fill br02'/>
+                            <img src={Data[2].Image} className='img-self-fill br02'/>
                         </div>
                         <div className='height25vh w-100 mt-1 mb-1'>
-                            <img src={items.Data[3].Image} className='img-self-fill br02'/>
+                            <img src={Data[3].Image} className='img-self-fill br02'/>
                         </div>
                     </div>
 

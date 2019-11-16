@@ -60,7 +60,7 @@ const initialData = {
     'column-1': {
       id: 'column-1',
       title: 'Header',
-      taskIds: [  ]
+      taskIds: [ ]
     },
     'column-2': {
       id: 'column-2',

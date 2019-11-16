@@ -63,7 +63,8 @@ export default class Task extends React.Component {
     // const isDragDisabled = this.props.task.id === 'task-1'
     //   let {task}=this.props;
       let item =this.props.task;
-      // console.log('item');
+      // console.log('item.data');
+      // console.log(item.Data);
       // console.log(item['id']);
       // let item=task.content;
     return (
@@ -84,10 +85,10 @@ export default class Task extends React.Component {
 
 
               {item.ObjectType==="ItemList"?<SLiderItemsHomePagePreview items={item.Data} position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)}/>:""}
-              {item.ObjectType==="Category"?<CategoriesPreviewHomePages  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)}/>:""}
-              {item.ObjectType==="Package"?<PackagePreviewHomePages  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)}/>:""}
-              {item.ObjectType==="Slider"?<SliderHomePagesPreview  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)}/>:""}
-              {item.ObjectType==="Banner"?<BannerHomePagePreview  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)}/>:""}
+              {item.ObjectType==="Category"?<CategoriesPreviewHomePages  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={false}/>:""}
+              {item.ObjectType==="Package"?<PackagePreviewHomePages  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={false}/>:""}
+              {item.ObjectType==="Slider"?<SliderHomePagesPreview  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={false}/>:""}
+              {item.ObjectType==="Banner"?<BannerHomePagePreview  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)}  edit={false}/>:""}
               {item.ObjectType==="HeaderSlider"?<SliderHomePagesPreview  items={item.Data}/>:""}
             {/*{this.props.item.content}*/}
           </Container>

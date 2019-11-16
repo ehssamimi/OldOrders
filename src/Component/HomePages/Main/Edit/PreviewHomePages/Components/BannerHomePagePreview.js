@@ -13,7 +13,7 @@ class BannerHomePagePreview extends Component {
     constructor(props) {
         super(props);
         this.state={
-            deleteItem:false,MouseOver:false,Edit:false,bannersList:[]
+            deleteItem:false,MouseOver:false,Edit:false,bannersList:[],Data:[],Img:''
         };
         this.handelEnter =this.handelEnter.bind(this);
         this.handelLeave =this.handelLeave.bind(this);
@@ -22,6 +22,33 @@ class BannerHomePagePreview extends Component {
     //     console.log(value);
     //     this.props.clickPreview(value,this.props.id);
     // }
+
+    static getDerivedStateFromProps(props, state) {
+        if (props.items !== state.Data) {
+            let Data = [];let Img='';
+            if (props.edit) {
+                console.log('Data');
+                console.log(props.items.Data);
+                Data = props.items.Data;
+                Img = Data[0].Image;
+                return {
+                    Data,Img
+                };
+            } else {
+                console.log('Data');
+                // console.log(props.items.Data.Items);
+                console.log(props.items.Data );
+                // console.log(Data['Image'] );
+                Data = props.items.Data;
+                Img = Data['Image'];
+                return {
+                    Data,Img
+                };
+            }
+        }
+        // Return null if the state hasn't changed
+        return null;
+    }
     ClickEdit(Name){
         console.log(Name);
         this.props.ChangeComponent(Name,'Banner',this.props.position);
@@ -100,8 +127,8 @@ class BannerHomePagePreview extends Component {
 
 
     render() {
-        let {Data}=this.props.items;
-        let {bannersList}=this.state;
+        // let {Data}=this.props.items;
+        let {bannersList,Data,Img}=this.state;
         // let {Type}=Data[0];
 
         return (
@@ -118,7 +145,7 @@ class BannerHomePagePreview extends Component {
                 <div className=' d-flex flex-column w-100 point-review position-relative h-100'>
                     <div className=' h-75 d-flex '>
                         <div className='height30vh w-100  mt-1 mb-1 pointer   ' >
-                            <img src={Data[0].Image} className='img-self-fill br02'/>
+                            <img src={Img} className='img-self-fill br02'/>
                         </div>
                     </div>
                     {/*<span>{Type.Name}</span>*/}

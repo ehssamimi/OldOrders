@@ -82,6 +82,7 @@ export default class MoveRowIndex extends React.Component {
     this.setState(newState)
   };
 
+
     HandelAdd( column){
         console.log(column)
 
@@ -294,8 +295,7 @@ export default class MoveRowIndex extends React.Component {
                         )
                     })}
                 </Container>
-                {/*<button onClick={this.HandelAdd.bind(this)}>add</button>*/}
-                {/*<button onClick={this.HandelAdd.bind(this)}>add</button>*/}
+
                 <button onClick={this.HandelSend.bind(this)}>send</button>
 
                 <Modal
