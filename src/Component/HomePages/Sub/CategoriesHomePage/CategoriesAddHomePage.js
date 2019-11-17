@@ -224,7 +224,7 @@ class CategoriesAddHomePage extends Component {
                     {Edit? <button className='btn btn-primary' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}
                     </div>
 
-                <div className='col-6 d-flex flex-column justify-content-end'>
+                <div className='col-4 offset-1 d-flex flex-column justify-content-end'>
                     {
                         CategoriesList.length>0?
                             CategoriesList.map((cat ,index)=><PreviewCategories id={CategoriesList[index]._id} key={index} header={cat.Name} ax1={CategoriesList[index].Items[0].Image} ax2={CategoriesList[index].Items[1].Image} ax3={CategoriesList[index].Items[2].Image} ax4={CategoriesList[index].Items[3].Image} clickPreview={this.ClickEdit.bind(this)}/>  ):""

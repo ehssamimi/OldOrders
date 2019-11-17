@@ -2,17 +2,20 @@ import React, {Component} from 'react';
 import {Row, Card, CardBody, CardTitle, Modal, ModalHeader, ModalBody, ModalFooter, Button} from "reactstrap";
 import { Colxx, Separator } from "../../../../../../components/common/CustomBootstrap";
 import GlideComponent from "../../../../../../components/carousel/GlideComponent";
-import {GetAllItemList, DeleteCitemList} from "../../../../../functions/ServerConnection";
+import {DeleteCitemList, allHeaderSlider} from "../../../../../functions/ServerConnection";
 import NotificationManager from "../../../../../../components/common/react-notifications/NotificationManager";
 import {TweenMax} from "gsap/TweenMax";
-import PreviewPackages from "../../../../Sub/WonderPackageAddHomePage/subPackage/PreviewPackages";
+import ax from './../../../../../../assets/img/simpleProduct.jpg'
 import PreviewItems from "../../../../Sub/ItemList/PreviewItems/PreviewItems";
-const NoControlCarouselItem = ({ Name, Images, CurrentPrice, PrevPrice }) => {
+import PreviewMainSlider from "../../../../Sub/SliderAddHomePage/PreviewSliderMAin/PreviewMainSlider";
+import PreviewHeaderSlider from "../../../../Sub/HeaderSlider/Preview/PreviewHeaderSlider";
+const NoControlCarouselItem = ({ Type, Image,Position }) => {
     return (
         <div className="glide-item">
             <Card>
                 <div className="position-relative vh25">
-                    <img className="card-img-top img-self-fill " src={Images} alt={Name} />
+                    <img className="card-img-top img-self-fill " src={Image || ax} alt={Image ||ax} />
+                    {/*<span>{Position}</span>*/}
                     {/*{badges &&*/}
                     {/*badges.map((b, index) => {*/}
                     {/*return (*/}
@@ -31,43 +34,51 @@ const NoControlCarouselItem = ({ Name, Images, CurrentPrice, PrevPrice }) => {
                     {/*);*/}
                     {/*})}*/}
                 </div>
-                <CardBody>
-                    <h6 className="mb-4">{Name}</h6>
-                    <footer>
-                        {/*<p className="text-muted text-small mb-0 font-weight-light">*/}
-                        {/*{Name}*/}
-                        {/*</p>*/}
-                        <div className='d-flex'  >
-                            <span className='  d-flex mr-auto '>
-                                {CurrentPrice}
-                                تومان
-                            </span>
-                            <span className='ml-auto text-muted text-line' >
-                                <span>{PrevPrice}</span>
-                                <span>تومان</span>
 
 
-
-                            </span>
-
-                        </div>
-
-                    </footer>
-                </CardBody>
             </Card>
+            {/*<span>{Type.Name}</span>*/}
         </div>
     );
 };
 
 
 
-class SLiderItemsHomePagePreview extends Component {
+class HeaderSliderPreview extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            deleteItem: false, Edit: false, itemsList: []
+        this.state={
+            deleteItem:false,Data:[],Edit:false,itemsList:[]
         }
     }
+    static getDerivedStateFromProps(props, state) {
+        if (props.items !== state.Data) {
+            let Data = [];
+            if ( props.edit) {
+                // console.log('Data');
+                // console.log(props.items.Data);
+                Data = props.items.Data;
+                return {
+                    Data
+                };
+            } else {
+                // console.log('Data');
+                // console.log(props.items.Data.Items);
+                Data = props.items.Data.Items;
+                // Data = props.items.Data ;
+                return {
+                    Data
+                };
+            }
+            // Data = props.items.Data;
+            // return {
+            //     Data
+            // };
+        }
+        // Return null if the state hasn't changed
+        return null;
+    }
+
 
     async handelDelete() {
         // let data= await DeleteCitemList(this.props.items.Title);
@@ -95,8 +106,6 @@ class SLiderItemsHomePagePreview extends Component {
         // }
         this.toggleLarge()
     }
-
-
     handelclickDelete() {
         this.setState({
             deleteItem: true
@@ -114,7 +123,7 @@ class SLiderItemsHomePagePreview extends Component {
             Edit: true
         });
 
-        let itemsList = await GetAllItemList();
+        let itemsList = await allHeaderSlider();
         // console.log(itemsList);
         this.setState({
             itemsList
@@ -123,7 +132,7 @@ class SLiderItemsHomePagePreview extends Component {
 
     ClickEdit(Name) {
         console.log(Name);
-        this.props.ChangeComponent(Name, 'ItemList', this.props.position);
+        this.props.ChangeComponent(Name, 'HeaderSlider', this.props.position);
         this.toggleEdit()
     }
 
@@ -136,9 +145,12 @@ class SLiderItemsHomePagePreview extends Component {
     render() {
         // console.log(items);
         // console.log(this.props.items);
-        let {Data}=this.props.items;
-        let{itemsList}=this.state;
-        // console.log(itemsList)
+        // let {Data}=this.props.items;
+        let {Data,itemsList}=this.state;
+        console.log('Data');
+        console.log(Data);
+        console.log('props.items.Data');
+        console.log(this.props.items.Data);
         return (
             <div>
                 <Row>
@@ -149,7 +161,7 @@ class SLiderItemsHomePagePreview extends Component {
                                 <span className='  iconsminds-file-edit cursor-pointer' onClick={this.handelclickEdit.bind(this)}></span>
                             </div>
                             {
-                                this.props.items.Title
+                                `${this.props.items.Title}اسلایدر بالای صفحه  `
                             }
                         </CardTitle>
                     </Colxx>
@@ -212,7 +224,8 @@ class SLiderItemsHomePagePreview extends Component {
                         <div className='col-12 d-flex '>
                             <div className='col-6 d-flex flex-column justify-content-end'>
                                 {
-                                    itemsList.length>0? itemsList.map((cat ,index)=><PreviewItems Title={cat.Title} key={index} clickPreview={this.ClickEdit.bind(this)}/>):""
+                                    itemsList.length > 0 ?
+                                        itemsList.map((slider, index) => <PreviewHeaderSlider id={slider._id} key={index} header={slider.Name} slider={slider} clickEdit={this.ClickEdit.bind(this)}/>) : ""
                                 }
                             </div>
                             <div className='col-6'>
@@ -229,4 +242,4 @@ class SLiderItemsHomePagePreview extends Component {
     }
 }
 
-export default SLiderItemsHomePagePreview;
+export default HeaderSliderPreview;

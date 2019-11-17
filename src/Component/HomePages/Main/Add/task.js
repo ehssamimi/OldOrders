@@ -14,6 +14,7 @@ import {
     GetPackageDetail,
     GetSliderDetail
 } from "../../../functions/ServerConnection";
+import HeaderSliderPreview from "../Edit/PreviewHomePages/Components/HeaderSliderPreview";
 
 const Container = styled.div`
   border: 1px solid lightgrey;
@@ -89,7 +90,7 @@ export default class Task extends React.Component {
               {item.ObjectType==="Package"?<PackagePreviewHomePages  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={false}/>:""}
               {item.ObjectType==="Slider"?<SliderHomePagesPreview  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={false}/>:""}
               {item.ObjectType==="Banner"?<BannerHomePagePreview  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)}  edit={false}/>:""}
-              {item.ObjectType==="HeaderSlider"?<SliderHomePagesPreview  items={item.Data}/>:""}
+              {item.ObjectType==="HeaderSlider"?<HeaderSliderPreview  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={false}/>:""}
             {/*{this.props.item.content}*/}
           </Container>
         )}

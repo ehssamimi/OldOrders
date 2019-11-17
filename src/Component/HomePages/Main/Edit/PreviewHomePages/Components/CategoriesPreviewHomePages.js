@@ -39,23 +39,7 @@ class CategoriesPreviewHomePages extends Component {
         return null;
     }
 
-    async componentDidMount(){
-        // let Data = [];
-        // console.log('edit');
-        // console.log(this.props.edit);
-        // console.log(this.props.items.Data);
-        // if (this.props.edit) {
-        //     Data = this.props.items.Data.Items;
-        // } else {
-        //     Data = this.props.items.Data;
-        // }
-        // await this.setState({
-        //     Data
-        // },()=>{
-        //     console.log(this.state.Data);
-        // })
 
-    }
     ClickEdit(Name){
         console.log(Name);
         this.props.ChangeComponent(Name,'Category',this.props.position);
@@ -63,9 +47,10 @@ class CategoriesPreviewHomePages extends Component {
     }
 
     async handelDelete() {
-        let data= await DeleteCategoriey(this.props.header);
+        this.props.deleteComponent(this.props.header,'Category',this.props.position);
+        // let data= await DeleteCategoriey(this.props.header);
         let id=this.props.header;
-        if(data===200){
+        // if(data===200){
             NotificationManager.success(
                 "congratulation",
                 "your categories deleted",
@@ -74,7 +59,7 @@ class CategoriesPreviewHomePages extends Component {
                 null,
                 "success"
             );
-            console.log(data);
+            // console.log(data);
             const $el = document.getElementById(`${id}`);
             const duration = 2;
             const from = { opacity: 0};
@@ -82,7 +67,7 @@ class CategoriesPreviewHomePages extends Component {
             setTimeout(() => {
                 $el.remove();
             }, 2000)
-        }
+        // }
         this.toggleLarge()
     }
     handelclickDelete() {
@@ -140,7 +125,8 @@ class CategoriesPreviewHomePages extends Component {
             <div   className=' w-100'  onMouseOver={this.handelEnter.bind(this)} onMouseLeave={this.handelLeave.bind(this)} id={this.props.header} >
                 <CardTitle className='d-flex'>
                     <div className='mr-auto'>
-                        <span className=' simple-icon-trash cursor-pointer' onClick={this.handelclickDelete.bind(this)}></span>
+                        {/*<span className=' simple-icon-trash cursor-pointer' onClick={this.handelclickDelete.bind(this)}></span>*/}
+                        <span className=' simple-icon-trash cursor-pointer' onClick={this.handelDelete.bind(this)}></span>
                         <span className='  iconsminds-file-edit cursor-pointer' onClick={this.handelclickEdit.bind(this)}></span>
                     </div>
                     {

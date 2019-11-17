@@ -3,7 +3,7 @@ import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AppLayout from './../../../layout/AppLayout';
 const EditMainHomePage = React.lazy(() =>
-    import(/* webpackChunkName: "viwes-gogo" */ './../../../Component/HomePages/HomePages')
+    import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/HomePages/Main/PreviewAllPages/PreviewAllMainMobile')
 );
 const ActiveMainHomePage = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ './../../../Component/HomePages/Main/Active/ActiveMainHomePages')

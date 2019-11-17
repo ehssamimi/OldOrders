@@ -75,18 +75,17 @@ class PreViewBanner extends Component {
                 <HeaderSectionHomePage header={this.props.header}/>
                 <div className=' d-flex flex-column w-100 point-review position-relative h-100'>
                     {
-                        this.state.MouseOver? <div className='w-100 height30vh   d-flex justify-content-center align-items-center overly'>
+                        this.state.MouseOver? <div className='col-12 height30vh   d-flex justify-content-center align-items-center overly'>
                             <div className=' d-flex justify-content-center align-items-center categoriesIconReview m-2' onClick={this.clickEdit.bind(this,this.props.header)}><FaRegEdit /></div>
                             <div className=' d-flex justify-content-center align-items-center categoriesIconReview m-2' onClick={this.handelclickDelete.bind(this)}><MdDeleteForever/></div>
                         </div>:''
                     }
-                    <div className=' vh15 d-flex '>
-                        <div className='height30vh w-100  mt-1 mb-1 pointer   ' >
+                    <div className=' height30vh d-flex '>
+                        <div className='h-100 w-100  mt-1 mb-1 pointer   ' >
                             <img src={ax} className='img-self-fill br02'/>
                         </div>
 
                     </div>
-
                 </div>
                  <Modal
                     isOpen={this.state.deleteItem}

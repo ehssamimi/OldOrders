@@ -3,21 +3,21 @@ import ReactDOM from 'react-dom'
 // import '@atlaskit/css-reset'
 import { DragDropContext } from 'react-beautiful-dnd'
 import styled from 'styled-components'
-import {UpdateHomePage,AddHomePages} from "../../../functions/ServerConnection";
+import {UpdateHomePage, AddHomePages, GetAllHomePages, GetHomePageLoad, ActiveHomePages } from "../../../../functions/ServerConnection";
 
 import initialData from './initial-data'
 import Column from './column'
 import {Modal, ModalBody, ModalHeader} from "reactstrap";
-import AddNewHomePageComponent from "../Edit/AddNewHomePageComponent/AddNewHomePageComponent";
+import AddNewHomePageComponent from "../../Edit/AddNewHomePageComponent/AddNewHomePageComponent";
 
 const Container = styled.div`
-  display:flex;
+  display:block;
 `
 
-export default class MoveRowIndex extends React.Component {
+export default class AllPreviewHomePages extends React.Component {
   state = initialData;
 
-  onDragEnd = result => {
+    onDragEnd = result => {
     const { destination, source, draggableId } = result;
 
     if (!destination) {
@@ -82,6 +82,68 @@ export default class MoveRowIndex extends React.Component {
     this.setState(newState)
   };
 
+    async componentDidMount(){
+        // console.log('active');
+        // console.log(this.props.item.Name)
+        // let AllHomePages=await GetAllHomePages();
+        // let Name=AllHomePages[1].Name;
+        let tasks = this.state.tasks;
+        let columns = this.state.columns;
+        let Description=await GetHomePageLoad(this.props.item.Name);
+        // console.log(Description);
+        let { Body,Header,Footer } =Description ;
+
+        let i;var j=1;let BodyRecive={};
+        for (i=0;i<Header.length;i++){
+            let NewID='item-'+(j+i);
+            let row = {
+                "ObjectType": Header[i].ObjectType,
+                "Position": i,
+                "Data": {
+                    "Title": Header[i].Data['Title'],
+                    "Data": Header[i].Data['Data']
+                }
+            };
+            columns['column-1']['taskIds'].push(NewID);
+            tasks[NewID] = row;
+            j=j+i
+        }
+        for (i=0;i<Body.length;i++){
+            let NewID='item-'+(j+i);
+            let row = {
+                "ObjectType": Body[i].ObjectType,
+                "Position": i,
+                "Data": {
+                    "Title": Body[i].Data['Title'],
+                    "Data": Body[i].Data['Data']
+                }
+            };
+            columns['column-2']['taskIds'].push(NewID);
+            tasks[NewID] = row;
+            j=j+i
+        }
+        for (i=0;i<Footer.length;i++){
+            let NewID='item-'+(j+i);
+            let row = {
+                "ObjectType": Footer[i].ObjectType,
+                "Position": i,
+                "Data": {
+                    "Title": Footer[i].Data['Title'],
+                    "Data": Footer[i].Data['Data']
+                }
+            };
+            columns['column-3']['taskIds'].push(NewID);
+            tasks[NewID] = row;
+            j=j+i
+        }
+        this.setState({
+            tasks, columns
+        },()=>{
+            console.log(this.state.tasks)
+            console.log(this.state.columns)
+        })
+        console.log(BodyRecive)
+    }
 
     HandelAdd( column){
         // console.log(column)
@@ -134,11 +196,10 @@ export default class MoveRowIndex extends React.Component {
         // console.log(Title);
         const tasks = this.state.tasks;
         let number = Object.keys(tasks).length+1;
-
          let columns  = this.state.columns ;
          let NewID="item-" + `${number}`;
-        //
-        // console.log(columns['column-1']['taskIds']);
+
+         // console.log(columns['column-1']['taskIds']);
         // columns['column-1']['taskIds'].push(NewID);
 
         console.log(columns[this.state.column]['taskIds']);
@@ -244,6 +305,12 @@ export default class MoveRowIndex extends React.Component {
 
 
     }
+    HandelActive(){
+        console.log(this.props.item.Name);
+        let data=ActiveHomePages(this.props.item.Name);
+        console.log(data);
+
+    }
    async HandelSend(){
         let {columns, tasks} = this.state;
 
@@ -327,10 +394,11 @@ export default class MoveRowIndex extends React.Component {
 
   render() {
     let {columns}=this.state;
+
     // console.log(columns);
 
     return (
-        <div className='w-100 '>
+        <div className='col-4 '>
             <div className=' w-100 d-flex align-items-center h-3vh  '  >
                 <span className='ml-2 mr-2 h-100 d-flex align-items-center'>Name: </span>
                 <input type='text' onChange={this.handelChangeText.bind(this)} value={this.state.header} className='border-0 h-100'/>
@@ -351,7 +419,8 @@ export default class MoveRowIndex extends React.Component {
                     })}
                 </Container>
 
-                <button onClick={this.HandelSend.bind(this)}>send</button>
+                {/*<button onClick={this.HandelSend.bind(this)}>send</button>*/}
+                <button onClick={this.HandelActive.bind(this)}>active</button>
 
                 <Modal
                     isOpen={this.state.add}

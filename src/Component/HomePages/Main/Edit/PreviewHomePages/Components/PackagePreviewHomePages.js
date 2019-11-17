@@ -24,15 +24,15 @@ class PackagePreviewHomePages extends Component {
             if (props.edit) {
 
                 Data = props.items.Data;
-                console.log('Data');
-                console.log(Data);
+                // console.log('Data');
+                // console.log(Data);
                 return {
                     Data
                 };
             } else {
                 Data = props.items.Data.Items;
-                console.log('Data');
-                console.log(Data);
+                // console.log('Data');
+                // console.log(Data);
                 return {
                     Data
                 };
@@ -49,27 +49,27 @@ class PackagePreviewHomePages extends Component {
     }
 
     async handelDelete() {
-        console.log(this.props.id);
-        let data= await DeletePackage(this.props.id);
+        this.props.deleteComponent(this.props.header,'Package',this.props.position);
+        // let data= await DeleteCategoriey(this.props.header);
         let id=this.props.header;
-        if(data===200){
-            NotificationManager.success(
-                "congratulation",
-                "your categories deleted",
-                3000,
-                null,
-                null,
-                "success"
-            );
-            console.log(data);
-            const $el = document.getElementById(`${id}`);
-            const duration = 2;
-            const from = { opacity: 0};
-            TweenMax.to($el, duration, from);
-            setTimeout(() => {
-                $el.remove();
-            }, 2000)
-        }
+        // if(data===200){
+        NotificationManager.success(
+            "congratulation",
+            "your Package deleted",
+            3000,
+            null,
+            null,
+            "success"
+        );
+        // console.log(data);
+        const $el = document.getElementById(`${id}`);
+        const duration = 2;
+        const from = { opacity: 0};
+        TweenMax.to($el, duration, from);
+        setTimeout(() => {
+            $el.remove();
+        }, 2000)
+        // }
         this.toggleLarge()
     }
     handelclickDelete() {
@@ -115,7 +115,7 @@ class PackagePreviewHomePages extends Component {
     }
     render() {
         let{items}=this.props;
-        console.log('items');
+        // console.log('items');
 
         let{PackageList,Data}=this.state;
         return (

@@ -561,5 +561,22 @@ export async  function  UpdateHomePage(Data){
     let { status } = res ;
     return status
 }
+export async  function  ActiveHomePages(Name){
+    // let formData = new FormData();
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+        // 'category_id': CatId,
+    };
+    // formData.append("Position",Position);
+    // formData.append("Image",Image);
+    // formData.append("DestinationId",DestinationId);
+    // formData.append("Destination",Destination);
+    let res = await axios.put(`${Const.HomePage}admin/homepage/${Name}/active`,  {headers: headers});
+    console.log(res);
+    let { ItemId } = res.data ;
+    let { status } = res ;
+    return status
+}
 
 

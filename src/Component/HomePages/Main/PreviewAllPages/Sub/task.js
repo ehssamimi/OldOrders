@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Draggable } from 'react-beautiful-dnd'
-import SLiderItemsHomePagePreview from "../Edit/PreviewHomePages/Components/SLiderItemsHomePagePreview";
-import CategoriesPreviewHomePages from "../Edit/PreviewHomePages/Components/CategoriesPreviewHomePages";
-import PackagePreviewHomePages from "../Edit/PreviewHomePages/Components/PackagePreviewHomePages";
-import SliderHomePagesPreview from "../Edit/PreviewHomePages/Components/SliderHomePagesPreview";
-import BannerHomePagePreview from "../Edit/PreviewHomePages/Components/BannerHomePagePreview";
+import SLiderItemsHomePagePreview from "../../Edit/PreviewHomePages/Components/SLiderItemsHomePagePreview";
+import CategoriesPreviewHomePages from "../../Edit/PreviewHomePages/Components/CategoriesPreviewHomePages";
+import PackagePreviewHomePages from "../../Edit/PreviewHomePages/Components/PackagePreviewHomePages";
+import SliderHomePagesPreview from "../../Edit/PreviewHomePages/Components/SliderHomePagesPreview";
+import BannerHomePagePreview from "../../Edit/PreviewHomePages/Components/BannerHomePagePreview";
 import {Card} from "reactstrap";
 import {
     GetBannersDetail,
@@ -13,9 +13,9 @@ import {
     GetItemDetail,
     GetPackageDetail,
     GetSliderDetail
-} from "../../../functions/ServerConnection";
-import HeaderSliderPreview from "../Edit/PreviewHomePages/Components/HeaderSliderPreview";
-import UndoComponents from "../Edit/PreviewHomePages/Components/UndoComponents";
+} from "../../../../functions/ServerConnection";
+import HeaderSliderPreview from "../../Edit/PreviewHomePages/Components/HeaderSliderPreview";
+import UndoComponents from "../../Edit/PreviewHomePages/Components/UndoComponents";
 
 const Container = styled.div`
   border: 1px solid lightgrey;
@@ -94,12 +94,12 @@ export default class Task extends React.Component {
 
 
               {item.ObjectType==="ItemList"?<SLiderItemsHomePagePreview items={item.Data} position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)}/>:""}
-              {item.ObjectType==="Category"?<CategoriesPreviewHomePages  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={true} deleteComponent={this.deleteComponent.bind(this)}/>:""}
-              {item.ObjectType==="Package"?<PackagePreviewHomePages  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={true} deleteComponent={this.deleteComponent.bind(this)}/>:""}
-              {item.ObjectType==="Slider"?<SliderHomePagesPreview  items={item.Data} position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={true}/>:""}
-              {item.ObjectType==="Banner"?<BannerHomePagePreview  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)}  edit={true}/>:""}
-              {item.ObjectType==="HeaderSlider"?<HeaderSliderPreview  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={true}/>:""}
-              {item.ObjectType==="Deleted"?<UndoComponents  items={item.Data} id={this.props.task.id}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={true} {...this.props}/>:""}
+              {item.ObjectType==="Category"?<CategoriesPreviewHomePages  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={false} deleteComponent={this.deleteComponent.bind(this)}/>:""}
+              {item.ObjectType==="Package"?<PackagePreviewHomePages  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={false} deleteComponent={this.deleteComponent.bind(this)}/>:""}
+              {item.ObjectType==="Slider"?<SliderHomePagesPreview  items={item.Data} position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={false}/>:""}
+              {item.ObjectType==="Banner"?<BannerHomePagePreview  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)}  edit={false}/>:""}
+              {item.ObjectType==="HeaderSlider"?<HeaderSliderPreview  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={false}/>:""}
+              {item.ObjectType==="Deleted"?<UndoComponents  items={item.Data} id={this.props.task.id}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={false} {...this.props}/>:""}
             {/*{this.props.item.content}*/}
           </Container>
         )}

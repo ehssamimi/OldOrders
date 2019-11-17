@@ -27,35 +27,35 @@ class AddNewHomePageComponent extends Component {
         switch (name) {
             case 'ItemList':
                  ItemsList = await GetAllItemList();
-                console.log(ItemsList);
+                // console.log(ItemsList);
                 this.setState({
                     ItemsList
                 });
                 break;
             case 'Category':
                   ItemsList = await GetCategoriesAll();
-                console.log(ItemsList);
+                // console.log(ItemsList);
                 this.setState({
                     ItemsList
                 });
                 break;
             case 'Package':
                 ItemsList = await allPackage();
-                console.log(ItemsList);
+                // console.log(ItemsList);
                 this.setState({
                     ItemsList
                 });
                 break;
             case 'Slider':
                 ItemsList = await allMainSlider();
-                console.log(ItemsList);
+                // console.log(ItemsList);
                 this.setState({
                     ItemsList
                 });
                 break;
             case 'Banner':
                 ItemsList = await GetBanners();
-                console.log(ItemsList);
+                // console.log(ItemsList);
                 this.setState({
                     ItemsList
                 });
@@ -63,7 +63,7 @@ class AddNewHomePageComponent extends Component {
             case 'HeaderSlider':
                 ItemsList = await allHeaderSlider();
                 // console.log('headerSlider');
-                console.log(ItemsList);
+                // console.log(ItemsList);
                 this.setState({
                     ItemsList
                 });

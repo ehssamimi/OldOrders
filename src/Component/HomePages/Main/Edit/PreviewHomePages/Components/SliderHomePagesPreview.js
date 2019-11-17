@@ -2,10 +2,12 @@ import React, {Component} from 'react';
 import {Row, Card, CardBody, CardTitle, Modal, ModalHeader, ModalBody, ModalFooter, Button} from "reactstrap";
 import { Colxx, Separator } from "../../../../../../components/common/CustomBootstrap";
 import GlideComponent from "../../../../../../components/carousel/GlideComponent";
-import {DeleteCitemList} from "../../../../../functions/ServerConnection";
+import {DeleteCitemList, allMainSlider} from "../../../../../functions/ServerConnection";
 import NotificationManager from "../../../../../../components/common/react-notifications/NotificationManager";
 import {TweenMax} from "gsap/TweenMax";
 import ax from './../../../../../../assets/img/simpleProduct.jpg'
+import PreviewItems from "../../../../Sub/ItemList/PreviewItems/PreviewItems";
+import PreviewMainSlider from "../../../../Sub/SliderAddHomePage/PreviewSliderMAin/PreviewMainSlider";
 const NoControlCarouselItem = ({ Type, Image,Position }) => {
     return (
         <div className="glide-item">
@@ -45,7 +47,7 @@ class SliderHomePagesPreview extends Component {
     constructor(props) {
         super(props);
         this.state={
-            deleteItem:false,Data:[]
+            deleteItem:false,Data:[],Edit:false,itemsList:[]
         }
     }
     static getDerivedStateFromProps(props, state) {
@@ -110,11 +112,35 @@ class SliderHomePagesPreview extends Component {
         }));
     };
 
+    async handelclickEdit() {
+        this.setState({
+            Edit: true
+        });
+
+        let itemsList = await allMainSlider();
+        // console.log(itemsList);
+        this.setState({
+            itemsList
+        });
+    }
+
+    ClickEdit(Name) {
+        console.log(Name);
+        this.props.ChangeComponent(Name, 'Slider', this.props.position);
+        this.toggleEdit()
+    }
+
+    toggleEdit = () => {
+        this.setState(prevState => ({
+            Edit: !prevState.Edit
+        }));
+    };
+
     render() {
         // console.log(items);
         // console.log(this.props.items);
         // let {Data}=this.props.items;
-        let {Data}=this.state;
+        let {Data,itemsList}=this.state;
         // console.log('Data');
         // console.log(Data);
         return (
@@ -124,7 +150,7 @@ class SliderHomePagesPreview extends Component {
                         <CardTitle className='d-flex'>
                             <div className='mr-auto'>
                                 <span className=' simple-icon-trash cursor-pointer' onClick={this.handelclickDelete.bind(this)}></span>
-                                <span className='  iconsminds-file-edit cursor-pointer' onClick={this.handelclickDelete.bind(this)}></span>
+                                <span className='  iconsminds-file-edit cursor-pointer' onClick={this.handelclickEdit.bind(this)}></span>
                             </div>
                             {
                                 `${this.props.items.Title}اسلایدر `
@@ -175,6 +201,32 @@ class SliderHomePagesPreview extends Component {
                             Cancel
                         </Button>
                     </ModalFooter>
+
+                </Modal>
+                <Modal
+                    isOpen={this.state.Edit}
+                    size="lg"
+                    toggle={this.toggleEdit}
+                >
+                    <ModalHeader toggle={this.toggleEdit}>
+                        Change ItemList {this.props.header}
+
+                    </ModalHeader>
+                    <ModalBody>
+                        <div className='col-12 d-flex '>
+                            <div className='col-6 d-flex flex-column justify-content-end'>
+                                {
+                                    itemsList.length > 0 ?
+                                        itemsList.map((slider ,index)=><PreviewMainSlider id={slider._id} key={index} header={slider.Name} slider={slider} clickEdit={this.ClickEdit.bind(this)}/>  ):""
+                                }
+                            </div>
+                            <div className='col-6'>
+
+                            </div>
+
+                        </div>
+                    </ModalBody>
+
 
                 </Modal>
             </div>
