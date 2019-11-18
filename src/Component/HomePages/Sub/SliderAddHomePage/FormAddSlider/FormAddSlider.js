@@ -11,6 +11,7 @@ import { Colxx } from "../../../../../components/common/CustomBootstrap";
 import CustomSelectInput from "../../../../../components/common/CustomSelectInput";
 import CropImgCropper from "../../CropImg/CropImgCropper";
 import Destination from "../../Destination/Destination";
+import CropSliderImg from "../../CropImg/CropSliderImg";
 
 const selectData = [
     { label: "Cake", value: "cake", key: 0 },
@@ -115,8 +116,9 @@ class FormAddSlider extends Component {
                     {/*/>*/}
                 {/*</FormGroup>*/}
 
-                <CropImgCropper label={this.props.header} aspect={3/2} GetImgFile={this.GetImgFile.bind(this)}/>
-                <Button onClick={this.HandelSend.bind(this)}>send</Button>
+                {/*<CropImgCropper label={this.props.header} aspect={3/2} GetImgFile={this.GetImgFile.bind(this)}/>*/}
+                <CropSliderImg label={this.props.header} aspect={3/2} GetImgFile={this.GetImgFile.bind(this)} DestinationString={this.state.DestinationString} {...this.props}/>
+                {/*<Button onClick={this.HandelSend.bind(this)}>send</Button>*/}
 
             </div>
         );

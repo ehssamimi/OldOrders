@@ -15,7 +15,7 @@ import { Formik, Form, Field } from "formik";
 
 const cropper = React.createRef(null);
 
-class CropImgCropper extends Component {
+class CropSliderImg extends Component {
     constructor(props) {
         super(props);
         this.state =
@@ -24,6 +24,8 @@ class CropImgCropper extends Component {
                 cropResult: null,
                 type:'',name:'',
                 id:'',
+                clickButton:false,
+                alertTxt:'',
                 error:{'name':"",'id':"",'DestinationString':''}
             };
         this.onChangeImage = this.onChangeImage.bind(this);
@@ -56,70 +58,25 @@ class CropImgCropper extends Component {
         if (typeof this.cropper.getCroppedCanvas() === 'undefined') {
             return;
         }
-        var validate=true; ; var error={'name':"",'id':"",'DestinationString':''};
-        if (this.state.src==='') {
-            validate=false;
-            error['name']='لطفا عکس رو انتخاب کنید ';
-            // alertTxt+='src is not found ';
-        }
-        // if(this.props.DestinationString===''){
-        //     validate=false;
-        //     error['DestinationString']='لطفا نوع را مشخص کنید  ';
-        //
-        //     // alertTxt+='DestinationString is not found ';
-        // }
-        if(this.state.id===''){
-            validate=false;
-            error['id']='لطفانام اسلایدر انتخاب کنبد';
 
-            // alertTxt+='destination is not found ';
-        }
+
+        // ********set the preview ccrop img*********
+
+
         this.setState({
-            error
+            cropResult: this.cropper.getCroppedCanvas().toDataURL(),
+        },()=>{
+
+            // console.log(this.cropper.getCroppedCanvas());
+            let file= base64StringtoFile(this.state.cropResult,this.state.name,this.state.type);
+            // ***this is file to set server*********
+            // console.log(file);
+            // this.props.GetImgFile(file,this.state.cropResult,this.props.label);
+            this.props.GetImgFile(file,this.state.id,this.props.label ,this.state.cropResult);
+            // console.log(this.state.id);
+            // extractImageFileExtensionFromBase64(this.cropper.getCroppedCanvas())
         });
 
-        // ********set the preview ccrop img*********
-        if (validate) {
-            this.setState(pre=>({
-                cropResult: this.cropper.getCroppedCanvas().toDataURL(),
-                clickButton:!pre.clickButton
-            }),()=>{
-
-                // console.log(this.cropper.getCroppedCanvas());
-                let file= base64StringtoFile(this.state.cropResult,this.state.name,this.state.type);
-                // ***this is file to set server*********
-                // console.log(file);
-                // this.props.GetImgFile(file,this.state.cropResult,this.props.label);
-
-                // this.props.GetImgFile(file,this.state.id,this.props.label ,this.state.cropResult);
-
-                if (this.state.clickButton===true){
-                    this.props.GetImgFile(file, this.state.id, this.props.label, this.state.cropResult);
-                }
-                // console.log(this.state.id);
-                // extractImageFileExtensionFromBase64(this.cropper.getCroppedCanvas())
-            });
-        }else {
-            console.log(error)
-        }
-
-        // this.setState({
-        //     cropResult: this.cropper.getCroppedCanvas().toDataURL(),
-        // },()=>{
-        //
-        //     // console.log(this.cropper.getCroppedCanvas());
-        //     let file= base64StringtoFile(this.state.cropResult,this.state.name,this.state.type);
-        //     // ***this is file to set server*********
-        //     // console.log(file);
-        //     // this.props.GetImgFile(file,this.state.cropResult,this.props.label);
-        //     this.props.GetImgFile(file,this.state.id,this.props.label ,this.state.cropResult);
-        //     // console.log(this.state.id);
-        //     // extractImageFileExtensionFromBase64(this.cropper.getCroppedCanvas())
-        // });
-
-
-
-        // ********set the preview ccrop img*********
 
     }
     handelChange(e, value){
@@ -172,7 +129,66 @@ class CropImgCropper extends Component {
         })
     }
 
+    handelCrop(){
 
+        if (typeof this.cropper.getCroppedCanvas() === 'undefined') {
+            return;
+        }
+
+        var validate=true;var alertTxt=''; var error={'name':"",'id':"",'DestinationString':''};
+        if (this.state.src==='') {
+            validate=false;
+            error['name']='لطفا عکس رو انتخاب کنید ';
+            // alertTxt+='src is not found ';
+        }
+          if(this.props.DestinationString===''){
+            validate=false;
+              error['DestinationString']='لطفا نوع را مشخص کنید  ';
+
+              // alertTxt+='DestinationString is not found ';
+        }
+         if(this.state.id===''){
+            validate=false;
+             error['id']='لطفانام اسلایدر انتخاب کنبد';
+
+             // alertTxt+='destination is not found ';
+        }
+        this.setState({
+            error
+        });
+
+        // ********set the preview ccrop img*********
+        if (validate) {
+            this.setState(pre=>({
+                cropResult: this.cropper.getCroppedCanvas().toDataURL(),
+                clickButton:!pre.clickButton
+            }),()=>{
+
+                // console.log(this.cropper.getCroppedCanvas());
+                let file= base64StringtoFile(this.state.cropResult,this.state.name,this.state.type);
+                // ***this is file to set server*********
+                // console.log(file);
+                // this.props.GetImgFile(file,this.state.cropResult,this.props.label);
+
+                // this.props.GetImgFile(file,this.state.id,this.props.label ,this.state.cropResult);
+
+                if (this.state.clickButton===true){
+                    this.props.GetData(file, this.state.id, this.props.label, this.state.cropResult, this.props.DestinationString);
+                }
+                // console.log(this.state.id);
+                // extractImageFileExtensionFromBase64(this.cropper.getCroppedCanvas())
+            });
+        }else {
+            console.log(error)
+        }
+
+
+
+        // this.setState(pre=>({
+        //     clickButton:!pre.clickButton
+        // }))
+
+    }
 
 
     render(){
@@ -184,21 +200,24 @@ class CropImgCropper extends Component {
             <div>
                 {/***********Suggest********/}
                 {/*<div className='col-12'>*/}
-                    {/*<FormGroup className="form-group  position-relative has-float-label w-100 ">*/}
-                        {/*<Label>*/}
-                            {/*<IntlMessages id={'نوع محصول'} />*/}
-                        {/*</Label>*/}
+                {/*<FormGroup className="form-group  position-relative has-float-label w-100 ">*/}
+                {/*<Label>*/}
+                {/*<IntlMessages id={'نوع محصول'} />*/}
+                {/*</Label>*/}
 
-                        {/*/!*<AutoSuggestEdit*!/*/}
-                            {/*/!*placeholder={"type item name"}*!/*/}
-                            {/*/!*data={rightData}*!/*/}
-                            {/*/!*onChange={value => this.handelChange(this, value)*!/*/}
-                            {/*/!*}*!/*/}
-                        {/*/>*/}
+                {/*/!*<AutoSuggestEdit*!/*/}
+                {/*/!*placeholder={"type item name"}*!/*/}
+                {/*/!*data={rightData}*!/*/}
+                {/*/!*onChange={value => this.handelChange(this, value)*!/*/}
+                {/*/!*}*!/*/}
+                {/*/>*/}
 
-                    {/*</FormGroup>*/}
+                {/*</FormGroup>*/}
                 {/*</div>*/}
                 <div className="col-sm-12">
+                    {
+                        this.state.error['DestinationString']!==''?<span className='fs-08vw color-theme-1  d-flex justify-content-end mb-5'  >{this.state.error['DestinationString']}</span>:''
+                    }
 
                     <FormGroup className="form-group  position-relative has-float-label w-100">
                         <div className='d-flex justify-content-end'>
@@ -214,11 +233,12 @@ class CropImgCropper extends Component {
                                 onChange={this.handelChangeName}
                                 label={this.state.id ||'انتخاب عکس'}
                             />
-                         </InputGroup>
+                        </InputGroup>
+
 
                     </FormGroup>
                     {
-                        this.state.error['id']!==''?<span className='fs-08vw color-theme-1 mr-3 d-flex justify-content-end mb-5'  >{this.state.error['id']}</span>:''
+                        this.state.error['id']!==''?<span className='fs-08vw color-theme-1 d-flex justify-content-end mb-5'  >{this.state.error['id']}</span>:''
                     }
                 </div>
 
@@ -243,13 +263,12 @@ class CropImgCropper extends Component {
                         </InputGroup>
 
                     </FormGroup>
-                    {
-                        this.state.error['name']!==''?<span className='fs-08vw color-theme-1 mr-3 d-flex justify-content-end mb-5'  >{this.state.error['name']}</span>:''
-                    }
                 </div>
 
                 {/*<input type="file" id="uploadImage" name="uploadImage" onChange={this.onChangeImage} />*/}
-
+                {
+                    this.state.error['name']!==''?<span className='fs-08vw color-theme-1 mr-3 d-flex justify-content-end mb-5'  >{this.state.error['name']}</span>:''
+                }
                 <Cropper
                     style={{ height: 400, width: '100%' }}
                     aspectRatio={aspect}
@@ -258,9 +277,12 @@ class CropImgCropper extends Component {
                     src={this.state.src}
                     ref={cropper => { this.cropper = cropper; }}
                 />
-                <button onClick={this.cropImage} style={{ float: 'right' }} className='btn btn-primary'>
-                    crop img
-                </button>
+
+                {/*<button onClick={this.cropImage} style={{ float: 'right' }} className='btn btn-primary'>*/}
+                    {/*crop img*/}
+                {/*</button>*/}
+                <button onClick={this.handelCrop.bind(this)} className={this.state.clickButton?"btn btn-primary":"btn btn-warning"}>{this.state.clickButton?'send':'crop'}</button>
+
                 {/*<img src={this.state.cropResult} alt="img"/>*/}
                 {/*<img src='' id='uploadPreview' alt='aa'/>*/}
             </div>
@@ -269,4 +291,4 @@ class CropImgCropper extends Component {
     }
 }
 
-export default CropImgCropper;
+export default CropSliderImg;

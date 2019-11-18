@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PreviewMainSlider from "../SliderAddHomePage/PreviewSliderMAin/PreviewMainSlider";
+import { FaPlusCircle } from "react-icons/fa";
 import {
 
     AddSlider,
@@ -64,6 +64,10 @@ class HeaderSliderMain extends Component {
         }));
     };
     GetData(file, Destination, label, Base64, DestinationString){
+        console.log('DestinationString');
+        console.log(DestinationString);
+
+
         let NewLabel=label.slice(4,5);
         // let imgdetail={Position:NewLabel,Image:file,Destination:DestinationString};
         // this.state.Sliders.push(imgdetail);
@@ -126,6 +130,7 @@ class HeaderSliderMain extends Component {
             modalLarge: !prevState.modalLarge
         }));
     }
+
     async HandelSubmit(){
         let {Sliders,header}=this.state;
         let i;
@@ -189,9 +194,14 @@ class HeaderSliderMain extends Component {
             <div className='d-flex '>
                 <div className='col-6'>
                     <AddHeadersSlider DetailImages={this.state.files} GetSliderType={this.GetSliderType.bind(this)}
-                                   GetCategoriesName={this.GetCategoriesName.bind(this)} header={headerPlaceHolder||'انتخاب نام'}/>
-                    <button onClick={this.AddExtraSlider.bind(this)}>add extra slider</button>
-                    {this.state.Edit? <button className='btn btn-primary' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}
+                                   GetCategoriesName={this.GetCategoriesName.bind(this)} header={headerPlaceHolder||'انتخاب نام'} Edit={this.state.Edit}/>
+
+                    {/*<button onClick={this.AddExtraSlider.bind(this)}>add extra slider</button>*/}
+                    <div className='d-flex w-100 align-items-center h-7vh '>
+                        {this.state.Edit? <button className='btn btn-primary ' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}
+
+                        <span className='fs-24vw color-theme-2 ml-auto btn d-flex align-items-center pr-0'  onClick={this.AddExtraSlider.bind(this)}><FaPlusCircle/></span>
+                    </div>
 
                 </div>
                 <div className='col-6'>
@@ -208,7 +218,9 @@ class HeaderSliderMain extends Component {
                     size="lg"
                     toggle={this.toggleLarge}
                 >
-                    <ModalHeader toggle={this.toggleLarge}>
+                    <ModalHeader toggle={this.toggleLarge}  >
+                        <span className=''>  انتخاب عکس</span>
+
                     </ModalHeader>
                     <ModalBody>
                         <div className='col-12 d-flex flex-column'>

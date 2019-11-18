@@ -104,14 +104,17 @@ class PreviewHeaderSlider extends Component {
             <div id={this.props.slider.Name}>
                 <Row>
                     <Colxx xxs="12" >
-                        <CardTitle className='d-flex'>
-                            {
-                                this.props.slider.Name
-                            }
-                            <div className='d-flex ml-auto  '>
-                                <div className=' d-flex    m-2' onClick={this.handelEdit.bind(this,this.props.header)}><FaRegEdit /></div>
-                                <div className=' d-flex    m-2' onClick={this.handelclickDelete.bind(this)}><MdDeleteForever/></div>
+                        <CardTitle className='d-flex h-4vh align-items-start '>
+
+                            <div className='d-flex mr-auto  '>
+                                <div className=' d-flex fs-13vw color-theme-1 m-2 BtnHeaderComponent ' onClick={this.handelEdit.bind(this,this.props.header)}><FaRegEdit /></div>
+                                <div className=' d-flex  fs-13vw  color-theme-1 m-2 BtnHeaderComponent ' onClick={this.handelclickDelete.bind(this)}><MdDeleteForever/></div>
                             </div>
+
+                            <span dir='rtl' className='ml-2 d-flex align-items-end '>
+                                نام :  {this.props.slider.Name}
+                            </span>
+
                             {/*<span className='ml-auto simple-icon-trash' onClick={this.handelclickDelete.bind(this)}></span>*/}
                             {/*<span className='ml-auto simple-icon-trash' onClick={this.handelEdit.bind(this)}></span>*/}
 

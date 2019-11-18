@@ -11,11 +11,23 @@ class WonderPackageHomePage extends Component {
     }
 
     render() {
-        let{ax1,ax2,ax3,ax4,ax5}=this.props;
+        let{ax1,ax2,ax3,ax4,ax5,header}=this.props;
         return (
             <div>
                 {/*<HeaderSectionHomePage header={this.props.header}/>*/}
-                <HeaderCategoriyInput header={this.props.header} {...this.props}/>
+                {
+                    this.props.Edit?
+                        <span dir='rtl' className='ml-2 d-flex align-items-end fs-13vw '>
+                                نام : {header}
+                        </span>
+
+                        :
+                        <HeaderCategoriyInput header={this.props.header} {...this.props}/>
+
+                }
+
+
+                {/*<HeaderCategoriyInput header={this.props.header} {...this.props}/>*/}
 
                 <div className=' d-flex w-100 flex-column'>
                     <div className=' height20vh d-flex '>

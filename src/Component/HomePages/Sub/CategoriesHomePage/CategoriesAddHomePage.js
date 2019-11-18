@@ -220,7 +220,7 @@ class CategoriesAddHomePage extends Component {
         return (
             <div className='w-100 d-flex'>
                 <div className='col-6'>
-                    <CategoriesHomePage header={header||'دسته بندی'} ax1={ax1||ax} ax2={ax2||ax} ax3={ax3||ax} ax4={ax4||ax} ClickImg={this.GetImgType.bind(this)} GetCategoriesName={this.GetCategoriesName}/>
+                    <CategoriesHomePage Edit={this.state.Edit} header={header||'دسته بندی'} ax1={ax1||ax} ax2={ax2||ax} ax3={ax3||ax} ax4={ax4||ax} ClickImg={this.GetImgType.bind(this)} GetCategoriesName={this.GetCategoriesName}/>
                     {Edit? <button className='btn btn-primary' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}
                     </div>
 

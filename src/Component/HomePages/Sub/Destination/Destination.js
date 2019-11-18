@@ -54,7 +54,7 @@ class Destination extends Component {
 
         return (
 
-                <Colxx xxs="12"   className="mb-5 form-group  position-relative has-float-label">
+                <Colxx xxs="12"   className="mb-3 form-group  position-relative has-float-label">
                     <label>
                         <IntlMessages id="Destination" />
                     </label>

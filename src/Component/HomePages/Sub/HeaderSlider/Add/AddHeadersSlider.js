@@ -80,15 +80,24 @@ class AddHeadersSlider extends Component {
         return (
             <div id={1}>
                 <Row>
-                    <Colxx xxs="12" >
+                    <Colxx xxs="12" className='d-flex justify-content-end' >
                         <CardTitle className='d-flex'>
-                            <span dir='rtl' className='d-flex justify-content-start'>
-                             <input type='text' name="id" id="id" onChange={this.handelChangeName.bind(this)}
-                                 className='border-0 fS1vw backgroundDefault' placeholder={ header}/>
-                             </span>
+                            {
+                                this.props.Edit ?
+                                    <span dir='rtl' className='ml-2 d-flex align-items-end '>
+                                     نام : {header}
+                                     </span>
+                                    :
+                                    <span dir='rtl' className='d-flex  align-items-center'>
+                                         <span className='ml-2'>نام:</span>
+                                         <input type='text' name="id" id="id"
+                                                onChange={this.handelChangeName.bind(this)}
+                                                className='border-0 fS1vw backgroundDefault' placeholder={header}/>
+                                    </span>
+                            }
                         </CardTitle>
                     </Colxx>
-                    <Colxx xxs="12" className="pl-0 pr-0 mb-5">
+                    <Colxx xxs="12" className="pl-0 pr-0 mb-3">
                         <GlideComponent settings={
                             {
                                 gap: 5,
