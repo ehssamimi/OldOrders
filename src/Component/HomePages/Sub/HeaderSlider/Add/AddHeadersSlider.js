@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Card, CardBody, CardTitle, Row} from "reactstrap";
 import {Colxx} from "../../../../../components/common/CustomBootstrap";
 import GlideComponent from "../../../../../components/carousel/GlideComponent";
+import HeaderPreviewComponentHomePage from "../../HeaderPreviewComponentHomePage/HeaderPreviewComponentHomePage";
 
 const NoControlCarouselItem = ({ Destination, img }) => {
 
@@ -81,6 +82,8 @@ class AddHeadersSlider extends Component {
             <div id={1}>
                 <Row>
                     <Colxx xxs="12" className='d-flex justify-content-end' >
+
+
                         <CardTitle className='d-flex'>
                             {
                                 this.props.Edit ?

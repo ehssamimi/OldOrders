@@ -55,6 +55,17 @@ class AddBanerHomePage extends Component {
     }
 
 
+    static getDerivedStateFromProps(props, state) {
+        console.log(props.name);
+        console.log(state.name);
+        if (props.name !== state.name) {
+            return {
+                name: props.name,
+            };
+        }
+        // Return null if the state hasn't changed
+        return null;
+    }
 
     GetDestinationString(DestinationString){
         this.setState({
@@ -63,8 +74,10 @@ class AddBanerHomePage extends Component {
     }
     handelChangeName(e){
         // console.log('a')
+        let name=e.target.value;
+
         this.setState({
-            name:e.target.value
+            name
         },()=>{
             // this.props.GetCategoriesName(this.state.name)
         })
@@ -92,8 +105,12 @@ class AddBanerHomePage extends Component {
         this.toggleLarge()
     }
     render() {
-        let{header ,Edit}=this.props;
-        let{ax}=this.state;
+        let{header ,Edit ,ax ,name}=this.props;
+        // console.log("name"+name);
+
+        // let{ax}=this.state;
+        console.log("name"+this.state.name);
+
         return (
             <div>
 
@@ -105,11 +122,15 @@ class AddBanerHomePage extends Component {
                                 <IntlMessages id={"اسم"} />
                             </Label>
                         </div>
+                        {/*<input type="text" id="name" onChange={this.handelChangeName.bind(this)} placeholder={ 'انتخاب نام'} className="mb-3 w-100 react-select__value-container "  value={this.state.name } />*/}
+
                         <InputGroup className="mb-3">
+                            {/*<input type="text" id="name" onChange={this.handelChangeName.bind(this)} placeholder={}/>*/}
                             <Input
                                 type="text"
                                 id="name"
                                 name="name"
+                                // value={this.state.name}
                                 onChange={this.handelChangeName.bind(this)}
                                 label={this.state.name ||'انتخاب نام'}
                             />
@@ -122,7 +143,7 @@ class AddBanerHomePage extends Component {
                     {/*<input type='text' name="name" id="name" onChange={this.handelChangeName.bind(this)}*/}
                            {/*className='border-0 fS1vw backgroundDefault col-12' placeholder={header || 'Name'}/>*/}
                 {/*</span>*/}
-                <Destination GetDestinationString={this.GetDestinationString.bind(this)}/>
+                <Destination GetDestinationString={this.GetDestinationString.bind(this)} Destination={this.props.Destination}/>
                 <div className='d-flex col-12 flex-column paddingZero   '>
                     <div className='height30vh w-100  mt-1 mb-1 pointer   ' onClick={this.OnClickImg.bind(this)}>
                         <img src={ax} className='img-self-fill br02'/>

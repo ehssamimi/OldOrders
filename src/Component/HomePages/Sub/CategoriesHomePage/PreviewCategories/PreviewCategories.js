@@ -2,10 +2,19 @@ import React, {Component} from 'react';
 import HeaderSectionHomePage from "../../ShowPreviewHomePage/HeaderSectionHomePage/HeaderSectionHomePage";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
-import {Modal, ModalBody, ModalHeader ,ModalFooter,Button} from "reactstrap";
+import {Modal, ModalBody, ModalHeader, ModalFooter, Button, CardTitle,Card} from "reactstrap";
 import {TweenMax} from "gsap/TweenMax";
 import {DeleteCategoriey} from "../../../../functions/ServerConnection";
 import NotificationManager from "../../../../../components/common/react-notifications/NotificationManager";
+import styled from "styled-components";
+import HeaderPreviewComponentHomePage from "../../HeaderPreviewComponentHomePage/HeaderPreviewComponentHomePage";
+import {Colxx} from "../../../../../components/common/CustomBootstrap";
+
+// const categoryMainPreview = styled.div`
+//   margin-top: ${props =>
+//     props.index===0 ? ' ' : '2vh'}
+// `
+
 
 class PreviewCategories extends Component {
     constructor(props) {
@@ -17,7 +26,7 @@ class PreviewCategories extends Component {
     }
 
     clickEdit(value){
-        // console.log(value)
+        console.log(value);
         this.props.clickPreview(value,this.props.id);
     }
 
@@ -69,14 +78,40 @@ class PreviewCategories extends Component {
     render() {
         let{ax1,ax2,ax3,ax4}=this.props;
         return (
-            <div   className=' w-100'  onMouseOver={this.handelEnter.bind(this)} onMouseLeave={this.handelLeave.bind(this)} id={this.props.header} >
-                <HeaderSectionHomePage header={this.props.header}/>
+            <div
+                className={['w-100',this.props.index===0?'':'mt-3' ].join(' ')}
+                // className='mt-5'
+                onMouseOver={this.handelEnter.bind(this)} onMouseLeave={this.handelLeave.bind(this)} id={this.props.header} >
+                {/*<HeaderSectionHomePage header={this.props.header}/>*/}
+                {
+
+                    <HeaderPreviewComponentHomePage handelEdit={this.clickEdit.bind(this)} handelclickDelete={this.handelclickDelete.bind(this)}   Name={this.props.header}/>
+
+                    // <CardTitle className='d-flex h-4vh align-items-start '>
+                    //
+                    //     <div className='d-flex mr-auto  '>
+                    //         <div className=' d-flex fs-13vw color-theme-1 m-2 BtnHeaderComponent ' onClick={this.clickEdit.bind(this,this.props.header)}><FaRegEdit /></div>
+                    //         <div className=' d-flex  fs-13vw  color-theme-1 m-2 BtnHeaderComponent ' onClick={this.handelclickDelete.bind(this)}><MdDeleteForever/></div>
+                    //     </div>
+                    //
+                    //     <span dir='rtl' className='ml-2 d-flex align-items-end '>
+                    //             نام : {this.props.header}
+                    //     </span>
+                    //
+                    // </CardTitle>
+                }
                 <div className=' d-flex w-100 point-review position-relative'>
                     {
+
                         this.state.MouseOver? <div className='w-100 h-100   d-flex justify-content-center align-items-center overly'>
-                            <div className=' d-flex justify-content-center align-items-center categoriesIconReview m-2' onClick={this.clickEdit.bind(this,this.props.header)}><FaRegEdit /></div>
-                            <div className=' d-flex justify-content-center align-items-center categoriesIconReview m-2' onClick={this.handelclickDelete.bind(this)}><MdDeleteForever/></div>
+                            <div className=' d-flex justify-content-center align-items-center categoriesIconReview m-2  ' onClick={this.clickEdit.bind(this,this.props.header)}><FaRegEdit /></div>
+                                {
+                                    this.props.select ? "" : <div
+                                        className=' d-flex justify-content-center align-items-center categoriesIconReview m-2'
+                                        onClick={this.handelclickDelete.bind(this)}><MdDeleteForever/></div>
+                                }
                         </div>:''
+
                     }
                     <div className='d-flex col-6 flex-column paddingZero'>
                         <div className='height25vh w-100  mt-1 mb-1'>

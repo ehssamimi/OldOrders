@@ -351,7 +351,7 @@ export default class MoveRowIndex extends React.Component {
                     })}
                 </Container>
 
-                <button onClick={this.HandelSend.bind(this)}>send</button>
+                <button onClick={this.HandelSend.bind(this)} className='btn btn-primary'>send</button>
 
                 <Modal
                     isOpen={this.state.add}

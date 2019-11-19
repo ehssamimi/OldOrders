@@ -8974,7 +8974,7 @@ font-family: IRANSans !important;
 .categoriesIconReview{
   z-index: 2;
   opacity: 1 !important;
-  font-size:2.5vw;
+  font-size:2.3vw;
   //color: #666666;
   width: 4vw;
   height: 4vw;
@@ -8987,6 +8987,11 @@ font-family: IRANSans !important;
   -o-transition: -o-transform .3s,opacity .3s;
   transition: transform .3s,opacity .3s;
   color: rgba(50,50,50,.9);
+  &:hover{
+    font-size: 2.5vw!important;
+    color: #{rgba($theme-color-4, 1)}!important;
+    transition: 0.4s;
+  }
 }
 .overly{
   background: rgba(0,0,0,.5);
@@ -9066,7 +9071,7 @@ font-family: IRANSans !important;
   text-decoration-line: line-through;
 }
 .list-newComponent{
-  background: gray;
+
   color: black;
    &:hover{
     background: white;
@@ -9086,6 +9091,21 @@ font-family: IRANSans !important;
   width: 220px;
   display: flex;
   flex-direction: column;
+}
+.listMenu{
+  background: white;
+  //border: 2px solid $theme-color-1;
+}
+.listMenuActive-Border{
+  padding: 12px;
+  color:white ;
+  background: $theme-color-1!important;
+  //border: 0.2px solid  $theme-color-1;
+  -webkit-box-shadow: 0  5px 5px rgba(146, 44, 136, 0.2);
+  -moz-box-shadow: 0  5px 5px rgba(146, 44, 136, 0.2);
+  box-shadow: 0 5px 5px rgba(146, 44, 136, 0.2);
+  border-radius: 20%;
+
 }
 .column-title{
   padding: 8px!important;
@@ -9375,5 +9395,8 @@ font-family: IRANSans !important;
 .ml-2vw{
   margin-left: 2vw;
 }
-
+.inputHeight{
+  line-height: 3vh;
+  height: 3vh;
+}
 

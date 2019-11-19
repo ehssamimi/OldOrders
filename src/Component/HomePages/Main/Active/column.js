@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import Task from './task'
-import {DragDropContext, Droppable} from 'react-beautiful-dnd'
+import {DragDropContext, Droppable} from 'react-beautiful-dnd';
+import { FaPlusCircle } from "react-icons/fa";
 
 const Container = styled.div`
   margin: 8px;
   border: 1px solid lightgrey;
   border-radius: 2px;
   width: 30%;
-
   display: flex;
   flex-direction: column;
 `
@@ -33,7 +33,12 @@ export default class Column extends React.Component {
 
     return (
       <Container>
-        <Title>{this.props.column.title}</Title>
+          <div className='d-flex align-items-center h-7vh'>
+              <Title>{this.props.column.title}</Title>
+              <span className='fs-24vw color-theme-2 ml-auto btn d-flex align-items-center pr-0'  onClick={this.HandelAdd.bind(this)}><FaPlusCircle/></span>
+          </div>
+
+
         <Droppable droppableId={this.props.column.id} type="TASK">
           {(provided, snapshot) => (
             <TaskList
@@ -48,7 +53,7 @@ export default class Column extends React.Component {
             </TaskList>
           )}
         </Droppable>
-          <button className=' btn-primary' onClick={this.HandelAdd.bind(this)}>add</button>
+          {/*<button className=' btn-primary' onClick={this.HandelAdd.bind(this)}>add</button>*/}
 
       </Container>
     )

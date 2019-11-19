@@ -44,7 +44,6 @@ class WonderPackageAddHomePage extends Component {
         });
         // console.log(CategoriesList[0].Items[0].Image);
     }
-
     GetImgType(type){
         // console.log(type)
         this.setState({
@@ -54,8 +53,6 @@ class WonderPackageAddHomePage extends Component {
             modalLarge: !prevState.modalLarge
         }));
     }
-
-
     GetImgFile(file,Destination , label ,Base64){
         // console.log(file);
         // console.log(Base64);
@@ -236,14 +233,15 @@ class WonderPackageAddHomePage extends Component {
                     {/*<div className='col-12 d-flex flex-column'>*/}
                         {/*{type==='1'?<CropImgCropper label='عکس اول' aspect={1.76/1} GetImgFile={this.GetImgFile.bind(this)}/>:''}*/}
                         {/*{type==='2'?<CropImgCropper label='عکس دوم' aspect={1.08/1} GetImgFile={this.GetImgFile.bind(this)}/>:''}*/}
-                        {/*{type==='3'?<CropImgCropper label='عکس سوم' aspect={3/1} GetImgFile={this.GetImgFile.bind(this)}/>:''}*/}
+                        {/*{type==='3'?<CropImgCropper label='
+                        عکس سوم' aspect={3/1} GetImgFile={this.GetImgFile.bind(this)}/>:''}*/}
                         {/*{type==='4'? <CropImgCropper label='عکس چهارم' aspect={1.08/1} GetImgFile={this.GetImgFile.bind(this)}/>:''}*/}
                         {/*{type==='5'? <CropImgCropper label='عکس پنجم' aspect={1.76/1} GetImgFile={this.GetImgFile.bind(this)}/>:''}*/}
                     {/*</div>*/}
 
                     {
                         CategoriesList.length>0?
-                            CategoriesList.map((cat ,index)=><PreviewPackages id={CategoriesList[index]._id} key={index} header={cat.Name} ax1={CategoriesList[index].Items[0].Image} ax2={CategoriesList[index].Items[1].Image} ax3={CategoriesList[index].Items[2].Image} ax4={CategoriesList[index].Items[3].Image}  ax5={CategoriesList[index].Items[4].Image} clickPreview={this.ClickEdit.bind(this)}/>  ):""
+                            CategoriesList.map((cat ,index)=><PreviewPackages index={index} id={CategoriesList[index]._id} key={index} header={cat.Name} ax1={CategoriesList[index].Items[0].Image} ax2={CategoriesList[index].Items[1].Image} ax3={CategoriesList[index].Items[2].Image} ax4={CategoriesList[index].Items[3].Image}  ax5={CategoriesList[index].Items[4].Image} clickPreview={this.ClickEdit.bind(this)}/>  ):""
                     }
                 </div>
                 <Modal

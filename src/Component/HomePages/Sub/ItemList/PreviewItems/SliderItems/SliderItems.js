@@ -10,6 +10,7 @@ import NotificationManager from "../../../../../../components/common/react-notif
 import {TweenMax} from "gsap/TweenMax";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
+import HeaderPreviewComponentHomePage from "../../../HeaderPreviewComponentHomePage/HeaderPreviewComponentHomePage";
 const NoControlCarouselItem = ({ Name, Images, CurrentPrice, PrevPrice }) => {
     return (
         <div className="glide-item">
@@ -110,30 +111,48 @@ class SliderItems extends Component {
         }));
     };
     handelEdit(value){
-        console.log(value)
-        this.props.clickPreview(value,this.props.id);
+        // console.log(value);
+        console.log(value);
+        this.props.clickPreview (value);
     }
 
     render() {
         // console.log(items);
         // console.log(this.props.items);
         let {Data}=this.props.items;
-        // console.log(Data);
+        console.log(this.props.items);
         return (
             <div>
                 <Row>
-                    <Colxx xxs="12" id={1}>
-                        <CardTitle className='d-flex'>
-                            {
-                                this.props.items.Title
-                            }
-                            <div className='d-flex ml-auto  '>
-                                <div className=' d-flex    m-2' onClick={this.handelEdit.bind(this,this.props.Title)}><FaRegEdit /></div>
-                                <div className=' d-flex    m-2' onClick={this.handelclickDelete.bind(this)}><MdDeleteForever/></div>
-                            </div>
+                    <Colxx xxs="12" id={this.props.Title}>
+                        {/*********this is first*******/}
+
+                        {/*<CardTitle className='d-flex h-4vh align-items-start '>*/}
+                            {/*<div className='d-flex mr-auto  '>*/}
+                                {/*<div className=' d-flex fs-13vw color-theme-1 m-2 BtnHeaderComponent ' onClick={this.handelEdit.bind(this,this.props.header)}><FaRegEdit /></div>*/}
+                                {/*<div className=' d-flex  fs-13vw  color-theme-1 m-2 BtnHeaderComponent ' onClick={this.handelclickDelete.bind(this)}><MdDeleteForever/></div>*/}
+                            {/*</div>*/}
+
+                            {/*<span dir='rtl' className='ml-2 d-flex align-items-end '>*/}
+                                {/*نام :  {this.props.items.Title}*/}
+                            {/*</span>*/}
+                        {/*</CardTitle>*/}
 
 
-                        </CardTitle>
+                        <HeaderPreviewComponentHomePage handelEdit={this.handelEdit.bind(this)} handelclickDelete={this.handelclickDelete.bind(this)}   Name={this.props.items.Title}/>
+                        {/*********this is prev*******/}
+
+                        {/*<CardTitle className='d-flex h-4vh align-items-start '>*/}
+
+                            {/*<div className='d-flex mr-auto  '>*/}
+                                {/*<div className=' d-flex fs-13vw color-theme-1 m-2 BtnHeaderComponent ' onClick={this.handelEdit.bind(this,this.props.header)}><FaRegEdit /></div>*/}
+                                {/*<div className=' d-flex  fs-13vw  color-theme-1 m-2 BtnHeaderComponent ' onClick={this.handelclickDelete.bind(this)}><MdDeleteForever/></div>*/}
+                            {/*</div>*/}
+
+                            {/*<span dir='rtl' className='ml-2 d-flex align-items-end '>*/}
+                                {/*نام :  {this.props.items.Title}*/}
+                            {/*</span>*/}
+                        {/*</CardTitle>*/}
                     </Colxx>
                     <Colxx xxs="12" className="pl-0 pr-0 mb-5">
                         <GlideComponent settings={

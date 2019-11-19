@@ -77,6 +77,7 @@ class AddNewHomePageComponent extends Component {
         switch (name) {
             case 'ItemList':
                 Value = await GetItemDetail(Name);
+                console.log(Value);
                 break;
             case 'Category':
                 Value = await GetCategorieyDetail(Name);
@@ -109,30 +110,32 @@ class AddNewHomePageComponent extends Component {
         // console.log(this.state.name);
         // console.log(this.state.ItemsList);
         return (
-            <div className='col-12 d-flex ' >
-                <div className='col-3 d-flex flex-column justify-content-start'>
+            <div className='col-12 d-flex flex-column ' >
+                <div className='col-12 d-flex  justify-content-between listMenu align-items-center mb-3'>
                     {
                         listComponent.map((item,index)=>
                             <div className={this.state.active === item ? active : deactive} onClick={this.handelClick.bind(this,item)}  key={ item }  >
-                                <p className='text-right '>{item}</p>
+                                {/*<p className='text-right  mb-0 listMenuActive-Border '>{item}</p>*/}
+                                {/*listMenuActive-Border*/}
+                                <p className={['text-right','mb-0', this.state.active === item ?"listMenuActive-Border":''].join(' ')}>{item}</p>
                             </div>
                         )
                     }
                 </div>
-                <div className='col-9 d-flex flex-column justify-content-end'>
+                <div className='col-12 d-flex flex-column justify-content-end'>
                     {
                         name==='Category'?
                         ItemsList.length>0?
                             ItemsList.map((cat ,index)=><PreviewCategories id={ItemsList[index]._id} key={index} header={cat.Name} ax1={ItemsList[index].Items[0].Image}
                                                                            ax2={ItemsList[index].Items[1].Image} ax3={ItemsList[index].Items[2].Image} ax4={ItemsList[index].Items[3].Image}
-                                                                           clickPreview={this.ClickEdit.bind(this)}/>  ):""
+                                                                           clickPreview={this.ClickEdit.bind(this)} select={true}/>  ):""
 
                         :''
                     }
 
                     {
                         name==='ItemList'?
-                            ItemsList.length>0? ItemsList.map((cat ,index)=><PreviewItems Title={cat.Title} key={index} clickPreview={this.ClickEdit.bind(this)}/>):""
+                            ItemsList.length>0? ItemsList.map((cat ,index)=><PreviewItems Title={cat.Title} key={index} clickPreview={this.ClickEdit.bind(this)} select={true}/>):""
                             :''
                     }
                     {
@@ -140,25 +143,25 @@ class AddNewHomePageComponent extends Component {
                             ItemsList.length>0? ItemsList.map((cat ,index)=><PreviewPackages id={ItemsList[index]._id} key={index} header={cat.Name}
                                                                                              ax1={ItemsList[index].Items[0].Image} ax2={ItemsList[index].Items[1].Image}
                                                                                              ax3={ItemsList[index].Items[2].Image} ax4={ItemsList[index].Items[3].Image}
-                                                                                             ax5={ItemsList[index].Items[4].Image} clickPreview={this.ClickEdit.bind(this)}/>  ):""
+                                                                                             ax5={ItemsList[index].Items[4].Image} clickPreview={this.ClickEdit.bind(this)} select={true}/>  ):""
                             :''
                     }
                     {
                         name==='HeaderSlider'?
                             ItemsList.length > 0 ?
-                                ItemsList.map((slider, index) => <PreviewHeaderSlider id={slider._id} key={index} header={slider.Name} slider={slider} clickEdit={this.ClickEdit.bind(this)}/>) : ""
+                                ItemsList.map((slider, index) => <PreviewHeaderSlider id={slider._id} key={index} header={slider.Name} slider={slider} clickEdit={this.ClickEdit.bind(this)} select={true}/>) : ""
                             :''
                     }
                     {
                         name==='Banner'?
                             ItemsList.length > 0 ?
-                                ItemsList.map((cat ,index)=><PreViewBanner id={cat._id} key={index} header={cat.Name} ax ={cat.Image}   clickPreview={this.ClickEdit.bind(this)}/>  ):""
+                                ItemsList.map((cat ,index)=><PreViewBanner id={cat._id} key={index} header={cat.Name} ax ={cat.Image}   clickPreview={this.ClickEdit.bind(this)} select={true}/>  ):""
                             :''
                     }
                     {
                         name==='Slider'?
                             ItemsList.length > 0 ?
-                                ItemsList.map((slider ,index)=><PreviewMainSlider id={slider._id} key={index} header={slider.Name} slider={slider} clickEdit={this.ClickEdit.bind(this)}/>  ):""
+                                ItemsList.map((slider ,index)=><PreviewMainSlider id={slider._id} key={index} header={slider.Name} slider={slider} clickEdit={this.ClickEdit.bind(this)} select={true}/>  ):""
                             :''
                     }
                 </div>

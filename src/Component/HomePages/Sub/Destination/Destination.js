@@ -24,12 +24,25 @@ class Destination extends Component {
     // async componentDidMount(){
     //   await console.log( ) ;
     // }
+
+    // static getDerivedStateFromProps(props, state) {
+    //     // console.log(props.Destination);
+    //     console.log(state.selectData);
+    //     if (props.Destination !== "") {
+    //         return {
+    //             selectedOption:{label: props.Destination, value: props.Destination }
+    //         };
+    //     }
+    //     // Return null if the state hasn't changed
+    //     return null;
+    // }
+
     async componentDidMount(){
         let Destination = await GetDestination();
         let selectData = [];
         for (let i = 0; i < Destination.ValidDestination.length; i++) {
             // console.log(Destination.ValidDestination[i]);
-            let row = {label: Destination.ValidDestination[i], value: Destination.ValidDestination[i], key: i};
+            let row = {label: Destination.ValidDestination[i], value: Destination.ValidDestination[i] };
             selectData.push(row);
         }
         this.setState({

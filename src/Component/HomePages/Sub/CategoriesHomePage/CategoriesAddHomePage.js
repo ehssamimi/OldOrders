@@ -227,7 +227,7 @@ class CategoriesAddHomePage extends Component {
                 <div className='col-4 offset-1 d-flex flex-column justify-content-end'>
                     {
                         CategoriesList.length>0?
-                            CategoriesList.map((cat ,index)=><PreviewCategories id={CategoriesList[index]._id} key={index} header={cat.Name} ax1={CategoriesList[index].Items[0].Image} ax2={CategoriesList[index].Items[1].Image} ax3={CategoriesList[index].Items[2].Image} ax4={CategoriesList[index].Items[3].Image} clickPreview={this.ClickEdit.bind(this)}/>  ):""
+                            CategoriesList.map((cat ,index)=><PreviewCategories index={index} id={CategoriesList[index]._id} key={index} header={cat.Name} ax1={CategoriesList[index].Items[0].Image} ax2={CategoriesList[index].Items[1].Image} ax3={CategoriesList[index].Items[2].Image} ax4={CategoriesList[index].Items[3].Image} clickPreview={this.ClickEdit.bind(this)} select={false}/>  ):""
 
                     }
 

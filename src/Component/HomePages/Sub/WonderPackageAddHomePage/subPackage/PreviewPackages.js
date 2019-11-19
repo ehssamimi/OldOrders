@@ -5,7 +5,7 @@ import NotificationManager from "../../../../../components/common/react-notifica
 import {TweenMax} from "gsap/TweenMax";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
-import {Button, Modal, ModalBody, ModalFooter, ModalHeader} from "reactstrap";
+import {Button, CardTitle, Modal, ModalBody, ModalFooter, ModalHeader} from "reactstrap";
 
 class PreviewPackages extends Component {
     constructor(props) {
@@ -69,8 +69,25 @@ class PreviewPackages extends Component {
     render() {
         let{ax1,ax2,ax3,ax4,ax5}=this.props;
         return (
-            <div   className=' w-100 d-flex flex-column  '  onMouseOver={this.handelEnter.bind(this)} onMouseLeave={this.handelLeave.bind(this)} id={this.props.header} >
-                <HeaderSectionHomePage header={this.props.header}/>
+            <div   className={['w-100','d-flex', 'flex-column', this.props.index===0?'':'mt-3' ].join(' ')}   onMouseOver={this.handelEnter.bind(this)} onMouseLeave={this.handelLeave.bind(this)} id={this.props.header} >
+                {/*<HeaderSectionHomePage header={this.props.header}/>*/}
+
+                    <CardTitle className='d-flex h-4vh align-items-start '>
+
+                        <div className='d-flex mr-auto  '>
+                            <div className=' d-flex fs-13vw color-theme-1 m-2 BtnHeaderComponent ' onClick={this.clickEdit.bind(this,this.props.header)}><FaRegEdit /></div>
+                            <div className=' d-flex  fs-13vw  color-theme-1 m-2 BtnHeaderComponent ' onClick={this.handelclickDelete.bind(this)}><MdDeleteForever/></div>
+                        </div>
+
+                        <span dir='rtl' className='ml-2 d-flex align-items-end '>
+                                نام : {this.props.header}
+                        </span>
+
+
+                    </CardTitle>
+
+
+
                 <div className=' d-flex flex-column w-100 point-review position-relative h-100'>
                     {
                         this.state.MouseOver? <div className='w-100 h-100   d-flex justify-content-center align-items-center overly'>

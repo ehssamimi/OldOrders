@@ -201,7 +201,7 @@ class SLiderItemsHomePagePreview extends Component {
                 </Modal>
                 <Modal
                     isOpen={this.state.Edit}
-                    size="lg"
+                    size="md"
                     toggle={this.toggleEdit}
                 >
                     <ModalHeader toggle={this.toggleEdit}>
@@ -210,7 +210,7 @@ class SLiderItemsHomePagePreview extends Component {
                     </ModalHeader>
                     <ModalBody>
                         <div className='col-12 d-flex '>
-                            <div className='col-6 d-flex flex-column justify-content-end'>
+                            <div className='col-12 d-flex flex-column justify-content-end'>
                                 {
                                     itemsList.length>0? itemsList.map((cat ,index)=><PreviewItems Title={cat.Title} key={index} clickPreview={this.ClickEdit.bind(this)}/>):""
                                 }

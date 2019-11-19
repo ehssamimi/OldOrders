@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import SliderOnePage from "../ShowPreviewHomePage/SliderOnePage/SliderOnePage";
 import {detailImages} from "../../../../data/carouselItems";
 import MultiFiles from "./MultiFile/MultiFiles";
+import { FaPlusCircle } from "react-icons/fa";
 import FormAddSlider from "./FormAddSlider/FormAddSlider";
 import {Modal, ModalBody, ModalHeader} from "reactstrap";
 import CropImgCropper from "../CropImg/CropImgCropper";
@@ -236,9 +237,16 @@ import PreviewMainSlider from "./PreviewSliderMAin/PreviewMainSlider";
             <div className='d-flex'>
                 <div className='col-6' >
                             <SliderOnePage DetailImages={this.state.files} GetSliderType={this.GetSliderType.bind(this)}
-                                           GetCategoriesName={this.GetCategoriesName.bind(this)} header={headerPlaceHolder||'انتخاب نام'}/>
-                    <button onClick={this.AddExtraSlider.bind(this)}>add extra slider</button>
-                    {this.state.Edit? <button className='btn btn-primary' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}
+                                           GetCategoriesName={this.GetCategoriesName.bind(this)} header={headerPlaceHolder||'انتخاب نام'} Edit={this.state.Edit}/>
+
+                    <div className='d-flex w-100 align-items-center h-7vh '>
+                        {this.state.Edit? <button className='btn btn-primary ' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}
+
+                        <span className='fs-24vw color-theme-2 ml-auto btn d-flex align-items-center pr-0'  onClick={this.AddExtraSlider.bind(this)}><FaPlusCircle/></span>
+                    </div>
+
+                    {/*<button onClick={this.AddExtraSlider.bind(this)}>add extra slider</button>*/}
+                    {/*{this.state.Edit? <button className='btn btn-primary' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}*/}
 
                 </div>
 

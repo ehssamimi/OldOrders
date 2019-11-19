@@ -4,7 +4,7 @@ import Glide from '@glidejs/glide'
 import { getDirection } from "../../../../../../helpers/Utils";
 import "@glidejs/glide/dist/css/glide.core.min.css";
 import "@glidejs/glide/dist/css/glide.theme.min.css";
-import {FormGroup, Input, InputGroup, Label} from "reactstrap";
+import {CardTitle, FormGroup, Input, InputGroup, Label} from "reactstrap";
 import IntlMessages from "../../../../../../helpers/IntlMessages";
 
 let resizeTimeOut = -1;
@@ -176,13 +176,33 @@ export default class SliderPageEdit extends React.Component {
 
     }
     render() {
-        let{className,divClass}=this.props;
+        let{className,divClass,header,Edit}=this.props;
+        // console.log(header);
+        console.log(Edit);
 
         return (
             <div>
-               <span dir='rtl' className='d-flex justify-content-start'>
-                    <input type='text' name="id" id="id" onChange={this.handelChangeName.bind(this)} className='border-0 fS1vw backgroundDefault' placeholder={this.props.header} />
-                </span>
+                <div className='fs-13vw'>
+                    {
+                        this.props.Edit ?
+                            <span dir='rtl' className='ml-2 d-flex align-items-end '>
+                                     نام : {header}
+                                     </span>
+                            :
+                            <span dir='rtl' className='d-flex  align-items-center'>
+                                         <span className='ml-2'>نام:</span>
+                                         <input type='text' name="id" id="id"
+                                                onChange={this.handelChangeName.bind(this)}
+                                                className='border-0 fS1vw backgroundDefault' placeholder={header}/>
+                         </span>
+                    }
+
+                </div>
+
+
+               {/*<span dir='rtl' className='d-flex justify-content-start'>*/}
+                    {/*<input type='text' name="id" id="id" onChange={this.handelChangeName.bind(this)} className='border-0 fS1vw backgroundDefault' placeholder={ header} />*/}
+                {/*</span>*/}
                 <div className="glide details" ref={node => this.carouselImages = node}>
                     <div data-glide-el="track" className="glide__track">
                         <div className="glide__slides">
