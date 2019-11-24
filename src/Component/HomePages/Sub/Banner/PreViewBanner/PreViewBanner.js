@@ -6,6 +6,8 @@ import {TweenMax} from "gsap/TweenMax";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import {DeleteBanner} from "../../../../functions/ServerConnection";
+import HeaderPreviewComponentHomePage from "../../HeaderPreviewComponentHomePage/HeaderPreviewComponentHomePage";
+import {Colxx} from "../../../../../components/common/CustomBootstrap";
 
 class PreViewBanner extends Component {
     constructor(props) {
@@ -72,7 +74,9 @@ class PreViewBanner extends Component {
         let{ax}=this.props;
         return (
             <div   className=' w-100 d-flex flex-column  '  onMouseOver={this.handelEnter.bind(this)} onMouseLeave={this.handelLeave.bind(this)} id={this.props.header} >
-                <HeaderSectionHomePage header={this.props.header}/>
+                {/*<HeaderSectionHomePage header={this.props.header}/>*/}
+                <HeaderPreviewComponentHomePage handelEdit={this.clickEdit.bind(this)} handelclickDelete={this.handelclickDelete.bind(this)} Name={this.props.header}/>
+
                 <div className=' d-flex flex-column w-100 point-review position-relative h-100'>
                     {
                         this.state.MouseOver? <div className='col-12 height30vh   d-flex justify-content-center align-items-center overly'>

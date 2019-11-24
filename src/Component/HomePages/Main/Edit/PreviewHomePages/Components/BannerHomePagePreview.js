@@ -26,57 +26,59 @@ class BannerHomePagePreview extends Component {
     static getDerivedStateFromProps(props, state) {
         if (props.items !== state.Data) {
             let Data = [];let Img='';
-            if (props.edit) {
-                console.log('Data');
-                console.log(props.items.Data);
-                Data = props.items.Data;
-                Img = Data[0].Image;
-                return {
-                    Data,Img
-                };
-            } else {
-                console.log('Data');
+            // if (props.edit) {
+            //     // console.log('Data');
+            //     // console.log(props.items.Data);
+            //     Data = props.items.Data;
+            //     Img = Data[0].Image;
+            //     return {
+            //         Data,Img
+            //     };
+            // } else {
+                // console.log('Data');
                 // console.log(props.items.Data.Items);
-                console.log(props.items.Data );
+                // console.log(props.items.Data );
                 // console.log(Data['Image'] );
                 Data = props.items.Data;
                 Img = Data['Image'];
                 return {
                     Data,Img
                 };
-            }
+            // }
         }
         // Return null if the state hasn't changed
         return null;
     }
     ClickEdit(Name){
-        console.log(Name);
+        // console.log(Name);
         this.props.ChangeComponent(Name,'Banner',this.props.position);
         this.toggleEdit()
     }
 
     async handelDelete() {
-        console.log(this.props.id);
-        let data= await DeleteBanner(this.props.id);
-        let id=this.props.header;
-        if(data===200){
-            NotificationManager.success(
-                "congratulation",
-                "your Banner is deleted",
-                3000,
-                null,
-                null,
-                "success"
-            );
-            console.log(data);
-            const $el = document.getElementById(`${id}`);
-            const duration = 2;
-            const from = { opacity: 0};
-            TweenMax.to($el, duration, from);
-            setTimeout(() => {
-                $el.remove();
-            }, 2000)
-        }
+        this.props.deleteComponent(this.props.header,'Banner',this.props.position);
+
+        // console.log(this.props.id);
+        // let data= await DeleteBanner(this.props.id);
+        // let id=this.props.header;
+        // if(data===200){
+        //     NotificationManager.success(
+        //         "congratulation",
+        //         "your Banner is deleted",
+        //         3000,
+        //         null,
+        //         null,
+        //         "success"
+        //     );
+        //     console.log(data);
+        //     const $el = document.getElementById(`${id}`);
+        //     const duration = 2;
+        //     const from = { opacity: 0};
+        //     TweenMax.to($el, duration, from);
+        //     setTimeout(() => {
+        //         $el.remove();
+        //     }, 2000)
+        // }
         this.toggleLarge()
     }
     handelclickDelete() {
@@ -109,11 +111,7 @@ class BannerHomePagePreview extends Component {
 
 
     }
-    ClickEdit(Name){
-        console.log(Name);
-        this.props.ChangeComponent(Name,'Banner',this.props.position);
-        this.toggleEdit();
-    }
+
     handelEnter(){
         this.setState({
             MouseOver:true

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 // import '@atlaskit/css-reset'
 import { DragDropContext } from 'react-beautiful-dnd'
 import styled from 'styled-components'
-import {UpdateHomePage, AddHomePages, GetAllHomePages, GetHomePageLoad, ActiveHomePages } from "../../../../functions/ServerConnection";
+import {UpdateHomePage, AddHomePages, GetAllHomePages, GetHomePageLoad, ActiveHomePages ,DeleteHomePages} from "../../../../functions/ServerConnection";
 
 import initialData from './initial-data'
 import Column from './column'
@@ -97,6 +97,7 @@ export default class AllPreviewHomePages extends React.Component {
         for (i=0;i<Header.length;i++){
             let NewID='item-'+(j+i);
             let row = {
+                'id':NewID,
                 "ObjectType": Header[i].ObjectType,
                 "Position": i,
                 "Data": {
@@ -111,6 +112,7 @@ export default class AllPreviewHomePages extends React.Component {
         for (i=0;i<Body.length;i++){
             let NewID='item-'+(j+i);
             let row = {
+                'id':NewID,
                 "ObjectType": Body[i].ObjectType,
                 "Position": i,
                 "Data": {
@@ -125,6 +127,7 @@ export default class AllPreviewHomePages extends React.Component {
         for (i=0;i<Footer.length;i++){
             let NewID='item-'+(j+i);
             let row = {
+                'id':NewID,
                 "ObjectType": Footer[i].ObjectType,
                 "Position": i,
                 "Data": {
@@ -139,10 +142,10 @@ export default class AllPreviewHomePages extends React.Component {
         this.setState({
             tasks, columns
         },()=>{
-            console.log(this.state.tasks)
-            console.log(this.state.columns)
+            // console.log(this.state.tasks)
+            // console.log(this.state.columns)
         })
-        console.log(BodyRecive)
+        // console.log(BodyRecive)
     }
 
     HandelAdd( column){
@@ -292,13 +295,13 @@ export default class AllPreviewHomePages extends React.Component {
 
     }
     handelDeleteUndo(item){
-        console.log(item);
+        // console.log(item);
         let newDataTask=this.state.NewData['tasks'];
-        console.log(newDataTask);
+        // console.log(newDataTask);
         let tasks=this.state.tasks;
         tasks[item].ObjectType='Category';
-        console.log( newDataTask[item].ObjectType );
-        console.log( tasks[item].ObjectType);
+        // console.log( newDataTask[item].ObjectType );
+        // console.log( tasks[item].ObjectType);
         this.setState({
             tasks
         })
@@ -308,7 +311,7 @@ export default class AllPreviewHomePages extends React.Component {
     HandelActive(){
         console.log(this.props.item.Name);
         let data=ActiveHomePages(this.props.item.Name);
-        console.log(data);
+        // console.log(data);
 
     }
    async HandelSend(){
@@ -317,7 +320,7 @@ export default class AllPreviewHomePages extends React.Component {
         let Headers = [];
         let Body = [];
         let Footer = [];
-        console.log("header");
+        // console.log("header");
         let HeaderItems = columns['column-1']['taskIds'];
         let BodyItems = columns['column-2']['taskIds'];
         let FooterItems = columns['column-3']['taskIds'];
@@ -373,9 +376,9 @@ export default class AllPreviewHomePages extends React.Component {
             };
             FooterFinal.push(row)
         }
-        console.log(HeaderFinal);
-        console.log(BodyFinal);
-        console.log(FooterFinal);
+        // console.log(HeaderFinal);
+        // console.log(BodyFinal);
+        // console.log(FooterFinal);
 
         //
         let Data={
@@ -384,29 +387,36 @@ export default class AllPreviewHomePages extends React.Component {
             "Body": BodyFinal,
             "Footer":FooterFinal
         };
-        console.log(Data);
+        // console.log(Data);
        let AddHomePage=await AddHomePages(this.state.header);
-       console.log(AddHomePage);
+       // console.log(AddHomePage);
        let sendHomePages=await UpdateHomePage(JSON.stringify(Data));
-       console.log(sendHomePages)
+       // console.log(sendHomePages)
 
+    }
+    async DeleteHomePage(){
+
+// let response=DeleteHomePages()
     }
 
   render() {
     let {columns}=this.state;
 
-    // console.log(columns);
+    console.log(this.state.tasks );
 
     return (
         <div className='col-4 '>
-            <div className=' w-100 d-flex align-items-center h-3vh  '  >
+            <div className=' w-100 d-flex align-items-center h-3vh'  >
                 <span className='ml-2 mr-2 h-100 d-flex align-items-center'>Name: </span>
-                <input type='text' onChange={this.handelChangeText.bind(this)} value={this.state.header} className='border-0 h-100'/>
+                <span>{this.props.item.Name}</span>
+                <button className='ml-auto btn btn-danger' onClick={this.DeleteHomePage.bind(this)}>Delete</button>
+                {/*<input type='text' onChange={this.handelChangeText.bind(this)} value={this.state.header} className='border-0 h-100'/>*/}
             </div>
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <Container>
                     {this.state.columnOrder.map(columnId => {
                         const column = this.state.columns[columnId];
+                        // console.log(column.id);
                         const tasks = column.taskIds.map(
                             taskId => this.state.tasks[taskId]
                         );

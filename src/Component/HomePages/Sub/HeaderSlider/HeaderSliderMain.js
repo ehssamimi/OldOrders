@@ -12,6 +12,7 @@ import SliderOnePage from "../ShowPreviewHomePage/SliderOnePage/SliderOnePage";
 import {Modal, ModalBody, ModalHeader} from "reactstrap";
 import FormAddSlider from "../SliderAddHomePage/FormAddSlider/FormAddSlider";
 import AddHeadersSlider from "./Add/AddHeadersSlider";
+import NewHeaderSlider from "./Add/NewHeaderSlider";
 
 class HeaderSliderMain extends Component {
     constructor(props) {
@@ -28,6 +29,10 @@ class HeaderSliderMain extends Component {
                 },
                 {
                     id: 2,
+                    img: "/assets/img/marble-cake.jpg"
+                },
+                {
+                    id: 3,
                     img: "/assets/img/marble-cake.jpg"
                 }
             ],Sliders:[{Position:0,Image:'',Destination:'',DestinationId:''},{Position:1,Image:'',Destination:'',DestinationId:''}
@@ -189,12 +194,15 @@ class HeaderSliderMain extends Component {
 
     render() {
         let{SlidersPrev,headerPlaceHolder,files}=this.state;
+        // console.log('files');
         // console.log(files);
         return (
             <div className='d-flex '>
                 <div className='col-6'>
-                    <AddHeadersSlider DetailImages={this.state.files} GetSliderType={this.GetSliderType.bind(this)}
-                                   GetCategoriesName={this.GetCategoriesName.bind(this)} header={headerPlaceHolder||'انتخاب نام'} Edit={this.state.Edit}/>
+                    <NewHeaderSlider/>
+
+                    {/*<AddHeadersSlider DetailImages={files} GetSliderType={this.GetSliderType.bind(this)}*/}
+                                   {/*GetCategoriesName={this.GetCategoriesName.bind(this)} header={headerPlaceHolder||'انتخاب نام'} Edit={this.state.Edit}/>*/}
 
                     {/*<button onClick={this.AddExtraSlider.bind(this)}>add extra slider</button>*/}
                     <div className='d-flex w-100 align-items-center h-7vh '>

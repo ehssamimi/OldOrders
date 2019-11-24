@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import Task from './task'
-import {DragDropContext, Droppable} from 'react-beautiful-dnd'
+import {DragDropContext, Droppable} from 'react-beautiful-dnd';
+import { FaPlusCircle } from "react-icons/fa";
 
 const Container = styled.div`
   margin: 8px;
   border: 1px solid lightgrey;
   border-radius: 2px;
   width: 100%;
-
   display: flex;
   flex-direction: column;
 `
@@ -33,22 +33,27 @@ export default class Column extends React.Component {
 
     return (
       <Container>
-        <Title>{this.props.column.title}</Title>
-        <Droppable droppableId={this.props.column.id} type="TASK">
-          {(provided, snapshot) => (
+          {/*<div className='d-flex align-items-center justify-content-center h-7vh'>*/}
+              {/*<Title>{this.props.column.title}</Title>*/}
+           {/*</div>*/}
+
+
+        {/*<Droppable droppableId={this.props.column.id} type="TASK" >*/}
+          {/*{(provided, snapshot) => (*/}
             <TaskList
-                ref={provided.innerRef}
-              {...provided.droppableProps}
-              isDraggingOver={snapshot.isDraggingOver}
+              //   ref={provided.innerRef}
+              // {...provided.droppableProps}
+              // isDraggingOver={snapshot.isDraggingOver}
+
             >
               {this.props.tasks.map((task, index) => (
-                  this.props.tasks.length>0? <Task key={index} task={task} index={index} id={task.id} {...this.props}/> :''
+                  this.props.tasks.length>0? <Task key={task.id} task={task} index={index} id={task.id} {...this.props}/> :''
               ))}
-              {provided.placeholder}
+              {/*{provided.placeholder}*/}
             </TaskList>
-          )}
-        </Droppable>
-          <button className=' btn-primary' onClick={this.HandelAdd.bind(this)}>add</button>
+          {/*)}*/}
+        {/*</Droppable>*/}
+          {/*<button className=' btn-primary' onClick={this.HandelAdd.bind(this)}>add</button>*/}
 
       </Container>
     )

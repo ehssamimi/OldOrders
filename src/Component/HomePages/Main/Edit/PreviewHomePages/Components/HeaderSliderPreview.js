@@ -54,14 +54,14 @@ class HeaderSliderPreview extends Component {
     static getDerivedStateFromProps(props, state) {
         if (props.items !== state.Data) {
             let Data = [];
-            if ( props.edit) {
-                // console.log('Data');
-                // console.log(props.items.Data);
-                Data = props.items.Data;
-                return {
-                    Data
-                };
-            } else {
+            // if ( props.edit) {
+            //     // console.log('Data');
+            //     // console.log(props.items.Data);
+            //     Data = props.items.Data;
+            //     return {
+            //         Data
+            //     };
+            // } else {
                 // console.log('Data');
                 // console.log(props.items.Data.Items);
                 Data = props.items.Data.Items;
@@ -69,7 +69,7 @@ class HeaderSliderPreview extends Component {
                 return {
                     Data
                 };
-            }
+            // }
             // Data = props.items.Data;
             // return {
             //     Data
@@ -81,6 +81,8 @@ class HeaderSliderPreview extends Component {
 
 
     async handelDelete() {
+        this.props.deleteComponent(this.props.header,'HeaderSlider',this.props.position);
+
         // let data= await DeleteCitemList(this.props.items.Title);
         // // let{Data}=this.props.items;
         // let id=1;
@@ -147,23 +149,27 @@ class HeaderSliderPreview extends Component {
         // console.log(this.props.items);
         // let {Data}=this.props.items;
         let {Data,itemsList}=this.state;
-        console.log('Data');
-        console.log(Data);
-        console.log('props.items.Data');
-        console.log(this.props.items.Data);
+        // console.log('Data');
+        // console.log(Data);
+        // console.log('props.items.Data');
+        // console.log(this.props.items.Data);
         return (
             <div>
                 <Row>
                     <Colxx xxs="12" id={1}>
-                        <CardTitle className='d-flex'>
-                            <div className='mr-auto'>
-                                <span className=' simple-icon-trash cursor-pointer' onClick={this.handelclickDelete.bind(this)}></span>
-                                <span className='  iconsminds-file-edit cursor-pointer' onClick={this.handelclickEdit.bind(this)}></span>
-                            </div>
-                            {
-                                `${this.props.items.Title}اسلایدر بالای صفحه  `
-                            }
-                        </CardTitle>
+                        {
+                            this.props.Edit?"":
+                                <CardTitle className='d-flex'>
+                                    <div className='mr-auto'>
+                                        <span className=' simple-icon-trash cursor-pointer' onClick={this.handelclickDelete.bind(this)}></span>
+                                        <span className='  iconsminds-file-edit cursor-pointer' onClick={this.handelclickEdit.bind(this)}></span>
+                                    </div>
+                                    {
+                                        `${this.props.items.Title}اسلایدر بالای صفحه  `
+                                    }
+                                </CardTitle>
+                        }
+
                     </Colxx>
                     <Colxx xxs="12" className="pl-0 pr-0 mb-5">
                         <GlideComponent settings={
@@ -181,7 +187,7 @@ class HeaderSliderPreview extends Component {
                         }>
                             { Data.map(item => {
                                 return (
-                                    <div key={item._id}>
+                                    <div key={item.Position}>
                                         <NoControlCarouselItem {...item} />
                                     </div>
                                 );

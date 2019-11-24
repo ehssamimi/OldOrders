@@ -76,10 +76,16 @@ export default class Task extends React.Component {
     //   let {task}=this.props;
       let item =this.props.task;
       // let item=task.content;
-    return (
+      // console.log(this.props.task['Data']['Data']._id )
+      // console.log(this.props.task.id );
+      console.log(this.props.task);
+
+      return (
       <Draggable
+        // draggableId={this.props.task.id}
         draggableId={this.props.task.id}
         index={this.props.index}
+        key={this.props.index}
         // isDragDisabled={isDragDisabled}
 
       >

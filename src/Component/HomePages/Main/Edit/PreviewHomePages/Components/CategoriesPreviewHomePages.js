@@ -7,6 +7,7 @@ import {TweenMax} from "gsap/TweenMax";
 import {DeleteCategoriey, GetCategoriesAll} from "../../../../../functions/ServerConnection";
 import NotificationManager from "../../../../../../components/common/react-notifications/NotificationManager";
 import PreviewCategories from "../../../../Sub/CategoriesHomePage/PreviewCategories/PreviewCategories";
+import {Colxx} from "../../../../../../components/common/CustomBootstrap";
 
 class CategoriesPreviewHomePages extends Component {
     constructor(props) {
@@ -23,17 +24,17 @@ class CategoriesPreviewHomePages extends Component {
     static getDerivedStateFromProps(props, state) {
         if (props.items !== state.Data) {
             let Data = [];
-            if (props.edit) {
-                Data = props.items.Data;
-                return {
-                    Data
-                };
-            } else {
+            // if (props.edit) {
+            //     Data = props.items.Data;
+            //     return {
+            //         Data
+            //     };
+            // } else {
                 Data = props.items.Data.Items;
                  return {
                     Data
                 };
-            }
+            // }
         }
         // Return null if the state hasn't changed
         return null;
@@ -49,25 +50,23 @@ class CategoriesPreviewHomePages extends Component {
     async handelDelete() {
         this.props.deleteComponent(this.props.header,'Category',this.props.position);
         // let data= await DeleteCategoriey(this.props.header);
-        let id=this.props.header;
-        // if(data===200){
-            NotificationManager.success(
-                "congratulation",
-                "your categories deleted",
-                3000,
-                null,
-                null,
-                "success"
-            );
-            // console.log(data);
-            const $el = document.getElementById(`${id}`);
-            const duration = 2;
-            const from = { opacity: 0};
-            TweenMax.to($el, duration, from);
-            setTimeout(() => {
-                $el.remove();
-            }, 2000)
-        // }
+        // let id=this.props.header;
+        //     NotificationManager.success(
+        //         "congratulation",
+        //         "your categories deleted",
+        //         3000,
+        //         null,
+        //         null,
+        //         "success"
+        //     );
+        //     // console.log(data);
+        //     const $el = document.getElementById(`${id}`);
+        //     const duration = 2;
+        //     const from = { opacity: 0};
+        //     TweenMax.to($el, duration, from);
+        //     setTimeout(() => {
+        //         $el.remove();
+        //     }, 2000);
         this.toggleLarge()
     }
     handelclickDelete() {
@@ -123,16 +122,20 @@ class CategoriesPreviewHomePages extends Component {
         // console.log(Data);
         return (
             <div   className=' w-100'  onMouseOver={this.handelEnter.bind(this)} onMouseLeave={this.handelLeave.bind(this)} id={this.props.header} >
-                <CardTitle className='d-flex'>
-                    <div className='mr-auto'>
-                        {/*<span className=' simple-icon-trash cursor-pointer' onClick={this.handelclickDelete.bind(this)}></span>*/}
-                        <span className=' simple-icon-trash cursor-pointer' onClick={this.handelDelete.bind(this)}></span>
-                        <span className='  iconsminds-file-edit cursor-pointer' onClick={this.handelclickEdit.bind(this)}></span>
-                    </div>
-                    {
-                       `${this.props.items.Title}دسته بندی `
-                    }
-                </CardTitle>
+                {
+                    this.props.Edit?"":
+                        <CardTitle className='d-flex'>
+                            <div className='mr-auto'>
+                                {/*<span className=' simple-icon-trash cursor-pointer' onClick={this.handelclickDelete.bind(this)}></span>*/}
+                                <span className=' simple-icon-trash cursor-pointer' onClick={this.handelDelete.bind(this)}></span>
+                                <span className='  iconsminds-file-edit cursor-pointer' onClick={this.handelclickEdit.bind(this)}></span>
+                            </div>
+                            {
+                                `${this.props.items.Title}دسته بندی `
+                            }
+                        </CardTitle>
+                }
+
                 <div className=' d-flex w-100 point-review position-relative'>
 
                     {/*{*/}

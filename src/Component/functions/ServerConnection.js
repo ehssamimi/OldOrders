@@ -516,7 +516,7 @@ export async  function  GetHomePageLoad(name){
     };
 
     let res = await axios.get(`${Const.HomePage}admin/homepage/${name}/load`, {headers: headers});
-    console.log(res.data);
+    // console.log(res.data);
     let { Body,Header,Footer } = res.data ;
     // console.log(Body );
     return res.data
@@ -577,6 +577,17 @@ export async  function  ActiveHomePages(Name){
     let { ItemId } = res.data ;
     let { status } = res ;
     return status
+}
+export async  function  DeleteHomePages(id){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID
+        // 'category_name':Name,
+    };
+    let res = await axios.delete(`${Const.HomePage}admin/package/${id}`, {headers: headers});
+    let { status } = res ;
+    console.log(res);
+    return status;
 }
 
 

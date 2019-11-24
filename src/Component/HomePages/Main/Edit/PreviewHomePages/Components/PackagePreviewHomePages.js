@@ -21,22 +21,21 @@ class PackagePreviewHomePages extends Component {
     static getDerivedStateFromProps(props, state) {
         if (props.items !== state.Data) {
             let Data = [];
-            if (props.edit) {
-
-                Data = props.items.Data;
-                // console.log('Data');
-                // console.log(Data);
-                return {
-                    Data
-                };
-            } else {
+            // if (props.edit) {
+            //     Data = props.items.Data;
+            //     // console.log('Data');
+            //     // console.log(Data);
+            //     return {
+            //         Data
+            //     };
+            // } else {
                 Data = props.items.Data.Items;
                 // console.log('Data');
-                // console.log(Data);
+                // console.log(Data);deleteComponent
                 return {
                     Data
                 };
-            }
+            // }
         }
         // Return null if the state hasn't changed
         return null;
@@ -62,13 +61,13 @@ class PackagePreviewHomePages extends Component {
             "success"
         );
         // console.log(data);
-        const $el = document.getElementById(`${id}`);
-        const duration = 2;
-        const from = { opacity: 0};
-        TweenMax.to($el, duration, from);
-        setTimeout(() => {
-            $el.remove();
-        }, 2000)
+        // const $el = document.getElementById(`${id}`);
+        // const duration = 2;
+        // const from = { opacity: 0};
+        // TweenMax.to($el, duration, from);
+        // setTimeout(() => {
+        //     $el.remove();
+        // }, 2000)
         // }
         this.toggleLarge()
     }
@@ -120,15 +119,19 @@ class PackagePreviewHomePages extends Component {
         let{PackageList,Data}=this.state;
         return (
             <div   className=' w-100 d-flex flex-column  '  onMouseOver={this.handelEnter.bind(this)} onMouseLeave={this.handelLeave.bind(this)} id={this.props.header} >
-                <CardTitle className='d-flex'>
-                    <div className='mr-auto'>
-                        <span className=' simple-icon-trash cursor-pointer' onClick={this.handelclickDelete.bind(this)}></span>
-                        <span className='  iconsminds-file-edit cursor-pointer' onClick={this.handelclickEdit.bind(this)}></span>
-                    </div>
-                    {
-                        `${this.props.items.Title}پکیچ `
-                    }
-                </CardTitle>
+                {
+                    this.props.Edit?"":
+                        <CardTitle className='d-flex'>
+                            <div className='mr-auto'>
+                                <span className=' simple-icon-trash cursor-pointer' onClick={this.handelclickDelete.bind(this)}></span>
+                                <span className='  iconsminds-file-edit cursor-pointer' onClick={this.handelclickEdit.bind(this)}></span>
+                            </div>
+                            {
+                                `${this.props.items.Title}پکیچ `
+                            }
+                        </CardTitle>
+                }
+
                 <div className=' d-flex flex-column w-100 point-review position-relative h-100'>
                     <div className=' vh15 d-flex '>
                         <div className='h-100 col-7  paddingZero '  >

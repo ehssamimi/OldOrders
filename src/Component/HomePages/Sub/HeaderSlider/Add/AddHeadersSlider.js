@@ -42,7 +42,7 @@ class AddHeadersSlider extends Component {
     constructor(props) {
         super(props);
         this.state={
-            name:'',Files:props.DetailImages
+            name:'',Files:[]
         }
     }
     // componentWillReceiveProps(props){
@@ -51,15 +51,29 @@ class AddHeadersSlider extends Component {
     //     })
     // }
     //
-    componentDidUpdate(prevProps) {
-        // Typical usage (don't forget to compare props):
-        if (this.props.DetailImages !== prevProps.DetailImages) {
-            this.setState({
-                Files:this.props.DetailImages
-            })
-            // this.fetchData(this.props.userID);
+
+
+    // componentDidUpdate(prevProps) {
+    //     // Typical usage (don't forget to compare props):
+    //     if (this.props.DetailImages !== prevProps.DetailImages) {
+    //         this.setState({
+    //             Files:this.props.DetailImages
+    //         })
+    //         // this.fetchData(this.props.userID);
+    //     }
+    // }
+    static getDerivedStateFromProps(props, state) {
+        if (props.DetailImages !== state.Files) {
+            return {
+                Files: props.DetailImages,
+            };
         }
+        // Return null if the state hasn't changed
+        return null;
     }
+
+
+
     handelChangeName(e){
         // console.log(e.target.value);
         this.setState({
@@ -75,11 +89,12 @@ class AddHeadersSlider extends Component {
         this.props.GetSliderType(id)
     }
     render() {
-        let {DetailImages,header}=this.props
-        let {Files}=this.state
+        let {DetailImages,header}=this.props;
+        let {Files}=this.state;
+        console.log('Files');
         console.log(Files);
         return (
-            <div id={1}>
+            <div >
                 <Row>
                     <Colxx xxs="12" className='d-flex justify-content-end' >
 

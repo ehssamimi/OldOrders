@@ -81,8 +81,73 @@ export default class MoveRowIndex extends React.Component {
         };
         this.setState(newState)
     };
+    // async componentDidMount(){
+    //     console.log('active');
+    //     let AllHomePages=await GetAllHomePages();
+    //     let Name=AllHomePages[1].Name;
+    //     let tasks = this.state.tasks;
+    //     let columns = this.state.columns;
+    //     let Description=await GetHomePageLoad(Name);
+    //     // console.log(Description);
+    //     let { Body,Header,Footer } =Description ;
+    //
+    //     let i;var j=1;let BodyRecive={};
+    //     for (i=0;i<Header.length;i++){
+    //         let NewID='item-'+(j+i);
+    //         let row = {
+    //             'id':NewID,
+    //             "ObjectType": Header[i].ObjectType,
+    //             "Position": j,
+    //             "Data": {
+    //                 "Title": Header[i].Data['Title'],
+    //                 "Data": Header[i].Data['Data']
+    //             }
+    //         };
+    //         columns['column-1']['taskIds'].push(NewID);
+    //         tasks[NewID] = row;
+    //         j=j+i
+    //     }
+    //     for (i=0;i<Body.length;i++){
+    //         let NewID='item-'+(j+i);
+    //         let row = {
+    //             'id':NewID,
+    //             "ObjectType": Body[i].ObjectType,
+    //             "Position":j,
+    //             "Data": {
+    //                 "Title": Body[i].Data['Title'],
+    //                 "Data": Body[i].Data['Data']
+    //             }
+    //         };
+    //         columns['column-2']['taskIds'].push(NewID);
+    //         tasks[NewID] = row;
+    //         j=j+i
+    //     }
+    //     for (i=0;i<Footer.length;i++){
+    //         let NewID='item-'+(j+i);
+    //         let row = {
+    //             'id':NewID,
+    //             "ObjectType": Footer[i].ObjectType,
+    //             "Position": j,
+    //             "Data": {
+    //                 "Title": Footer[i].Data['Title'],
+    //                 "Data": Footer[i].Data['Data']
+    //             }
+    //         };
+    //         columns['column-3']['taskIds'].push(NewID);
+    //         tasks[NewID] = row;
+    //         j=j+i
+    //     }
+    //     this.setState({
+    //         tasks, columns
+    //     },()=>{
+    //         // console.log(this.state.tasks)
+    //         // console.log(this.state.columns)
+    //     })
+    //     // console.log(BodyRecive)
+    // }
     async componentDidMount(){
         console.log('active');
+        // console.log(this.props.item.Name)
         let AllHomePages=await GetAllHomePages();
         let Name=AllHomePages[1].Name;
         let tasks = this.state.tasks;
@@ -90,11 +155,14 @@ export default class MoveRowIndex extends React.Component {
         let Description=await GetHomePageLoad(Name);
         // console.log(Description);
         let { Body,Header,Footer } =Description ;
-
+        let HeaderLenght=Header.length;
+        let BodyLenght=Body.length;
+        let FooterLenght=Footer.length;
         let i;var j=1;let BodyRecive={};
         for (i=0;i<Header.length;i++){
-            let NewID='item-'+(j+i);
+            let NewID='item-'+(i);
             let row = {
+                'id':NewID,
                 "ObjectType": Header[i].ObjectType,
                 "Position": i,
                 "Data": {
@@ -104,13 +172,15 @@ export default class MoveRowIndex extends React.Component {
             };
             columns['column-1']['taskIds'].push(NewID);
             tasks[NewID] = row;
-            j=j+i
+
         }
+        j=HeaderLenght;
         for (i=0;i<Body.length;i++){
             let NewID='item-'+(j+i);
             let row = {
+                'id':NewID,
                 "ObjectType": Body[i].ObjectType,
-                "Position": i,
+                "Position": j+i,
                 "Data": {
                     "Title": Body[i].Data['Title'],
                     "Data": Body[i].Data['Data']
@@ -118,13 +188,14 @@ export default class MoveRowIndex extends React.Component {
             };
             columns['column-2']['taskIds'].push(NewID);
             tasks[NewID] = row;
-            j=j+i
         }
+        j=HeaderLenght+BodyLenght;
         for (i=0;i<Footer.length;i++){
             let NewID='item-'+(j+i);
             let row = {
+                'id':NewID,
                 "ObjectType": Footer[i].ObjectType,
-                "Position": i,
+                "Position": j+i,
                 "Data": {
                     "Title": Footer[i].Data['Title'],
                     "Data": Footer[i].Data['Data']
@@ -132,17 +203,15 @@ export default class MoveRowIndex extends React.Component {
             };
             columns['column-3']['taskIds'].push(NewID);
             tasks[NewID] = row;
-            j=j+i
         }
         this.setState({
             tasks, columns
         },()=>{
-            console.log(this.state.tasks)
-            console.log(this.state.columns)
+            // console.log(this.state.tasks)
+            // console.log(this.state.columns)
         })
         // console.log(BodyRecive)
     }
-
     HandelAdd(column) {
         console.log(column)
 
@@ -346,7 +415,7 @@ export default class MoveRowIndex extends React.Component {
 
   render() {
     let {columns}=this.state;
-    // console.log(columns);
+    console.log(columns);
 
     return (
         <div className='w-100 '>

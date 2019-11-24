@@ -68,6 +68,7 @@ export default class Task extends React.Component {
       // console.log(item.Data);
       // console.log(item['id']);
       // let item=task.content;
+      console.log(this.props.index);
     return (
       <Draggable
         draggableId={this.props.task.id}
@@ -83,8 +84,6 @@ export default class Task extends React.Component {
             isDragging={snapshot.isDragging}
             // isDragDisabled={isDragDisabled}
           >
-
-
               {item.ObjectType==="ItemList"?<SLiderItemsHomePagePreview items={item.Data} position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)}/>:""}
               {item.ObjectType==="Category"?<CategoriesPreviewHomePages  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={false}/>:""}
               {item.ObjectType==="Package"?<PackagePreviewHomePages  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={false}/>:""}

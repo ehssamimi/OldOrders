@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom'
 // import '@atlaskit/css-reset'
 import { DragDropContext } from 'react-beautiful-dnd'
 import styled from 'styled-components'
-import {UpdateHomePage, AddHomePages, GetHomePageLoad,GetAllHomePages} from "../../../functions/ServerConnection";
+import {UpdateHomePage, AddHomePages, GetHomePageLoad,GetAllHomePages,DeleteHomePages} from "../../../../functions/ServerConnection";
 
 import initialData from './initial-data'
 import Column from './column'
 import {Modal, ModalBody, ModalHeader} from "reactstrap";
-import AddNewHomePageComponent from "../Edit/AddNewHomePageComponent/AddNewHomePageComponent";
+import AddNewHomePageComponent from "../../Edit/AddNewHomePageComponent/AddNewHomePageComponent";
 
 const Container = styled.div`
-  display:flex;
+  display:block;
 `
 
 
@@ -494,6 +494,11 @@ export default class MoveRowIndex extends React.Component {
        // console.log(sendHomePages)
 
     }
+    async DeletedHomePages(){
+        // console.log(this.props.id)
+        let response=await DeleteHomePages(this.props.id);
+        console.log(response);
+    }
 
   render() {
     let {columns}=this.state;
@@ -501,12 +506,14 @@ export default class MoveRowIndex extends React.Component {
     console.log(this.state.columns);
 
     return (
-        <div className='w-100 '>
-            <div className=' w-100 d-flex align-items-center h-3vh  '  >
+        <div className=' col-4 '>
+            <div className=' w-100 d-flex align-items-center h-3vh'  >
                 <span className='ml-2 mr-2 h-100 d-flex align-items-center'>Name: </span>
-                <input type='text' onChange={this.handelChangeText.bind(this)} value={this.state.header} className='border-0 h-100'/>
+                <span>{this.props.item.Name}</span>
+                <sapn className="btn   ml-auto simple-icon-trash fs-12vw" onClick={this.DeletedHomePages.bind(this)}></sapn>
+                {/*<input type='text' onChange={this.handelChangeText.bind(this)} value={this.state.header} className='border-0 h-100'/>*/}
             </div>
-            <DragDropContext onDragEnd={this.onDragEnd}>
+            {/*<DragDropContext onDragEnd={this.onDragEnd}>*/}
                 <Container>
                     {this.state.columnOrder.map(columnId => {
                         const column = this.state.columns[columnId];
@@ -517,7 +524,7 @@ export default class MoveRowIndex extends React.Component {
                         return (
                             <Column key={column.id} column={column} tasks={tasks} HandelAdd={this.HandelAdd.bind(this)}
                                     handelEditComponent={this.handelEditComponent.bind(this)}
-                                    handelDeleteItems={this.handelDeleteItems.bind(this)} handelDeleteUndo={this.handelDeleteUndo.bind(this)}/>
+                                    handelDeleteItems={this.handelDeleteItems.bind(this)} handelDeleteUndo={this.handelDeleteUndo.bind(this)} Edit={true}/>
                         )
                     })}
                 </Container>
@@ -537,7 +544,7 @@ export default class MoveRowIndex extends React.Component {
                         <AddNewHomePageComponent addComPonent={this.handelAddComponent.bind(this)}/>
                     </ModalBody>
                 </Modal>
-            </DragDropContext>
+            {/*</DragDropContext>*/}
         </div>
 
     )

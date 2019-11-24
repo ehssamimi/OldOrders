@@ -53,21 +53,21 @@ class SliderHomePagesPreview extends Component {
     static getDerivedStateFromProps(props, state) {
         if (props.items !== state.Data) {
             let Data = [];
-            if (props.edit) {
-                // console.log('Data');
-                // console.log(props.items.Data);
-                Data = props.items.Data;
-                return {
-                    Data
-                };
-            } else {
+            // if (props.edit) {
+            //     // console.log('Data');
+            //     // console.log(props.items.Data);
+            //     Data = props.items.Data;
+            //     return {
+            //         Data
+            //     };
+            // } else {
                 // console.log('Data');
                 // console.log(props.items.Data.Items);
                 Data = props.items.Data.Items;
                 return {
                     Data
                 };
-            }
+            // }
         }
         // Return null if the state hasn't changed
         return null;
@@ -75,6 +75,7 @@ class SliderHomePagesPreview extends Component {
 
 
     async handelDelete() {
+        this.props.deleteComponent(this.props.header,'Slider',this.props.position);
         // let data= await DeleteCitemList(this.props.items.Title);
         // // let{Data}=this.props.items;
         // let id=1;
@@ -143,19 +144,26 @@ class SliderHomePagesPreview extends Component {
         let {Data,itemsList}=this.state;
         // console.log('Data');
         // console.log(Data);
+        // console.log('slider HOme Page Preview');
+        // console.log(Data);
+
         return (
             <div>
                 <Row>
                     <Colxx xxs="12" id={1}>
-                        <CardTitle className='d-flex'>
-                            <div className='mr-auto'>
-                                <span className=' simple-icon-trash cursor-pointer' onClick={this.handelclickDelete.bind(this)}></span>
-                                <span className='  iconsminds-file-edit cursor-pointer' onClick={this.handelclickEdit.bind(this)}></span>
-                            </div>
-                            {
-                                `${this.props.items.Title}اسلایدر `
-                            }
-                        </CardTitle>
+                        {
+                            this.props.Edit?"":
+                                <CardTitle className='d-flex'>
+                                    <div className='mr-auto'>
+                                        <span className=' simple-icon-trash cursor-pointer' onClick={this.handelclickDelete.bind(this)}></span>
+                                        <span className='  iconsminds-file-edit cursor-pointer' onClick={this.handelclickEdit.bind(this)}></span>
+                                    </div>
+                                    {
+                                        `${this.props.items.Title}اسلایدر `
+                                    }
+                                </CardTitle>
+                        }
+
                     </Colxx>
                     <Colxx xxs="12" className="pl-0 pr-0 mb-5">
                         <GlideComponent settings={
@@ -173,7 +181,7 @@ class SliderHomePagesPreview extends Component {
                         }>
                             { Data.map(item => {
                                 return (
-                                    <div key={item._id}>
+                                    <div key={item.Position}>
                                         <NoControlCarouselItem {...item} />
                                     </div>
                                 );

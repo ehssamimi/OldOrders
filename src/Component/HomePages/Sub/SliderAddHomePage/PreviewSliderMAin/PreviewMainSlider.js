@@ -10,6 +10,7 @@ import NotificationManager from "../../../../../components/common/react-notifica
 import {TweenMax} from "gsap/TweenMax";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
+import HeaderPreviewComponentHomePage from "../../HeaderPreviewComponentHomePage/HeaderPreviewComponentHomePage";
 const NoControlCarouselItem = ({ Destination, Image, Position,DestinationId}) => {
     return (
         <div className="glide-item">
@@ -105,35 +106,23 @@ class PreviewMainSlider extends Component {
                 <Row>
                     <Colxx xxs="12" >
 
-                        <CardTitle className='d-flex h-4vh align-items-start '>
+                        <HeaderPreviewComponentHomePage handelEdit={this.handelEdit.bind(this)} handelclickDelete={this.handelclickDelete.bind(this)}   Name={this.props.slider.Name}/>
 
-                            <div className='d-flex mr-auto  '>
-                                <div className=' d-flex fs-13vw color-theme-1 m-2 BtnHeaderComponent ' onClick={this.handelEdit.bind(this,this.props.header)}><FaRegEdit /></div>
-                                <div className=' d-flex  fs-13vw  color-theme-1 m-2 BtnHeaderComponent ' onClick={this.handelclickDelete.bind(this)}><MdDeleteForever/></div>
-                            </div>
 
-                            <span dir='rtl' className='ml-2 d-flex align-items-end '>
-                                نام :  {this.props.slider.Name}
-                            </span>
+                        {/*<CardTitle className='d-flex h-4vh align-items-start '>*/}
 
-                            {/*<span className='ml-auto simple-icon-trash' onClick={this.handelclickDelete.bind(this)}></span>*/}
-                            {/*<span className='ml-auto simple-icon-trash' onClick={this.handelEdit.bind(this)}></span>*/}
-
-                        </CardTitle>
-
-                        {/*<CardTitle className='d-flex'>*/}
-                            {/*{*/}
-                                {/*this.props.slider.Name*/}
-                            {/*}*/}
-                            {/*<div className='d-flex ml-auto  '>*/}
-                                {/*<div className=' d-flex    m-2' onClick={this.handelEdit.bind(this,this.props.header)}><FaRegEdit /></div>*/}
-                                {/*<div className=' d-flex    m-2' onClick={this.handelclickDelete.bind(this)}><MdDeleteForever/></div>*/}
+                            {/*<div className='d-flex mr-auto  '>*/}
+                                {/*<div className=' d-flex fs-13vw color-theme-1 m-2 BtnHeaderComponent ' onClick={this.handelEdit.bind(this,this.props.header)}><FaRegEdit /></div>*/}
+                                {/*<div className=' d-flex  fs-13vw  color-theme-1 m-2 BtnHeaderComponent ' onClick={this.handelclickDelete.bind(this)}><MdDeleteForever/></div>*/}
                             {/*</div>*/}
 
-                            {/*/!*<span className='ml-auto simple-icon-trash' onClick={this.handelclickDelete.bind(this)}></span>*!/*/}
-                            {/*/!*<span className='ml-auto simple-icon-trash' onClick={this.handelEdit.bind(this)}></span>*!/*/}
+                            {/*<span dir='rtl' className='ml-2 d-flex align-items-end '>*/}
+                                {/*نام :  {this.props.slider.Name}*/}
+                            {/*</span>*/}
 
                         {/*</CardTitle>*/}
+
+
                     </Colxx>
                     <Colxx xxs="12" className="pl-0 pr-0 mb-5">
                         <GlideComponent settings={

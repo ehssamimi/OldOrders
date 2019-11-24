@@ -5,6 +5,12 @@ import AppLayout from './../../../layout/AppLayout';
 const EditMainHomePage = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/HomePages/Main/PreviewAllPages/PreviewAllMainMobile')
 );
+const PreviewAllMainMobile = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/HomePages/Main/Edit/HomePagePreview')
+);
+const Test = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/HomePages/Main/Edit/Test')
+);
 const ActiveMainHomePage = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ './../../../Component/HomePages/Main/Active/ActiveMainHomePages')
 );

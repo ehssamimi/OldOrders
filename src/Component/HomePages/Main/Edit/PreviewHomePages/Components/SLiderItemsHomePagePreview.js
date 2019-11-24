@@ -70,6 +70,8 @@ class SLiderItemsHomePagePreview extends Component {
     }
 
     async handelDelete() {
+        this.props.deleteComponent(this.props.header,'ItemList',this.props.position);
+
         // let data= await DeleteCitemList(this.props.items.Title);
         // // let{Data}=this.props.items;
         // let id=1;
@@ -143,15 +145,21 @@ class SLiderItemsHomePagePreview extends Component {
             <div>
                 <Row>
                     <Colxx xxs="12" id={1}>
-                        <CardTitle className='d-flex'>
-                            <div className='mr-auto'>
-                                <span className=' simple-icon-trash cursor-pointer' onClick={this.handelclickDelete.bind(this)}></span>
-                                <span className='  iconsminds-file-edit cursor-pointer' onClick={this.handelclickEdit.bind(this)}></span>
-                            </div>
-                            {
-                                this.props.items.Title
-                            }
-                        </CardTitle>
+                        {
+                            this.props.Edit?"":
+                                <CardTitle className='d-flex'>
+                                    <div className='mr-auto'>
+                                        <span className=' simple-icon-trash cursor-pointer'
+                                              onClick={this.handelclickDelete.bind(this)}></span>
+                                        <span className='  iconsminds-file-edit cursor-pointer'
+                                              onClick={this.handelclickEdit.bind(this)}></span>
+                                    </div>
+                                    {
+                                        this.props.items.Title
+                                    }
+                                </CardTitle>
+                        }
+
                     </Colxx>
                     <Colxx xxs="12" className="pl-0 pr-0 mb-5">
                         <GlideComponent settings={
