@@ -131,6 +131,7 @@ class CropSliderImg extends Component {
 
     handelCrop(){
 
+
         if (typeof this.cropper.getCroppedCanvas() === 'undefined') {
             return;
         }
@@ -166,6 +167,7 @@ class CropSliderImg extends Component {
 
                 // console.log(this.cropper.getCroppedCanvas());
                 let file= base64StringtoFile(this.state.cropResult,this.state.name,this.state.type);
+                // console.log(file.size);
                 // ***this is file to set server*********
                 // console.log(file);
                 // this.props.GetImgFile(file,this.state.cropResult,this.props.label);

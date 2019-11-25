@@ -13,6 +13,7 @@ import {Modal, ModalBody, ModalHeader} from "reactstrap";
 import FormAddSlider from "../SliderAddHomePage/FormAddSlider/FormAddSlider";
 import AddHeadersSlider from "./Add/AddHeadersSlider";
 import NewHeaderSlider from "./Add/NewHeaderSlider";
+import ax from './../../../../assets/img/4th.jpg'
 
 class HeaderSliderMain extends Component {
     constructor(props) {
@@ -21,23 +22,16 @@ class HeaderSliderMain extends Component {
             SlidersPrev: '', modalLarge:false, headerPlaceHolder:'',header:'', files: [
                 {
                     id: 0,
-                    img: "/assets/img/parkin.jpg"
+                    img: ax
                 },
                 {
                     id: 1,
-                    img: "/assets/img/napoleonshat.jpg"
+                    img: ax
                 },
-                {
-                    id: 2,
-                    img: "/assets/img/marble-cake.jpg"
-                },
-                {
-                    id: 3,
-                    img: "/assets/img/marble-cake.jpg"
-                }
+
             ],Sliders:[{Position:0,Image:'',Destination:'',DestinationId:''},{Position:1,Image:'',Destination:'',DestinationId:''}
-            ,{Position:2,Image:'',Destination:''}
-        ] ,id: '',
+            // ,{Position:2,Image:'',Destination:''}
+        ] ,id: '',error:{header:"",atLeast:""}
         }
     }
     async componentDidMount(){
@@ -139,18 +133,63 @@ class HeaderSliderMain extends Component {
     async HandelSubmit(){
         let {Sliders,header}=this.state;
         let i;
-        let Number=Sliders.length;
-        console.log(header);
-        console.log(Number);
-        let SliderId = await AddHeaderSlider(header,Number);
-        console.log('SliderID',SliderId);
-        console.log(SliderId);
+        // let Number=Sliders.length;
+        let Number=0;
         for (i = 0 ; i < Sliders.length; i++) {
-            let idax1 = await sendImg(Sliders[i].Image, 'Public');
-            let updateCategories1 = await UpdateHeaderSliders(header, Sliders[i].Position, idax1 ,Sliders[i].Destination, idax1);
-            console.log(updateCategories1);
+            if (Sliders[i].Destination.length>1) {
+                Number+=1
+            }
         }
-        console.log(header)
+        // console.log(header);
+        // console.log('Number');
+        // console.log(Number);
+        // console.log(Sliders);
+        var validateSlider=true;
+        if (header.length<1){
+            validateSlider = false;
+            let {error} = this.state;
+            error['header'] = "header is not here";
+            this.setState({
+                error
+            })
+        }else {
+            let {error} = this.state;
+            error['header'] = "";
+            this.setState({
+                error
+            })
+        }
+            if (Number<2) {
+                validateSlider=false;
+                        let {error} = this.state;
+                        error['atLeast'] = "at last 2 component";
+                        return(
+                        this.setState({
+                            error
+                        }))
+            }else {
+                let {error} = this.state;
+                        error['atLeast'] = "";
+                        this.setState({
+                            error
+                        })
+            }
+
+        if (validateSlider){
+            let SliderId = await AddHeaderSlider(header,Number);
+            console.log('SliderID',SliderId);
+            console.log(SliderId);
+            for (i = 0 ; i < Sliders.length; i++) {
+                if (Sliders[i].Destination.length>1) {
+                    let idax1 = await sendImg(Sliders[i].Image, 'Public');
+                    let updateCategories1 = await UpdateHeaderSliders(header, Sliders[i].Position, idax1, Sliders[i].Destination, idax1);
+                    console.log(updateCategories1);
+                }
+            }
+            console.log(header)
+        }
+
+
 
     }
     async handelEdit(){
@@ -199,17 +238,30 @@ class HeaderSliderMain extends Component {
         return (
             <div className='d-flex '>
                 <div className='col-6'>
-                    <NewHeaderSlider/>
+                    <NewHeaderSlider DetailImages={files} GetSliderType={this.GetSliderType.bind(this)}
+                                     GetCategoriesName={this.GetCategoriesName.bind(this)}
+                                     header={headerPlaceHolder || 'انتخاب نام'} Edit={this.state.Edit} />
 
                     {/*<AddHeadersSlider DetailImages={files} GetSliderType={this.GetSliderType.bind(this)}*/}
                                    {/*GetCategoriesName={this.GetCategoriesName.bind(this)} header={headerPlaceHolder||'انتخاب نام'} Edit={this.state.Edit}/>*/}
 
                     {/*<button onClick={this.AddExtraSlider.bind(this)}>add extra slider</button>*/}
+
+
                     <div className='d-flex w-100 align-items-center h-7vh '>
                         {this.state.Edit? <button className='btn btn-primary ' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}
 
                         <span className='fs-24vw color-theme-2 ml-auto btn d-flex align-items-center pr-0'  onClick={this.AddExtraSlider.bind(this)}><FaPlusCircle/></span>
                     </div>
+                    <div className='d-flex flex-column'>
+                        {
+                            this.state.error['header'].length>1?<span className='alert alert-danger mt-3'>{this.state.error['header']}</span>:""
+                        }
+                        {
+                            this.state.error['atLeast'].length>1?<span className='alert alert-danger mt-3'>{this.state.error['atLeast']}</span>:""
+                        }
+                    </div>
+
 
                 </div>
                 <div className='col-6'>

@@ -138,9 +138,9 @@ class PreviewMainSlider extends Component {
                                 hideNav: true
                             }
                         }>
-                            { Items.map(item => {
+                            { Items.map((item,index) => {
                                 return (
-                                    <div key={item._id}>
+                                    <div key={index}>
                                         <NoControlCarouselItem {...item} />
                                     </div>
                                 );

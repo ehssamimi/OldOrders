@@ -1,106 +1,168 @@
-// import React, {Component ,useState} from 'react';
-import React, { useState } from 'react';
-import {
-    Carousel,
-    CarouselItem,
-    CarouselControl,
-    CarouselIndicators,
-    CarouselCaption
-} from 'reactstrap';
+import React, {Component} from 'react';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import {Card, CardTitle, Row} from "reactstrap";
+import GlideComponent from "../../../../../components/carousel/GlideComponent";
+import {Colxx} from "../../../../../components/common/CustomBootstrap";
 
-// const items = [
-//     {
-//         src: 'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15ba800aa1d%20text%20%7B%20fill%3A%23555%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15ba800aa1d%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22285.921875%22%20y%3D%22218.3%22%3EFirst%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E',
-//         altText: 'Slide 1',
-//         caption: 'Slide 1'
-//     },
-//     {
-//         src: 'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15ba800aa20%20text%20%7B%20fill%3A%23444%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15ba800aa20%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23666%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22247.3203125%22%20y%3D%22218.3%22%3ESecond%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E',
-//         altText: 'Slide 2',
-//         caption: 'Slide 2'
-//     },
-//     {
-//         src: 'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15ba800aa21%20text%20%7B%20fill%3A%23333%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15ba800aa21%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23555%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22277%22%20y%3D%22218.3%22%3EThird%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E',
-//         altText: 'Slide 3',
-//         caption: 'Slide 3'
-//     }
-// ];
-
-const items = [
-    {
-        id: 0,
-        img: "/assets/img/parkin.jpg"
-    },
-    {
-        id: 1,
-        img: "/assets/img/napoleonshat.jpg"
-    },
-    {
-        id: 2,
-        img: "/assets/img/marble-cake.jpg"
-    },
-    {
-        id: 3,
-        img: "/assets/img/marble-cake.jpg"
-    }
-];
-const NewHeaderSlider = (props) => {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [animating, setAnimating] = useState(false);
-
-    const next = () => {
-        if (animating) return;
-        const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
-        setActiveIndex(nextIndex);
-    }
-
-    const previous = () => {
-        if (animating) return;
-        const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
-        setActiveIndex(nextIndex);
-    }
-
-    const goToIndex = (newIndex) => {
-        if (animating) return;
-        setActiveIndex(newIndex);
-    }
-    const ClickImg=(id)=>{
-        console.log("aaaa")
-        console.log(id);
-         props.GetSliderType(id)
-    }
-
-    const slides = items.map((item) => {
-        return (
-            <CarouselItem
-                onExiting={() => setAnimating(true)}
-                onExited={() => setAnimating(false)}
-                key={item.id}
-                id={item.id}
-
-            >
-                {/*<img src={item.src} alt={item.altText} />*/}
-                <div className='position-relative vh25'>
-                    <img src={item.img} alt={item.img} className='card-img-top img-self-fill'  onClick={ClickImg}/>
-                </div>
-
-                {/*<CarouselCaption captionText={item.caption} captionHeader={item.caption} />*/}
-            </CarouselItem>
-        );
-    });
+const NoControlCarouselItem = ({ Destination, img }) => {
 
     return (
-        <Carousel
-            activeIndex={activeIndex}
-            next={next}
-            previous={previous}
-        >
-            <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
-            {slides}
-            <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-            <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
-        </Carousel>
+        <div className="glide-item col-12 cursor-pointer" >
+            <Card>
+                <div className="position-relative vh25">
+                    <img className="card-img-top img-self-fill " src={img} alt={img} />
+                    {/*Destination: null*/}
+                    {/*DestinationId: null*/}
+                    {/*Image: "http://chichiapp.ir:3005/download/5d9884457c1e36d6e452598e"*/}
+                    {/*Position: 4*/}
+                </div>
+
+            </Card>
+        </div>
     );
+};
+
+// const CustomDot = ({onClick, ...rest}) => {
+//     const {onMove, index, active, carouselState: {currentSlide, deviceType}} = rest;
+//     const carouselItems = [ CarouselItem1, CaourselItem2, CarouselItem3];
+//     // onMove means if dragging or swiping in progress.
+//     // active is provided by this lib for checking if the item is active or not.
+// return (
+//                 <button className={active ? 'active' : 'inactive'} onClick={() => onClick()}>
+//                     {React.Children.toArray(carouselItems)[index]}
+//                 </button>
+// )
+// }
+
+
+class NewHeaderSlider extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state={
+            files: []
+        }
+    }
+    ClickImg(id){
+        console.log("aaaa");
+        console.log(id);
+        this.props.GetSliderType(id)
+    }
+    static getDerivedStateFromProps(props, state) {
+        if (props.DetailImages !== state.files) {
+            return {
+                files: props.DetailImages,
+            };
+        }
+        // Return null if the state hasn't changed
+        return null;
+    }
+
+
+
+    handelChangeName(e){
+        // console.log(e.target.value);
+        this.setState({
+            name:e.target.value
+        },()=>{
+            this.props.GetCategoriesName(this.state.name)
+        })
+
+    }
+
+    render() {
+        let{header}=this.props;
+        return (
+            <Row>
+                <Colxx xxs="12" className='d-flex justify-content-end' >
+
+
+                    <CardTitle className='d-flex'>
+                        {
+                            this.props.Edit ?
+                                <span dir='rtl' className='ml-2 d-flex align-items-end '>
+                                     نام : {header}
+                                     </span>
+                                :
+                                <span dir='rtl' className='d-flex  align-items-center'>
+                                         <span className='ml-2'>نام:</span>
+                                         <input type='text' name="id" id="id"
+                                                onChange={this.handelChangeName.bind(this)}
+                                                className='border-0 fS1vw backgroundDefault' placeholder={header}/>
+                                    </span>
+                        }
+                    </CardTitle>
+                </Colxx>
+                <Colxx xxs="12" className="pl-0 pr-0 mb-3">
+                    <div>
+                        <Carousel
+                            additionalTransfrom={0}
+                            arrows
+                            autoPlaySpeed={3000}
+                            centerMode={false}
+                            className=""
+                            containerClass="container-with-dots"
+                            // customDot={<CustomDot />}
+                            dotListClass=" "
+                            draggable
+                            focusOnSelect={false}
+                            infinite
+                            itemClass=""
+                            keyBoardControl
+                            minimumTouchDrag={80}
+                            renderButtonGroupOutside={false}
+                            renderDotsOutside={false}
+                            responsive={{
+                                desktop: {
+                                    breakpoint: {
+                                        max: 3000,
+                                        min: 1024
+                                    },
+                                    items: 2,
+                                    partialVisibilityGutter: 40
+                                },
+                                mobile: {
+                                    breakpoint: {
+                                        max: 464,
+                                        min: 0
+                                    },
+                                    items: 1,
+                                    partialVisibilityGutter: 30
+                                },
+                                tablet: {
+                                    breakpoint: {
+                                        max: 1024,
+                                        min: 464
+                                    },
+                                    items: 2,
+                                    partialVisibilityGutter: 30
+                                }
+                            }}
+                            showDots={true}
+                            sliderClass=""
+                            slidesToSlide={1}
+                            swipeable
+                        >
+                            {this.state.files.map((item,key) => {
+                                return (
+                                    <div key={key} onClick={this.ClickImg.bind(this , item.id)} >
+                                        <NoControlCarouselItem {...item} />
+                                    </div>
+                                );
+                            })}
+
+                        </Carousel>
+                    </div>
+                </Colxx>
+            </Row>
+
+
+
+
+
+        );
+    }
 }
 
 export default NewHeaderSlider;

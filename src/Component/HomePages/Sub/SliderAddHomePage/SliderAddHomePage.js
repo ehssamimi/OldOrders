@@ -6,9 +6,17 @@ import { FaPlusCircle } from "react-icons/fa";
 import FormAddSlider from "./FormAddSlider/FormAddSlider";
 import {Modal, ModalBody, ModalHeader} from "reactstrap";
 import CropImgCropper from "../CropImg/CropImgCropper";
-import {AddSlider, sendImg, UpdateSliders,allMainSlider,GetSliderDetail} from "../../../functions/ServerConnection";
+import {
+    AddSlider,
+    sendImg,
+    UpdateSliders,
+    allMainSlider,
+    GetSliderDetail,
+    AddHeaderSlider, UpdateHeaderSliders
+} from "../../../functions/ServerConnection";
 import PreViewBanner from "../Banner/PreViewBanner/PreViewBanner";
 import PreviewMainSlider from "./PreviewSliderMAin/PreviewMainSlider";
+import NewHeaderSlider from "../HeaderSlider/Add/NewHeaderSlider";
  class SliderAddHomePage extends Component {
     constructor(props) {
         super(props);
@@ -20,6 +28,9 @@ import PreviewMainSlider from "./PreviewSliderMAin/PreviewMainSlider";
                 },
                 {
                     id: 1,
+                    img: "/assets/img/napoleonshat.jpg"
+                },{
+                    id: 2,
                     img: "/assets/img/napoleonshat.jpg"
                 },
                 // {
@@ -34,10 +45,10 @@ import PreviewMainSlider from "./PreviewSliderMAin/PreviewMainSlider";
                 //     id: "large4",
                 //     img: "/assets/img/marble-cake.jpg"
                 // },
-            ],id:'', modalLarge:false,header:'',Edit:false,Sliders:[{Position:0,Image:'',Destination:'',DestinationId:''},{Position:1,Image:'',Destination:'',DestinationId:''}
+            ],id:'', modalLarge:false,header:'',Edit:false,Sliders:[{Position:0,Image:'',Destination:'',DestinationId:''},{Position:1,Image:'',Destination:'',DestinationId:''},{Position:2,Image:'',Destination:'',DestinationId:''}
             // ,{Position:2,Image:'',Destination:''}
 
-            ],SlidersPrev:[],headerPlaceHolder:''
+            ],SlidersPrev:[],headerPlaceHolder:'',error:{header:"",atLeast:""}
         }
     }
     async componentDidMount(){
@@ -172,15 +183,74 @@ import PreviewMainSlider from "./PreviewSliderMAin/PreviewMainSlider";
      async HandelSubmit(){
          let {Sliders,header}=this.state;
          let i;
-         let SliderId = await AddSlider(header);
-         console.log('SliderID',SliderId);
-         console.log(SliderId);
+         // let Number=Sliders.length;
+         let Number=0;
          for (i = 0 ; i < Sliders.length; i++) {
-             let idax1 = await sendImg(Sliders[i].Image, 'Public');
-             let updateCategories1 = await UpdateSliders(header, Sliders[i].Position, idax1 ,Sliders[i].Destination, idax1);
-             console.log(updateCategories1);
+             if (Sliders[i].Destination.length>1) {
+                 Number+=1
+             }
          }
-         console.log(header)
+         // console.log(header);
+         // console.log('Number');
+         // console.log(Number);
+         // console.log(Sliders);
+         var validateSlider=true;
+         if (header.length<1){
+             validateSlider = false;
+             let {error} = this.state;
+             error['header'] = "header is not here";
+             this.setState({
+                 error
+             })
+         }else {
+             let {error} = this.state;
+             error['header'] = "";
+             this.setState({
+                 error
+             })
+         }
+         if (Number<3) {
+             validateSlider=false;
+             let {error} = this.state;
+             error['atLeast'] = "at last 3 component";
+             return(
+                 this.setState({
+                     error
+                 }))
+         }else {
+             let {error} = this.state;
+             error['atLeast'] = "";
+             this.setState({
+                 error
+             })
+         }
+
+         if (validateSlider){
+             let SliderId = await AddSlider(header,Number);
+             console.log('SliderID',SliderId);
+             console.log(SliderId);
+             for (i = 0 ; i < Sliders.length; i++) {
+                 if (Sliders[i].Destination.length>1) {
+                     let idax1 = await sendImg(Sliders[i].Image, 'Public');
+                     let updateCategories1 = await UpdateSliders(header, Sliders[i].Position, idax1, Sliders[i].Destination, idax1);
+                     console.log(updateCategories1);
+                 }
+             }
+             console.log(header)
+         }
+
+
+         // let {Sliders,header}=this.state;
+         // let i;
+         // let SliderId = await AddSlider(header);
+         // console.log('SliderID',SliderId);
+         // console.log(SliderId);
+         // for (i = 0 ; i < Sliders.length; i++) {
+         //     let idax1 = await sendImg(Sliders[i].Image, 'Public');
+         //     let updateCategories1 = await UpdateSliders(header, Sliders[i].Position, idax1 ,Sliders[i].Destination, idax1);
+         //     console.log(updateCategories1);
+         // }
+         // console.log(header)
 
      }
      async handelEdit(){
@@ -232,12 +302,17 @@ import PreviewMainSlider from "./PreviewSliderMAin/PreviewMainSlider";
 
 
          // console.log( this.state.files);
-         let{SlidersPrev,headerPlaceHolder}=this.state;
+         let{SlidersPrev,headerPlaceHolder,files,Edit}=this.state;
+         // console.log(SlidersPrev);
         return (
             <div className='d-flex'>
                 <div className='col-6' >
-                            <SliderOnePage DetailImages={this.state.files} GetSliderType={this.GetSliderType.bind(this)}
-                                           GetCategoriesName={this.GetCategoriesName.bind(this)} header={headerPlaceHolder||'انتخاب نام'} Edit={this.state.Edit}/>
+
+                    <NewHeaderSlider DetailImages={files} GetSliderType={this.GetSliderType.bind(this)}
+                                     GetCategoriesName={this.GetCategoriesName.bind(this)}
+                                     header={headerPlaceHolder || 'انتخاب نام'} Edit={Edit} />
+                            {/*<SliderOnePage DetailImages={this.state.files} GetSliderType={this.GetSliderType.bind(this)}*/}
+                                           {/*GetCategoriesName={this.GetCategoriesName.bind(this)} header={headerPlaceHolder||'انتخاب نام'} Edit={this.state.Edit}/>*/}
 
                     <div className='d-flex w-100 align-items-center h-7vh '>
                         {this.state.Edit? <button className='btn btn-primary ' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}
@@ -245,6 +320,14 @@ import PreviewMainSlider from "./PreviewSliderMAin/PreviewMainSlider";
                         <span className='fs-24vw color-theme-2 ml-auto btn d-flex align-items-center pr-0'  onClick={this.AddExtraSlider.bind(this)}><FaPlusCircle/></span>
                     </div>
 
+                    <div className='d-flex flex-column'>
+                        {
+                            this.state.error['header'].length>1?<span className='alert alert-danger mt-3'>{this.state.error['header']}</span>:""
+                        }
+                        {
+                            this.state.error['atLeast'].length>1?<span className='alert alert-danger mt-3'>{this.state.error['atLeast']}</span>:""
+                        }
+                    </div>
                     {/*<button onClick={this.AddExtraSlider.bind(this)}>add extra slider</button>*/}
                     {/*{this.state.Edit? <button className='btn btn-primary' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}*/}
 
@@ -254,7 +337,7 @@ import PreviewMainSlider from "./PreviewSliderMAin/PreviewMainSlider";
                     {
                         SlidersPrev.length>0?
                             // AllBanners.map((cat ,index)=><PreViewBanner id={CategoriesList[index]._id} key={index} header={cat.Name} ax1={CategoriesList[index].Items[0].Image}   clickPreview={this.ClickEdit.bind(this)}/>  ):""
-                            SlidersPrev.map((slider ,index)=><PreviewMainSlider id={slider._id} key={index} header={slider.Name}
+                            SlidersPrev.map((slider ,index)=><PreviewMainSlider id={slider._id} key={slider._id} header={slider.Name}
                                                                                 slider={slider} clickEdit={this.ClickEdit.bind(this)}/>  ):""
                         // AllBanners.map((cat ,index)=><PreViewBanner id={index} key={index}  ax1={ax}   clickPreview={this.ClickEdit.bind(this)} />  ):""
                     }

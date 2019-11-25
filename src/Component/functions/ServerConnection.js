@@ -187,9 +187,10 @@ export async  function  GetDestination( ) {
     let {data} = res;
     return data
 }
-export async  function  AddSlider(Name){
+export async  function  AddSlider(Name,Number){
     let formData = new FormData();
     formData.append("Name", Name);
+    formData.append("Number", Number );
 
     let headers = {
         'Token': Const.Token,
@@ -216,7 +217,7 @@ export async  function  UpdateSliders(SliderName,Position,Image,Destination ,Des
     formData.append("Image",Image);
     formData.append("DestinationId",DestinationId);
     formData.append("Destination",Destination);
-    let res = await axios.put(`http://chichiapp.ir:30036/admin/slider/${SliderName}/items/update`,formData, {headers: headers});
+    let res = await axios.put(`${Const.HomePage}admin/slider/${SliderName}/items/update`,formData, {headers: headers});
     // console.log(res);
     let { ItemId } = res.data ;
     let { status } = res ;
