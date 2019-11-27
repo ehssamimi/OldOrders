@@ -98,7 +98,7 @@ export default class GlideComponent extends React.Component {
                 <i className="simple-icon-arrow-left"></i>
               </button>
   
-              <div className="glide__bullets slider-dot-container" data-glide-el="controls[nav]">
+              <div className="glide__bullets slider-dot-container top-10" data-glide-el="controls[nav]">
                 {this.renderDots()}
               </div>
               

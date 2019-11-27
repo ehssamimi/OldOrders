@@ -17,7 +17,7 @@ export async  function  sendImg(file,permission){
      if (status===200) {
         return UploadId
     }else {
-        return ""
+        return "error"
     }
 }
 export async  function  GetCatNameFunction(Name){
@@ -35,7 +35,7 @@ export async  function  GetCatNameFunction(Name){
     if (status===200) {
         return ItemId
     }else {
-        return ""
+        return "error"
     }
 }
 export async  function  UpdateCategories(CatId,Position,Image,DestinationId){
@@ -49,11 +49,16 @@ export async  function  UpdateCategories(CatId,Position,Image,DestinationId){
     formData.append("Position",Position);
     formData.append("Image",Image);
     formData.append("DestinationId",DestinationId);
-     let res = await axios.put(`http://chichiapp.ir:30036/admin/category/${CatId}/items/update`,formData, {headers: headers});
+     let res = await axios.put(`${Const.HomePage}admin/category/${CatId}/items/update`,formData, {headers: headers});
     // console.log(res);
     let { ItemId } = res.data ;
     let { status } = res ;
-    return status
+    if (status===200) {
+        return status
+    }else {
+        return "error"
+    }
+
 }
 export async  function  GetCategoriesAll(){
 
@@ -200,10 +205,11 @@ export async  function  AddSlider(Name,Number){
     let res = await axios.post(`${Const.HomePage}admin/slider/add`,formData, {headers: headers});
     let { ItemId } = res.data ;
     let { status } = res ;
+    // return status
     if (status===200) {
         return ItemId
     }else {
-        return ""
+        return "error"
     }
 }
 export async  function  UpdateSliders(SliderName,Position,Image,Destination ,DestinationId){
@@ -277,7 +283,7 @@ export async function addBaner(Name,Image,Destination,DestinationId) {
     if (status === 200) {
         return ItemId
     } else {
-        return ""
+        return "error"
     }
 }
 export async  function  GetBanners( ) {

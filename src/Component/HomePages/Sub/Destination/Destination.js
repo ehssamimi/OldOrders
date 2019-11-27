@@ -69,7 +69,8 @@ class Destination extends Component {
 
                 <Colxx xxs="12"   className="mb-3 form-group  position-relative has-float-label">
                     <label>
-                        <IntlMessages id="Destination" />
+                        {/*<IntlMessages id="Destination" />*/}
+                        <span>مقصد</span>
                     </label>
                     <Select
                         components={{ Input: CustomSelectInput }}

@@ -113,7 +113,7 @@ class AddItemList extends Component {
                                           touched,
                                           isSubmitting
                                       }) => (
-                                        <Form className="av-tooltip tooltip-label-bottom">
+                                        <Form className="av-tooltip tooltip-label-bottom col-12">
                                             <div className="w-100 d-flex ">
                                                 <div className="col-sm-6 ">
                                                     <FormGroup className="form-group has-float-label">
@@ -153,7 +153,7 @@ class AddItemList extends Component {
                                                 </div>
 
                                             </div>
-                                            <button type='submit' className='btn btn-primary'>Send</button>
+                                            <button type='submit' className='btn btn-primary ml-3'>ارسال</button>
                                         </Form>
                                     )}
                                 </Formik>

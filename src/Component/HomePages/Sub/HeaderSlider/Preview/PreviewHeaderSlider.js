@@ -11,6 +11,7 @@ import {TweenMax} from "gsap/TweenMax";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import HeaderPreviewComponentHomePage from "../../HeaderPreviewComponentHomePage/HeaderPreviewComponentHomePage";
+import Loader from "../../Loader/Loader";
 const NoControlCarouselItem = ({ Destination, Image, Position,DestinationId}) => {
     return (
         <div className="glide-item">
@@ -50,13 +51,19 @@ class PreviewHeaderSlider extends Component {
     constructor(props) {
         super(props);
         this.state={
-            deleteItem:false
+            deleteItem:false,deleteLoader:false
         }
     }
 
     async handelDelete() {
+        this.setState(prevState => ({
+            deleteLoader: !prevState.deleteLoader
+        }));
         let data= await DeleteHeaderSlider(this.props.slider.Name);
         // let{Data}=this.props.items;
+        this.setState(prevState => ({
+            deleteLoader: !prevState.deleteLoader
+        }));
         let id=this.props.slider.Name;
 
         if(data===200){
@@ -77,6 +84,16 @@ class PreviewHeaderSlider extends Component {
             setTimeout(() => {
                 $el.remove();
             }, 2000)
+        }else {
+            NotificationManager.error(
+
+                "error",
+                "your can't do it !",
+                3000,
+                null,
+                null,
+                "error"
+            );
         }
         this.toggleLarge()
     }
@@ -105,75 +122,84 @@ class PreviewHeaderSlider extends Component {
         // console.log('header'+this.props.header);
         // console.log('Name'+this.props.slider.Name);
         return (
-            <div id={this.props.slider.Name}>
-                <Row>
-                    <Colxx xxs="12" >
+            <div className='w-100'>
+            {
+            (this.props.showLoader === true && this.props.EditName === this.props.slider.Name) || (this.state.deleteLoader === true) ?
+                <Loader/>
+                :
+                <div id={this.props.slider.Name}>
+                    <Row>
+                        <Colxx xxs="12">
 
-                        <HeaderPreviewComponentHomePage handelEdit={this.handelEdit.bind(this)} handelclickDelete={this.handelclickDelete.bind(this)}   Name={this.props.slider.Name}/>
+                            <HeaderPreviewComponentHomePage handelEdit={this.handelEdit.bind(this)}
+                                                            handelclickDelete={this.handelclickDelete.bind(this)}
+                                                            Name={this.props.slider.Name}/>
 
 
-                        {/*<CardTitle className='d-flex h-4vh align-items-start '>*/}
+                            {/*<CardTitle className='d-flex h-4vh align-items-start '>*/}
                             {/*<div className='d-flex mr-auto  '>*/}
-                                {/*<div className=' d-flex fs-13vw color-theme-1 m-2 BtnHeaderComponent ' onClick={this.handelEdit.bind(this,this.props.header)}><FaRegEdit /></div>*/}
-                                {/*<div className=' d-flex  fs-13vw  color-theme-1 m-2 BtnHeaderComponent ' onClick={this.handelclickDelete.bind(this)}><MdDeleteForever/></div>*/}
+                            {/*<div className=' d-flex fs-13vw color-theme-1 m-2 BtnHeaderComponent ' onClick={this.handelEdit.bind(this,this.props.header)}><FaRegEdit /></div>*/}
+                            {/*<div className=' d-flex  fs-13vw  color-theme-1 m-2 BtnHeaderComponent ' onClick={this.handelclickDelete.bind(this)}><MdDeleteForever/></div>*/}
                             {/*</div>*/}
 
                             {/*<span dir='rtl' className='ml-2 d-flex align-items-end '>*/}
-                                {/*نام :  {this.props.slider.Name}*/}
+                            {/*نام :  {this.props.slider.Name}*/}
                             {/*</span>*/}
-                        {/*</CardTitle>*/}
-                    </Colxx>
-                    <Colxx xxs="12" className="pl-0 pr-0 mb-5">
-                        <GlideComponent settings={
-                            {
-                                gap: 5,
-                                perView:2,
-                                type: "carousel",
-                                breakpoints: {
-                                    480: { perView: 1 },
-                                    800: { perView: 2 },
-                                    1200: { perView: 2 }
-                                },
-                                hideNav: true
-                            }
-                        }>
-                            { Items.map((item,index) =>
-                            // {
-                            //     return (
-                                    <div key={index}
-                                         id={item._id}
-                                    >
-                                        <NoControlCarouselItem {...item} />
-                                    </div>
-                            //     );
-                            // }
-                            )
-                            }
-                        </GlideComponent>
-                    </Colxx>
-                </Row>
-                <Modal
-                    isOpen={this.state.deleteItem}
-                    size="lg"
-                    toggle={this.toggleLarge}
-                >
-                    <ModalHeader toggle={this.toggleLarge}>
-                        Delete Slider {this.props.header}
+                            {/*</CardTitle>*/}
+                        </Colxx>
+                        <Colxx xxs="12" className="pl-0 pr-0 mb-5">
+                            <GlideComponent settings={
+                                {
+                                    gap: 5,
+                                    perView: 2,
+                                    type: "carousel",
+                                    breakpoints: {
+                                        480: {perView: 1},
+                                        800: {perView: 2},
+                                        1200: {perView: 2}
+                                    },
+                                    hideNav: false
+                                }
+                            }>
+                                {Items.map((item, index) =>
+                                        // {
+                                        //     return (
+                                        <div key={index}
+                                             id={item._id}
+                                        >
+                                            <NoControlCarouselItem {...item} />
+                                        </div>
+                                    //     );
+                                    // }
+                                )
+                                }
+                            </GlideComponent>
+                        </Colxx>
+                    </Row>
+                    <Modal
+                        isOpen={this.state.deleteItem}
+                        size="lg"
+                        toggle={this.toggleLarge}
+                    >
+                        <ModalHeader toggle={this.toggleLarge}>
+                            Delete Slider {this.props.header}
 
-                    </ModalHeader>
-                    <ModalBody>
-                        Are u sure?
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button color="primary" onClick={this.handelDelete.bind(this)}>
-                            Yes
-                        </Button>{" "}
-                        <Button color="secondary" onClick={this.toggleLarge}>
-                            Cancel
-                        </Button>
-                    </ModalFooter>
+                        </ModalHeader>
+                        <ModalBody>
+                            Are u sure?
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button color="primary" onClick={this.handelDelete.bind(this)}>
+                                Yes
+                            </Button>{" "}
+                            <Button color="secondary" onClick={this.toggleLarge}>
+                                Cancel
+                            </Button>
+                        </ModalFooter>
 
-                </Modal>
+                    </Modal>
+                </div>
+    }
             </div>
         );
     }

@@ -25,6 +25,9 @@ import IntlMessages from "../../../../helpers/IntlMessages";
 import * as Const from "../../../../constants/ServerConst";
 import PreviewCategories from "./PreviewCategories/PreviewCategories";
 import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
+import Loader from "../Loader/Loader";
+import PreviewHeaderSlider from "../HeaderSlider/Preview/PreviewHeaderSlider";
+import {Link} from "react-scroll/modules";
 
 class CategoriesAddHomePage extends Component {
     constructor(props) {
@@ -48,7 +51,7 @@ class CategoriesAddHomePage extends Component {
             modalLarge: false,
             CatName:'',
             CategoriesList:'',
-            header:'',Edit:false,id:''
+            header:'',Edit:false,id:'',showLoader:false,EditName:''
         } ;
         this.GetCategoriesName=this.GetCategoriesName.bind(this);
 
@@ -125,6 +128,11 @@ class CategoriesAddHomePage extends Component {
 
 
     async ClickEdit(value ,id) {
+        this.setState(prevState => ({
+            showLoader:!prevState.showLoader,
+            EditName:value
+        }));
+
         console.log(value);
         let data= await GetCategorieyDetail(value);
         console.log(data);
@@ -136,9 +144,18 @@ class CategoriesAddHomePage extends Component {
         this.setState({
             header,ax1,ax2,ax3,ax4,Edit:true,id
         })
+
+        this.setState(prevState => ({
+            showLoader:!prevState.showLoader
+        }));
+        let goTop=document.getElementById('goTop');
+        goTop.click();
     }
     async HandelSubmit(){
-
+        this.setState(prevState => ({
+            showLoader:!prevState.showLoader,
+        }));
+        let Submit=true;
         let {ax1File, ax2File, ax3File, ax4File, CatName, Destination1, Destination2, Destination3, Destination4} = this.state;
         let catNameServer = await GetCatNameFunction(CatName);
         let idax1 = await sendImg(ax1File, 'Public');
@@ -149,13 +166,40 @@ class CategoriesAddHomePage extends Component {
         let updateCategories2 = await UpdateCategories(catNameServer, "1", idax2 , catNameServer);
         let updateCategories3 = await UpdateCategories(catNameServer, "2", idax3 , catNameServer);
         let updateCategories4 = await UpdateCategories(catNameServer, "3", idax4 , catNameServer);
+        if (idax1 === 'error' || idax2 === 'error' || idax3 === 'error' || idax4 === 'error' || updateCategories1 === 'error' || updateCategories2 === 'error' || updateCategories3 === 'error' || updateCategories4 === 'error' ) {
+            NotificationManager.error(
+                "error",
+                "your category don't accept",
+                3000,
+                null,
+                null,
+                "error"
+            );
+            this.setState(prevState => ({
+                showLoader:false
+            }));
+        }else{
+            NotificationManager.success(
+                "congratulation",
+                "your category add",
+                3000,
+                null,
+                null,
+                "success"
+            );
+            this.setState(prevState => ({
+                showLoader:false
+            }));
+        }
         console.log(updateCategories1);
         console.log(updateCategories2);
         console.log(updateCategories3);
         console.log(updateCategories4);
     }
     async handelEdit(){
-
+        this.setState(prevState => ({
+            showLoader:!prevState.showLoader,
+         }));
         let {ax1File, ax2File, ax3File, ax4File, CatName, Destination1, Destination2, Destination3, Destination4,id} = this.state;
         var catNameServer = id ;
          // if (CatName!==''){
@@ -169,34 +213,106 @@ class CategoriesAddHomePage extends Component {
         if (ax1File!==''){
             let idax1 = await sendImg(ax1File, 'Public');
             let updateCategories1 = await UpdateCategories(catNameServer, "0", idax1 , catNameServer);
+            if (idax1 === 'error' || updateCategories1 === 'error'){
+                NotificationManager.error(
+                    "error",
+                    "your category don't accept",
+                    3000,
+                    null,
+                    null,
+                    "error"
+                );
+            }
             console.log(updateCategories1);
             if (updateCategories1===200){
                 submit=true;
+                // NotificationManager.success(
+                //     "congratulation",
+                //     "your category add",
+                //     3000,
+                //     null,
+                //     null,
+                //     "success"
+                // );
             }
         }
 
         if (ax2File!==''){
             let idax2 = await sendImg(ax2File, 'Public');
             let updateCategories2 = await UpdateCategories(catNameServer, "1", idax2 , catNameServer);
+            if (idax2 === 'error' || updateCategories2 === 'error'){
+                NotificationManager.error(
+                    "error",
+                    "your category don't accept",
+                    3000,
+                    null,
+                    null,
+                    "error"
+                );
+            }
             // console.log(updateCategories2);
             if (updateCategories2===200){
                 submit=true;
+                // NotificationManager.success(
+                //     "congratulation",
+                //     "your category add",
+                //     3000,
+                //     null,
+                //     null,
+                //     "success"
+                // );
             }
         }
         if (ax3File!==''){
             let idax3 = await sendImg(ax3File, 'Public');
             let updateCategories3 = await UpdateCategories(catNameServer, "2", idax3 , catNameServer);
+            if (idax3 === 'error' || updateCategories3 === 'error'){
+                NotificationManager.error(
+                    "error",
+                    "your category don't accept",
+                    3000,
+                    null,
+                    null,
+                    "error"
+                );
+            }
             // console.log(updateCategories3);
             if (updateCategories3===200){
                 submit=true;
+                // NotificationManager.success(
+                //     "congratulation",
+                //     "your category add",
+                //     3000,
+                //     null,
+                //     null,
+                //     "success"
+                // );
             }
         }
         if (ax4File!=='') {
             let idax4 = await sendImg(ax4File, 'Public');
             let updateCategories4 = await UpdateCategories(catNameServer, "3", idax4, catNameServer);
+            if (idax4 === 'error' || updateCategories4 === 'error'){
+                NotificationManager.error(
+                    "error",
+                    "your category don't accept",
+                    3000,
+                    null,
+                    null,
+                    "error"
+                );
+            }
             console.log(updateCategories4);
             if (updateCategories4===200){
                 submit=true;
+                // NotificationManager.success(
+                //     "congratulation",
+                //     "your category add",
+                //     3000,
+                //     null,
+                //     null,
+                //     "success"
+                // );
             }
         }
           if (submit===true) {
@@ -218,16 +334,34 @@ class CategoriesAddHomePage extends Component {
 
         let{ax1,ax2,ax3,ax4,type,CategoriesList,header,Edit}=this.state;
         return (
-            <div className='w-100 d-flex'>
+            <div className='w-100 d-flex '>
                 <div className='col-6'>
-                    <CategoriesHomePage Edit={this.state.Edit} header={header||'دسته بندی'} ax1={ax1||ax} ax2={ax2||ax} ax3={ax3||ax} ax4={ax4||ax} ClickImg={this.GetImgType.bind(this)} GetCategoriesName={this.GetCategoriesName}/>
+                    {
+                        this.state.showLoader ?
+                            <Loader/>
+                            :
+                            <CategoriesHomePage Edit={this.state.Edit} header={header || 'دسته بندی'} ax1={ax1 || ax}
+                                                ax2={ax2 || ax} ax3={ax3 || ax} ax4={ax4 || ax}
+                                                ClickImg={this.GetImgType.bind(this)}
+                                                GetCategoriesName={this.GetCategoriesName}/>
+                    }
                     {Edit? <button className='btn btn-primary' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}
                     </div>
 
                 <div className='col-4 offset-1 d-flex flex-column justify-content-end'>
                     {
-                        CategoriesList.length>0?
-                            CategoriesList.map((cat ,index)=><PreviewCategories index={index} id={CategoriesList[index]._id} key={index} header={cat.Name} ax1={CategoriesList[index].Items[0].Image} ax2={CategoriesList[index].Items[1].Image} ax3={CategoriesList[index].Items[2].Image} ax4={CategoriesList[index].Items[3].Image} clickPreview={this.ClickEdit.bind(this)} select={false}/>  ):""
+                        CategoriesList.length > 0 ?
+                            CategoriesList.map((cat, index) => <PreviewCategories index={index}
+                                                                                  id={CategoriesList[index]._id}
+                                                                                  key={index} header={cat.Name}
+                                                                                  ax1={CategoriesList[index].Items[0].Image}
+                                                                                  ax2={CategoriesList[index].Items[1].Image}
+                                                                                  ax3={CategoriesList[index].Items[2].Image}
+                                                                                  ax4={CategoriesList[index].Items[3].Image}
+                                                                                  clickPreview={this.ClickEdit.bind(this)}
+                                                                                  showLoader={this.state.showLoader}
+                                                                                  EditName={this.state.EditName}
+                                                                                  select={false}/>) : <Loader/>
 
                     }
 
@@ -249,6 +383,10 @@ class CategoriesAddHomePage extends Component {
                         </div>
                     </ModalBody>
                 </Modal>
+
+                <Link name="first" activeClass="active" className="first" to="addSlider" spy={true} smooth={true} duration={900} offset={-130}>
+                    <button className='d-none' id='goTop'>go top</button>
+                </Link>
 
             </div>
         );

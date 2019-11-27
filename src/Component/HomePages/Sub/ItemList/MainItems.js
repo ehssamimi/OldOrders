@@ -4,13 +4,15 @@ import {addItemList, GetAllItemList, GetItemDetail} from "../../../functions/Ser
 import PreviewItems from "./PreviewItems/PreviewItems";
 import HomePagePreview from "../../Main/Edit/HomePagePreview";
 import PreviewPackages from "../WonderPackageAddHomePage/subPackage/PreviewPackages";
+import Loader from "../Loader/Loader";
+import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
 
 
 class MainItems extends Component {
     constructor(props) {
         super(props);
         this.state={
-            itemLists:[]
+            itemLists:[],showLoader:false
         };
 
 
@@ -24,10 +26,25 @@ class MainItems extends Component {
     }
 
     async GetItemsValue(payload) {
+        this.setState(prevState => ({
+            showLoader:!prevState.showLoader,
+        }));
+
         console.log(payload.Title);
         console.log(payload.QueryKey);
         let value = await addItemList(payload.Title, payload.QueryKey);
-        console.log(value)
+        console.log(value);
+        this.setState(prevState => ({
+            showLoader:!prevState.showLoader,
+        }));
+        NotificationManager.success(
+            "congratulation",
+            "your Items is add",
+            3000,
+            null,
+            null,
+            "success"
+        );
     }
     async  ClickEdit(Name){
        let  Value = await GetItemDetail(Name);
@@ -38,17 +55,29 @@ class MainItems extends Component {
     render() {
         let {itemLists}=this.state;
         return (
-            <div className='d-flex'>
-                <div className='col-6'>
-                    <AddItemList GetItemsValue={this.GetItemsValue.bind(this)} />
-                </div>
-                <div className='col-6'>
-                    {
-                        itemLists.length>0?
-                            itemLists.map((cat ,index)=><PreviewItems Title={cat.Title} key={index} {...this.props } clickPreview={this.ClickEdit.bind(this)} />):""
-                    }
-                 </div>
+            <div className='w-100'>
+
+                        <div className='d-flex'>
+                            <div className='col-6'>
+                                {
+                                    this.state.showLoader ?
+                                        <Loader/>
+                                        :
+                                        <AddItemList GetItemsValue={this.GetItemsValue.bind(this)}/>
+                                }
+                                </div>
+                            <div className='col-6'>
+                                {
+                                    itemLists.length>0?
+                                        itemLists.map((cat ,index)=><PreviewItems Title={cat.Title} key={index} {...this.props } clickPreview={this.ClickEdit.bind(this)} />):""
+                                }
+                            </div>
+                        </div>
+
             </div>
+
+
+
         );
     }
 }

@@ -2,15 +2,16 @@ import React, {Component} from 'react';
 import PreViewBanner from "./PreViewBanner/PreViewBanner";
 import AddBanerHomePage from "./AddBaner/AddBanerHomePage";
 import {GetBanners, GetBanerDetail, GetDestination} from "../../../functions/ServerConnection";
-import axis from './../../../../assets/img/2574.jpg'
+import axis from './../../../../assets/img/4th.jpg'
 import PreviewCategories from "../CategoriesHomePage/PreviewCategories/PreviewCategories";
+import Loader from "../Loader/Loader";
 
 
 class MainBaner extends Component {
     constructor(props) {
         super(props);
         this.state={
-            AllBanners:[],Edit:false,ax:axis,name:'',Destination:""
+            AllBanners:[],Edit:false,ax:axis,name:'',Destination:"",showLoader:false
         }
     }
 
@@ -43,13 +44,19 @@ class MainBaner extends Component {
         return (
             <div className='w-100 d-flex'  >
                 <div className='col-6'>
-                    <AddBanerHomePage  id={1} header={'title'} ax={ax} name={this.state.name} Destination={this.state.Destination}/>
+
+                            <AddBanerHomePage  id={1} header={'title'} ax={ax} name={this.state.name} Destination={this.state.Destination}/>
+
+
 
                 </div>
                 <div className='col-6'>{
                     AllBanners.length>0?
                         // AllBanners.map((cat ,index)=><PreViewBanner id={CategoriesList[index]._id} key={index} header={cat.Name} ax1={CategoriesList[index].Items[0].Image}   clickPreview={this.ClickEdit.bind(this)}/>  ):""
-                        AllBanners.map((cat ,index)=><PreViewBanner id={cat._id} key={index} header={cat.Name} ax={cat.Image} clickPreview={this.ClickEdit.bind(this)} />  ):""
+                        AllBanners.map((cat, index) => <PreViewBanner id={cat._id} key={index} header={cat.Name}
+                                                                      ax={cat.Image} index={index}
+                                                                      clickPreview={this.ClickEdit.bind(this)}/>) :
+                        <Loader/>
                         // AllBanners.map((cat ,index)=><PreViewBanner id={index} key={index}  ax1={ax}   clickPreview={this.ClickEdit.bind(this)} />  ):""
                 }
 

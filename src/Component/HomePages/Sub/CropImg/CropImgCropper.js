@@ -202,8 +202,9 @@ class CropImgCropper extends Component {
 
                     <FormGroup className="form-group  position-relative has-float-label w-100">
                         <div className='d-flex justify-content-end'>
-                            <Label>
-                                <IntlMessages id={"مقصد "} />
+                            <Label className='z-5'>
+                                <span> مقصد </span>
+                                {/*<IntlMessages id={"مقصد"} />*/}
                             </Label>
                         </div>
                         <InputGroup className="mb-3">
@@ -225,10 +226,12 @@ class CropImgCropper extends Component {
 
                 <div className="col-sm-12">
 
-                    <FormGroup className="form-group  position-relative ">
+                    <FormGroup className="form-group  position-relative   w-100">
                         <div className='d-flex justify-content-end'>
                             <Label>
-                                <IntlMessages id={label} />
+                                <span> {label} </span>
+
+                                {/*<IntlMessages id={label} />*/}
                             </Label>
                         </div>
                         <InputGroup className="mb-3">

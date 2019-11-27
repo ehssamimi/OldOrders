@@ -14,6 +14,10 @@ import FormAddSlider from "../SliderAddHomePage/FormAddSlider/FormAddSlider";
 import AddHeadersSlider from "./Add/AddHeadersSlider";
 import NewHeaderSlider from "./Add/NewHeaderSlider";
 import ax from './../../../../assets/img/4th.jpg'
+import Loader from "../Loader/Loader";
+import PreviewMainSlider from "../SliderAddHomePage/PreviewSliderMAin/PreviewMainSlider";
+import {Link} from "react-scroll/modules";
+import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
 
 class HeaderSliderMain extends Component {
     constructor(props) {
@@ -31,7 +35,7 @@ class HeaderSliderMain extends Component {
 
             ],Sliders:[{Position:0,Image:'',Destination:'',DestinationId:''},{Position:1,Image:'',Destination:'',DestinationId:''}
             // ,{Position:2,Image:'',Destination:''}
-        ] ,id: '',error:{header:"",atLeast:""}
+        ] ,id: '',error:{header:"",atLeast:""},showLoader:false,EditName:''
         }
     }
     async componentDidMount(){
@@ -176,15 +180,61 @@ class HeaderSliderMain extends Component {
             }
 
         if (validateSlider){
+            this.setState(prevState => ({
+                showLoader:!prevState.showLoader,
+            }));
+            let Submit=true;
             let SliderId = await AddHeaderSlider(header,Number);
+            if (SliderId ==='error') {
+                NotificationManager.error(
+                    "error",
+                    "your Slider don't accept",
+                    3000,
+                    null,
+                    null,
+                    "error"
+                );
+                this.setState(prevState => ({
+                    showLoader:!prevState.showLoader,
+                }));
+                Submit=false;
+            }
             console.log('SliderID',SliderId);
             console.log(SliderId);
             for (i = 0 ; i < Sliders.length; i++) {
                 if (Sliders[i].Destination.length>1) {
                     let idax1 = await sendImg(Sliders[i].Image, 'Public');
                     let updateCategories1 = await UpdateHeaderSliders(header, Sliders[i].Position, idax1, Sliders[i].Destination, idax1);
+                    if (idax1==='error' || updateCategories1!==200) {
+                        NotificationManager.error(
+                            "error",
+                            "your Slider don't accept",
+                            3000,
+                            null,
+                            null,
+                            "error"
+                        );
+                        this.setState(prevState => ({
+                            showLoader:false
+                        }));
+                        Submit=false;
+                    }
                     console.log(updateCategories1);
                 }
+            }
+            if(Submit===true){
+                NotificationManager.success(
+
+                    "congratulation",
+                    "your Slider add",
+                    3000,
+                    null,
+                    null,
+                    "success"
+                );
+                this.setState(prevState => ({
+                    showLoader:false
+                }));
             }
             console.log(header)
         }
@@ -193,7 +243,11 @@ class HeaderSliderMain extends Component {
 
     }
     async handelEdit(){
-        console.log(this.state.Sliders)
+        console.log(this.state.Sliders);
+        this.setState(prevState => ({
+            showLoader:!prevState.showLoader,
+        }));
+        let Submit=true;
         let{Sliders,headerPlaceHolder}=this.state;
         let i;
         for (i = 0 ; i < Sliders.length; i++) {
@@ -201,15 +255,47 @@ class HeaderSliderMain extends Component {
             if (Sliders[i].Image!==''){
                 let idax1 = await sendImg(Sliders[i].Image, 'Public');
                 let updateCategories1 = await UpdateHeaderSliders(headerPlaceHolder, i, idax1 ,Sliders[i].Destination, idax1);
+                if (idax1==='error' || updateCategories1!==200) {
+                    NotificationManager.error(
+                        "error",
+                        "your Slider don't accept",
+                        3000,
+                        null,
+                        null,
+                        "error"
+                    );
+                    this.setState(prevState => ({
+                        showLoader:false
+                    }));
+                    Submit=false;
+                }
                 console.log(updateCategories1);
             }
 
         }
 
+        if(Submit===true){
+            NotificationManager.success(
+
+                "congratulation",
+                "your Slider edit",
+                3000,
+                null,
+                null,
+                "success"
+            );
+            this.setState(prevState => ({
+                showLoader:false
+            }));
+        }
     }
 
     async ClickEdit(name) {
         console.log(name);
+        this.setState(prevState => ({
+            showLoader:!prevState.showLoader,
+            EditName:name
+        }));
         let Slider=await GetHeaderSliderDetail(name);
         console.log(Slider);
         let {Items}=Slider;
@@ -226,7 +312,12 @@ class HeaderSliderMain extends Component {
             files, Sliders:Sliders,headerPlaceHolder:Slider.Name,Edit:true
         }, () => {
 
-        })
+        });
+        this.setState(prevState => ({
+            showLoader:!prevState.showLoader
+        }));
+        let goTop=document.getElementById('goTop');
+        goTop.click();
 
     }
 
@@ -238,9 +329,15 @@ class HeaderSliderMain extends Component {
         return (
             <div className='d-flex '>
                 <div className='col-6'>
-                    <NewHeaderSlider DetailImages={files} GetSliderType={this.GetSliderType.bind(this)}
-                                     GetCategoriesName={this.GetCategoriesName.bind(this)}
-                                     header={headerPlaceHolder || 'انتخاب نام'} Edit={this.state.Edit} />
+                    {
+                        this.state.showLoader?
+                            <Loader/>
+                            :      <NewHeaderSlider DetailImages={files} GetSliderType={this.GetSliderType.bind(this)}
+                                                    GetCategoriesName={this.GetCategoriesName.bind(this)}
+                                                    header={headerPlaceHolder || 'انتخاب نام'} Edit={this.state.Edit} />
+                    }
+
+
 
                     {/*<AddHeadersSlider DetailImages={files} GetSliderType={this.GetSliderType.bind(this)}*/}
                                    {/*GetCategoriesName={this.GetCategoriesName.bind(this)} header={headerPlaceHolder||'انتخاب نام'} Edit={this.state.Edit}/>*/}
@@ -251,7 +348,7 @@ class HeaderSliderMain extends Component {
                     <div className='d-flex w-100 align-items-center h-7vh '>
                         {this.state.Edit? <button className='btn btn-primary ' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}
 
-                        <span className='fs-24vw color-theme-2 ml-auto btn d-flex align-items-center pr-0'  onClick={this.AddExtraSlider.bind(this)}><FaPlusCircle/></span>
+                        {this.state.Edit? "": <span className='fs-24vw color-theme-2 ml-auto btn d-flex align-items-center pr-0'  onClick={this.AddExtraSlider.bind(this)}><FaPlusCircle/></span>}
                     </div>
                     <div className='d-flex flex-column'>
                         {
@@ -270,7 +367,11 @@ class HeaderSliderMain extends Component {
                             SlidersPrev.map((slider, index) => <PreviewHeaderSlider id={slider._id} key={index}
                                                                                     header={slider.Name}
                                                                                     slider={slider}
-                                                                                    clickEdit={this.ClickEdit.bind(this)}/>) : ""
+                                                                                    clickEdit={this.ClickEdit.bind(this)}
+                                                                                    showLoader={this.state.showLoader}
+                                                                                    EditName={this.state.EditName}
+
+                            />) :     <Loader/>
                     }
                 </div>
                 <Modal
@@ -288,6 +389,9 @@ class HeaderSliderMain extends Component {
                         </div>
                     </ModalBody>
                 </Modal>
+                <Link name="first" activeClass="active" className="first" to="addSlider" spy={true} smooth={true} duration={900} offset={-130}>
+                    <button className='d-none' id='goTop'>go top</button>
+                </Link>
 
             </div>
         );

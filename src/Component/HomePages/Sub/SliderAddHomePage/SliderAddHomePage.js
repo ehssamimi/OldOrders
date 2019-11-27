@@ -6,6 +6,7 @@ import { FaPlusCircle } from "react-icons/fa";
 import FormAddSlider from "./FormAddSlider/FormAddSlider";
 import {Modal, ModalBody, ModalHeader} from "reactstrap";
 import CropImgCropper from "../CropImg/CropImgCropper";
+import loader from '../../../../assets/img/loader.svg'
 import {
     AddSlider,
     sendImg,
@@ -15,8 +16,13 @@ import {
     AddHeaderSlider, UpdateHeaderSliders
 } from "../../../functions/ServerConnection";
 import PreViewBanner from "../Banner/PreViewBanner/PreViewBanner";
+// import {animateScroll as scroll, Events, Link} from "react-scroll/modules";
 import PreviewMainSlider from "./PreviewSliderMAin/PreviewMainSlider";
 import NewHeaderSlider from "../HeaderSlider/Add/NewHeaderSlider";
+import {Link} from "react-scroll/modules";
+import Loader from "../Loader/Loader";
+import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
+import {TweenMax} from "gsap/TweenMax";
  class SliderAddHomePage extends Component {
     constructor(props) {
         super(props);
@@ -33,22 +39,10 @@ import NewHeaderSlider from "../HeaderSlider/Add/NewHeaderSlider";
                     id: 2,
                     img: "/assets/img/napoleonshat.jpg"
                 },
-                // {
-                //     id:2,
-                //     img: "/assets/img/marble-cake.jpg"
-                // },
-                // {
-                //     id:3,
-                //     img: "/assets/img/marble-cake.jpg"
-                // },
-                // {
-                //     id: "large4",
-                //     img: "/assets/img/marble-cake.jpg"
-                // },
             ],id:'', modalLarge:false,header:'',Edit:false,Sliders:[{Position:0,Image:'',Destination:'',DestinationId:''},{Position:1,Image:'',Destination:'',DestinationId:''},{Position:2,Image:'',Destination:'',DestinationId:''}
             // ,{Position:2,Image:'',Destination:''}
 
-            ],SlidersPrev:[],headerPlaceHolder:'',error:{header:"",atLeast:""}
+            ],SlidersPrev:[],headerPlaceHolder:'',error:{header:"",atLeast:""},showLoader:false,EditName:""
         }
     }
     async componentDidMount(){
@@ -68,36 +62,9 @@ import NewHeaderSlider from "../HeaderSlider/Add/NewHeaderSlider";
     }
     GetSliderType(id){
         console.log(id);
-        // let id=id++
         this.setState({
             id
         });
-
-        // switch(type) {
-        //     case 'عکس اول':
-        //         this.setState({
-        //            type:1
-        //         });
-        //         break;
-        //     case 'عکس دوم':
-        //         this.setState({
-        //             type:2
-        //         });
-        //         break;
-        //     case 'عکس سوم':
-        //         this.setState({
-        //             Destination3:Destination, ax3File:file ,ax3:base64
-        //         });
-        //         break;
-        //     case 'عکس چهارم':
-        //         this.setState({
-        //             Destination4:Destination, ax4File:file ,ax4:base64
-        //         });
-        //         break;
-        //     default:
-        //         console.log("cant know why? but your sucks")
-        // }
-
         this.setState(prevState => ({
             modalLarge: !prevState.modalLarge
         }));
@@ -109,33 +76,14 @@ import NewHeaderSlider from "../HeaderSlider/Add/NewHeaderSlider";
     };
     GetData(file, Destination, label, Base64, DestinationString){
          let NewLabel=label.slice(4,5);
-
-
-        // let imgdetail={Position:NewLabel,Image:file,Destination:DestinationString};
-        // this.state.Sliders.push(imgdetail);
-        // console.log(this.state.files[NewLabel-1].img);
-        // let img={id:NewLabel-1,img:Base64};
-        // console.log(img);
         this.setState(state => {
-            // const files = state.files.filter(item => item.id !== NewLabel-1);
-            // let files = state.files ;
-
             let situation=state.files.filter(item => item.id === NewLabel-1);
             if (situation.length > 0) {
                 let files = state.files;
                 let Sliders = state.Sliders;
                 files[NewLabel - 1].img = Base64;
-                // Sliders[NewLabel - 1].Image = file;
-                // Sliders[NewLabel - 1].Destination = DestinationString;
-                // let id = files.length;
-
-
                 Sliders[NewLabel - 1].Image=file;
                 Sliders[NewLabel - 1].Destination=DestinationString;
-
-
-                // let NewImg = {Position: id, Image: file, Destination: Destination};
-                // Sliders.push(NewImg);
                 return {
                     files, Sliders
                 };
@@ -144,16 +92,12 @@ import NewHeaderSlider from "../HeaderSlider/Add/NewHeaderSlider";
                 let Sliders = state.Sliders;
                 let id = files.length;
                 let img = {id: id, img: Base64};
-                // console.log('aaaaaaaaaaaa')
                 let NewImg = {Position: id, Image: file, Destination: DestinationString,DestinationId:Destination};
                 files.push(img);
-                // Sliders[NewLabel - 1].Image = file;
-                // Sliders[NewLabel - 1].Destination = DestinationString;
                 Sliders.push(NewImg);
                 return {
                     files, Sliders
                 };
-
             }
 
         });
@@ -170,8 +114,6 @@ import NewHeaderSlider from "../HeaderSlider/Add/NewHeaderSlider";
     }
      AddExtraSlider( ){
          let id = this.state.files.length;
-         // console.log(id);
-         // let id=id++
          this.setState({
              id
          });
@@ -181,6 +123,7 @@ import NewHeaderSlider from "../HeaderSlider/Add/NewHeaderSlider";
      }
 
      async HandelSubmit(){
+
          let {Sliders,header}=this.state;
          let i;
          // let Number=Sliders.length;
@@ -190,10 +133,6 @@ import NewHeaderSlider from "../HeaderSlider/Add/NewHeaderSlider";
                  Number+=1
              }
          }
-         // console.log(header);
-         // console.log('Number');
-         // console.log(Number);
-         // console.log(Sliders);
          var validateSlider=true;
          if (header.length<1){
              validateSlider = false;
@@ -226,98 +165,161 @@ import NewHeaderSlider from "../HeaderSlider/Add/NewHeaderSlider";
          }
 
          if (validateSlider){
+             this.setState(prevState => ({
+                 showLoader:!prevState.showLoader,
+             }));
+             let Submit=true;
              let SliderId = await AddSlider(header,Number);
+             if (SliderId ==='error') {
+                 NotificationManager.error(
+                     "error",
+                     "your Slider don't accept",
+                     3000,
+                     null,
+                     null,
+                     "error"
+                 );
+                 this.setState(prevState => ({
+                     showLoader:!prevState.showLoader,
+                 }));
+                 Submit=false;
+             }
              console.log('SliderID',SliderId);
              console.log(SliderId);
              for (i = 0 ; i < Sliders.length; i++) {
                  if (Sliders[i].Destination.length>1) {
                      let idax1 = await sendImg(Sliders[i].Image, 'Public');
+
                      let updateCategories1 = await UpdateSliders(header, Sliders[i].Position, idax1, Sliders[i].Destination, idax1);
                      console.log(updateCategories1);
+                     if (idax1==='error' || updateCategories1!==200) {
+                         NotificationManager.error(
+                             "error",
+                             "your Slider don't accept",
+                             3000,
+                             null,
+                             null,
+                             "error"
+                         );
+                         this.setState(prevState => ({
+                             showLoader:false
+                         }));
+                         Submit=false;
+                     }
+
                  }
+             }
+             if(Submit===true){
+                 NotificationManager.success(
+
+                     "congratulation",
+                     "your Slider add",
+                     3000,
+                     null,
+                     null,
+                     "success"
+                 );
+                 this.setState(prevState => ({
+                     showLoader:false
+                 }));
              }
              console.log(header)
          }
-
-
-         // let {Sliders,header}=this.state;
-         // let i;
-         // let SliderId = await AddSlider(header);
-         // console.log('SliderID',SliderId);
-         // console.log(SliderId);
-         // for (i = 0 ; i < Sliders.length; i++) {
-         //     let idax1 = await sendImg(Sliders[i].Image, 'Public');
-         //     let updateCategories1 = await UpdateSliders(header, Sliders[i].Position, idax1 ,Sliders[i].Destination, idax1);
-         //     console.log(updateCategories1);
-         // }
-         // console.log(header)
-
      }
      async handelEdit(){
-        console.log(this.state.Sliders)
+         this.setState(prevState => ({
+             showLoader:!prevState.showLoader,
+         }));
+         let Submit=true;
+        console.log(this.state.Sliders);
          let{Sliders,headerPlaceHolder}=this.state;
          let i;
          for (i = 0 ; i < Sliders.length; i++) {
-             // console.log(Items[i])
              if (Sliders[i].Image!==''){
                  let idax1 = await sendImg(Sliders[i].Image, 'Public');
                  let updateCategories1 = await UpdateSliders(headerPlaceHolder, i, idax1 ,Sliders[i].Destination, idax1);
+
+                 if (idax1==='error' || updateCategories1!==200) {
+                     NotificationManager.error(
+                         "error",
+                         "your Slider don't accept",
+                         3000,
+                         null,
+                         null,
+                         "error"
+                     );
+                     this.setState(prevState => ({
+                         showLoader:false
+                     }));
+                     Submit=false;
+                 }
                  console.log(updateCategories1);
              }
 
          }
+         if(Submit===true){
+             NotificationManager.success(
 
+                 "congratulation",
+                 "your Slider edit",
+                 3000,
+                 null,
+                 null,
+                 "success"
+             );
+             this.setState(prevState => ({
+                 showLoader:false
+             }));
+         }
      }
 
      async ClickEdit(name) {
-         console.log(name)
+         console.log(name);
+         this.setState(prevState => ({
+             showLoader:!prevState.showLoader,
+             EditName:name
+         }));
          let Slider=await GetSliderDetail(name);
-         console.log(Slider);
          let {Items}=Slider;
-         console.log(Items);
 
          let i;let files=[];let Sliders=[];
          for (i = 0 ; i < Items.length; i++) {
-             // console.log(Items[i])
              let img = {id: Items[i].Position, img: Items[i].Image};
              let images={Position:i,Image:'',Destination:'',DestinationId:''};
              Sliders.push(images);
-             // console.log(img);
              files.push(img);
          }
          this.setState({
              files, Sliders:Sliders,headerPlaceHolder:Slider.Name,Edit:true
          }, () => {
-             // console.log(this.state.files)
-             // console.log(this.state.Sliders)
-         })
+
+         });
+         this.setState(prevState => ({
+             showLoader:!prevState.showLoader
+         }));
+         let goTop=document.getElementById('goTop');
+         goTop.click();
 
 
-         // files.push(img);
-         // Sliders[NewLabel - 1].Image = file;
-         // Sliders[NewLabel - 1].Destination = DestinationString;
-         // Sliders.push(NewImg);
      }
     render() {
-
-
-         // console.log( this.state.files);
-         let{SlidersPrev,headerPlaceHolder,files,Edit}=this.state;
+          let{SlidersPrev,headerPlaceHolder,files,Edit}=this.state;
          // console.log(SlidersPrev);
         return (
-            <div className='d-flex'>
+            <div className='d-flex  '>
                 <div className='col-6' >
-
-                    <NewHeaderSlider DetailImages={files} GetSliderType={this.GetSliderType.bind(this)}
-                                     GetCategoriesName={this.GetCategoriesName.bind(this)}
-                                     header={headerPlaceHolder || 'انتخاب نام'} Edit={Edit} />
-                            {/*<SliderOnePage DetailImages={this.state.files} GetSliderType={this.GetSliderType.bind(this)}*/}
-                                           {/*GetCategoriesName={this.GetCategoriesName.bind(this)} header={headerPlaceHolder||'انتخاب نام'} Edit={this.state.Edit}/>*/}
+                    {
+                        this.state.showLoader?
+                            <Loader/>
+                            :      <NewHeaderSlider DetailImages={files} GetSliderType={this.GetSliderType.bind(this)}
+                                                                      GetCategoriesName={this.GetCategoriesName.bind(this)}
+                                                                      header={headerPlaceHolder || 'انتخاب نام'} Edit={Edit} />
+                    }
 
                     <div className='d-flex w-100 align-items-center h-7vh '>
                         {this.state.Edit? <button className='btn btn-primary ' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}
 
-                        <span className='fs-24vw color-theme-2 ml-auto btn d-flex align-items-center pr-0'  onClick={this.AddExtraSlider.bind(this)}><FaPlusCircle/></span>
+                        {this.state.Edit? "":<span className='fs-24vw color-theme-2 ml-auto btn d-flex align-items-center pr-0'  onClick={this.AddExtraSlider.bind(this)}><FaPlusCircle/></span>}
                     </div>
 
                     <div className='d-flex flex-column'>
@@ -328,19 +330,21 @@ import NewHeaderSlider from "../HeaderSlider/Add/NewHeaderSlider";
                             this.state.error['atLeast'].length>1?<span className='alert alert-danger mt-3'>{this.state.error['atLeast']}</span>:""
                         }
                     </div>
-                    {/*<button onClick={this.AddExtraSlider.bind(this)}>add extra slider</button>*/}
-                    {/*{this.state.Edit? <button className='btn btn-primary' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}*/}
 
                 </div>
 
                 <div className='col-6' >
                     {
                         SlidersPrev.length>0?
-                            // AllBanners.map((cat ,index)=><PreViewBanner id={CategoriesList[index]._id} key={index} header={cat.Name} ax1={CategoriesList[index].Items[0].Image}   clickPreview={this.ClickEdit.bind(this)}/>  ):""
-                            SlidersPrev.map((slider ,index)=><PreviewMainSlider id={slider._id} key={slider._id} header={slider.Name}
-                                                                                slider={slider} clickEdit={this.ClickEdit.bind(this)}/>  ):""
-                        // AllBanners.map((cat ,index)=><PreViewBanner id={index} key={index}  ax1={ax}   clickPreview={this.ClickEdit.bind(this)} />  ):""
-                    }
+                             SlidersPrev.map((slider, index) => <PreviewMainSlider id={slider._id} key={slider._id}
+                                                                                  header={slider.Name}
+                                                                                  slider={slider}
+                                                                                  clickEdit={this.ClickEdit.bind(this)}
+                                                                                  showLoader={this.state.showLoader}
+                                                                                  EditName={this.state.EditName}
+                            />) :
+                        <Loader/>
+                     }
                 </div>
 
                 {/*</div>*/}
@@ -360,6 +364,9 @@ import NewHeaderSlider from "../HeaderSlider/Add/NewHeaderSlider";
                         </div>
                     </ModalBody>
                 </Modal>
+                <Link name="first" activeClass="active" className="first" to="addSlider" spy={true} smooth={true} duration={900} offset={-130}>
+                    <button className='d-none' id='goTop'>go top</button>
+                </Link>
 
             </div>
         );

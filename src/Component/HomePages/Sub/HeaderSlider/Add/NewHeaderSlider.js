@@ -34,6 +34,18 @@ const NoControlCarouselItem = ({ Destination, img }) => {
 //                 </button>
 // )
 // }
+const CustomDot = ({ onClick, active, index, carouselState }) => {
+    const { currentSlide } = carouselState;
+    return (
+        <li style={{ background: active ? "initial" : "initial" }} className='h-1vh mb-2 ml-1'>
+            <button
+                style={{ background: active ? "#922C88" : "initial" }}
+                className="br50 h-100 w-25"
+                onClick={() => onClick()}
+            />
+        </li>
+    );
+};
 
 
 class NewHeaderSlider extends Component {
@@ -74,7 +86,7 @@ class NewHeaderSlider extends Component {
     render() {
         let{header}=this.props;
         return (
-            <Row>
+            <Row id='addSlider'>
                 <Colxx xxs="12" className='d-flex justify-content-end' >
 
 
@@ -104,7 +116,7 @@ class NewHeaderSlider extends Component {
                             className=""
                             containerClass="container-with-dots"
                             // customDot={<CustomDot />}
-                            dotListClass=" "
+                            dotListClass=""
                             draggable
                             focusOnSelect={false}
                             infinite

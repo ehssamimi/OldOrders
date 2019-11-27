@@ -15,7 +15,7 @@ class CategoriesHomePage extends Component {
         let{ax1,ax2,ax3,ax4,header}=this.props;
 
         return (
-            <div>
+            <div id='addSlider'>
                     {/*<HeaderSectionHomePage header={this.props.header}/>*/}
                 {
                     this.props.Edit?

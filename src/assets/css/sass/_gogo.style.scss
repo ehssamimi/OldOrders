@@ -516,6 +516,9 @@ p {
 .text-theme-1 {
   color: $theme-color-1 !important;
 }
+.background-primary{
+  background: $theme-color-1 !important;
+}
 
 .text-secondary {
   color: $primary-color !important;
@@ -8735,6 +8738,14 @@ i.large-icon {
 .Z99{
   z-index: 99!important;
 }
+.z-4{
+  z-index: 4!important;
+}.z-5{
+   z-index: 5!important;
+ }
+.z-6{
+  z-index: 6!important;
+}
 .mt3vw{
   margin-top: 6em;
 }
@@ -9134,6 +9145,9 @@ font-family: IRANSans !important;
 .h-5vh {
   height: 5vh;
 }
+.h-1vh{
+  height: 1vh;
+}
 .h-3vh{
   height: 3vh;
 }
@@ -9142,6 +9156,8 @@ font-family: IRANSans !important;
 }
 .h-2vh{
   height: 2vh;
+}.h-1-5vh{
+  height: 1.5vh;
 }
 
 .h-7vh {
@@ -9404,3 +9420,33 @@ font-family: IRANSans !important;
   background: #2a93d5!important;
   border: 0!important;
 }
+
+.detail-section-2{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.53);
+  /*opacity: 0.5;*/
+}
+.top-10{
+  top: -10% !important;
+}
+
+//.round-button {
+//  width:25%;
+//}
+//.round-button-circle {
+//  width: 50%;
+//  height:0;
+//  padding-bottom: 100%;
+//  border-radius: 50%;
+//  border:10px solid #cfdcec;
+//  overflow:hidden;
+//
+//  //background: #4679BD;
+//  //box-shadow: 0 0 3px gray;
+//}
+//.round-button-circle:hover {
+//  //background:#30588e;
+//}
