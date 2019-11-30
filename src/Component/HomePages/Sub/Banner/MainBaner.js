@@ -22,6 +22,13 @@ class MainBaner extends Component {
             AllBanners
         })
     }
+    async updateListComponents(){
+        let AllBanners = await GetBanners();
+        console.log(AllBanners);
+        this.setState({
+            AllBanners
+        })
+    }
     async ClickEdit(value ,id) {
         console.log(value);
         let data= await GetBanerDetail(value);
@@ -44,11 +51,7 @@ class MainBaner extends Component {
         return (
             <div className='w-100 d-flex'  >
                 <div className='col-6'>
-
-                            <AddBanerHomePage  id={1} header={'title'} ax={ax} name={this.state.name} Destination={this.state.Destination}/>
-
-
-
+                            <AddBanerHomePage  id={1} header={'title'} ax={ax} name={this.state.name} Destination={this.state.Destination} updateListComponents={this.updateListComponents.bind(this)} />
                 </div>
                 <div className='col-6'>{
                     AllBanners.length>0?

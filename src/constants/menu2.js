@@ -128,15 +128,15 @@ const data = [
             label: "صفحه اصلی موبایل",
             to: "/home-page/main",
             subs: [{
-                icon: "simple-icon-plane",
+                icon: "iconsminds-smartphone-4",
                 label: "create",
                 to: "/home-page/main/create"
             }, {
-                icon: "simple-icon-plane",
+                icon: "iconsminds-smartphone-4",
                 label: "edit",
                 to: "/home-page/main/edit"
             }, {
-                icon: "simple-icon-plane",
+                icon: "iconsminds-smartphone-4",
                 label: "active",
                 to: "/home-page/main/active"
             },
@@ -163,7 +163,7 @@ const data = [
             {
                 icon: "iconsminds-smartphone-4",
                 id: "wonder-package-home-page",
-                label: "پکیج های شگقت انگیز",
+                label: "پکیج های شگفت انگیز",
                 to: "/home-page/wonder-package",
             },
             {

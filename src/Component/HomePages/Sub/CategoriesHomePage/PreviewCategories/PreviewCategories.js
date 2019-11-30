@@ -64,7 +64,7 @@ class PreviewCategories extends Component {
                 3000,
                 null,
                 null,
-                "success"
+                "error"
             );
         }
         this.toggleLarge()

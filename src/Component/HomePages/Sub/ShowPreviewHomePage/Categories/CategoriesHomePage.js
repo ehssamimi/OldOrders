@@ -12,7 +12,7 @@ class CategoriesHomePage extends Component {
     }
 
     render() {
-        let{ax1,ax2,ax3,ax4,header}=this.props;
+        let{ax1,ax2,ax3,ax4,header,error}=this.props;
 
         return (
             <div id='addSlider'>
@@ -45,6 +45,16 @@ class CategoriesHomePage extends Component {
                             <img src={ax4} className='img-self-fill br02'/>
                         </div>
                     </div>
+
+                </div>
+
+                <div className='d-flex flex-column col-12'>
+                    {
+                        error['name'].length>1?<span className='alert alert-danger mt-3 col-12'>{  error['name']}</span>:""
+                    }
+                    {
+                        error['component'].length>1?<span className='alert alert-danger mt-3 col-12'>{ error['component']}</span>:""
+                    }
 
                 </div>
             </div>

@@ -77,7 +77,7 @@ class AddBanerHomePage extends Component {
            console.log('name');
            console.log(name);
            console.log('img');
-           console.log(img)  ;
+           console.log(img);
            console.log('DestinationString');
            console.log(DestinationString);
            console.log('Destination');
@@ -108,6 +108,7 @@ class AddBanerHomePage extends Component {
                this.setState(prevState => ({
                    showLoader:!prevState.showLoader,
                }));
+               this.props.updateListComponents();
            }
            console.log(data);
        }

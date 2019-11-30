@@ -9,11 +9,13 @@ import {
     addPackage,
     GetPackageDetail,
     sendImg,
-    UpdatePackage
+    UpdatePackage, GetCatNameFunction, UpdateCategories, GetCategoriesAll
 } from "../../../functions/ServerConnection";
 import PreviewCategories from "../CategoriesHomePage/PreviewCategories/PreviewCategories";
 import PreviewPackages from "./subPackage/PreviewPackages";
 import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
+import Loader from "../Loader/Loader";
+import {Link} from "react-scroll/modules";
 
 class WonderPackageAddHomePage extends Component {
     constructor(props) {
@@ -31,7 +33,7 @@ class WonderPackageAddHomePage extends Component {
             ax5File:'',
             type:'1',
             CategoriesList:'',header:'',
-            modalLarge:false,Edit:false,CatName:''
+            modalLarge:false,Edit:false,CatName:'',showLoader:false,EditName:'',error:{name :"", component:""}
         }
         this.GetCategoriesName=this.GetCategoriesName.bind(this);
     }
@@ -95,6 +97,10 @@ class WonderPackageAddHomePage extends Component {
 
     }
     async ClickEdit(value ,id) {
+        this.setState(prevState => ({
+            showLoader:!prevState.showLoader,
+            EditName:value
+        }));
         console.log(value);
         let data= await GetPackageDetail(value);
         console.log(data);
@@ -104,9 +110,19 @@ class WonderPackageAddHomePage extends Component {
         let ax3=data.Items[2].Image;
         let ax4=data.Items[3].Image;
         let ax5=data.Items[4].Image;
+        let ax1File = '';
+        let ax2File = '';
+        let ax3File = '';
+        let ax4File = '';
+        let ax5File = '';
         this.setState({
-            header,ax1,ax2,ax3,ax4,ax5,Edit:true,id
+            header,ax1,ax2,ax3,ax4,ax5,Edit:true,id,ax1File,ax2File,ax3File,ax4File,ax5File
         })
+        this.setState(prevState => ({
+            showLoader:!prevState.showLoader
+        }));
+        let goTop=document.getElementById('goTop');
+        goTop.click();
     }
 
     toggleLarge = () => {
@@ -118,32 +134,137 @@ class WonderPackageAddHomePage extends Component {
     async HandelSubmit(){
 
         let {ax1File, ax2File, ax3File, ax4File,ax5File, CatName, Destination1, Destination2, Destination3, Destination4} = this.state;
+        let validateSlider = true;
+        if (ax1File.length<1 || ax2File.length<1 || ax3File.length<1 || ax4File.length<1|| ax5File.length<1){
+            validateSlider = false;
+            let {error} = this.state;
+            error['component'] = "باید 5 عکس را انتخاب کنید";
+            this.setState({
+                error
+            })
+        }else {
+            let {error} = this.state;
+            error['component'] = "";
+            this.setState({
+                error
+            })
+        }
+        if (CatName.length<1){
+            validateSlider = false;
+            let {error} = this.state;
+            error['name'] = "اسم باید مشخص شود ";
+            this.setState({
+                error
+            })
+        }else {
+            let {error} = this.state;
+            error['name'] = "";
+            this.setState({
+                error
+            })
+        }
 
 
-        // console.log(CatName);
-        // console.log(ax1File);
-        // console.log(ax2File);
-        // console.log(ax3File);
-        // console.log(ax4File);
-        // console.log(ax5File);
-         let catNameServer = await addPackage(CatName);
-        //  let catNameServer ="5da30e81fe2beddca069148a";
+        if (validateSlider===true){
+            this.setState(prevState => ({
+                showLoader:!prevState.showLoader,
+            }));
+            let acceptCategoryName=false;
+            let ctaImg=[ax1File, ax2File, ax3File, ax4File,ax5File];
+            let catNameServer = await addPackage(CatName);
+            if (catNameServer==='error') {
+                NotificationManager.error(
+                    "error",
+                    "your package don't accept",
+                    3000,
+                    null,
+                    null,
+                    "error"
+                );
+                this.setState(prevState => ({
+                    showLoader:false
+                }));
+            }else {
+                acceptCategoryName=true;
+            }
+            if (acceptCategoryName===true){
+                var axandCategoryok=true;
+                for (let i=0;i<ctaImg.length;i++) {
+                    let idax = await sendImg(ctaImg[i], 'Public');
+                    console.log(idax);
+                    if (idax==='error'){
+                        NotificationManager.error(
+                            "error",
+                            "your package don't accept",
+                            3000,
+                            null,
+                            null,
+                            "error"
+                        );
+                        this.setState(prevState => ({
+                            showLoader:false
+                        }));
+                        axandCategoryok=false;
+                        // return false
+                        return axandCategoryok
+                    }else {
+                        let updateCategories1 = await UpdatePackage(catNameServer, i, idax , catNameServer);
+                        console.log(updateCategories1)
+                        if (updateCategories1==='error'){
+                            NotificationManager.error(
+                                "error",
+                                "your category don't accept",
+                                3000,
+                                null,
+                                null,
+                                "error"
+                            );
+                            this.setState(prevState => ({
+                                showLoader:false
+                            }));
+                            axandCategoryok=false;
+                            // return false
+                            return axandCategoryok
+                        }
+                    }
+                }
+                if (axandCategoryok===true ) {
+                    NotificationManager.success(
+                        "congratulation",
+                        "your package add",
+                        3000,
+                        null,
+                        null,
+                        "success"
+                    );
+                    let CategoriesList = await allPackage();
 
-        let idax1 = await sendImg(ax1File, 'Public');
-        let idax2 = await sendImg(ax2File, 'Public');
-        let idax3 = await sendImg(ax3File, 'Public');
-        let idax4 = await sendImg(ax4File, 'Public');
-        let idax5 = await sendImg(ax5File, 'Public');
-        let updateCategories1 = await UpdatePackage(catNameServer, "0", idax1 , catNameServer);
-        let updateCategories2 = await UpdatePackage(catNameServer, "1", idax2 , catNameServer);
-        let updateCategories3 = await UpdatePackage(catNameServer, "2", idax3 , catNameServer);
-        let updateCategories4 = await UpdatePackage(catNameServer, "3", idax4 , catNameServer);
-        let updateCategories5 = await UpdatePackage(catNameServer, "4", idax5 , catNameServer);
-        console.log(updateCategories1);
-        console.log(updateCategories2);
-        console.log(updateCategories3);
-        console.log(updateCategories4);
-        console.log(updateCategories5);
+                    this.setState(prevState => ({
+                        showLoader:false,CategoriesList
+                    }));
+                }
+            }
+        }
+
+
+
+        // let catNameServer = await addPackage(CatName);
+        //
+        // let idax1 = await sendImg(ax1File, 'Public');
+        // let idax2 = await sendImg(ax2File, 'Public');
+        // let idax3 = await sendImg(ax3File, 'Public');
+        // let idax4 = await sendImg(ax4File, 'Public');
+        // let idax5 = await sendImg(ax5File, 'Public');
+        // let updateCategories1 = await UpdatePackage(catNameServer, "0", idax1 , catNameServer);
+        // let updateCategories2 = await UpdatePackage(catNameServer, "1", idax2 , catNameServer);
+        // let updateCategories3 = await UpdatePackage(catNameServer, "2", idax3 , catNameServer);
+        // let updateCategories4 = await UpdatePackage(catNameServer, "3", idax4 , catNameServer);
+        // let updateCategories5 = await UpdatePackage(catNameServer, "4", idax5 , catNameServer);
+        // console.log(updateCategories1);
+        // console.log(updateCategories2);
+        // console.log(updateCategories3);
+        // console.log(updateCategories4);
+        // console.log(updateCategories5);
     }
     async handelEdit(){
 
@@ -156,20 +277,62 @@ class WonderPackageAddHomePage extends Component {
         // }
         // console.log(id);
         // console.log(catNameServer);
+        this.setState(prevState => ({
+            showLoader:!prevState.showLoader,
+        }));
+        console.log(catNameServer);
         var submit=false;
         if (ax1File!==''){
             let idax1 = await sendImg(ax1File, 'Public');
             let updateCategories1 = await UpdatePackage(catNameServer, "0", idax1 , catNameServer);
+            if (idax1 === 'error' || updateCategories1 === 'error'){
+                NotificationManager.error(
+                    "error",
+                    "your package don't accept",
+                    3000,
+                    null,
+                    null,
+                    "error"
+                );
+                submit=false;
+            }
             console.log(updateCategories1);
             if (updateCategories1===200){
                 submit=true;
             }
         }
 
+
+        // if (ax1File!==''){
+        //     let idax1 = await sendImg(ax1File, 'Public');
+        //     let updateCategories1 = await UpdatePackage(catNameServer, "0", idax1 , catNameServer);
+        //     console.log(updateCategories1);
+        //
+        //     if (updateCategories1===200){
+        //         submit=true;
+        //     }
+        // }
+
         if (ax2File!==''){
             let idax2 = await sendImg(ax2File, 'Public');
             let updateCategories2 = await UpdatePackage(catNameServer, "1", idax2 , catNameServer);
             // console.log(updateCategories2);
+            if (idax2 === 'error' || updateCategories2 === 'error'){
+                NotificationManager.error(
+                    "error",
+                    "your package don't accept",
+                    3000,
+                    null,
+                    null,
+                    "error"
+                );
+                submit=false;
+
+                // this.setState(prevState => ({
+                //     showLoader:false
+                // }));
+            }
+            console.log(updateCategories2);
             if (updateCategories2===200){
                 submit=true;
             }
@@ -178,6 +341,22 @@ class WonderPackageAddHomePage extends Component {
             let idax3 = await sendImg(ax3File, 'Public');
             let updateCategories3 = await UpdatePackage(catNameServer, "2", idax3 , catNameServer);
             // console.log(updateCategories3);
+            if (idax3 === 'error' || updateCategories3 === 'error'){
+                NotificationManager.error(
+                    "error",
+                    "your package don't accept",
+                    3000,
+                    null,
+                    null,
+                    "error"
+                );
+                submit=false;
+                //
+                // this.setState(prevState => ({
+                //     showLoader:false
+                // }));
+            }
+            console.log(updateCategories3);
             if (updateCategories3===200){
                 submit=true;
             }
@@ -185,7 +364,22 @@ class WonderPackageAddHomePage extends Component {
         if (ax4File!=='') {
             let idax4 = await sendImg(ax4File, 'Public');
             let updateCategories4 = await UpdatePackage(catNameServer, "3", idax4, catNameServer);
-            console.log(updateCategories4);
+            if (idax4 === 'error' || updateCategories4 === 'error'){
+                NotificationManager.error(
+                    "error",
+                    "your package don't accept",
+                    3000,
+                    null,
+                    null,
+                    "error"
+                );
+                submit=false;
+                //
+                // this.setState(prevState => ({
+                //     showLoader:false
+                // }));
+            }
+             console.log(updateCategories4);
             if (updateCategories4===200){
                 submit=true;
             }
@@ -193,6 +387,18 @@ class WonderPackageAddHomePage extends Component {
         if (ax5File!=='') {
             let idax5 = await sendImg(ax5File, 'Public');
             let updateCategories5 = await UpdatePackage(catNameServer, "4", idax5, catNameServer);
+            if (idax5 === 'error' || updateCategories5 === 'error'){
+                NotificationManager.error(
+                    "error",
+                    "your package don't accept",
+                    3000,
+                    null,
+                    null,
+                    "error"
+                );
+                submit=false;
+
+            }
             console.log(updateCategories5);
             if (updateCategories5===200){
                 submit=true;
@@ -202,14 +408,21 @@ class WonderPackageAddHomePage extends Component {
             console.log(submit);
             await NotificationManager.success(
                 "congratulation",
-                "your categories edit",
+                "your package  edit",
                 3000,
                 null,
                 null,
                 "success"
             );
+            this.setState(prevState => ({
+                showLoader:false
+            }));
+
         }else {
-            console.log(submit)
+            this.setState(prevState => ({
+                showLoader:false
+            }));
+
         }
     }
     GetCategoriesName(CatName){
@@ -220,13 +433,23 @@ class WonderPackageAddHomePage extends Component {
     }
 
     render() {
-        let{ax1,ax2,ax3,ax4,ax5,type,CategoriesList,modalLarge,header,Edit}=this.state;
+        let{ax1,ax2,ax3,ax4,ax5,type,CategoriesList,modalLarge,header,Edit,error}=this.state;
         return (
             <div className='w-100 d-flex'>
                 <div className='col-6'>
-                    <WonderPackageHomePage Edit={this.state.Edit} header={header|| 'دسته بندی'} ax1={ax1||ax} ax2={ax2||ax} ax3={ax3||ax} ax4={ax4||ax} ax5={ax5||ax}  ClickImg={this.GetImgType.bind(this)}  GetCategoriesName={this.GetCategoriesName}/>
-                    {Edit? <button className='btn btn-primary' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}
+                    {
+                        this.state.showLoader ?
+                            <Loader/> :
+                            <div className='w-100'>
+                                <WonderPackageHomePage error={error} Edit={this.state.Edit} header={header || 'دسته بندی'}
+                                                       ax1={ax1 || ax} ax2={ax2 || ax} ax3={ax3 || ax} ax4={ax4 || ax}
+                                                       ax5={ax5 || ax} ClickImg={this.GetImgType.bind(this)}
+                                                       GetCategoriesName={this.GetCategoriesName}/>
+                                {Edit? <button className='btn btn-primary' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}
 
+                            </div>
+
+                    }
                 </div>
 
                 <div className='col-4 offset-1 d-flex flex-column justify-content-between '>
@@ -241,7 +464,19 @@ class WonderPackageAddHomePage extends Component {
 
                     {
                         CategoriesList.length>0?
-                            CategoriesList.map((cat ,index)=><PreviewPackages index={index} id={CategoriesList[index]._id} key={index} header={cat.Name} ax1={CategoriesList[index].Items[0].Image} ax2={CategoriesList[index].Items[1].Image} ax3={CategoriesList[index].Items[2].Image} ax4={CategoriesList[index].Items[3].Image}  ax5={CategoriesList[index].Items[4].Image} clickPreview={this.ClickEdit.bind(this)}/>  ):""
+                            CategoriesList.map((cat, index) => <PreviewPackages index={index}
+                                                                                id={CategoriesList[index]._id}
+                                                                                key={index} header={cat.Name}
+                                                                                ax1={CategoriesList[index].Items[0].Image}
+                                                                                ax2={CategoriesList[index].Items[1].Image}
+                                                                                ax3={CategoriesList[index].Items[2].Image}
+                                                                                ax4={CategoriesList[index].Items[3].Image}
+                                                                                ax5={CategoriesList[index].Items[4].Image}
+                                                                                clickPreview={this.ClickEdit.bind(this)}
+                                                                                showLoader={this.state.showLoader}
+                                                                                EditName={this.state.EditName}
+                            />) :
+                            <Loader/>
                     }
                 </div>
                 <Modal
@@ -261,6 +496,9 @@ class WonderPackageAddHomePage extends Component {
                         </div>
                     </ModalBody>
                 </Modal>
+                <Link name="first" activeClass="active" className="first" to="addSlider" spy={true} smooth={true} duration={900} offset={-130}>
+                    <button className='d-none' id='goTop'>go top</button>
+                </Link>
 
             </div>
         );

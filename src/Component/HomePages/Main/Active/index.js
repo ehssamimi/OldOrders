@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 // import '@atlaskit/css-reset'
 import { DragDropContext } from 'react-beautiful-dnd'
 import styled from 'styled-components'
-import {UpdateHomePage, AddHomePages, GetHomePageLoad,GetAllHomePages} from "../../../functions/ServerConnection";
+import {UpdateHomePage, AddHomePages, GetHomePageLoad,GetAllHomePages ,GetHomePageTemp} from "../../../functions/ServerConnection";
 
 import initialData from './initial-data'
 import Column from './column'
@@ -80,8 +80,9 @@ export default class MoveRowIndex extends React.Component {
             console.log(this.props.Name);
             let tasks = this.state.tasks;
             let columns = this.state.columns;
-            let Description = await GetHomePageLoad(this.props.Name);
-            // console.log(Description);
+            // let Description = await GetHomePageLoad(this.props.Name);
+            let Description = await GetHomePageTemp( );
+            console.log(Description);
             let {Body, Header, Footer} = Description;
             let HeaderLenght = Header.length;
             let BodyLenght = Body.length;

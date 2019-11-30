@@ -10,15 +10,24 @@ export async  function  sendImg(file,permission){
         'Token': Const.Token,
         'Id': Const.ID,
      };
+    var resp='';
 
-    let res = await axios.post(`${Const.Download_Server_URL}upload/data-form`,formData, {headers: headers});
-    let { UploadId } = res.data ;
-    let { status } = res ;
-     if (status===200) {
-        return UploadId
-    }else {
-        return "error"
-    }
+    await axios.post(`${Const.Download_Server_URL}upload/data-form`, formData, {headers: headers}).then(function (response) {
+        // console.log(response);
+        let {UploadId} = response.data;
+        resp=UploadId;
+     }).catch(function (error) {
+        console.log(error);
+        resp='error'
+    });
+    return resp
+    // let { UploadId } = res.data ;
+    // let { status } = res ;
+    //  if (status===200) {
+    //     return UploadId
+    // }else {
+    //     return "error"
+    // }
 }
 export async  function  GetCatNameFunction(Name){
     let formData = new FormData();
@@ -28,15 +37,23 @@ export async  function  GetCatNameFunction(Name){
         'Token': Const.Token,
         'Id': Const.ID,
     };
-
-    let res = await axios.post(`${Const.HomePage}admin/category/add`,formData, {headers: headers});
-    let { ItemId } = res.data ;
-    let { status } = res ;
-    if (status===200) {
-        return ItemId
-    }else {
-        return "error"
-    }
+    var resp="";
+     await axios.post(`${Const.HomePage}admin/category/add`,formData, {headers: headers}).then(function (response) {
+        // console.log(response);
+        let { ItemId } = response.data ;
+        resp=ItemId;
+    }).catch(function (error) {
+        console.log(error);
+        resp='error'
+    });
+    return resp;
+    // let { ItemId } = res.data ;
+    // let { status } = res ;
+    // if (status===200) {
+    //     return ItemId
+    // }else {
+    //     return "error"
+    // }
 }
 export async  function  UpdateCategories(CatId,Position,Image,DestinationId){
     let formData = new FormData();
@@ -49,15 +66,24 @@ export async  function  UpdateCategories(CatId,Position,Image,DestinationId){
     formData.append("Position",Position);
     formData.append("Image",Image);
     formData.append("DestinationId",DestinationId);
-     let res = await axios.put(`${Const.HomePage}admin/category/${CatId}/items/update`,formData, {headers: headers});
+    var resp="";
+    await axios.put(`${Const.HomePage}admin/category/${CatId}/items/update`,formData, {headers: headers}).then(function (response) {
+         // console.log(response);
+         let { status } = response ;
+         resp=status;
+     }).catch(function (error) {
+         console.log(error);
+         resp='error'
+     });
+    return resp;
     // console.log(res);
-    let { ItemId } = res.data ;
-    let { status } = res ;
-    if (status===200) {
-        return status
-    }else {
-        return "error"
-    }
+    // let { ItemId } = res.data ;
+    // let { status } = res ;
+    // if (status===200) {
+    //     return status
+    // }else {
+    //     return "error"
+    // }
 
 }
 export async  function  GetCategoriesAll(){
@@ -97,12 +123,20 @@ export async  function  DeleteCategoriey(Name){
         'Id': Const.ID
         // 'category_name':Name,
     };
-
-    let res = await axios.delete(`${Const.HomePage}admin/category/${Name}/delete`, {headers: headers});
-    let { status } = res ;
-    console.log(res);
-    // console.log(data);
-    return status;
+let resp='';
+ await axios.delete(`${Const.HomePage}admin/category/${Name}/delete`, {headers: headers}).then(function (response) {
+        // console.log(response);
+        let { status } = response ;
+        resp=status;
+    }).catch(function (error) {
+        console.log(error);
+        resp='error'
+    });
+    return resp;
+    // let { status } = res ;
+    // console.log(res);
+    // // console.log(data);
+    // return status;
 }
 
 
@@ -137,15 +171,25 @@ export async function addPackage(Name) {
         'Token': Const.Token,
         'Id': Const.ID,
     };
+    var resp="";
 
-    let res = await axios.post(`${Const.HomePage}admin/packages/add`, formData, {headers: headers});
-    let {ItemId} = res.data;
-    let {status} = res;
-    if (status === 200) {
-        return ItemId
-    } else {
-        return ""
-    }
+    await axios.post(`${Const.HomePage}admin/packages/add`, formData, {headers: headers}).then(function (response) {
+        // console.log(response);
+        let {ItemId} = response.data;
+        // let { status } = response ;
+        resp=ItemId;
+    }).catch(function (error) {
+        console.log(error);
+        resp='error'
+    });
+    return resp;
+    // let {ItemId} = res.data;
+    // let {status} = res;
+    // if (status === 200) {
+    //     return ItemId
+    // } else {
+    //     return ""
+    // }
 }
 export async  function  UpdatePackage(CatId,Position,Image,DestinationId){
     let formData = new FormData();
@@ -158,11 +202,20 @@ export async  function  UpdatePackage(CatId,Position,Image,DestinationId){
     formData.append("Position",Position);
     formData.append("Image",Image);
     formData.append("DestinationId",DestinationId);
-    let res = await axios.put(`${Const.HomePage}admin/packages/${CatId}/items/update`,formData, {headers: headers});
+    var resp="";
+    await axios.put(`${Const.HomePage}admin/packages/${CatId}/items/update`,formData, {headers: headers}).then(function (response) {
+        // console.log(response);
+        let { status } = response ;
+        resp=status;
+    }).catch(function (error) {
+        console.log(error);
+        resp='error'
+    });
+    return resp;
     // console.log(res);
-    let { ItemId } = res.data ;
-    let { status } = res ;
-    return status
+    // let { ItemId } = res.data ;
+    // let { status } = res ;
+    // return status
 }
 export async  function  DeletePackage(ID){
     // console.log(Name);
@@ -173,12 +226,20 @@ export async  function  DeletePackage(ID){
         'Id': Const.ID
         // 'category_name':Name,
     };
-
-    let res = await axios.delete(`${Const.HomePage}admin/package/{category_id}?package_id=${ID}`, {headers: headers});
-    let { status } = res ;
-    console.log(res);
-    // console.log(data);
-    return status;
+    var resp="";
+      await axios.delete(`${Const.HomePage}admin/package/${ID}`, {headers: headers}).then(function (response) {
+        // console.log(response);
+        let { status } = response ;
+        resp=status;
+    }).catch(function (error) {
+        console.log(error);
+        resp='error'
+    });
+    return resp;
+//     let { status } = res ;
+//     console.log(res);
+//     // console.log(data);
+//     return status;
 }
 
 
@@ -277,14 +338,24 @@ export async function addBaner(Name,Image,Destination,DestinationId) {
         'Token': Const.Token,
         'Id': Const.ID,
     };
-    let res = await axios.post(`${Const.HomePage}banners/add`, formData, {headers: headers});
-    let {ItemId} = res.data;
-    let {status} = res;
-    if (status === 200) {
-        return ItemId
-    } else {
-        return "error"
-    }
+    var resp='';
+    await axios.post(`${Const.HomePage}banners/add`, formData, {headers: headers}).then(function (response) {
+
+        // console.log(response);
+        let {ItemId} = response.data;
+         resp=ItemId;
+    }).catch(function (error) {
+        console.log(error);
+        resp='error'
+    });
+    return resp;
+    //  let {ItemId} = res.data;
+    // let {status} = res;
+    // if (status === 200) {
+    //     return ItemId
+    // } else {
+    //     return "error"
+    // }
 }
 export async  function  GetBanners( ) {
     let headers = {
@@ -307,20 +378,20 @@ export async  function  GetBannersDetail(Name){
     return data;
 }
 export async  function  DeleteBanner(id){
-    // console.log(Name);
-    // console.log(`${Const.HomePage}admin/category/${Name}`);
-
     let headers = {
         'Token': Const.Token,
         'Id': Const.ID
-        // 'category_name':Name,
     };
-
-    let res = await axios.delete(`${Const.HomePage}banners/${id}`, {headers: headers});
-    let { status } = res ;
-    console.log(res);
-    // console.log(data);
-    return status;
+    let resp='';
+  await axios.delete(`${Const.HomePage}banners/${id}`, {headers: headers}).then(function (response) {
+        // console.log(response);
+        let { status } = response ;
+         resp=status;
+     }).catch(function (error) {
+        console.log(error);
+        resp='error'
+    });
+     return resp
 }
 export async  function  GetBanerDetail(Name){
     let headers = {
@@ -368,15 +439,25 @@ export async function addItemList(Title,QueryKey) {
         'Token': Const.Token,
         'Id': Const.ID,
     };
-    let res = await axios.post(`${Const.HomePage}admin/item-list/add`, formData, {headers: headers});
-    let {ItemId} = res.data;
-    console.log(res);
-    let {status} = res;
-    if (status === 200) {
-        return ItemId
-    } else {
-        return ""
-    }
+    let resp="";
+   await axios.post(`${Const.HomePage}admin/item-list/add`, formData, {headers: headers}).then(function (response) {
+        // console.log(response);
+        let {ItemId} = response.data;
+        let { status } = response ;
+        resp=status;
+    }).catch(function (error) {
+        console.log(error);
+        resp='error'
+    });
+    return resp;
+    // let {ItemId} = res.data;
+    // console.log(res);
+    // let {status} = res;
+    // if (status === 200) {
+    //     return ItemId
+    // } else {
+    //     return ""
+    // }
 }
 export async  function  GetItemList(Name){
     let headers = {
@@ -432,7 +513,6 @@ export async  function  AddHeaderSlider(Name,Number){
         return ""
     }
 }
-
 export async  function  UpdateHeaderSliders(SliderName,Position,Image,Destination ,DestinationId){
     let formData = new FormData();
     let headers = {
@@ -498,7 +578,7 @@ export async  function  GetHomePageTemp(){
     // console.log(res.data);
     let { Body,Header } = res.data ;
     // console.log(Body );
-    return Body
+    return res.data
 
 }
 export async  function  GetAllHomePages( ){
@@ -530,7 +610,6 @@ export async  function  GetHomePageLoad(name){
     // return Body
 
 }
-
 // /admin/homepage/init/{homepage_name}
 export async  function  AddHomePages(Name){
     let formData = new FormData();
@@ -550,7 +629,6 @@ export async  function  AddHomePages(Name){
         return ""
     }
 }
-
 export async  function  UpdateHomePage(Data){
     // let formData = new FormData();
     let headers = {
@@ -585,13 +663,13 @@ export async  function  ActiveHomePages(Name){
     let { status } = res ;
     return status
 }
-export async  function  DeleteHomePages(id){
+export async  function  DeleteHomePages(Name){
     let headers = {
         'Token': Const.Token,
         'Id': Const.ID
         // 'category_name':Name,
     };
-    let res = await axios.delete(`${Const.HomePage}admin/package/${id}`, {headers: headers});
+    let res = await axios.delete(`${Const.HomePage}admin/homepage/${Name}`, {headers: headers});
     let { status } = res ;
     console.log(res);
     return status;

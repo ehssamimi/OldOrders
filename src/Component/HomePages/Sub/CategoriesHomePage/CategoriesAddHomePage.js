@@ -51,7 +51,7 @@ class CategoriesAddHomePage extends Component {
             modalLarge: false,
             CatName:'',
             CategoriesList:'',
-            header:'',Edit:false,id:'',showLoader:false,EditName:''
+            header:'',Edit:false,id:'',showLoader:false,EditName:'',error:{name :"", component:""}
         } ;
         this.GetCategoriesName=this.GetCategoriesName.bind(this);
 
@@ -141,8 +141,12 @@ class CategoriesAddHomePage extends Component {
         let ax2=data.Items[1].Image;
         let ax3=data.Items[2].Image;
         let ax4=data.Items[3].Image;
+        let ax1File = '';
+        let ax2File = '';
+        let ax3File = '';
+        let ax4File = '';
         this.setState({
-            header,ax1,ax2,ax3,ax4,Edit:true,id
+            header,ax1,ax2,ax3,ax4,Edit:true,id,ax1File,ax2File,ax3File,ax4File
         })
 
         this.setState(prevState => ({
@@ -152,49 +156,172 @@ class CategoriesAddHomePage extends Component {
         goTop.click();
     }
     async HandelSubmit(){
-        this.setState(prevState => ({
-            showLoader:!prevState.showLoader,
-        }));
-        let Submit=true;
+
         let {ax1File, ax2File, ax3File, ax4File, CatName, Destination1, Destination2, Destination3, Destination4} = this.state;
-        let catNameServer = await GetCatNameFunction(CatName);
-        let idax1 = await sendImg(ax1File, 'Public');
-        let idax2 = await sendImg(ax2File, 'Public');
-        let idax3 = await sendImg(ax3File, 'Public');
-        let idax4 = await sendImg(ax4File, 'Public');
-        let updateCategories1 = await UpdateCategories(catNameServer, "0", idax1 , catNameServer);
-        let updateCategories2 = await UpdateCategories(catNameServer, "1", idax2 , catNameServer);
-        let updateCategories3 = await UpdateCategories(catNameServer, "2", idax3 , catNameServer);
-        let updateCategories4 = await UpdateCategories(catNameServer, "3", idax4 , catNameServer);
-        if (idax1 === 'error' || idax2 === 'error' || idax3 === 'error' || idax4 === 'error' || updateCategories1 === 'error' || updateCategories2 === 'error' || updateCategories3 === 'error' || updateCategories4 === 'error' ) {
-            NotificationManager.error(
-                "error",
-                "your category don't accept",
-                3000,
-                null,
-                null,
-                "error"
-            );
-            this.setState(prevState => ({
-                showLoader:false
-            }));
-        }else{
-            NotificationManager.success(
-                "congratulation",
-                "your category add",
-                3000,
-                null,
-                null,
-                "success"
-            );
-            this.setState(prevState => ({
-                showLoader:false
-            }));
+        let validateSlider = true;
+        if (ax1File.length<1 || ax2File.length<1 || ax3File.length<1 || ax4File.length<1){
+            validateSlider = false;
+            let {error} = this.state;
+            error['component'] = "باید 4 عکس را انتخاب کنید";
+            this.setState({
+                error
+            })
+        }else {
+            let {error} = this.state;
+            error['component'] = "";
+            this.setState({
+                error
+            })
         }
-        console.log(updateCategories1);
-        console.log(updateCategories2);
-        console.log(updateCategories3);
-        console.log(updateCategories4);
+        if (CatName.length<1){
+            validateSlider = false;
+            let {error} = this.state;
+            error['name'] = "اسم باید مشخص شود ";
+            this.setState({
+                error
+            })
+        }else {
+            let {error} = this.state;
+            error['name'] = "";
+            this.setState({
+                error
+            })
+        }
+        if (validateSlider===true){
+            this.setState(prevState => ({
+                showLoader:!prevState.showLoader,
+            }));
+            let acceptCategoryName=false;
+            let ctaImg=[ax1File, ax2File, ax3File, ax4File];
+            let catNameServer = await GetCatNameFunction(CatName);
+            if (catNameServer==='error') {
+                NotificationManager.error(
+                    "error",
+                    "your category don't accept",
+                    3000,
+                    null,
+                    null,
+                    "error"
+                );
+                this.setState(prevState => ({
+                    showLoader:false
+                }));
+            }else {
+                acceptCategoryName=true;
+            }
+            if (acceptCategoryName===true){
+                var axandCategoryok=true;
+                for (let i=0;i<ctaImg.length;i++) {
+                    let idax = await sendImg(ctaImg[i], 'Public');
+                    console.log(idax)
+                    if (idax==='error'){
+                        NotificationManager.error(
+                            "error",
+                            "your category don't accept",
+                            3000,
+                            null,
+                            null,
+                            "error"
+                        );
+                        this.setState(prevState => ({
+                            showLoader:false
+                        }));
+                        axandCategoryok=false;
+                        // return false
+                        return axandCategoryok
+                    }else {
+                        let updateCategories1 = await UpdateCategories(catNameServer, i, idax , catNameServer);
+                        console.log(updateCategories1)
+                        if (updateCategories1==='error'){
+                           NotificationManager.error(
+                               "error",
+                               "your category don't accept",
+                               3000,
+                               null,
+                               null,
+                               "error"
+                           );
+                           this.setState(prevState => ({
+                               showLoader:false
+                           }));
+                           axandCategoryok=false;
+                           // return false
+                           return axandCategoryok
+                        }
+                    }
+                }
+                if (axandCategoryok===true ) {
+                    NotificationManager.success(
+                            "congratulation",
+                            "your category add",
+                            3000,
+                            null,
+                            null,
+                            "success"
+                        );
+                    let CategoriesList = await GetCategoriesAll();
+
+                        this.setState(prevState => ({
+                            showLoader:false,CategoriesList
+                        }));
+                }
+            }
+
+
+
+            //
+            // let idax1 = await sendImg(ax1File, 'Public');
+            // console.log(idax1);
+            // let idax2 = await sendImg(ax2File, 'Public');
+            // console.log(idax2);
+            // let idax3 = await sendImg(ax3File, 'Public');
+            // console.log(idax3);
+            // let idax4 = await sendImg(ax4File, 'Public');
+            // console.log(idax4);
+            // let updateCategories1 = await UpdateCategories(catNameServer, "0", idax1 , catNameServer);
+            // console.log(updateCategories1);
+            // let updateCategories2 = await UpdateCategories(catNameServer, "1", idax2 , catNameServer);
+            // console.log(updateCategories2);
+            // let updateCategories3 = await UpdateCategories(catNameServer, "2", idax3 , catNameServer);
+            // console.log(updateCategories3);
+            // let updateCategories4 = await UpdateCategories(catNameServer, "3", idax4 , catNameServer);
+            // console.log(updateCategories4);
+            // if (catNameServer==='error' || idax1 === 'error' || idax2 === 'error' || idax3 === 'error' || idax4 === 'error' || updateCategories1 === 'error' || updateCategories2 === 'error' || updateCategories3 === 'error' || updateCategories4 === 'error' ) {
+            //     NotificationManager.error(
+            //         "error",
+            //         "your category don't accept",
+            //         3000,
+            //         null,
+            //         null,
+            //         "error"
+            //     );
+            //     this.setState(prevState => ({
+            //         showLoader:false
+            //     }));
+            // }else{
+            //     NotificationManager.success(
+            //         "congratulation",
+            //         "your category add",
+            //         3000,
+            //         null,
+            //         null,
+            //         "success"
+            //     );
+            //     let CategoriesList = await GetCategoriesAll();
+            //     this.setState({
+            //         CategoriesList
+            //     });
+            //     this.setState(prevState => ({
+            //         showLoader:false
+            //     }));
+            //
+            // }
+
+
+        }
+
+
+
     }
     async handelEdit(){
         this.setState(prevState => ({
@@ -222,18 +349,13 @@ class CategoriesAddHomePage extends Component {
                     null,
                     "error"
                 );
+                this.setState(prevState => ({
+                    showLoader:false
+                }));
             }
             console.log(updateCategories1);
             if (updateCategories1===200){
                 submit=true;
-                // NotificationManager.success(
-                //     "congratulation",
-                //     "your category add",
-                //     3000,
-                //     null,
-                //     null,
-                //     "success"
-                // );
             }
         }
 
@@ -249,18 +371,13 @@ class CategoriesAddHomePage extends Component {
                     null,
                     "error"
                 );
+                this.setState(prevState => ({
+                    showLoader:false
+                }));
             }
             // console.log(updateCategories2);
             if (updateCategories2===200){
                 submit=true;
-                // NotificationManager.success(
-                //     "congratulation",
-                //     "your category add",
-                //     3000,
-                //     null,
-                //     null,
-                //     "success"
-                // );
             }
         }
         if (ax3File!==''){
@@ -275,18 +392,13 @@ class CategoriesAddHomePage extends Component {
                     null,
                     "error"
                 );
+                this.setState(prevState => ({
+                    showLoader:false
+                }));
             }
             // console.log(updateCategories3);
             if (updateCategories3===200){
                 submit=true;
-                // NotificationManager.success(
-                //     "congratulation",
-                //     "your category add",
-                //     3000,
-                //     null,
-                //     null,
-                //     "success"
-                // );
             }
         }
         if (ax4File!=='') {
@@ -301,6 +413,9 @@ class CategoriesAddHomePage extends Component {
                     null,
                     "error"
                 );
+                this.setState(prevState => ({
+                    showLoader:false
+                }));
             }
             console.log(updateCategories4);
             if (updateCategories4===200){
@@ -325,6 +440,11 @@ class CategoriesAddHomePage extends Component {
                 null,
                 "success"
             );
+              let CategoriesList = await GetCategoriesAll();
+
+              this.setState(prevState => ({
+                  showLoader:false,CategoriesList
+              }));
         }else {
             console.log(submit)
         }
@@ -332,7 +452,7 @@ class CategoriesAddHomePage extends Component {
 
     render() {
 
-        let{ax1,ax2,ax3,ax4,type,CategoriesList,header,Edit}=this.state;
+        let{ax1,ax2,ax3,ax4,type,CategoriesList,header,Edit,error}=this.state;
         return (
             <div className='w-100 d-flex '>
                 <div className='col-6'>
@@ -341,7 +461,7 @@ class CategoriesAddHomePage extends Component {
                             <Loader/>
                             :
                             <CategoriesHomePage Edit={this.state.Edit} header={header || 'دسته بندی'} ax1={ax1 || ax}
-                                                ax2={ax2 || ax} ax3={ax3 || ax} ax4={ax4 || ax}
+                                                ax2={ax2 || ax} ax3={ax3 || ax} ax4={ax4 || ax} error={error}
                                                 ClickImg={this.GetImgType.bind(this)}
                                                 GetCategoriesName={this.GetCategoriesName}/>
                     }

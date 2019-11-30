@@ -11,9 +11,9 @@ class WonderPackageHomePage extends Component {
     }
 
     render() {
-        let{ax1,ax2,ax3,ax4,ax5,header}=this.props;
+        let{ax1,ax2,ax3,ax4,ax5,header,error}=this.props;
         return (
-            <div>
+            <div id='addSlider' >
                 {/*<HeaderSectionHomePage header={this.props.header}/>*/}
                 {
                     this.props.Edit?
@@ -53,6 +53,15 @@ class WonderPackageHomePage extends Component {
                             <img src={ax5} className='img-self-fill br02 pointer'/>
                         </div>
                     </div>
+                </div>
+                <div className='d-flex flex-column w-100'>
+                    {
+                        error['name'].length>1?<span className='alert alert-danger mt-3 col-12'>{  error['name']}</span>:""
+                    }
+                    {
+                        error['component'].length>1?<span className='alert alert-danger mt-3 col-12'>{ error['component']}</span>:""
+                    }
+
                 </div>
             </div>
         );

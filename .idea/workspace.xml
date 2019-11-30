@@ -2,31 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98af5402-95b4-4f04-a0d6-06126f2dea54" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/Loader/Loader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/loader.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Main/Active/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Main/Active/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Main/Edit/NewEdit/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Main/Edit/NewEdit/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/AddBaner/AddBanerHomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/AddBaner/AddBanerHomePage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/MainBaner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/MainBaner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/PreViewBanner/PreViewBanner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/PreViewBanner/PreViewBanner.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/CategoriesHomePage/CategoriesAddHomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/CategoriesHomePage/CategoriesAddHomePage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/CategoriesHomePage/PreviewCategories/PreviewCategories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/CategoriesHomePage/PreviewCategories/PreviewCategories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/CropImg/CropImgCropper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/CropImg/CropImgCropper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/Destination/Destination.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/Destination/Destination.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/HeaderPreviewComponentHomePage/HeaderPreviewComponentHomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/HeaderPreviewComponentHomePage/HeaderPreviewComponentHomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/HeaderSlider/Add/NewHeaderSlider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/HeaderSlider/Add/NewHeaderSlider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/HeaderSlider/HeaderSliderMain.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/HeaderSlider/HeaderSliderMain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/HeaderSlider/Preview/PreviewHeaderSlider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/HeaderSlider/Preview/PreviewHeaderSlider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/AddItems/AddItemList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/AddItems/AddItemList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/MainItems.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/MainItems.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/PreviewItems/SliderItems/SliderItems.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/PreviewItems/SliderItems/SliderItems.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/ShowPreviewHomePage/Categories/CategoriesHomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/ShowPreviewHomePage/Categories/CategoriesHomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/SliderAddHomePage/PreviewSliderMAin/PreviewMainSlider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/SliderAddHomePage/PreviewSliderMAin/PreviewMainSlider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/SliderAddHomePage/SliderAddHomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/SliderAddHomePage/SliderAddHomePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/ShowPreviewHomePage/WonderPackageHomePage/WonderPackageHomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/ShowPreviewHomePage/WonderPackageHomePage/WonderPackageHomePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/WonderPackageAddHomePage/WonderPackageAddHomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/WonderPackageAddHomePage/WonderPackageAddHomePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/HomePages/Sub/WonderPackageAddHomePage/subPackage/PreviewPackages.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/HomePages/Sub/WonderPackageAddHomePage/subPackage/PreviewPackages.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/functions/ServerConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/functions/ServerConnection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/carousel/GlideComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/carousel/GlideComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/menu2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/menu2.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +41,7 @@
     <session id="1075702383">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="35" />
+          <entry key="project.closed" value="36" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="1" />
@@ -72,6 +61,7 @@
           <entry key="project.open.time.54" value="1" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.62" value="1" />
+          <entry key="project.open.time.70" value="1" />
           <entry key="project.open.time.74" value="1" />
           <entry key="project.open.time.8" value="3" />
           <entry key="project.open.time.80" value="1" />
@@ -80,7 +70,7 @@
           <entry key="project.open.time.85" value="1" />
           <entry key="project.open.time.89" value="1" />
           <entry key="project.open.time.99" value="1" />
-          <entry key="project.opened" value="41" />
+          <entry key="project.opened" value="42" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -88,7 +78,7 @@
           <entry key="css" value="38" />
           <entry key="html" value="19" />
           <entry key="jpg" value="8" />
-          <entry key="js" value="979" />
+          <entry key="js" value="1014" />
           <entry key="json" value="5" />
           <entry key="rnc" value="2" />
           <entry key="scss" value="35" />
@@ -102,7 +92,7 @@
           <entry key="HTML" value="19" />
           <entry key="Image" value="8" />
           <entry key="JSON" value="5" />
-          <entry key="JavaScript" value="979" />
+          <entry key="JavaScript" value="1014" />
           <entry key="RNG Compact" value="2" />
           <entry key="SCSS" value="35" />
           <entry key="SVG" value="7" />
@@ -111,7 +101,7 @@
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="ESLintLanguageService" value="37" />
+          <entry key="ESLintLanguageService" value="38" />
           <entry key="TypeScriptServerServiceImpl" value="10" />
         </counts>
       </usages-collector>
@@ -119,7 +109,7 @@
         <counts>
           <entry key="css" value="257" />
           <entry key="html" value="1601" />
-          <entry key="js" value="41387" />
+          <entry key="js" value="42400" />
           <entry key="json" value="2" />
           <entry key="scss" value="2318" />
         </counts>
@@ -129,7 +119,7 @@
           <entry key="CSS" value="257" />
           <entry key="HTML" value="1601" />
           <entry key="JSON" value="2" />
-          <entry key="JavaScript" value="41387" />
+          <entry key="JavaScript" value="42400" />
           <entry key="SCSS" value="2318" />
         </counts>
       </usages-collector>
@@ -138,193 +128,174 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/MainBaner.js">
+        <entry file="file://$PROJECT_DIR$/src/Component/functions/ServerConnection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="47" column="36" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
+            <state relative-caret-position="221">
+              <caret line="446" column="19" selection-start-line="446" selection-start-column="19" selection-end-line="446" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#53#0" expanded="true" />
+                <element signature="e#273#335#0" expanded="true" />
+                <element signature="e#471#545#0" expanded="true" />
+                <element signature="e#605#649#0" expanded="true" />
+                <element signature="e#1183#1285#0" expanded="true" />
+                <element signature="e#1310#1369#0" expanded="true" />
+                <element signature="n#!!block;n#UpdateCategories#0" expanded="true" />
+                <element signature="e#1835#1937#0" expanded="true" />
+                <element signature="e#1962#2018#0" expanded="true" />
+                <element signature="n#!!block;n#DeleteCategoriey#0" expanded="true" />
+                <element signature="e#3718#3777#0" expanded="true" />
+                <element signature="e#3574#3635#0" expanded="true" />
+                <element signature="e#4768#4866#0" expanded="true" />
+                <element signature="e#4891#4947#0" expanded="true" />
+                <element signature="n#!!block;n#UpdatePackage#0" expanded="true" />
+                <element signature="e#5412#5510#0" expanded="true" />
+                <element signature="e#5535#5591#0" expanded="true" />
+                <element signature="n#!!block;n#DeletePackage#0" expanded="true" />
+                <element signature="e#5938#6036#0" expanded="true" />
+                <element signature="e#6061#6117#0" expanded="true" />
+                <element signature="e#7703#7764#0" expanded="true" />
+                <element signature="e#8138#8239#0" expanded="true" />
+                <element signature="e#8264#8320#0" expanded="true" />
+                <element signature="e#9204#9297#0" expanded="true" />
+                <element signature="e#9555#9611#0" expanded="true" />
+                <element signature="e#12427#12483#0" expanded="true" />
+                <element signature="n#!!block;n#GetHomePageTemp#0" expanded="true" />
+                <element signature="e#13583#13644#0" expanded="true" />
+                <element signature="n#!!block;n#ActiveHomePages#0" expanded="true" />
+                <element signature="e#15716#15810#0" expanded="true" />
+                <element signature="n#!!block;n#DeleteHomePages#0" expanded="true" />
+                <element signature="e#16268#16361#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/constants/ServerConst.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/constants/menu2.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="543">
+              <caret line="147" column="37" lean-forward="true" selection-start-line="147" selection-start-column="37" selection-end-line="147" selection-end-column="37" />
+              <folding>
+                <element signature="e#19#3356#0" expanded="true" />
+                <element signature="e#3501#3672#0" expanded="true" />
+                <element signature="e#3502#3660#0" expanded="true" />
+                <element signature="e#4112#4719#0" expanded="true" />
+                <element signature="e#4285#4709#0" expanded="true" />
+                <element signature="e#4286#4428#0" expanded="true" />
+                <element signature="e#4424#4562#0" expanded="true" />
+                <element signature="e#4558#4700#0" expanded="true" />
+                <element signature="e#5356#5563#0" expanded="true" />
+                <element signature="e#5577#5764#0" expanded="true" />
+                <element signature="e#5778#5953#0" expanded="true" />
+                <element signature="e#5967#6149#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/WonderPackageAddHomePage/WonderPackageAddHomePage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="487" column="34" lean-forward="true" selection-start-line="487" selection-start-column="34" selection-end-line="487" selection-end-column="34" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <element signature="n#!!block;n#constructor#0;n#MainBaner#0" expanded="true" />
-                <element signature="e#503#582#0" expanded="true" />
-                <element signature="n#!!block;n#ClickEdit#0;n#MainBaner#0" expanded="true" />
-                <element signature="e#1144#1209#0" expanded="true" />
-                <element signature="e#1552#2279#0" expanded="true" />
-                <element signature="e#2081#2336#0" expanded="true" />
+                <element signature="n#!!block;n#constructor#0;n#WonderPackageAddHomePage#0" expanded="true" />
+                <element signature="e#908#1253#0" expanded="true" />
+                <element signature="e#1466#1504#0" expanded="true" />
+                <element signature="n#!!block;n#ClickEdit#0;n#WonderPackageAddHomePage#0" expanded="true" />
+                <element signature="e#3147#3231#0" expanded="true" />
+                <element signature="e#3291#3354#0" expanded="true" />
+                <element signature="e#3673#3729#0" expanded="true" />
+                <element signature="n#!!block;n#HandelSubmit#0;n#WonderPackageAddHomePage#0" expanded="true" />
+                <element signature="e#3998#4035#0" expanded="true" />
+                <element signature="e#4154#4191#0" expanded="true" />
+                <element signature="e#4384#4421#0" expanded="true" />
+                <element signature="e#4535#4572#0" expanded="true" />
+                <element signature="e#4704#4769#0" expanded="true" />
+                <element signature="e#5277#5333#0" expanded="true" />
+                <element signature="e#6059#6131#0" expanded="true" />
+                <element signature="e#6520#7162#0" />
+                <element signature="e#6912#6990#0" expanded="true" />
+                <element signature="e#7681#7768#0" expanded="true" />
+                <element signature="n#!!block;n#handelEdit#0;n#WonderPackageAddHomePage#0" expanded="true" />
+                <element signature="e#9909#9974#0" expanded="true" />
+                <element signature="e#13966#14023#0" expanded="true" />
+                <element signature="e#14467#14515#0" expanded="true" />
+                <element signature="n#!!block;n#GetCategoriesName#0;n#WonderPackageAddHomePage#0" expanded="true" />
+                <element signature="e#7450#7481#0" expanded="true" />
+                <element signature="e#14427#15247#0" expanded="true" />
+                <element signature="e#14589#14662#0" expanded="true" />
+                <element signature="e#14627#15045#0" expanded="true" />
+                <element signature="e#15265#16686#0" expanded="true" />
+                <element signature="e#16404#17393#0" expanded="true" />
+                <element signature="e#16960#17775#0" expanded="true" />
+                <element signature="e#19169#19394#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/AddBaner/AddBanerHomePage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-736">
-              <caret line="10" column="42" lean-forward="true" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <element signature="n#!!block;n#constructor#0;n#AddBanerHomePage#0" expanded="true" />
-                <element signature="e#720#882#0" expanded="true" />
-                <element signature="n#!!block;n#handelSend#0;n#AddBanerHomePage#0" expanded="true" />
-                <element signature="e#2447#2510#0" expanded="true" />
-                <element signature="e#3019#3090#0" expanded="true" />
-                <element signature="e#3402#3473#0" expanded="true" />
-                <element signature="n#!!block;n#handelEdit#0;n#AddBanerHomePage#0" expanded="true" />
-                <element signature="n#!!block;n#GetDestinationString#0;n#AddBanerHomePage#0" expanded="true" />
-                <element signature="e#4917#4958#0" expanded="true" />
-                <element signature="n#!!block;n#handelChangeName#0;n#AddBanerHomePage#0" expanded="true" />
-                <element signature="e#5075#5103#0" expanded="true" />
-                <element signature="n#!!block;n#OnClickImg#0;n#AddBanerHomePage#0" expanded="true" />
-                <element signature="n#!!block;n#GetImgFile#0;n#AddBanerHomePage#0" expanded="true" />
-                <element signature="n#!!block;n#render#0;n#AddBanerHomePage#0" expanded="true" />
-                <element signature="e#5981#10904#0" expanded="true" />
-                <element signature="e#6127#10867#0" expanded="true" />
-                <element signature="e#6162#7733#0" expanded="true" />
-                <element signature="e#6223#7698#0" expanded="true" />
-                <element signature="e#6335#6674#0" expanded="true" />
-                <element signature="e#6938#7652#0" expanded="true" />
-                <element signature="e#8141#8293#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/PreViewBanner/PreViewBanner.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="46" column="57" lean-forward="true" selection-start-line="46" selection-start-column="57" selection-end-line="46" selection-end-column="57" />
-              <folding>
-                <element signature="n#!!block;n#constructor#0;n#PreViewBanner#0" expanded="true" />
-                <element signature="e#830#886#0" expanded="true" />
-                <element signature="e#1200#1263#0" expanded="true" />
-                <element signature="e#1488#1545#0" expanded="true" />
-                <element signature="e#2126#2183#0" expanded="true" />
-                <element signature="e#1966#2070#0" expanded="true" />
-                <element signature="n#!!block;n#render#0;n#PreViewBanner#0" expanded="true" />
-                <element signature="e#2477#2551#0" expanded="true" />
-                <element signature="e#2553#5138#0" expanded="true" />
-                <element signature="e#3054#4126#0" expanded="true" />
-                <element signature="e#3219#3756#0" expanded="true" />
-                <element signature="e#3818#4095#0" expanded="true" />
-                <element signature="e#3888#4060#0" expanded="true" />
-                <element signature="e#4151#5111#0" expanded="true" />
-                <element signature="e#4363#4513#0" expanded="true" />
-                <element signature="e#4542#4638#0" expanded="true" />
-                <element signature="e#4667#5077#0" expanded="true" />
-                <element signature="e#4713#4858#0" expanded="true" />
-                <element signature="e#4896#5034#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/Destination/Destination.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="20" column="44" lean-forward="true" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
-              <folding>
-                <element signature="e#1995#2127#0" expanded="true" />
-                <element signature="n#!!block;n#render#0;n#Destination#0" expanded="true" />
-                <element signature="e#2217#2916#0" expanded="true" />
-                <element signature="e#2319#2461#0" expanded="true" />
-                <element signature="e#2482#2891#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/MainItems.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="71" column="80" lean-forward="true" selection-start-line="71" selection-start-column="80" selection-end-line="71" selection-end-column="80" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <element signature="n#!!block;n#constructor#0;n#MainItems#0" expanded="true" />
-                <element signature="e#495#531#0" expanded="true" />
-                <element signature="n#!!block;n#componentDidMount#0;n#MainItems#0" expanded="true" />
-                <element signature="n#!!block;n#GetItemsValue#0;n#MainItems#0" expanded="true" />
-                <element signature="e#845#910#0" expanded="true" />
-                <element signature="e#1238#1295#0" expanded="true" />
-                <element signature="e#1788#2158#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/PreviewItems/PreviewItems.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="36" column="33" lean-forward="true" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/PreviewItems/SliderItems/SliderItems.js">
+        <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/MainItems.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="142" column="38" lean-forward="true" selection-start-line="142" selection-start-column="38" selection-end-line="142" selection-end-column="38" />
+            <state relative-caret-position="204">
+              <caret line="55" column="21" lean-forward="true" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
               <folding>
-                <element signature="n#!!block;n#constructor#0;n#SliderItems#0" expanded="true" />
-                <element signature="e#3069#3109#0" expanded="true" />
-                <element signature="n#!!block;n#handelDelete#0;n#SliderItems#0" expanded="true" />
-                <element signature="e#3242#3307#0" expanded="true" />
-                <element signature="e#3746#3794#0" expanded="true" />
-                <element signature="e#4342#4390#0" expanded="true" />
-                <element signature="n#!!block;n#handelclickDelete#0;n#SliderItems#0" expanded="true" />
-                <element signature="e#4399#8354#0" expanded="true" />
-                <element signature="e#4541#7737#0" expanded="true" />
-                <element signature="e#4571#6579#0" expanded="true" />
-                <element signature="e#4582#4613#0" expanded="true" />
-                <element signature="e#5652#5682#0" expanded="true" />
-                <element signature="e#6604#7710#0" expanded="true" />
-                <element signature="e#6676#7677#0" expanded="true" />
-                <element signature="e#6681#7185#0" expanded="true" />
-                <element signature="e#6877#7099#0" expanded="true" />
-                <element signature="e#7268#7575#0" expanded="true" />
-                <element signature="e#7355#7502#0" expanded="true" />
-                <element signature="e#7526#8335#0" expanded="true" />
+                <element signature="e#0#39#0" expanded="true" />
+                <element signature="n#!!block;n#constructor#0;n#MainItems#0" expanded="true" />
+                <element signature="n#!!block;n#componentDidMount#0;n#MainItems#0" expanded="true" />
+                <element signature="e#1256#1297#0" expanded="true" />
+                <element signature="e#1575#1624#0" expanded="true" />
+                <element signature="e#1962#2003#0" expanded="true" />
+                <element signature="n#!!block;n#render#0;n#MainItems#0" expanded="true" />
+                <element signature="e#1667#2591#0" expanded="true" />
+                <element signature="e#1716#2571#0" expanded="true" />
+                <element signature="e#1769#2152#0" expanded="true" />
+                <element signature="e#2181#2540#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/HeaderPreviewComponentHomePage/HeaderPreviewComponentHomePage.js">
+        <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ShowPreviewHomePage/WonderPackageHomePage/WonderPackageHomePage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="22" column="88" selection-start-line="22" selection-start-column="88" selection-end-line="22" selection-end-column="88" />
+            <state relative-caret-position="368">
+              <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
               <folding>
-                <element signature="e#1071#1217#0" expanded="true" />
+                <element signature="e#677#821#0" expanded="true" />
+                <element signature="e#1067#2683#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/AddItems/AddItemList.js">
+        <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/WonderPackageAddHomePage/subPackage/PreviewPackages.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-578">
-              <caret line="108" column="55" lean-forward="true" selection-start-line="108" selection-start-column="55" selection-end-line="108" selection-end-column="55" />
+            <state relative-caret-position="14">
+              <caret line="89" column="59" selection-start-line="89" selection-start-column="29" selection-end-line="89" selection-end-column="59" />
               <folding>
-                <element signature="e#1727#1915#0" expanded="true" />
-                <element signature="e#1753#1832#0" expanded="true" />
-                <element signature="e#2160#2426#0" expanded="true" />
-                <element signature="e#3470#6537#0" expanded="true" />
-                <element signature="e#3565#6381#0" expanded="true" />
-                <element signature="e#3645#5162#0" expanded="true" />
-                <element signature="e#3725#5107#0" expanded="true" />
-                <element signature="e#3832#3997#0" expanded="true" />
-                <element signature="e#4054#4627#0" expanded="true" />
-                <element signature="e#4785#4976#0" expanded="true" />
-                <element signature="e#5211#6329#0" expanded="true" />
-                <element signature="e#5292#6273#0" expanded="true" />
-                <element signature="e#5417#5577#0" expanded="true" />
-                <element signature="e#5634#5802#0" expanded="true" />
-                <element signature="e#5954#6142#0" expanded="true" />
+                <element signature="n#!!block;n#constructor#0;n#PreviewPackages#0" expanded="true" />
+                <element signature="e#835#905#0" expanded="true" />
+                <element signature="n#!!block;n#handelDelete#0;n#PreviewPackages#0" expanded="true" />
+                <element signature="e#1135#1196#0" expanded="true" />
+                <element signature="e#1361#1422#0" expanded="true" />
+                <element signature="n#!!block;n#handelclickDelete#0;n#PreviewPackages#0" expanded="true" />
+                <element signature="e#1804#1844#0" expanded="true" />
+                <element signature="e#1877#1981#0" expanded="true" />
+                <element signature="e#4407#4660#0" expanded="true" />
+                <element signature="e#4701#4949#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -341,11 +312,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Edit</find>
-      <find>edit</find>
-      <find>&quot;ObjectType&quot;:</find>
-      <find>deleteComponent</find>
-      <find>handelDelete</find>
       <find>props.edit</find>
       <find>altText</find>
       <find>files</find>
@@ -359,18 +325,23 @@
       <find>glide__bullets</find>
       <find>SlidersPrev</find>
       <find>NotificationManager</find>
-      <find>Submit</find>
-      <find>deleteLoader</find>
       <find>WithStyles</find>
-      <find>CategoriesList</find>
       <find>Loader</find>
       <find>id</find>
-      <find>EditName</find>
       <find>goTop</find>
-      <find>showLoader</find>
       <find>GetDestinationString</find>
       <find>axFile</find>
       <find>error</find>
+      <find>name</find>
+      <find>erro</find>
+      <find>for</find>
+      <find>Submit</find>
+      <find>CategoriesList</find>
+      <find>showLoader</find>
+      <find>EditName</find>
+      <find>deleteLoader</find>
+      <find>Link</find>
+      <find>itemLists</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -382,11 +353,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Component/HomePages/Main/Edit/Test.js" />
-        <option value="$PROJECT_DIR$/src/views/HomePage/MainHomPages/MainHomPages.js" />
-        <option value="$PROJECT_DIR$/src/Component/HomePages/Main/PreviewAllPages/Sub/column.js" />
-        <option value="$PROJECT_DIR$/src/Component/HomePages/Main/PreviewAllPages/Sub/task.js" />
-        <option value="$PROJECT_DIR$/src/Component/HomePages/Main/Active/index.js" />
         <option value="$PROJECT_DIR$/src/Component/HomePages/Main/Active/column.js" />
         <option value="$PROJECT_DIR$/src/Component/HomePages/Main/Active/task.js" />
         <option value="$PROJECT_DIR$/src/Component/HomePages/Main/PreviewAllPages/NewEdit.js" />
@@ -403,7 +369,6 @@
         <option value="$PROJECT_DIR$/src/Component/HomePages/Main/Edit/NewEdit/column.js" />
         <option value="$PROJECT_DIR$/src/Component/HomePages/Main/PreviewAllPages/Sub/index.js" />
         <option value="$PROJECT_DIR$/src/Component/HomePages/Main/PreviewAllPages/PreviewAllMainMobile.js" />
-        <option value="$PROJECT_DIR$/src/Component/HomePages/Main/Edit/NewEdit/index.js" />
         <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/HeaderSlider/Add/AddHeadersSlider.js" />
         <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/SliderAddHomePage/FormAddSlider/FormAddSlider.js" />
         <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/CropImg/CropSliderImg.js" />
@@ -415,8 +380,6 @@
         <option value="$PROJECT_DIR$/node_modules/@glidejs/glide/dist/css/glide.theme.css" />
         <option value="$PROJECT_DIR$/src/components/carousel/GlideComponent.js" />
         <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/HeaderSlider/Preview/PreviewHeaderSlider.js" />
-        <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/CategoriesHomePage/PreviewCategories/PreviewCategories.js" />
-        <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/ShowPreviewHomePage/Categories/CategoriesHomePage.js" />
         <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/SliderAddHomePage/SliderAddHomePage.js" />
         <option value="$USER_HOME$/Desktop/mobile/deny.html" />
         <option value="$USER_HOME$/Desktop/mobile/accept.html" />
@@ -424,15 +387,23 @@
         <option value="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" />
         <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/CropImg/CropImgCropper.js" />
         <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/Destination/Destination.js" />
-        <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/CategoriesHomePage/CategoriesAddHomePage.js" />
-        <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/MainBaner.js" />
-        <option value="$PROJECT_DIR$/src/Component/functions/ServerConnection.js" />
         <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/PreViewBanner/PreViewBanner.js" />
-        <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/AddBaner/AddBanerHomePage.js" />
         <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/AddItems/AddItemList.js" />
         <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/HeaderPreviewComponentHomePage/HeaderPreviewComponentHomePage.js" />
-        <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/MainItems.js" />
         <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/PreviewItems/SliderItems/SliderItems.js" />
+        <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/MainBaner.js" />
+        <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/AddBaner/AddBanerHomePage.js" />
+        <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/ShowPreviewHomePage/Categories/CategoriesHomePage.js" />
+        <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/CategoriesHomePage/PreviewCategories/PreviewCategories.js" />
+        <option value="$PROJECT_DIR$/src/Component/HomePages/Main/Edit/NewEdit/index.js" />
+        <option value="$PROJECT_DIR$/src/Component/HomePages/Main/Active/index.js" />
+        <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/WonderPackageAddHomePage/subPackage/PreviewPackages.js" />
+        <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/ShowPreviewHomePage/WonderPackageHomePage/WonderPackageHomePage.js" />
+        <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/CategoriesHomePage/CategoriesAddHomePage.js" />
+        <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/WonderPackageAddHomePage/WonderPackageAddHomePage.js" />
+        <option value="$PROJECT_DIR$/src/constants/menu2.js" />
+        <option value="$PROJECT_DIR$/src/Component/functions/ServerConnection.js" />
+        <option value="$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/MainItems.js" />
       </list>
     </option>
   </component>
@@ -453,16 +424,32 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-55" />
-    <option name="y" value="306" />
-    <option name="width" value="1925" />
-    <option name="height" value="919" />
+    <option name="x" value="-69" />
+    <option name="y" value="382" />
+    <option name="width" value="2407" />
+    <option name="height" value="1149" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="OldOrders" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="OldOrders" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="public" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -516,21 +503,11 @@
               <item name="Sub" type="462c0819:PsiDirectoryNode" />
               <item name="ItemList" type="462c0819:PsiDirectoryNode" />
             </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
             <path>
-              <item name="OldOrders" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-            <path>
-              <item name="OldOrders" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="public" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="OldOrders" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OldOrders" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -624,18 +601,19 @@
       <workItem from="1574505314611" duration="185000" />
       <workItem from="1574510230066" duration="63701000" />
       <workItem from="1574831922972" duration="11796000" />
-      <workItem from="1574846559609" duration="10719000" />
+      <workItem from="1574846559609" duration="11017000" />
+      <workItem from="1575090446568" duration="23676000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="648432000" />
+    <option name="totallyTimeSpent" value="672406000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2683706" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34069613" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -666,92 +644,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Main/Edit/PreviewHomePages/Components/SLiderItemsHomePagePreview.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="165" column="29" lean-forward="true" selection-start-line="165" selection-start-column="29" selection-end-line="165" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Main/PreviewAllPages/PreviewAllMainMobile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="31" column="68" selection-start-line="31" selection-start-column="68" selection-end-line="31" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Main/Edit/PreviewHomePages/Components/BannerHomePagePreview.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="135" column="59" selection-start-line="135" selection-start-column="42" selection-end-line="135" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#BannerHomePagePreview#0" expanded="true" />
-            <element signature="e#828#925#0" expanded="true" />
-            <element signature="n#!!block;n#getDerivedStateFromProps#0;n#BannerHomePagePreview#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Main/Edit/NewEdit/task.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-486">
-          <caret line="21" column="21" lean-forward="true" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Main/Edit/NewEdit/column.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="49" column="49" selection-start-line="49" selection-start-column="49" selection-end-line="49" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ShowPreviewHomePage/SliderOnePage/SliderPageEdit/SliderPageEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="212" column="69" lean-forward="true" selection-start-line="212" selection-start-column="69" selection-end-line="212" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ShowPreviewHomePage/SliderOnePage/SliderOnePage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@types/react/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="1636" column="8" selection-start-line="1636" selection-start-column="8" selection-end-line="1636" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/reactstrap/src/CarouselCaption.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/reactstrap/src/CarouselItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="45" column="17" lean-forward="true" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-multi-carousel/lib/styles.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Main/Edit/NewEdit/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1693">
-          <caret line="522" selection-start-line="522" selection-end-line="522" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/HeaderSlider/Add/AddHeadersSlider.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1418">
@@ -783,23 +675,6 @@
             <element signature="e#4439#4645#0" expanded="true" />
             <element signature="e#4493#4817#0" expanded="true" />
             <element signature="e#4572#4752#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/constants/ServerConst.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="57" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/HomePage/HomePageMain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="20" column="109" selection-start-line="20" selection-start-column="109" selection-end-line="20" selection-end-column="109" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -885,28 +760,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
           <caret line="5" column="121267" lean-forward="true" selection-start-line="5" selection-start-column="121247" selection-end-line="5" selection-end-column="121267" />
-          <folding>
-            <element signature="e#72310#72510#2" expanded="true" />
-            <element signature="e#72722#72871#2" expanded="true" />
-            <element signature="e#73383#73529#2" expanded="true" />
-            <element signature="e#73833#73999#1" expanded="true" />
-            <element signature="e#87988#88228#2" expanded="true" />
-            <element signature="e#89103#89349#2" expanded="true" />
-            <element signature="e#117693#117883#2" expanded="true" />
-            <element signature="e#117929#118119#2" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Desktop/mobile/deny.html" />
     <entry file="file://$USER_HOME$/Desktop/mobile/accept.html" />
-    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ShowPreviewHomePage/Categories/CategoriesHomePage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/SliderAddHomePage/SliderAddHomePage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
@@ -954,9 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="1394" column="4" selection-start-line="1394" selection-start-column="4" selection-end-line="1394" selection-end-column="4" />
-          <folding>
-            <element signature="e#42385#46970#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -971,18 +826,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/CategoriesHomePage/PreviewCategories/PreviewCategories.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="103" column="91" lean-forward="true" selection-start-line="103" selection-start-column="38" selection-end-line="103" selection-end-column="91" />
-          <folding>
-            <element signature="n#!!block;n#constructor#0;n#PreviewCategories#0" expanded="true" />
-            <element signature="n#!!block;n#handelDelete#0;n#PreviewCategories#0" expanded="true" />
-            <element signature="n#!!block;n#handelclickDelete#0;n#PreviewCategories#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1064">
@@ -990,39 +833,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/CategoriesHomePage/CategoriesAddHomePage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-151">
-          <caret line="153" column="10" selection-start-line="153" selection-start-column="10" selection-end-line="153" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#CategoriesAddHomePage#0" expanded="true" />
-            <element signature="n#!!block;n#ClickEdit#0;n#CategoriesAddHomePage#0" expanded="true" />
-            <element signature="e#3802#3886#0" expanded="true" />
-            <element signature="n#!!block;n#HandelSubmit#0;n#CategoriesAddHomePage#0" expanded="true" />
-            <element signature="e#5872#5920#0" expanded="true" />
-            <element signature="n#!!block;n#handelEdit#1;n#CategoriesAddHomePage#0" expanded="true" />
-            <element signature="e#6486#6544#0" expanded="true" />
-            <element signature="n#!!block;n#render#0;n#CategoriesAddHomePage#0" expanded="true" />
-            <element signature="e#11183#14930#0" expanded="true" />
-            <element signature="e#11231#12041#0" expanded="true" />
-            <element signature="e#12059#13689#0" expanded="true" />
-            <element signature="e#12268#13477#0" expanded="true" />
-            <element signature="e#13706#14667#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/styled-components/primitives/dist/styled-components-primitives.cjs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="673">
           <caret line="4430" lean-forward="true" selection-start-line="4430" selection-end-line="4430" />
-          <folding>
-            <element signature="e#123605#127368#0" expanded="true" />
-            <element signature="e#124664#127347#0" expanded="true" />
-            <element signature="e#124991#127346#0" expanded="true" />
-            <element signature="e#125299#125555#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1049,23 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/functions/ServerConnection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="265" column="1" lean-forward="true" selection-start-line="265" selection-start-column="1" selection-end-line="265" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#53#0" expanded="true" />
-            <element signature="n#!!block;n#sendImg#0" expanded="true" />
-            <element signature="n#!!block;n#GetCatNameFunction#0" expanded="true" />
-            <element signature="n#!!block;n#UpdateCategories#0" expanded="true" />
-            <element signature="n#!!block;n#AddSlider#0" expanded="true" />
-            <element signature="n#!!block;n#UpdateSliders#0" expanded="true" />
-            <element signature="n#!!block;n#addBaner#0" expanded="true" />
-            <element signature="n#!!block;n#AddHeaderSlider#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/CropImg/CropImgCropper.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="388">
@@ -1087,9 +884,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="3315" column="4" selection-start-line="3315" selection-start-column="4" selection-end-line="3315" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/AddItems/AddItemList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="108" column="55" selection-start-line="108" selection-start-column="55" selection-end-line="108" selection-end-column="55" />
+          <folding>
+            <element signature="e#1727#1915#0" expanded="true" />
+            <element signature="e#1753#1832#0" expanded="true" />
+            <element signature="e#2160#2426#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/HeaderPreviewComponentHomePage/HeaderPreviewComponentHomePage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
+        <state relative-caret-position="73">
           <caret line="22" column="88" selection-start-line="22" selection-start-column="88" selection-end-line="22" selection-end-column="88" />
           <folding>
             <element signature="e#1071#1217#0" expanded="true" />
@@ -1097,81 +913,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/AddItems/AddItemList.js">
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/PreviewItems/SliderItems/SliderItems.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-578">
-          <caret line="108" column="55" lean-forward="true" selection-start-line="108" selection-start-column="55" selection-end-line="108" selection-end-column="55" />
+        <state relative-caret-position="451">
+          <caret line="210" column="34" lean-forward="true" selection-start-line="210" selection-start-column="34" selection-end-line="210" selection-end-column="34" />
           <folding>
-            <element signature="e#1727#1915#0" expanded="true" />
-            <element signature="e#1753#1832#0" expanded="true" />
-            <element signature="e#2160#2426#0" expanded="true" />
-            <element signature="e#3470#6537#0" expanded="true" />
-            <element signature="e#3565#6381#0" expanded="true" />
-            <element signature="e#3645#5162#0" expanded="true" />
-            <element signature="e#3725#5107#0" expanded="true" />
-            <element signature="e#3832#3997#0" expanded="true" />
-            <element signature="e#4054#4627#0" expanded="true" />
-            <element signature="e#4785#4976#0" expanded="true" />
-            <element signature="e#5211#6329#0" expanded="true" />
-            <element signature="e#5292#6273#0" expanded="true" />
-            <element signature="e#5417#5577#0" expanded="true" />
-            <element signature="e#5634#5802#0" expanded="true" />
-            <element signature="e#5954#6142#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#SliderItems#0" expanded="true" />
+            <element signature="n#!!block;n#handelDelete#0;n#SliderItems#0" expanded="true" />
+            <element signature="n#!!block;n#handelclickDelete#0;n#SliderItems#0" expanded="true" />
+            <element signature="e#5066#8241#0" expanded="true" />
+            <element signature="e#5143#5174#0" expanded="true" />
+            <element signature="e#7108#8214#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/MainBaner.js">
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/PreviewItems/PreviewItems.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="47" column="36" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#MainBaner#0" expanded="true" />
-            <element signature="e#503#582#0" expanded="true" />
-            <element signature="n#!!block;n#ClickEdit#0;n#MainBaner#0" expanded="true" />
-            <element signature="e#1144#1209#0" expanded="true" />
-            <element signature="e#1552#2279#0" expanded="true" />
-            <element signature="e#2081#2336#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/AddBaner/AddBanerHomePage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-736">
-          <caret line="10" column="42" lean-forward="true" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#AddBanerHomePage#0" expanded="true" />
-            <element signature="e#720#882#0" expanded="true" />
-            <element signature="n#!!block;n#handelSend#0;n#AddBanerHomePage#0" expanded="true" />
-            <element signature="e#2447#2510#0" expanded="true" />
-            <element signature="e#3019#3090#0" expanded="true" />
-            <element signature="e#3402#3473#0" expanded="true" />
-            <element signature="n#!!block;n#handelEdit#0;n#AddBanerHomePage#0" expanded="true" />
-            <element signature="n#!!block;n#GetDestinationString#0;n#AddBanerHomePage#0" expanded="true" />
-            <element signature="e#4917#4958#0" expanded="true" />
-            <element signature="n#!!block;n#handelChangeName#0;n#AddBanerHomePage#0" expanded="true" />
-            <element signature="e#5075#5103#0" expanded="true" />
-            <element signature="n#!!block;n#OnClickImg#0;n#AddBanerHomePage#0" expanded="true" />
-            <element signature="n#!!block;n#GetImgFile#0;n#AddBanerHomePage#0" expanded="true" />
-            <element signature="n#!!block;n#render#0;n#AddBanerHomePage#0" expanded="true" />
-            <element signature="e#5981#10904#0" expanded="true" />
-            <element signature="e#6127#10867#0" expanded="true" />
-            <element signature="e#6162#7733#0" expanded="true" />
-            <element signature="e#6223#7698#0" expanded="true" />
-            <element signature="e#6335#6674#0" expanded="true" />
-            <element signature="e#6938#7652#0" expanded="true" />
-            <element signature="e#8141#8293#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="276">
+          <caret line="36" column="33" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/Destination/Destination.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
-          <caret line="20" column="44" lean-forward="true" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+          <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
           <folding>
             <element signature="e#1995#2127#0" expanded="true" />
             <element signature="n#!!block;n#render#0;n#Destination#0" expanded="true" />
@@ -1182,89 +949,383 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/MainItems.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="71" column="80" lean-forward="true" selection-start-line="71" selection-start-column="80" selection-end-line="71" selection-end-column="80" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#MainItems#0" expanded="true" />
-            <element signature="e#495#531#0" expanded="true" />
-            <element signature="n#!!block;n#componentDidMount#0;n#MainItems#0" expanded="true" />
-            <element signature="n#!!block;n#GetItemsValue#0;n#MainItems#0" expanded="true" />
-            <element signature="e#845#910#0" expanded="true" />
-            <element signature="e#1238#1295#0" expanded="true" />
-            <element signature="e#1788#2158#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/PreviewItems/PreviewItems.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="36" column="33" lean-forward="true" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="3315" column="4" selection-start-line="3315" selection-start-column="4" selection-end-line="3315" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/PreViewBanner/PreViewBanner.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
-          <caret line="46" column="57" lean-forward="true" selection-start-line="46" selection-start-column="57" selection-end-line="46" selection-end-column="57" />
+          <caret line="46" column="57" selection-start-line="46" selection-start-column="57" selection-end-line="46" selection-end-column="57" />
           <folding>
             <element signature="n#!!block;n#constructor#0;n#PreViewBanner#0" expanded="true" />
-            <element signature="e#830#886#0" expanded="true" />
-            <element signature="e#1200#1263#0" expanded="true" />
-            <element signature="e#1488#1545#0" expanded="true" />
-            <element signature="e#2126#2183#0" expanded="true" />
-            <element signature="e#1966#2070#0" expanded="true" />
             <element signature="n#!!block;n#render#0;n#PreViewBanner#0" expanded="true" />
-            <element signature="e#2477#2551#0" expanded="true" />
-            <element signature="e#2553#5138#0" expanded="true" />
-            <element signature="e#3054#4126#0" expanded="true" />
-            <element signature="e#3219#3756#0" expanded="true" />
-            <element signature="e#3818#4095#0" expanded="true" />
-            <element signature="e#3888#4060#0" expanded="true" />
-            <element signature="e#4151#5111#0" expanded="true" />
-            <element signature="e#4363#4513#0" expanded="true" />
-            <element signature="e#4542#4638#0" expanded="true" />
-            <element signature="e#4667#5077#0" expanded="true" />
-            <element signature="e#4713#4858#0" expanded="true" />
-            <element signature="e#4896#5034#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/PreviewItems/SliderItems/SliderItems.js">
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/AddBaner/AddBanerHomePage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="142" column="38" lean-forward="true" selection-start-line="142" selection-start-column="38" selection-end-line="142" selection-end-column="38" />
+        <state relative-caret-position="132">
+          <caret line="213" column="28" selection-start-line="213" selection-start-column="28" selection-end-line="213" selection-end-column="28" />
           <folding>
-            <element signature="n#!!block;n#constructor#0;n#SliderItems#0" expanded="true" />
-            <element signature="e#3069#3109#0" expanded="true" />
-            <element signature="n#!!block;n#handelDelete#0;n#SliderItems#0" expanded="true" />
-            <element signature="e#3242#3307#0" expanded="true" />
-            <element signature="e#3746#3794#0" expanded="true" />
-            <element signature="e#4342#4390#0" expanded="true" />
-            <element signature="n#!!block;n#handelclickDelete#0;n#SliderItems#0" expanded="true" />
-            <element signature="e#4399#8354#0" expanded="true" />
-            <element signature="e#4541#7737#0" expanded="true" />
-            <element signature="e#4571#6579#0" expanded="true" />
-            <element signature="e#4582#4613#0" expanded="true" />
-            <element signature="e#5652#5682#0" expanded="true" />
-            <element signature="e#6604#7710#0" expanded="true" />
-            <element signature="e#6676#7677#0" expanded="true" />
-            <element signature="e#6681#7185#0" expanded="true" />
-            <element signature="e#6877#7099#0" expanded="true" />
-            <element signature="e#7268#7575#0" expanded="true" />
-            <element signature="e#7355#7502#0" expanded="true" />
-            <element signature="e#7526#8335#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#AddBanerHomePage#0" expanded="true" />
+            <element signature="e#720#882#0" expanded="true" />
+            <element signature="n#!!block;n#handelSend#0;n#AddBanerHomePage#0" expanded="true" />
+            <element signature="e#1364#1401#0" expanded="true" />
+            <element signature="e#1776#1813#0" expanded="true" />
+            <element signature="e#1940#1977#0" expanded="true" />
+            <element signature="e#2111#2148#0" expanded="true" />
+            <element signature="e#2322#2359#0" expanded="true" />
+            <element signature="e#2447#2510#0" expanded="true" />
+            <element signature="e#3690#3761#0" expanded="true" />
+            <element signature="e#6500#8071#0" expanded="true" />
+            <element signature="e#6561#8036#0" expanded="true" />
+            <element signature="e#9377#10151#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/Banner/MainBaner.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#MainBaner#0" expanded="true" />
+            <element signature="e#541#637#0" expanded="true" />
+            <element signature="n#!!block;n#componentDidMount#0;n#MainBaner#0" expanded="true" />
+            <element signature="e#776#810#0" expanded="true" />
+            <element signature="n#!!block;n#componentDidMount#1;n#MainBaner#0" expanded="true" />
+            <element signature="e#948#982#0" expanded="true" />
+            <element signature="n#!!block;n#render#0;n#MainBaner#0" expanded="true" />
+            <element signature="e#1361#2551#0" expanded="true" />
+            <element signature="e#1410#1601#0" expanded="true" />
+            <element signature="e#1618#2531#0" expanded="true" />
+            <element signature="e#1965#2234#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Main/Edit/HomePagePreview.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-966">
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/HomePage/HomePageMain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ShowPreviewHomePage/Categories/CategoriesHomePage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="50" column="13" lean-forward="true" selection-start-line="50" selection-start-column="13" selection-end-line="58" selection-end-column="22" />
+          <folding>
+            <element signature="e#992#2210#0" expanded="true" />
+            <element signature="e#1602#2186#0" expanded="true" />
+            <element signature="e#1731#1933#0" expanded="true" />
+            <element signature="e#1958#2159#0" expanded="true" />
+            <element signature="e#2228#2640#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Main/PreviewAllPages/Sub/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="310" column="1" selection-start-line="310" selection-start-column="1" selection-end-line="315" selection-end-column="5" />
+          <folding>
+            <element signature="e#8950#9087#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Main/Edit/NewEdit/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="89" column="69" lean-forward="true" selection-start-line="89" selection-start-column="69" selection-end-line="89" selection-end-column="69" />
+          <folding>
+            <element signature="e#12402#15013#0" expanded="true" />
+            <element signature="e#15042#15177#0" expanded="true" />
+            <element signature="e#15311#15448#0" expanded="true" />
+            <element signature="e#15190#17345#0" expanded="true" />
+            <element signature="e#15316#17334#0" expanded="true" />
+            <element signature="e#15354#15838#0" expanded="true" />
+            <element signature="e#15918#16691#0" expanded="true" />
+            <element signature="e#15990#16660#0" expanded="true" />
+            <element signature="e#16271#16612#0" expanded="true" />
+            <element signature="e#16813#17282#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Main/PreviewAllPages/PreviewAllMainMobile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="31" column="67" selection-start-line="31" selection-start-column="67" selection-end-line="31" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/HomePage/MainHomPages/MainHomPages.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" column="98" lean-forward="true" selection-start-line="17" selection-start-column="98" selection-end-line="17" selection-end-column="98" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Main/Active/ActiveMainHomePages.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#render#0;n#ActiveMainHomePages#0" expanded="true" />
+            <element signature="e#167#245#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Main/Active/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="84" column="37" lean-forward="true" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#91#144#0" expanded="true" />
+            <element signature="e#1666#2308#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Main/Add/AddMainHomePage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+          <folding>
+            <element signature="e#211#294#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/CategoriesHomePage/CategoriesAddHomePage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-429">
+          <caret line="144" column="25" lean-forward="true" selection-start-line="144" selection-start-column="25" selection-end-line="144" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#CategoriesAddHomePage#0" expanded="true" />
+            <element signature="e#1260#1841#0" expanded="true" />
+            <element signature="n#!!block;n#componentDidMount#0;n#CategoriesAddHomePage#0" expanded="true" />
+            <element signature="e#3833#3917#0" expanded="true" />
+            <element signature="e#4333#4425#0" expanded="true" />
+            <element signature="e#4327#4383#0" expanded="true" />
+            <element signature="e#4911#4948#0" expanded="true" />
+            <element signature="e#5297#5334#0" expanded="true" />
+            <element signature="e#5448#5485#0" expanded="true" />
+            <element signature="e#6146#6202#0" expanded="true" />
+            <element signature="n#!!block;n#handelEdit#1;n#CategoriesAddHomePage#0" expanded="true" />
+            <element signature="e#11019#11077#0" expanded="true" />
+            <element signature="e#12055#12113#0" expanded="true" />
+            <element signature="e#12819#12875#0" expanded="true" />
+            <element signature="e#13583#13639#0" expanded="true" />
+            <element signature="e#14347#14403#0" expanded="true" />
+            <element signature="e#14812#14879#0" expanded="true" />
+            <element signature="n#!!block;n#render#0;n#CategoriesAddHomePage#0" expanded="true" />
+            <element signature="e#15072#18833#0" expanded="true" />
+            <element signature="e#15120#15944#0" expanded="true" />
+            <element signature="e#15310#15688#0" expanded="true" />
+            <element signature="e#15962#17592#0" expanded="true" />
+            <element signature="e#16171#17380#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/CategoriesHomePage/PreviewCategories/PreviewCategories.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="39" column="36" lean-forward="true" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
+          <folding>
+            <element signature="n#!!block;n#constructor#0;n#PreviewCategories#0" expanded="true" />
+            <element signature="e#1363#1424#0" expanded="true" />
+            <element signature="e#1559#1620#0" expanded="true" />
+            <element signature="n#!!block;n#handelclickDelete#0;n#PreviewCategories#0" expanded="true" />
+            <element signature="n#!!block;n#render#0;n#PreviewCategories#0" expanded="true" />
+            <element signature="e#2929#8056#0" expanded="true" />
+            <element signature="e#3193#8019#0" expanded="true" />
+            <element signature="e#4792#6922#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/menu2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="147" column="37" lean-forward="true" selection-start-line="147" selection-start-column="37" selection-end-line="147" selection-end-column="37" />
+          <folding>
+            <element signature="e#19#3356#0" expanded="true" />
+            <element signature="e#3501#3672#0" expanded="true" />
+            <element signature="e#3502#3660#0" expanded="true" />
+            <element signature="e#4112#4719#0" expanded="true" />
+            <element signature="e#4285#4709#0" expanded="true" />
+            <element signature="e#4286#4428#0" expanded="true" />
+            <element signature="e#4424#4562#0" expanded="true" />
+            <element signature="e#4558#4700#0" expanded="true" />
+            <element signature="e#5356#5563#0" expanded="true" />
+            <element signature="e#5577#5764#0" expanded="true" />
+            <element signature="e#5778#5953#0" expanded="true" />
+            <element signature="e#5967#6149#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ShowPreviewHomePage/WonderPackageHomePage/WonderPackageHomePage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+          <folding>
+            <element signature="e#677#821#0" expanded="true" />
+            <element signature="e#1067#2683#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/WonderPackageAddHomePage/subPackage/PreviewPackages.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14">
+          <caret line="89" column="59" selection-start-line="89" selection-start-column="29" selection-end-line="89" selection-end-column="59" />
+          <folding>
+            <element signature="n#!!block;n#constructor#0;n#PreviewPackages#0" expanded="true" />
+            <element signature="e#835#905#0" expanded="true" />
+            <element signature="n#!!block;n#handelDelete#0;n#PreviewPackages#0" expanded="true" />
+            <element signature="e#1135#1196#0" expanded="true" />
+            <element signature="e#1361#1422#0" expanded="true" />
+            <element signature="n#!!block;n#handelclickDelete#0;n#PreviewPackages#0" expanded="true" />
+            <element signature="e#1804#1844#0" expanded="true" />
+            <element signature="e#1877#1981#0" expanded="true" />
+            <element signature="e#4407#4660#0" expanded="true" />
+            <element signature="e#4701#4949#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/ServerConst.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/WonderPackageAddHomePage/WonderPackageAddHomePage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="487" column="34" lean-forward="true" selection-start-line="487" selection-start-column="34" selection-end-line="487" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#WonderPackageAddHomePage#0" expanded="true" />
+            <element signature="e#908#1253#0" expanded="true" />
+            <element signature="e#1466#1504#0" expanded="true" />
+            <element signature="n#!!block;n#ClickEdit#0;n#WonderPackageAddHomePage#0" expanded="true" />
+            <element signature="e#3147#3231#0" expanded="true" />
+            <element signature="e#3291#3354#0" expanded="true" />
+            <element signature="e#3673#3729#0" expanded="true" />
+            <element signature="n#!!block;n#HandelSubmit#0;n#WonderPackageAddHomePage#0" expanded="true" />
+            <element signature="e#3998#4035#0" expanded="true" />
+            <element signature="e#4154#4191#0" expanded="true" />
+            <element signature="e#4384#4421#0" expanded="true" />
+            <element signature="e#4535#4572#0" expanded="true" />
+            <element signature="e#4704#4769#0" expanded="true" />
+            <element signature="e#5277#5333#0" expanded="true" />
+            <element signature="e#6059#6131#0" expanded="true" />
+            <element signature="e#6520#7162#0" />
+            <element signature="e#6912#6990#0" expanded="true" />
+            <element signature="e#7681#7768#0" expanded="true" />
+            <element signature="n#!!block;n#handelEdit#0;n#WonderPackageAddHomePage#0" expanded="true" />
+            <element signature="e#9909#9974#0" expanded="true" />
+            <element signature="e#13966#14023#0" expanded="true" />
+            <element signature="e#14467#14515#0" expanded="true" />
+            <element signature="n#!!block;n#GetCategoriesName#0;n#WonderPackageAddHomePage#0" expanded="true" />
+            <element signature="e#7450#7481#0" expanded="true" />
+            <element signature="e#14427#15247#0" expanded="true" />
+            <element signature="e#14589#14662#0" expanded="true" />
+            <element signature="e#14627#15045#0" expanded="true" />
+            <element signature="e#15265#16686#0" expanded="true" />
+            <element signature="e#16404#17393#0" expanded="true" />
+            <element signature="e#16960#17775#0" expanded="true" />
+            <element signature="e#19169#19394#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/functions/ServerConnection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="446" column="19" selection-start-line="446" selection-start-column="19" selection-end-line="446" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+            <element signature="e#273#335#0" expanded="true" />
+            <element signature="e#471#545#0" expanded="true" />
+            <element signature="e#605#649#0" expanded="true" />
+            <element signature="e#1183#1285#0" expanded="true" />
+            <element signature="e#1310#1369#0" expanded="true" />
+            <element signature="n#!!block;n#UpdateCategories#0" expanded="true" />
+            <element signature="e#1835#1937#0" expanded="true" />
+            <element signature="e#1962#2018#0" expanded="true" />
+            <element signature="n#!!block;n#DeleteCategoriey#0" expanded="true" />
+            <element signature="e#3718#3777#0" expanded="true" />
+            <element signature="e#3574#3635#0" expanded="true" />
+            <element signature="e#4768#4866#0" expanded="true" />
+            <element signature="e#4891#4947#0" expanded="true" />
+            <element signature="n#!!block;n#UpdatePackage#0" expanded="true" />
+            <element signature="e#5412#5510#0" expanded="true" />
+            <element signature="e#5535#5591#0" expanded="true" />
+            <element signature="n#!!block;n#DeletePackage#0" expanded="true" />
+            <element signature="e#5938#6036#0" expanded="true" />
+            <element signature="e#6061#6117#0" expanded="true" />
+            <element signature="e#7703#7764#0" expanded="true" />
+            <element signature="e#8138#8239#0" expanded="true" />
+            <element signature="e#8264#8320#0" expanded="true" />
+            <element signature="e#9204#9297#0" expanded="true" />
+            <element signature="e#9555#9611#0" expanded="true" />
+            <element signature="e#12427#12483#0" expanded="true" />
+            <element signature="n#!!block;n#GetHomePageTemp#0" expanded="true" />
+            <element signature="e#13583#13644#0" expanded="true" />
+            <element signature="n#!!block;n#ActiveHomePages#0" expanded="true" />
+            <element signature="e#15716#15810#0" expanded="true" />
+            <element signature="n#!!block;n#DeleteHomePages#0" expanded="true" />
+            <element signature="e#16268#16361#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Component/HomePages/Sub/ItemList/MainItems.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="55" column="21" lean-forward="true" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#MainItems#0" expanded="true" />
+            <element signature="n#!!block;n#componentDidMount#0;n#MainItems#0" expanded="true" />
+            <element signature="e#1256#1297#0" expanded="true" />
+            <element signature="e#1575#1624#0" expanded="true" />
+            <element signature="e#1962#2003#0" expanded="true" />
+            <element signature="n#!!block;n#render#0;n#MainItems#0" expanded="true" />
+            <element signature="e#1667#2591#0" expanded="true" />
+            <element signature="e#1716#2571#0" expanded="true" />
+            <element signature="e#1769#2152#0" expanded="true" />
+            <element signature="e#2181#2540#0" expanded="true" />
           </folding>
         </state>
       </provider>

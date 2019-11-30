@@ -3,7 +3,14 @@ import ReactDOM from 'react-dom'
 // import '@atlaskit/css-reset'
 import { DragDropContext } from 'react-beautiful-dnd'
 import styled from 'styled-components'
-import {UpdateHomePage, AddHomePages, GetHomePageLoad,GetAllHomePages,DeleteHomePages} from "../../../../functions/ServerConnection";
+import {
+    UpdateHomePage,
+    AddHomePages,
+    GetHomePageLoad,
+    GetAllHomePages,
+    DeleteHomePages,
+    ActiveHomePages
+} from "../../../../functions/ServerConnection";
 
 import initialData from './initial-data'
 import Column from './column'
@@ -496,8 +503,16 @@ export default class MoveRowIndex extends React.Component {
     }
     async DeletedHomePages(){
         // console.log(this.props.id)
-        let response=await DeleteHomePages(this.props.id);
+        console.log(this.props.item.Name);
+        // let response=await DeleteHomePages(this.props.id);
+        let response=await DeleteHomePages(this.props.item.Name);
         console.log(response);
+    }
+    async HandelActive(){
+        console.log(this.props.item.Name);
+        let data= await ActiveHomePages(this.props.item.Name);
+        console.log(data);
+
     }
 
   render() {
@@ -529,7 +544,8 @@ export default class MoveRowIndex extends React.Component {
                     })}
                 </Container>
 
-                <button onClick={this.HandelSend.bind(this)} className='btn btn-primary'>send</button>
+                {/*<button onClick={this.HandelSend.bind(this)} className='btn btn-primary'>send</button>*/}
+                <button onClick={this.HandelActive.bind(this)} className='btn btn-primary'>active</button>
 
                 <Modal
                     isOpen={this.state.add}

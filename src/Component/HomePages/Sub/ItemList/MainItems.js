@@ -34,17 +34,37 @@ class MainItems extends Component {
         console.log(payload.QueryKey);
         let value = await addItemList(payload.Title, payload.QueryKey);
         console.log(value);
-        this.setState(prevState => ({
-            showLoader:!prevState.showLoader,
-        }));
-        NotificationManager.success(
-            "congratulation",
-            "your Items is add",
-            3000,
-            null,
-            null,
-            "success"
-        );
+        if (value==='error'){
+            this.setState(prevState => ({
+                showLoader:false,
+            }));
+            NotificationManager.error(
+                "error",
+                "your Items can't add",
+                3000,
+                null,
+                null,
+                "error"
+            );
+        } else {
+            this.setState(prevState => ({
+                showLoader:false,
+            }));
+            NotificationManager.success(
+                "congratulation",
+                "your Items is add",
+                3000,
+                null,
+                null,
+                "success"
+            );
+            let itemLists = await GetAllItemList( );
+            console.log(itemLists);
+            this.setState({
+                itemLists
+            })
+        }
+
     }
     async  ClickEdit(Name){
        let  Value = await GetItemDetail(Name);
