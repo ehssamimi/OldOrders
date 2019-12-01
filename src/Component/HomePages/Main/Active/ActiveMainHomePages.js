@@ -5,7 +5,7 @@ class ActiveMainHomePages extends Component {
     render() {
         return (
             <div>
-                <MoveRowIndex Name="" Edit={false} />
+                <MoveRowIndex Name="" Edit={false} addHomePage={true} />
             </div>
         );
     }

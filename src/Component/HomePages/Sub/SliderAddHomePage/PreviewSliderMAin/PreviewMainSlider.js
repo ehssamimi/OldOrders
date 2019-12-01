@@ -118,7 +118,7 @@ class PreviewMainSlider extends Component {
                             <Row>
                                 <Colxx xxs="12" >
 
-                                    <HeaderPreviewComponentHomePage handelEdit={this.handelEdit.bind(this)} handelclickDelete={this.handelclickDelete.bind(this)}   Name={this.props.slider.Name}/>
+                                    <HeaderPreviewComponentHomePage handelEdit={this.handelEdit.bind(this)} handelclickDelete={this.handelclickDelete.bind(this)}   Name={this.props.slider.Name} {...this.props}/>
 
 
                                     {/*<CardTitle className='d-flex h-4vh align-items-start '>*/}

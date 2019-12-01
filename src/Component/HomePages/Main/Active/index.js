@@ -9,6 +9,8 @@ import initialData from './initial-data'
 import Column from './column'
 import {Modal, ModalBody, ModalHeader} from "reactstrap";
 import AddNewHomePageComponent from "../Edit/AddNewHomePageComponent/AddNewHomePageComponent";
+import Loader from "../../Sub/Loader/Loader";
+import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
 
 const Container = styled.div`
   display:flex;
@@ -39,7 +41,7 @@ export default class MoveRowIndex extends React.Component {
                     taskIds: []
                 }
             },
-            columnOrder: ['column-1', 'column-2', 'column-3'], add: false, column: '', header: '', NewData: {}
+            columnOrder: ['column-1', 'column-2', 'column-3'], add: false, column: '', header: '', NewData: {},Objective:{},showLoader:false
         }
 
     }
@@ -80,8 +82,24 @@ export default class MoveRowIndex extends React.Component {
             console.log(this.props.Name);
             let tasks = this.state.tasks;
             let columns = this.state.columns;
-            // let Description = await GetHomePageLoad(this.props.Name);
-            let Description = await GetHomePageTemp( );
+            let Description="";
+            console.log(this.props.Name);
+            this.setState({
+                showLoader:true, header:this.props.Name
+            })
+            if (this.props.Name!==':name'){
+                  Description = await GetHomePageLoad(this.props.Name);
+                  // this.setState({
+                  //     header:this.props.Name
+                  // })
+            } else {
+                  Description = await GetHomePageTemp();
+            }
+            this.setState({
+                showLoader:false,
+
+            })
+            // let Description = await GetHomePageTemp( );
             console.log(Description);
             let {Body, Header, Footer} = Description;
             let HeaderLenght = Header.length;
@@ -311,8 +329,6 @@ export default class MoveRowIndex extends React.Component {
             AddComponentfound = {Image: value['Image'], Name: "Category",};
             console.log('baner')
         }
-
-
         let newValue = {id: NewID,
             ObjectType: Title,
             Position: number,
@@ -323,10 +339,9 @@ export default class MoveRowIndex extends React.Component {
                 Data:AddComponentfound,
             }};
         let {Objective}=this.state ;
-
+        console.log('newValue');
+        console.log(newValue );
         Objective[NewID]=Title;
-        // console.log('newValue');
-        // console.log(newValue );
         tasks[NewID] = newValue ;
         // console.log(tasks)
         this.setState({
@@ -489,6 +504,54 @@ export default class MoveRowIndex extends React.Component {
             "Footer":FooterFinal
         };
         console.log(Data);
+        this.setState({
+            showLoader:true
+        });
+       if (this.props.Name !== ':name') {
+           let sendHomePages = await UpdateHomePage(JSON.stringify(Data));
+           console.log(sendHomePages);
+           this.setState({
+               showLoader: false
+           });
+           NotificationManager.success(
+               "congratulation",
+               "your home page edit",
+               3000,
+               null,
+               null,
+               "success"
+           );
+       } else {
+           let AddHomePage = await AddHomePages(this.state.header);
+           console.log(AddHomePage);
+           if (AddHomePage === 'error') {
+               this.setState({
+                   showLoader: false
+               });
+               NotificationManager.error(
+                   "error",
+                   "your home page cant add",
+                   3000,
+                   null,
+                   null,
+                   "success"
+               );
+           } else {
+               let sendHomePages = await UpdateHomePage(JSON.stringify(Data));
+               this.setState({
+                   showLoader: false
+               });
+               NotificationManager.success(
+                   "congratulation",
+                   "your home page add",
+                   3000,
+                   null,
+                   null,
+                   "success"
+               );
+               console.log(sendHomePages)
+           }
+       }
        // let AddHomePage=await AddHomePages(this.state.header);
        // console.log(AddHomePage);
        // let sendHomePages=await UpdateHomePage(JSON.stringify(Data));
@@ -497,48 +560,70 @@ export default class MoveRowIndex extends React.Component {
     }
 
   render() {
-    let {columns}=this.state;
+    let {columns,header}=this.state;
     console.log(this.state.tasks);
-    console.log(this.state.columns);
+    console.log("name");
+    console.log( this.props.Name);
 
     return (
         <div className='w-100 '>
-            <div className=' w-100 d-flex align-items-center h-3vh  '  >
-                <span className='ml-2 mr-2 h-100 d-flex align-items-center'>Name: </span>
-                <input type='text' onChange={this.handelChangeText.bind(this)} value={this.state.header} className='border-0 h-100'/>
-            </div>
-            <DragDropContext onDragEnd={this.onDragEnd}>
-                <Container>
-                    {this.state.columnOrder.map(columnId => {
-                        const column = this.state.columns[columnId];
-                        const tasks = column.taskIds.map(
-                            taskId => this.state.tasks[taskId]
-                        );
+            {
+                this.state.showLoader ?
+                    <div className='d-flex justify-content-center align-items-center'>   <div className='col-6'><Loader/></div></div>
+                     :
+                    <div className="w-100">
+                        <div className=' w-100 d-flex align-items-center h-3vh  '>
 
-                        return (
-                            <Column key={column.id} column={column} tasks={tasks} HandelAdd={this.HandelAdd.bind(this)}
-                                    handelEditComponent={this.handelEditComponent.bind(this)}
-                                    handelDeleteItems={this.handelDeleteItems.bind(this)} handelDeleteUndo={this.handelDeleteUndo.bind(this)}/>
-                        )
-                    })}
-                </Container>
+                                 <div className='d-flex w-100'><span
+                                                           className='ml-2 mr-2 h-100 d-flex align-items-center'>Name: </span>
+                                     {this.props.addHomePage === true ?
+                                         <input type='text' onChange={this.handelChangeText.bind(this)}
+                                                value={header}
+                                                className='border-0 h-100'/> :
+                                         <span>{this.state.header}</span>
+                                     }
+                                 </div>
 
-                <button onClick={this.HandelSend.bind(this)} className='btn btn-primary'>send</button>
+                        </div>
+                        <DragDropContext onDragEnd={this.onDragEnd}>
+                            <Container>
+                                {this.state.columnOrder.map(columnId => {
+                                    const column = this.state.columns[columnId];
+                                    const tasks = column.taskIds.map(
+                                        taskId => this.state.tasks[taskId]
+                                    );
 
-                <Modal
-                    isOpen={this.state.add}
-                    size="lg"
-                    toggle={this.toggleAdd}
-                >
-                    <ModalHeader toggle={this.toggleAdd}>
-                        add new Component
+                                    return (
+                                        <Column key={column.id} column={column} tasks={tasks}
+                                                HandelAdd={this.HandelAdd.bind(this)}
+                                                handelEditComponent={this.handelEditComponent.bind(this)}
+                                                handelDeleteItems={this.handelDeleteItems.bind(this)}
+                                                handelDeleteUndo={this.handelDeleteUndo.bind(this)}/>
+                                    )
+                                })}
+                            </Container>
 
-                    </ModalHeader>
-                    <ModalBody>
-                        <AddNewHomePageComponent addComPonent={this.handelAddComponent.bind(this)}/>
-                    </ModalBody>
-                </Modal>
-            </DragDropContext>
+                            <button onClick={this.HandelSend.bind(this)} className='btn btn-primary'>send</button>
+
+                            <Modal
+                                isOpen={this.state.add}
+                                size="lg"
+                                toggle={this.toggleAdd}
+                            >
+                                <ModalHeader toggle={this.toggleAdd}>
+                                    add new Component
+
+                                </ModalHeader>
+                                <ModalBody>
+                                    <AddNewHomePageComponent addComPonent={this.handelAddComponent.bind(this)}/>
+                                </ModalBody>
+                            </Modal>
+                        </DragDropContext>
+                    </div>
+            }
+
+
+
         </div>
 
     )

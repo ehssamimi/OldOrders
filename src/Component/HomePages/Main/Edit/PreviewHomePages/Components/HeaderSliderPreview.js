@@ -9,6 +9,7 @@ import ax from './../../../../../../assets/img/simpleProduct.jpg'
 import PreviewItems from "../../../../Sub/ItemList/PreviewItems/PreviewItems";
 import PreviewMainSlider from "../../../../Sub/SliderAddHomePage/PreviewSliderMAin/PreviewMainSlider";
 import PreviewHeaderSlider from "../../../../Sub/HeaderSlider/Preview/PreviewHeaderSlider";
+import PreviewCategories from "../../../../Sub/CategoriesHomePage/PreviewCategories/PreviewCategories";
 const NoControlCarouselItem = ({ Type, Image,Position }) => {
     return (
         <div className="glide-item">
@@ -219,7 +220,7 @@ class HeaderSliderPreview extends Component {
                 </Modal>
                 <Modal
                     isOpen={this.state.Edit}
-                    size="lg"
+                    size="md"
                     toggle={this.toggleEdit}
                 >
                     <ModalHeader toggle={this.toggleEdit}>
@@ -228,10 +229,10 @@ class HeaderSliderPreview extends Component {
                     </ModalHeader>
                     <ModalBody>
                         <div className='col-12 d-flex '>
-                            <div className='col-6 d-flex flex-column justify-content-end'>
+                            <div className='col-12 d-flex flex-column justify-content-end'>
                                 {
                                     itemsList.length > 0 ?
-                                        itemsList.map((slider, index) => <PreviewHeaderSlider id={slider._id} key={index} header={slider.Name} slider={slider} clickEdit={this.ClickEdit.bind(this)}/>) : ""
+                                        itemsList.map((slider, index) => <PreviewHeaderSlider id={slider._id} key={index} header={slider.Name} slider={slider} clickEdit={this.ClickEdit.bind(this)} select={true} baner={true}/>) : ""
                                 }
                             </div>
                             <div className='col-6'>

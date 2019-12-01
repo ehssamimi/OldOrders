@@ -159,7 +159,7 @@ class SliderItems extends Component {
                             {/*</CardTitle>*/}
 
 
-                            <HeaderPreviewComponentHomePage handelEdit={this.handelEdit.bind(this)} handelclickDelete={this.handelclickDelete.bind(this)}   Name={this.props.items.Title} baner={true}/>
+                            <HeaderPreviewComponentHomePage handelEdit={this.handelEdit.bind(this)} handelclickDelete={this.handelclickDelete.bind(this)}   Name={this.props.items.Title} baner={true} {...this.props}/>
                             {/*********this is prev*******/}
 
                             {/*<CardTitle className='d-flex h-4vh align-items-start '>*/}

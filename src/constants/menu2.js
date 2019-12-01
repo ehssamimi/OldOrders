@@ -134,7 +134,7 @@ const data = [
             }, {
                 icon: "iconsminds-smartphone-4",
                 label: "edit",
-                to: "/home-page/main/edit"
+                to: "/home-page/main/edit/:name?"
             }, {
                 icon: "iconsminds-smartphone-4",
                 label: "active",

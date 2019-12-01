@@ -96,7 +96,7 @@ class PreViewBanner extends Component {
                 {this.state.showLoader?<Loader/>:
                     <div   className={['w-100','d-flex','flex-column',this.props.index===0?'':'mt-3' ].join(' ')}  onMouseOver={this.handelEnter.bind(this)} onMouseLeave={this.handelLeave.bind(this)} id={this.props.header} >
                         {/*<HeaderSectionHomePage header={this.props.header}/>*/}
-                        <HeaderPreviewComponentHomePage handelEdit={this.clickEdit.bind(this)} handelclickDelete={this.handelclickDelete.bind(this)} Name={this.props.header} baner={true}/>
+                        <HeaderPreviewComponentHomePage handelEdit={this.clickEdit.bind(this)} handelclickDelete={this.handelclickDelete.bind(this)} Name={this.props.header} baner={true} {...this.props}/>
 
                         <div className=' d-flex flex-column w-100 point-review position-relative h-100'>
                             {

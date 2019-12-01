@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 // import '@atlaskit/css-reset'
 import { DragDropContext } from 'react-beautiful-dnd'
-import styled from 'styled-components'
+import styled from 'styled-components';
+import{Link} from 'react-router-dom'
 import {
     UpdateHomePage,
     AddHomePages,
@@ -545,7 +546,11 @@ export default class MoveRowIndex extends React.Component {
                 </Container>
 
                 {/*<button onClick={this.HandelSend.bind(this)} className='btn btn-primary'>send</button>*/}
-                <button onClick={this.HandelActive.bind(this)} className='btn btn-primary'>active</button>
+                <div className='col-12 d-flex'>
+                    <button onClick={this.HandelActive.bind(this)} className='btn btn-primary'>active</button>
+                    <button  className='btn btn-warning ml-auto'><Link to={`/home-page/main/edit/${this.props.item.Name}`} activeClassName="current">edit</Link></button>
+
+                </div>
 
                 <Modal
                     isOpen={this.state.add}

@@ -9,13 +9,14 @@ import PreviewPackages from "../../../Sub/WonderPackageAddHomePage/subPackage/Pr
 import PreviewHeaderSlider from "../../../Sub/HeaderSlider/Preview/PreviewHeaderSlider";
 import PreViewBanner from "../../../Sub/Banner/PreViewBanner/PreViewBanner";
 import PreviewMainSlider from "../../../Sub/SliderAddHomePage/PreviewSliderMAin/PreviewMainSlider";
+import Loader from "../../../Sub/Loader/Loader";
 var classNames = require('classnames');
 
 class AddNewHomePageComponent extends Component {
     constructor(props) {
         super(props);
         this.state={
-            listComponent:['ItemList','Category','Package','Slider','Banner','HeaderSlider'],active:'',name:'',ItemsList:[]
+            listComponent:['ItemList','Category','Package','Slider','Banner','HeaderSlider'],active:'',name:'',ItemsList:[],showLoader:false
         }
     }
 
@@ -73,6 +74,9 @@ class AddNewHomePageComponent extends Component {
   async  ClickEdit(Name){
         // console.log(Name);
         let {name}=this.state;
+        this.setState({
+            showLoader:true
+        });
         var Value='';
         switch (name) {
             case 'ItemList':
@@ -96,6 +100,9 @@ class AddNewHomePageComponent extends Component {
                 break;
         }
         this.props.addComPonent(Value,name);
+      this.setState({
+          showLoader:false
+      })
     }
     render() {
         let{listComponent,ItemsList,name}=this.state;
@@ -124,46 +131,57 @@ class AddNewHomePageComponent extends Component {
                 </div>
                 <div className='col-12 d-flex flex-column justify-content-end'>
                     {
-                        name==='Category'?
-                        ItemsList.length>0?
-                            ItemsList.map((cat ,index)=><PreviewCategories id={ItemsList[index]._id} key={index} header={cat.Name} ax1={ItemsList[index].Items[0].Image}
-                                                                           ax2={ItemsList[index].Items[1].Image} ax3={ItemsList[index].Items[2].Image} ax4={ItemsList[index].Items[3].Image}
-                                                                           clickPreview={this.ClickEdit.bind(this)} select={true}/>  ):""
+                        this.state.showLoader?<Loader/>:          <div className='w-100 d-flex flex-column justify-content-end'>
 
-                        :''
+                            {
+                                name==='Category'?
+                                    ItemsList.length>0?
+                                        ItemsList.map((cat ,index)=><PreviewCategories id={ItemsList[index]._id} key={index} header={cat.Name} ax1={ItemsList[index].Items[0].Image}
+                                                                                       ax2={ItemsList[index].Items[1].Image} ax3={ItemsList[index].Items[2].Image} ax4={ItemsList[index].Items[3].Image}
+                                                                                       clickPreview={this.ClickEdit.bind(this)} select={true} baner={true}/>  ):""
+
+                                    :''
+                            }
+
+                            {
+                                name==='ItemList'?
+                                    ItemsList.length>0? ItemsList.map((cat ,index)=><PreviewItems Title={cat.Title} key={index} clickPreview={this.ClickEdit.bind(this)} select={true}/>):""
+                                    :''
+                            }
+                            {
+                                name==='Package'?
+                                    ItemsList.length>0? ItemsList.map((cat ,index)=><PreviewPackages id={ItemsList[index]._id} key={index} header={cat.Name}
+                                                                                                     ax1={ItemsList[index].Items[0].Image} ax2={ItemsList[index].Items[1].Image}
+                                                                                                     ax3={ItemsList[index].Items[2].Image} ax4={ItemsList[index].Items[3].Image}
+                                                                                                     ax5={ItemsList[index].Items[4].Image} clickPreview={this.ClickEdit.bind(this)}
+                                                                                                     select={true} baner={true}/>  ):""
+                                    :''
+                            }
+                            {
+                                name==='HeaderSlider'?
+                                    ItemsList.length > 0 ?
+                                        ItemsList.map((slider, index) => <PreviewHeaderSlider id={slider._id} key={index} header={slider.Name} slider={slider} clickEdit={this.ClickEdit.bind(this)}
+                                                                                              select={true} baner={true}/>) : ""
+                                    :''
+                            }
+                            {
+                                name==='Banner'?
+                                    ItemsList.length > 0 ?
+                                        ItemsList.map((cat ,index)=><PreViewBanner id={cat._id} key={index} header={cat.Name} ax ={cat.Image}   clickPreview={this.ClickEdit.bind(this)} select={true} baner={true}/>  ):""
+                                    :''
+                            }
+                            {
+                                name==='Slider'?
+                                    ItemsList.length > 0 ?
+                                        ItemsList.map((slider ,index)=><PreviewMainSlider id={slider._id} key={index} header={slider.Name} slider={slider} clickEdit={this.ClickEdit.bind(this)} select={true} baner={true}/>  ):""
+                                    :''
+                            }
+                        </div>
                     }
 
-                    {
-                        name==='ItemList'?
-                            ItemsList.length>0? ItemsList.map((cat ,index)=><PreviewItems Title={cat.Title} key={index} clickPreview={this.ClickEdit.bind(this)} select={true}/>):""
-                            :''
-                    }
-                    {
-                        name==='Package'?
-                            ItemsList.length>0? ItemsList.map((cat ,index)=><PreviewPackages id={ItemsList[index]._id} key={index} header={cat.Name}
-                                                                                             ax1={ItemsList[index].Items[0].Image} ax2={ItemsList[index].Items[1].Image}
-                                                                                             ax3={ItemsList[index].Items[2].Image} ax4={ItemsList[index].Items[3].Image}
-                                                                                             ax5={ItemsList[index].Items[4].Image} clickPreview={this.ClickEdit.bind(this)} select={true}/>  ):""
-                            :''
-                    }
-                    {
-                        name==='HeaderSlider'?
-                            ItemsList.length > 0 ?
-                                ItemsList.map((slider, index) => <PreviewHeaderSlider id={slider._id} key={index} header={slider.Name} slider={slider} clickEdit={this.ClickEdit.bind(this)} select={true}/>) : ""
-                            :''
-                    }
-                    {
-                        name==='Banner'?
-                            ItemsList.length > 0 ?
-                                ItemsList.map((cat ,index)=><PreViewBanner id={cat._id} key={index} header={cat.Name} ax ={cat.Image}   clickPreview={this.ClickEdit.bind(this)} select={true}/>  ):""
-                            :''
-                    }
-                    {
-                        name==='Slider'?
-                            ItemsList.length > 0 ?
-                                ItemsList.map((slider ,index)=><PreviewMainSlider id={slider._id} key={index} header={slider.Name} slider={slider} clickEdit={this.ClickEdit.bind(this)} select={true}/>  ):""
-                            :''
-                    }
+
+
+
                 </div>
             </div>
         );

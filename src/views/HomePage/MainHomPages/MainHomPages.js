@@ -2,7 +2,7 @@ import React, { Component, Suspense } from 'react';
 import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AppLayout from './../../../layout/AppLayout';
-const EditMainHomePage = React.lazy(() =>
+const Active = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/HomePages/Main/PreviewAllPages/PreviewAllMainMobile')
 );
 const PreviewAllMainMobile = React.lazy(() =>
@@ -11,10 +11,10 @@ const PreviewAllMainMobile = React.lazy(() =>
 const Test = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ '../../../Component/HomePages/Main/Edit/Test')
 );
-const ActiveMainHomePage = React.lazy(() =>
+const Create = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ './../../../Component/HomePages/Main/Active/ActiveMainHomePages')
 );
-const AddMainHomePage = React.lazy(() =>
+const Edit = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ './../../../Component/HomePages/Main/Add/AddMainHomePage')
 );
 
@@ -30,15 +30,15 @@ class App extends Component {
                             <Redirect exact from={`${match.url}/`} to={`${match.url}/edit`} />
                             <Route
                                 path={`${match.url}/create`}
-                                render={props => <ActiveMainHomePage  {...props} />}
+                                render={props => <Create  {...props} />}
                             />
                             <Route
-                                path={`${match.url}/edit`}
-                                render={props => <EditMainHomePage {...props} />}
+                                path={`${match.url}/edit/:name?`}
+                                render={props => <Edit {...props} />}
                             />
                             <Route
                                 path={`${match.url}/active`}
-                                render={props => <AddMainHomePage {...props} />}
+                                render={props => <Active {...props} />}
                             />
 
                             <Redirect to="/error" />

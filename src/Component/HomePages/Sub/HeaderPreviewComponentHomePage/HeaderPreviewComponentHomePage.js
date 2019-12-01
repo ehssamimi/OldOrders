@@ -19,8 +19,8 @@ class HeaderPreviewComponentHomePage extends Component {
                 {/*<span className='mr-auto fS08vw gray d-flex align-items-center mt-2'><span className='simple-icon-arrow-left' > </span>مشاهده همه </span>*/}
                 <div className='d-flex mr-auto  '>
                     {this.props.baner?"" :<div className=' d-flex fs-13vw color-theme-1 m-2    BtnHeaderComponent ' onClick={this.Edit.bind(this, this.props.Name)}><FaRegEdit /></div>}
+                    {this.props.select?<div className=' d-flex fs-13vw color-theme-1 m-2    BtnHeaderComponent  iconsminds-cursor-click-2' onClick={this.Edit.bind(this, this.props.Name,this.props.select)}> </div>:<div className=' d-flex  fs-13vw  color-theme-1 m-2   BtnHeaderComponent ' onClick={this.delete.bind(this)}><MdDeleteForever/></div>}
 
-                    <div className=' d-flex  fs-13vw  color-theme-1 m-2   BtnHeaderComponent ' onClick={this.delete.bind(this)}><MdDeleteForever/></div>
                 </div>
                 <span dir='rtl' className='ml-2 d-flex align-items-end fs-13vw'>
                                 نام :  {this.props.Name}

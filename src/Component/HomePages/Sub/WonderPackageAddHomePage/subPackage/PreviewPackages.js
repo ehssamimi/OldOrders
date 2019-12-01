@@ -89,7 +89,7 @@ class PreviewPackages extends Component {
                             {/*<HeaderSectionHomePage header={this.props.header}/>*/}
                             <HeaderPreviewComponentHomePage handelEdit={this.clickEdit.bind(this)}
                                                             handelclickDelete={this.handelclickDelete.bind(this)}
-                                                            Name={this.props.header}/>
+                                                            Name={this.props.header} {...this.props}/>
 
                             {/*<CardTitle className='d-flex h-4vh align-items-start '>*/}
 

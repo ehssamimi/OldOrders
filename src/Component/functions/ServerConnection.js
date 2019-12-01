@@ -619,15 +619,24 @@ export async  function  AddHomePages(Name){
         'Token': Const.Token,
         'Id': Const.ID,
     };
-
-    let res = await axios.post(`${Const.HomePage}admin/homepage/init/${Name}`,formData, {headers: headers});
-    let { ItemId } = res.data ;
-    let { status } = res ;
-    if (status===200) {
-        return ItemId
-    }else {
-        return ""
-    }
+    let resp ="";
+    await axios.post(`${Const.HomePage}admin/homepage/init/${Name}`,formData, {headers: headers}).then(function (response) {
+        // console.log(response);
+        let {ItemId} = response.data;
+        let { status } = response ;
+        resp=ItemId;
+    }).catch(function (error) {
+        console.log(error);
+        resp='error'
+    });
+    return resp;
+    // let { ItemId } = res.data ;
+    // let { status } = res ;
+    // if (status===200) {
+    //     return ItemId
+    // }else {
+    //     return ""
+    // }
 }
 export async  function  UpdateHomePage(Data){
     // let formData = new FormData();
@@ -640,11 +649,21 @@ export async  function  UpdateHomePage(Data){
     // formData.append("Image",Image);
     // formData.append("DestinationId",DestinationId);
     // formData.append("Destination",Destination);
-    let res = await axios.put(`${Const.HomePage}admin/homepage/update`, Data, {headers: headers});
-    console.log(res);
-    let { ItemId } = res.data ;
-    let { status } = res ;
-    return status
+    let resp ="";
+    await axios.put(`${Const.HomePage}admin/homepage/update`, Data, {headers: headers}).then(function (response) {
+        // console.log(response);
+        // let {ItemId} = response.data;
+        let {status} = response;
+        resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp = 'error';
+    });
+    return resp;
+    // console.log(res);
+    // let { ItemId } = res.data ;
+    // let { status } = res ;
+    // return status
 }
 export async  function  ActiveHomePages(Name){
     // let formData = new FormData();

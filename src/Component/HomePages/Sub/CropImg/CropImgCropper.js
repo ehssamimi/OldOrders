@@ -11,6 +11,7 @@ import ImgComponent from "../../../ChichiMan/ChiChi Man Sign In/Sub/ImgComponent
 import AutoSuggestEdit from "../AutoSuggestEdit/AutoSuggestEdit";
 import cakes from "../../../../data/cakes";
 import { Formik, Form, Field } from "formik";
+import imageCompression from 'browser-image-compression';
 
 
 const cropper = React.createRef(null);
@@ -51,7 +52,7 @@ class CropImgCropper extends Component {
         reader.readAsDataURL(files[0]);
     }
 
-    cropImage()
+    async cropImage()
     {
         if (typeof this.cropper.getCroppedCanvas() === 'undefined') {
             return;
@@ -80,13 +81,40 @@ class CropImgCropper extends Component {
 
         // ********set the preview ccrop img*********
         if (validate) {
+            // console.log('cropResult');
+            // let cropResult= this.cropper.getCroppedCanvas().toDataURL();
+            // console.log(cropResult);
+            // console.log('name');
+            // console.log(this.state.name);
+            // console.log('type');
+            // console.log(this.state.type);
+            // let file= base64StringtoFile( cropResult,this.state.name,this.state.type);
+            // console.log('file');
+            // console.log(file);
+            // let options = {
+            //     maxSizeMB: 0.2,
+            //     maxWidthOrHeight: 1920,
+            //     useWebWorker: true
+            // };
+            // const compressedFile =  await imageCompression(file, options);
+            // console.log("new file");
+            // console.log( compressedFile );
+
+
+
+
+
             this.setState(pre=>({
                 cropResult: this.cropper.getCroppedCanvas().toDataURL(),
                 clickButton:!pre.clickButton
             }),()=>{
 
                 // console.log(this.cropper.getCroppedCanvas());
+
+
                 let file= base64StringtoFile(this.state.cropResult,this.state.name,this.state.type);
+
+
                 // ***this is file to set server*********
                 // console.log(file);
                 // this.props.GetImgFile(file,this.state.cropResult,this.props.label);
@@ -94,6 +122,7 @@ class CropImgCropper extends Component {
                 // this.props.GetImgFile(file,this.state.id,this.props.label ,this.state.cropResult);
 
                 if (this.state.clickButton===true){
+                    // this.props.GetImgFile(file, this.state.id, this.props.label, this.state.cropResult);
                     this.props.GetImgFile(file, this.state.id, this.props.label, this.state.cropResult);
                 }
                 // console.log(this.state.id);
