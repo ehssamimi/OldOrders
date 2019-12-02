@@ -27,12 +27,15 @@ class PreviewAllMainMobile extends Component {
         let {Data}=this.state;
         // console.log(Data)
         return (
-            <div className='w-100 d-flex flex-wrap'>
-                {
-                    Data.length>0?Data.map((item, index) => <MoveRowIndex key={item._id} id={item._id} item={item} Name={item.Name} index={index}/>):''
-                  //  {/*<MoveRowIndex key={Data._id} item={Data} Name={Data.Name} index={1}/>*/}
-                }
-            </div>
+
+                <div className='w-100 d-flex  active-Coluumn '>
+                    {
+                        Data.length>0?Data.map((item, index) => <MoveRowIndex key={item._id} id={item._id} item={item} Name={item.Name} index={index}/>):''
+                        //  {/*<MoveRowIndex key={Data._id} item={Data} Name={Data.Name} index={1}/>*/}
+                    }
+                </div>
+
+
         );
     }
 }

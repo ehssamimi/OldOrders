@@ -8,40 +8,38 @@ import {TweenMax} from "gsap/TweenMax";
 import ax from './../../../../../../assets/img/simpleProduct.jpg'
 import PreviewItems from "../../../../Sub/ItemList/PreviewItems/PreviewItems";
 import PreviewMainSlider from "../../../../Sub/SliderAddHomePage/PreviewSliderMAin/PreviewMainSlider";
-const NoControlCarouselItem = ({ Type, Image,Position }) => {
-    return (
-        <div className="glide-item">
+ import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+// const NoControlCarouselItem = ({ Type, Image,Position }) => {
+//     return (
+//         <div className="glide-item">
+//             <Card>
+//                 <div className="position-relative vh25">
+//                     <img className="card-img-top img-self-fill " src={Image || ax} alt={Image ||ax} />
+//                 </div>
+//             </Card>
+//             {/*<span>{Type.Name}</span>*/}
+//         </div>
+//     );
+// };
+
+const NoControlCarouselItem = ({ Destination, Image }) => {
+     return (
+        <div className="glide-item col-12 cursor-pointer" >
             <Card>
                 <div className="position-relative vh25">
-                    <img className="card-img-top img-self-fill " src={Image || ax} alt={Image ||ax} />
-                    {/*<span>{Position}</span>*/}
-                    {/*{badges &&*/}
-                    {/*badges.map((b, index) => {*/}
-                    {/*return (*/}
-                    {/*<span*/}
-                    {/*key={index}*/}
-                    {/*className={`badge badge-pill badge-${*/}
-                    {/*b.color*/}
-                    {/*} position-absolute ${*/}
-                    {/*index === 0*/}
-                    {/*? "badge-top-left"*/}
-                    {/*: "badge-top-left-" + (index + 1)*/}
-                    {/*}`}*/}
-                    {/*>*/}
-                    {/*{b.title}*/}
-                    {/*</span>*/}
-                    {/*);*/}
-                    {/*})}*/}
+                    <img className="card-img-top img-self-fill " src={Image} alt={Image} />
+                    {/*Destination: null*/}
+                    {/*DestinationId: null*/}
+                    {/*Image: "http://chichiapp.ir:3005/download/5d9884457c1e36d6e452598e"*/}
+                    {/*Position: 4*/}
+
                 </div>
 
-
             </Card>
-            {/*<span>{Type.Name}</span>*/}
         </div>
     );
 };
-
-
 
 class SliderHomePagesPreview extends Component {
     constructor(props) {
@@ -145,6 +143,7 @@ class SliderHomePagesPreview extends Component {
         // console.log('Data');
         // console.log(Data);
         // console.log('slider HOme Page Preview');
+        // console.log('Data');
         // console.log(Data);
 
         return (
@@ -159,34 +158,93 @@ class SliderHomePagesPreview extends Component {
                                         <span className='  iconsminds-file-edit cursor-pointer' onClick={this.handelclickEdit.bind(this)}></span>
                                     </div>
                                     {
-                                        `${this.props.items.Title}اسلایدر `
+                                        `${this.props.items.Title}اسلایدر  `
                                     }
                                 </CardTitle>
                         }
 
                     </Colxx>
                     <Colxx xxs="12" className="pl-0 pr-0 mb-5">
-                        <GlideComponent settings={
-                            {
-                                gap: 5,
-                                perView:2,
-                                type: "carousel",
-                                breakpoints: {
-                                    480: { perView: 1 },
-                                    800: { perView: 2 },
-                                    1200: { perView: 2 }
+
+
+                        {/*<GlideComponent settings={*/}
+                            {/*{*/}
+                                {/*gap: 5,*/}
+                                {/*perView:2,*/}
+                                {/*type: "carousel",*/}
+                                {/*breakpoints: {*/}
+                                    {/*480: { perView: 1 },*/}
+                                    {/*800: { perView: 2 },*/}
+                                    {/*1200: { perView: 2 }*/}
+                                {/*},*/}
+                                {/*hideNav: false*/}
+                            {/*}*/}
+                        {/*}>*/}
+                            {/*{ Data.map(item => {*/}
+                                {/*return (*/}
+                                    {/*<div key={item.Position}>*/}
+                                        {/*<NoControlCarouselItem {...item} />*/}
+                                    {/*</div>*/}
+                                {/*);*/}
+                            {/*})}*/}
+                        {/*</GlideComponent>*/}
+                        <Carousel
+                            additionalTransfrom={0}
+                            arrows
+                            autoPlaySpeed={3000}
+                            centerMode={false}
+                            className=""
+                            containerClass="container-with-dots"
+                            // customDot={<CustomDot />}
+                            dotListClass=""
+                            draggable
+                            focusOnSelect={false}
+                            infinite
+                            itemClass=""
+                            keyBoardControl
+                            minimumTouchDrag={80}
+                            renderButtonGroupOutside={false}
+                            renderDotsOutside={false}
+                            responsive={{
+                                desktop: {
+                                    breakpoint: {
+                                        max: 3000,
+                                        min: 1024
+                                    },
+                                    items: 2,
+                                    partialVisibilityGutter: 40
                                 },
-                                hideNav: false
-                            }
-                        }>
-                            { Data.map(item => {
+                                mobile: {
+                                    breakpoint: {
+                                        max: 464,
+                                        min: 0
+                                    },
+                                    items: 1,
+                                    partialVisibilityGutter: 30
+                                },
+                                tablet: {
+                                    breakpoint: {
+                                        max: 1024,
+                                        min: 464
+                                    },
+                                    items: 2,
+                                    partialVisibilityGutter: 30
+                                }
+                            }}
+                            showDots={true}
+                            sliderClass=""
+                            slidesToSlide={1}
+                            swipeable
+                        >
+                            {Data.map((item,key) => {
                                 return (
-                                    <div key={item.Position}>
+                                    <div key={key}  >
                                         <NoControlCarouselItem {...item} />
                                     </div>
                                 );
                             })}
-                        </GlideComponent>
+
+                        </Carousel>
                     </Colxx>
                 </Row>
                 <Modal

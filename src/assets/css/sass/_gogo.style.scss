@@ -9433,6 +9433,11 @@ font-family: IRANSans !important;
   top: -10% !important;
 }
 
+.active-Coluumn{
+  display: flex;
+  flex-wrap: wrap;
+  //flex-direction: column;
+}
 //.round-button {
 //  width:25%;
 //}

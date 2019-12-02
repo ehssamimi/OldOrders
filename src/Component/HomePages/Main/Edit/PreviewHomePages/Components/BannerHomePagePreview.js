@@ -131,15 +131,20 @@ class BannerHomePagePreview extends Component {
 
         return (
             <div   className=' w-100 d-flex flex-column  '  onMouseOver={this.handelEnter.bind(this)} onMouseLeave={this.handelLeave.bind(this)} id={this.props.header} >
-                <CardTitle className='d-flex'>
-                    <div className='mr-auto'>
-                        <span className=' simple-icon-trash cursor-pointer' onClick={this.handelclickDelete.bind(this)}></span>
-                        <span className='  iconsminds-file-edit cursor-pointer' onClick={this.handelclickEdit.bind(this)}></span>
-                    </div>
-                    {
-                        `${this.props.items.Title}بنر `
-                    }
-                </CardTitle>
+                {
+                    this.props.Edit?"":
+                        <CardTitle className='d-flex'>
+                            <div className='mr-auto'>
+                                <span className=' simple-icon-trash cursor-pointer' onClick={this.handelclickDelete.bind(this)}></span>
+                                <span className='  iconsminds-file-edit cursor-pointer' onClick={this.handelclickEdit.bind(this)}></span>
+                            </div>
+                            {
+                                `${this.props.items.Title}بنر `
+                            }
+                        </CardTitle>
+                }
+
+
                 <div className=' d-flex flex-column w-100 point-review position-relative h-100'>
                     <div className=' h-75 d-flex '>
                         <div className='height30vh w-100  mt-1 mb-1 pointer   ' >
