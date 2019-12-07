@@ -100,6 +100,11 @@ const data = [
             id: "chchiMan-sign",
             label: "ثبت نام",
             to: "/chichi-man/sign-in",
+        },{
+            icon: "simple-icon-info",
+            id: "chchiMan-info",
+            label: "اطلاعات",
+            to: "/chichi-man/info",
         },
 
         ]
@@ -183,6 +188,25 @@ const data = [
                 id: "item-list-home-page",
                 label: "آیتم",
                 to: "/home-page/item-list",
+            },
+        ]
+    },
+    {
+        id: "bug-reporter",
+        icon: "iconsminds-mail",
+        label: "گزارش مشکلات",
+        to: "/bug-report",
+        subs: [{
+            icon: "iconsminds-business-man-woman",
+            id: "users-report-Bug",
+            label: "کاربران",
+            to: "/bug-report/user",
+        },
+            {
+                icon: "iconsminds-king-2",
+                id: "admin-report-Bug",
+                label: "ادمین",
+                to: "/bug-report/admin",
             },
         ]
     },

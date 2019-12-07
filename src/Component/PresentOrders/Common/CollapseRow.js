@@ -7,7 +7,7 @@ class CollapseRow extends Component {
     constructor(props) {
         super(props);
         this.toggle = this.toggle.bind(this);
-        this.state = { collapse: false,store:'',sub:[],Keys:''};
+        this.state = { collapse: true ,store:'',sub:[],Keys:''};
     }
 
     componentDidMount() {
@@ -18,8 +18,21 @@ class CollapseRow extends Component {
         this.setState({
             store, sub,Keys
         });
-
     }
+
+    // static getDerivedStateFromProps(props, state) {
+    //     if (props.collapse){
+    //         if (props.collapse !== state.collapse) {
+    //             return {
+    //                 collapse: props.collapse,
+    //             };
+    //         }
+    //         // Return null if the state hasn't changed
+    //         return null
+    //     }
+    //
+    // }
+
     toggle() {
         this.setState(state => ({ collapse: !state.collapse }));
     }
@@ -43,7 +56,7 @@ class CollapseRow extends Component {
                         </div>
 
                         <Collapse isOpen={this.state.collapse}>
-                            <div className='d-flex  w-100 ' style={{'flex-wrap': 'wrap'}}>
+                            <div className='d-flex  w-100 flex-wrap '  >
                                 {Keys ?
                                     Keys.map((todo, index) =>
                                         <ShowShowline label={todo} value={sub[todo]} key={index} col={'col-4'} className='fS1vw'/>

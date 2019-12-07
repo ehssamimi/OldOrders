@@ -220,7 +220,7 @@ class SLiderItemsHomePagePreview extends Component {
                         <div className='col-12 d-flex '>
                             <div className='col-12 d-flex flex-column justify-content-end'>
                                 {
-                                    itemsList.length>0? itemsList.map((cat ,index)=><PreviewItems Title={cat.Title} key={index} clickPreview={this.ClickEdit.bind(this)}/>):""
+                                    itemsList.length>0? itemsList.map((cat ,index)=><PreviewItems Title={cat.Title} key={index} clickPreview={this.ClickEdit.bind(this)} select={true} baner={true}/>):""
                                 }
                             </div>
                             <div className='col-6'>

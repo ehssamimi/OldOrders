@@ -8823,7 +8823,7 @@ paddingZero{
   margin-right: 0!important;
 }
 .fS1vw{
-  font-size: 1vw;
+  font-size: calc(1vw + 0.3em);
 }
 .fS3vw{
   font-size: 3vw;

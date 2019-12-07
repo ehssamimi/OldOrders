@@ -117,7 +117,7 @@ class PreviewHeaderSlider extends Component {
         // console.log(items);
         // console.log(this.props.slider);
         let {Items}=this.props.slider;
-        // console.log(Items);
+        console.log(Items);
 
         // console.log('header'+this.props.header);
         // console.log('Name'+this.props.slider.Name);

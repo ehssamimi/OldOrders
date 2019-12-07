@@ -298,6 +298,8 @@ class WonderPackageAddHomePage extends Component {
             }
             console.log(updateCategories1);
             if (updateCategories1===200){
+
+
                 submit=true;
             }
         }
@@ -414,8 +416,11 @@ class WonderPackageAddHomePage extends Component {
                 null,
                 "success"
             );
+            let CategoriesList = await allPackage();
+            console.log(CategoriesList);
+
             this.setState(prevState => ({
-                showLoader:false
+                showLoader:false,CategoriesList
             }));
 
         }else {
@@ -445,7 +450,7 @@ class WonderPackageAddHomePage extends Component {
                                                        ax1={ax1 || ax} ax2={ax2 || ax} ax3={ax3 || ax} ax4={ax4 || ax}
                                                        ax5={ax5 || ax} ClickImg={this.GetImgType.bind(this)}
                                                        GetCategoriesName={this.GetCategoriesName}/>
-                                {Edit? <button className='btn btn-primary' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}
+                                {Edit? <button className='btn btn-primary mt-2' onClick={this.handelEdit.bind(this)}>ویرایش</button>:<button className='btn btn-primary mt-2' onClick={this.HandelSubmit.bind(this)}>ارسال</button>}
 
                             </div>
 

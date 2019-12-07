@@ -8,6 +8,7 @@ import {DeleteBanner, GetBanners} from "../../../../../functions/ServerConnectio
 import {Colxx} from "../../../../../../components/common/CustomBootstrap";
 import PreviewPackages from "../../../../Sub/WonderPackageAddHomePage/subPackage/PreviewPackages";
 import PreViewBanner from "../../../../Sub/Banner/PreViewBanner/PreViewBanner";
+import PreviewMainSlider from "../../../../Sub/SliderAddHomePage/PreviewSliderMAin/PreviewMainSlider";
 
 class BannerHomePagePreview extends Component {
     constructor(props) {
@@ -178,23 +179,20 @@ class BannerHomePagePreview extends Component {
 
                 <Modal
                     isOpen={this.state.Edit}
-                    size="lg"
+                    size="md"
                     toggle={this.toggleEdit}
                 >
                     <ModalHeader toggle={this.toggleEdit}>
-                        Change package {this.props.header}
+                        Change Banner {this.props.header}
 
                     </ModalHeader>
                     <ModalBody>
                         <div className='col-12 d-flex '>
-                            <div className='col-6 d-flex flex-column justify-content-end'>
+                            <div className='col-12 d-flex flex-column justify-content-end'>
                                 {
                                     bannersList.length>0?
-                                        bannersList.map((cat ,index)=><PreViewBanner id={cat._id} key={index} header={cat.Name} ax ={cat.Image}   clickPreview={this.ClickEdit.bind(this)}/>  ):""
+                                        bannersList.map((cat ,index)=><PreViewBanner id={cat._id} key={index} header={cat.Name} ax ={cat.Image}   clickPreview={this.ClickEdit.bind(this)} select={true} baner={true}/>  ):""
                                 }
-                            </div>
-                            <div className='col-6'>
-
                             </div>
 
                         </div>

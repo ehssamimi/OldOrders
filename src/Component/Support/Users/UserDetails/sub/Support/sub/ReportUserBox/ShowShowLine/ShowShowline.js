@@ -8,7 +8,7 @@ class ShowShowline extends Component {
                  dir='rtl'>
                             <span className='collapseValue gray spanWithOutBreak'>{label} <span
                                 className='pl-2'>:</span></span>
-                <span className="DRTl  d-flex mt-2">{value}
+                <span className="DRTl  d-flex  ">{value}
                 </span>
             </div>
         );

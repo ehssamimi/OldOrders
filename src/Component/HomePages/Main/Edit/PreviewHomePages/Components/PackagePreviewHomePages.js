@@ -183,7 +183,7 @@ class PackagePreviewHomePages extends Component {
 
                 <Modal
                     isOpen={this.state.Edit}
-                    size="lg"
+                    size="md"
                     toggle={this.toggleEdit}
                 >
                     <ModalHeader toggle={this.toggleEdit}>
@@ -192,16 +192,14 @@ class PackagePreviewHomePages extends Component {
                     </ModalHeader>
                     <ModalBody>
                         <div className='col-12 d-flex '>
-                            <div className='col-6 d-flex flex-column justify-content-end'>
+                            <div className='col-12 d-flex flex-column justify-content-end'>
                                 {
                                     PackageList.length>0?
-                                        PackageList.map((cat ,index)=><PreviewPackages id={PackageList[index]._id} key={index} header={cat.Name} ax1={PackageList[index].Items[0].Image} ax2={PackageList[index].Items[1].Image} ax3={PackageList[index].Items[2].Image} ax4={PackageList[index].Items[3].Image}  ax5={PackageList[index].Items[4].Image} clickPreview={this.ClickEdit.bind(this)}/>  ):""
+                                        PackageList.map((cat ,index)=><PreviewPackages select={true} baner={true} id={PackageList[index]._id} key={index} header={cat.Name} ax1={PackageList[index].Items[0].Image} ax2={PackageList[index].Items[1].Image} ax3={PackageList[index].Items[2].Image} ax4={PackageList[index].Items[3].Image}  ax5={PackageList[index].Items[4].Image} clickPreview={this.ClickEdit.bind(this)}/>  ):""
 
                                 }
                             </div>
-                            <div className='col-6'>
 
-                            </div>
 
                         </div>
                     </ModalBody>

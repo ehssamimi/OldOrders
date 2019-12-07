@@ -110,9 +110,11 @@ class PreviewPackages extends Component {
                                 {
                                     this.state.MouseOver ? <div
                                         className='w-100 h-100   d-flex justify-content-center align-items-center overly'>
-                                        <div
+                                        {this.props.baner ? "" : <div
                                             className=' d-flex justify-content-center align-items-center categoriesIconReview m-2'
-                                            onClick={this.clickEdit.bind(this, this.props.header)}><FaRegEdit/></div>
+                                            onClick={this.clickEdit.bind(this, this.props.header)}><FaRegEdit/>
+                                        </div>
+                                        }
                                         <div
                                             className=' d-flex justify-content-center align-items-center categoriesIconReview m-2'
                                             onClick={this.handelclickDelete.bind(this)}><MdDeleteForever/></div>

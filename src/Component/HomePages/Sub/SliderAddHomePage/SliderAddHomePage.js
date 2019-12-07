@@ -5,6 +5,7 @@ import MultiFiles from "./MultiFile/MultiFiles";
 import { FaPlusCircle } from "react-icons/fa";
 import FormAddSlider from "./FormAddSlider/FormAddSlider";
 import {Modal, ModalBody, ModalHeader} from "reactstrap";
+import  ax  from './../../../../assets/img/4th.jpg'
 import CropImgCropper from "../CropImg/CropImgCropper";
 import loader from '../../../../assets/img/loader.svg'
 import {
@@ -30,14 +31,14 @@ import {TweenMax} from "gsap/TweenMax";
             files:[
                 {
                     id: 0,
-                    img: "/assets/img/parkin.jpg"
+                    img:ax
                 },
                 {
                     id: 1,
-                    img: "/assets/img/napoleonshat.jpg"
+                    img:ax
                 },{
                     id: 2,
-                    img: "/assets/img/napoleonshat.jpg"
+                    img:ax
                 },
             ],id:'', modalLarge:false,header:'',Edit:false,Sliders:[{Position:0,Image:'',Destination:'',DestinationId:''},{Position:1,Image:'',Destination:'',DestinationId:''},{Position:2,Image:'',Destination:'',DestinationId:''}
             // ,{Position:2,Image:'',Destination:''}
@@ -189,7 +190,6 @@ import {TweenMax} from "gsap/TweenMax";
              for (i = 0 ; i < Sliders.length; i++) {
                  if (Sliders[i].Destination.length>1) {
                      let idax1 = await sendImg(Sliders[i].Image, 'Public');
-
                      let updateCategories1 = await UpdateSliders(header, Sliders[i].Position, idax1, Sliders[i].Destination, idax1);
                      console.log(updateCategories1);
                      if (idax1==='error' || updateCategories1!==200) {
@@ -211,7 +211,6 @@ import {TweenMax} from "gsap/TweenMax";
              }
              if(Submit===true){
                  NotificationManager.success(
-
                      "congratulation",
                      "your Slider add",
                      3000,
@@ -219,8 +218,9 @@ import {TweenMax} from "gsap/TweenMax";
                      null,
                      "success"
                  );
+                 let SlidersPrev=  await allMainSlider();
                  this.setState(prevState => ({
-                     showLoader:false
+                     showLoader:false,SlidersPrev
                  }));
              }
              console.log(header)
@@ -267,8 +267,10 @@ import {TweenMax} from "gsap/TweenMax";
                  null,
                  "success"
              );
+             let SlidersPrev=  await allMainSlider();
+
              this.setState(prevState => ({
-                 showLoader:false
+                 showLoader:false,SlidersPrev
              }));
          }
      }

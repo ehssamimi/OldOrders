@@ -40,7 +40,8 @@ class HeaderSliderMain extends Component {
     }
     async componentDidMount(){
         let Sliders=  await allHeaderSlider();
-        console.log( Sliders);
+
+        // console.log( Sliders);
         this.setState({
             SlidersPrev:Sliders
         })
@@ -203,6 +204,7 @@ class HeaderSliderMain extends Component {
             console.log(SliderId);
             for (i = 0 ; i < Sliders.length; i++) {
                 if (Sliders[i].Destination.length>1) {
+
                     let idax1 = await sendImg(Sliders[i].Image, 'Public');
                     let updateCategories1 = await UpdateHeaderSliders(header, Sliders[i].Position, idax1, Sliders[i].Destination, idax1);
                     if (idax1==='error' || updateCategories1!==200) {
@@ -223,6 +225,7 @@ class HeaderSliderMain extends Component {
                 }
             }
             if(Submit===true){
+             let SlidersPrev=await allHeaderSlider();
                 NotificationManager.success(
 
                     "congratulation",
@@ -233,7 +236,7 @@ class HeaderSliderMain extends Component {
                     "success"
                 );
                 this.setState(prevState => ({
-                    showLoader:false
+                    showLoader:false,SlidersPrev
                 }));
             }
             console.log(header)
@@ -275,6 +278,7 @@ class HeaderSliderMain extends Component {
         }
 
         if(Submit===true){
+            let SlidersPrev=await allHeaderSlider();
             NotificationManager.success(
 
                 "congratulation",
@@ -285,7 +289,7 @@ class HeaderSliderMain extends Component {
                 "success"
             );
             this.setState(prevState => ({
-                showLoader:false
+                showLoader:false,SlidersPrev
             }));
         }
     }

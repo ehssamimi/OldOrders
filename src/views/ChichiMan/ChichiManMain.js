@@ -7,6 +7,9 @@ import AppLayout from './../../layout/AppLayout';
 const ChichiManSignIn = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ './../../Component/ChichiMan/ChiChi Man Sign In/ChichiManSignIn')
 );
+const ChichiManInfo = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ './../../Component/ChichiMan/ChichiMan-Info/ChichiMan-info')
+);
 
 
 class App extends Component {
@@ -22,6 +25,10 @@ class App extends Component {
                             <Route
                                 path={`${match.url}/sign-in`}
                                 render={props => <ChichiManSignIn {...props} />}
+                            />
+                            <Route
+                                path={`${match.url}/info`}
+                                render={props => <ChichiManInfo {...props} />}
                             />
                             <Redirect to="/error" />
                         </Switch>

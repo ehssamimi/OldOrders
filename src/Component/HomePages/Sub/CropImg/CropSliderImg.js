@@ -11,6 +11,7 @@ import ImgComponent from "../../../ChichiMan/ChiChi Man Sign In/Sub/ImgComponent
 import AutoSuggestEdit from "../AutoSuggestEdit/AutoSuggestEdit";
 import cakes from "../../../../data/cakes";
 import { Formik, Form, Field } from "formik";
+import imageCompression from "browser-image-compression";
 
 
 const cropper = React.createRef(null);
@@ -53,14 +54,14 @@ class CropSliderImg extends Component {
         reader.readAsDataURL(files[0]);
     }
 
-    cropImage()
+    async cropImage()
     {
         if (typeof this.cropper.getCroppedCanvas() === 'undefined') {
             return;
         }
 
 
-        // ********set the preview ccrop img*********
+        // ********set the preview crop img*********
 
 
         this.setState({
@@ -129,7 +130,7 @@ class CropSliderImg extends Component {
         })
     }
 
-    handelCrop(){
+    async handelCrop(){
 
 
         if (typeof this.cropper.getCroppedCanvas() === 'undefined') {
@@ -160,6 +161,25 @@ class CropSliderImg extends Component {
 
         // ********set the preview ccrop img*********
         if (validate) {
+            let cropResult= this.cropper.getCroppedCanvas().toDataURL();
+            // console.log(cropResult);
+            // console.log('name');
+            // console.log(this.state.name);
+            // console.log('type');
+            // console.log(this.state.type);
+            let file= base64StringtoFile( cropResult,this.state.name,this.state.type);
+            console.log('file');
+            console.log(file);
+            let options = {
+                maxSizeMB: 0.1,
+                maxWidthOrHeight: 1920,
+                useWebWorker: true
+            };
+            const compressedFile =  await imageCompression(file, options);
+            console.log("new file");
+            console.log( compressedFile );
+
+
             this.setState(pre=>({
                 cropResult: this.cropper.getCroppedCanvas().toDataURL(),
                 clickButton:!pre.clickButton
@@ -175,7 +195,7 @@ class CropSliderImg extends Component {
                 // this.props.GetImgFile(file,this.state.id,this.props.label ,this.state.cropResult);
 
                 if (this.state.clickButton===true){
-                    this.props.GetData(file, this.state.id, this.props.label, this.state.cropResult, this.props.DestinationString);
+                    this.props.GetData(compressedFile, this.state.id, this.props.label, this.state.cropResult, this.props.DestinationString);
                 }
                 // console.log(this.state.id);
                 // extractImageFileExtensionFromBase64(this.cropper.getCroppedCanvas())
@@ -223,8 +243,9 @@ class CropSliderImg extends Component {
 
                     <FormGroup className="form-group  position-relative has-float-label w-100">
                         <div className='d-flex justify-content-end'>
-                            <Label>
-                                <IntlMessages id={"مقصد "} />
+                            <Label className='z-6'>
+                                {/*<IntlMessages id={"مقصد "} />*/}
+                                <span >مقصد </span>
                             </Label>
                         </div>
                         <InputGroup className="mb-3">
@@ -247,12 +268,8 @@ class CropSliderImg extends Component {
 
                 <div className="col-sm-12">
 
-                    <FormGroup className="form-group  position-relative ">
-                        <div className='d-flex justify-content-end'>
-                            <Label>
-                                <IntlMessages id={label} />
-                            </Label>
-                        </div>
+                    <FormGroup className="form-group  position-relative d-flex">
+
                         <InputGroup className="mb-3">
                             <CustomInput
                                 type="file"
@@ -263,7 +280,11 @@ class CropSliderImg extends Component {
                             />
                             {/*<InputGroupAddon addonType="append">Upload</InputGroupAddon>*/}
                         </InputGroup>
-
+                        <div className='d-flex justify-content-end   align-items-center'>
+                            <Label className='d-flex justify-content-end   align-items-center'>
+                                <span>:{label}</span>
+                            </Label>
+                        </div>
                     </FormGroup>
                 </div>
 

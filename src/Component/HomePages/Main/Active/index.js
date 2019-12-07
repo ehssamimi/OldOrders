@@ -94,11 +94,11 @@ export default class MoveRowIndex extends React.Component {
                   // })
             } else {
                   Description = await GetHomePageTemp();
+                // this.setState({header:Description.Name});
             }
             this.setState({
-                showLoader:false,
-
-            })
+                showLoader:false,header:Description.Name
+            });
             // let Description = await GetHomePageTemp( );
             console.log(Description);
             let {Body, Header, Footer} = Description;
@@ -121,10 +121,8 @@ export default class MoveRowIndex extends React.Component {
                     }
                 };
                 columns['column-1']['taskIds'].push(NewID);
-
                 tasks[NewID] = row;
                 Objective[NewID]=Header[i].ObjectType;
-
             }
             j = HeaderLenght;
             for (i = 0; i < Body.length; i++) {
@@ -507,7 +505,8 @@ export default class MoveRowIndex extends React.Component {
         this.setState({
             showLoader:true
         });
-       if (this.props.Name !== ':name') {
+       // if (this.props.Name !== ':name') {
+       if (this.props.addHomePage!==true) {
            let sendHomePages = await UpdateHomePage(JSON.stringify(Data));
            console.log(sendHomePages);
            this.setState({

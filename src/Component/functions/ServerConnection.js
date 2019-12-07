@@ -262,16 +262,24 @@ export async  function  AddSlider(Name,Number){
         'Token': Const.Token,
         'Id': Const.ID,
     };
-
-    let res = await axios.post(`${Const.HomePage}admin/slider/add`,formData, {headers: headers});
-    let { ItemId } = res.data ;
-    let { status } = res ;
-    // return status
-    if (status===200) {
-        return ItemId
-    }else {
-        return "error"
-    }
+    var resp ="";
+     await axios.post(`${Const.HomePage}admin/slider/add`,formData, {headers: headers}).then(function (response) {
+        // console.log(response);
+        let {ItemId} = response.data;
+        resp=ItemId;
+    }).catch(function (error) {
+        console.log(error);
+        resp='error'
+    });
+    return resp
+    // let { ItemId } = res.data ;
+    // let { status } = res ;
+    // // return status
+    // if (status===200) {
+    //     return ItemId
+    // }else {
+    //     return "error"
+    // }
 }
 export async  function  UpdateSliders(SliderName,Position,Image,Destination ,DestinationId){
     let formData = new FormData();
@@ -284,11 +292,20 @@ export async  function  UpdateSliders(SliderName,Position,Image,Destination ,Des
     formData.append("Image",Image);
     formData.append("DestinationId",DestinationId);
     formData.append("Destination",Destination);
-    let res = await axios.put(`${Const.HomePage}admin/slider/${SliderName}/items/update`,formData, {headers: headers});
+    var resp ="";
+      await axios.put(`${Const.HomePage}admin/slider/${SliderName}/items/update`,formData, {headers: headers}).then(function (response) {
+        // console.log(response);
+        let {status} = response ;
+        resp=status;
+    }).catch(function (error) {
+        console.log(error);
+        resp='error'
+    });
+    return resp;
     // console.log(res);
-    let { ItemId } = res.data ;
-    let { status } = res ;
-    return status
+    // let { ItemId } = res.data ;
+    // let { status } = res ;
+    // return status
 }
 export async  function  allMainSlider(){
 
@@ -296,10 +313,19 @@ export async  function  allMainSlider(){
         'Token': Const.Token,
         'Id': Const.ID,
     };
+    var resp ="";
+     await axios.get(`${Const.HomePage}admin/sliders`, {headers: headers}).then(function (response) {
+        // console.log(response);
+        let {Items} = response.data;
+        resp=Items;
+    }).catch(function (error) {
+        console.log(error);
+        resp='error'
+    });
+    return resp;
 
-    let res = await axios.get(`${Const.HomePage}admin/sliders`, {headers: headers});
-    let { Items } = res.data ;
-    return Items
+    // let { Items } = res.data ;
+    // return Items
 
 }
 export async  function  GetSliderDetail(Name){
@@ -514,6 +540,7 @@ export async  function  AddHeaderSlider(Name,Number){
     }
 }
 export async  function  UpdateHeaderSliders(SliderName,Position,Image,Destination ,DestinationId){
+
     let formData = new FormData();
     let headers = {
         'Token': Const.Token,
@@ -540,7 +567,6 @@ export async  function  allHeaderSlider(){
     let res = await axios.get(`${Const.HomePage}admin/header/sliders`, {headers: headers});
     let { Items } = res.data ;
     return Items
-
 }
 export async  function  GetHeaderSliderDetail(Name){
     let headers = {
@@ -601,12 +627,20 @@ export async  function  GetHomePageLoad(name){
         'Token': Const.Token,
         'Id': Const.ID,
     };
-
-    let res = await axios.get(`${Const.HomePage}admin/homepage/${name}/load`, {headers: headers});
+    var resp ="";
+        await axios.get(`${Const.HomePage}admin/homepage/${name}/load`, {headers: headers}).then(function (response) {
+        console.log(response.data);
+        // let {Items} = response.data;
+        resp=response.data;
+    }).catch(function (error) {
+        console.log(error);
+        resp='error'
+    });
+    return resp;
     // console.log(res.data);
-    let { Body,Header,Footer } = res.data ;
+    // let { Body,Header,Footer } = res.data ;
     // console.log(Body );
-    return res.data
+    // return res.data
     // return Body
 
 }

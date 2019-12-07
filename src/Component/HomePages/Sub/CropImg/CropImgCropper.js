@@ -82,27 +82,23 @@ class CropImgCropper extends Component {
         // ********set the preview ccrop img*********
         if (validate) {
             // console.log('cropResult');
-            // let cropResult= this.cropper.getCroppedCanvas().toDataURL();
+            let cropResult= this.cropper.getCroppedCanvas().toDataURL();
             // console.log(cropResult);
             // console.log('name');
             // console.log(this.state.name);
             // console.log('type');
             // console.log(this.state.type);
-            // let file= base64StringtoFile( cropResult,this.state.name,this.state.type);
-            // console.log('file');
-            // console.log(file);
-            // let options = {
-            //     maxSizeMB: 0.2,
-            //     maxWidthOrHeight: 1920,
-            //     useWebWorker: true
-            // };
-            // const compressedFile =  await imageCompression(file, options);
-            // console.log("new file");
-            // console.log( compressedFile );
-
-
-
-
+            let file= base64StringtoFile( cropResult,this.state.name,this.state.type);
+            console.log('file');
+            console.log(file);
+            let options = {
+                maxSizeMB: 0.1,
+                maxWidthOrHeight: 1920,
+                useWebWorker: true
+            };
+            const compressedFile =  await imageCompression(file, options);
+            console.log("new file");
+            console.log( compressedFile );
 
             this.setState(pre=>({
                 cropResult: this.cropper.getCroppedCanvas().toDataURL(),
@@ -114,7 +110,6 @@ class CropImgCropper extends Component {
 
                 let file= base64StringtoFile(this.state.cropResult,this.state.name,this.state.type);
 
-
                 // ***this is file to set server*********
                 // console.log(file);
                 // this.props.GetImgFile(file,this.state.cropResult,this.props.label);
@@ -123,7 +118,7 @@ class CropImgCropper extends Component {
 
                 if (this.state.clickButton===true){
                     // this.props.GetImgFile(file, this.state.id, this.props.label, this.state.cropResult);
-                    this.props.GetImgFile(file, this.state.id, this.props.label, this.state.cropResult);
+                    this.props.GetImgFile(compressedFile, this.state.id, this.props.label, this.state.cropResult);
                 }
                 // console.log(this.state.id);
                 // extractImageFileExtensionFromBase64(this.cropper.getCroppedCanvas())

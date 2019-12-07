@@ -34,6 +34,10 @@ const Support = React.lazy(() =>
 const HomePages = React.lazy(() =>
     import(/* webpackChunkName: "views-error" */ './views/HomePage/HomePageMain')
 );
+const BugReporters = React.lazy(() =>
+    import(/* webpackChunkName: "views-error" */ './views/Bug-Report/BugReportersMain')
+);
+
 
 const AuthRoute = ({ component: Component, authUser, ...rest }) => {
     return (
@@ -110,6 +114,11 @@ class App extends Component {
                         path="/home-page"
                         authUser={this.state.loginUser}
                         component={HomePages}
+                    />
+                    <AuthRoute
+                        path="/bug-report"
+                        authUser={this.state.loginUser}
+                        component={BugReporters}
                     />
                     {/*<Route*/}
                         {/*path="/orders"*/}

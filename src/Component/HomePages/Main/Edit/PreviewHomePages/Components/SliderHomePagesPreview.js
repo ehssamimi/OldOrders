@@ -10,6 +10,7 @@ import PreviewItems from "../../../../Sub/ItemList/PreviewItems/PreviewItems";
 import PreviewMainSlider from "../../../../Sub/SliderAddHomePage/PreviewSliderMAin/PreviewMainSlider";
  import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import PreviewPackages from "../../../../Sub/WonderPackageAddHomePage/subPackage/PreviewPackages";
 // const NoControlCarouselItem = ({ Type, Image,Position }) => {
 //     return (
 //         <div className="glide-item">
@@ -271,7 +272,7 @@ class SliderHomePagesPreview extends Component {
                 </Modal>
                 <Modal
                     isOpen={this.state.Edit}
-                    size="lg"
+                    size="md"
                     toggle={this.toggleEdit}
                 >
                     <ModalHeader toggle={this.toggleEdit}>
@@ -280,14 +281,11 @@ class SliderHomePagesPreview extends Component {
                     </ModalHeader>
                     <ModalBody>
                         <div className='col-12 d-flex '>
-                            <div className='col-6 d-flex flex-column justify-content-end'>
+                            <div className='col-12 d-flex flex-column justify-content-end'>
                                 {
                                     itemsList.length > 0 ?
-                                        itemsList.map((slider ,index)=><PreviewMainSlider id={slider._id} key={index} header={slider.Name} slider={slider} clickEdit={this.ClickEdit.bind(this)}/>  ):""
+                                        itemsList.map((slider ,index)=><PreviewMainSlider id={slider._id} key={index} header={slider.Name} slider={slider} clickEdit={this.ClickEdit.bind(this)} select={true} baner={true}/>  ):""
                                 }
-                            </div>
-                            <div className='col-6'>
-
                             </div>
 
                         </div>

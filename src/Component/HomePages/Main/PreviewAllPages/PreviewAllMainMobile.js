@@ -3,6 +3,7 @@ import {GetAllHomePages} from './../../../../Component/functions/ServerConnectio
 import Task from "../Add/task";
 import AllPreviewHomePages from "./Sub";
 import MoveRowIndex from "../Edit/NewEdit";
+import Loader from "../../Sub/Loader/Loader";
 
 
 class PreviewAllMainMobile extends Component {
@@ -30,7 +31,7 @@ class PreviewAllMainMobile extends Component {
 
                 <div className='w-100 d-flex  active-Coluumn '>
                     {
-                        Data.length>0?Data.map((item, index) => <MoveRowIndex key={item._id} id={item._id} item={item} Name={item.Name} index={index}/>):''
+                        Data.length>0?Data.map((item, index) => <MoveRowIndex key={item._id} id={item._id} item={item} Name={item.Name} index={index}/>):<div className='col-6'><Loader/></div>
                         //  {/*<MoveRowIndex key={Data._id} item={Data} Name={Data.Name} index={1}/>*/}
                     }
                 </div>

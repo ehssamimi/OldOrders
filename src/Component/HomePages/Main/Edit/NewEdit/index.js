@@ -518,8 +518,8 @@ export default class MoveRowIndex extends React.Component {
 
   render() {
     let {columns}=this.state;
-    console.log(this.state.tasks);
-    console.log(this.state.columns);
+    // console.log(this.state.tasks);
+    // console.log(this.state.columns);
 
     return (
         <div className=' col-4 '>
@@ -548,7 +548,7 @@ export default class MoveRowIndex extends React.Component {
                 {/*<button onClick={this.HandelSend.bind(this)} className='btn btn-primary'>send</button>*/}
                 <div className='col-12 d-flex'>
                     <button onClick={this.HandelActive.bind(this)} className='btn btn-primary'>active</button>
-                    <button  className='btn btn-warning ml-auto'><Link to={`/home-page/main/edit/${this.props.item.Name}`} activeClassName="current">edit</Link></button>
+                   <Link to={`/home-page/main/edit/${this.props.item.Name}`} activeClassName="current ml-auto"> <button  className='btn btn-warning '>edit</button></Link>
 
                 </div>
 
