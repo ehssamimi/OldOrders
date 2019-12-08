@@ -189,7 +189,7 @@ export const smallChartData1 = {
       }
     }
   ]
-}
+};
 
 export const smallChartData2 = {
   labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],

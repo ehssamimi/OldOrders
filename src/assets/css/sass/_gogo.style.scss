@@ -8857,6 +8857,9 @@ font-family: IRANSans !important;
 .purpleColor{
   color: $theme-color-1;
 }
+.blueColor{
+  color: $theme-color-2;
+}
 .mb0{
   margin-bottom: 0!important;
 }
@@ -9438,20 +9441,22 @@ font-family: IRANSans !important;
   flex-wrap: wrap;
   //flex-direction: column;
 }
-//.round-button {
-//  width:25%;
-//}
-//.round-button-circle {
-//  width: 50%;
-//  height:0;
-//  padding-bottom: 100%;
-//  border-radius: 50%;
-//  border:10px solid #cfdcec;
-//  overflow:hidden;
-//
-//  //background: #4679BD;
-//  //box-shadow: 0 0 3px gray;
-//}
-//.round-button-circle:hover {
-//  //background:#30588e;
-//}
+.background1{
+  background: $theme-color-purple;
+}.background2{
+  background: $theme-color-blue;
+}.background3{
+  background: $theme-color-green;
+}.background4{
+  background: $theme-color-orange;
+}.background5{
+  background: $theme-color-red;
+}.background6{
+  background: $info-color;
+}.background7{
+  background: $success-color;
+} .background8{
+  background: $warning-color;
+}.background9{
+  background: $error-color;
+}

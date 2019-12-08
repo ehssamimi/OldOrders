@@ -52,14 +52,14 @@ class CollapseRow extends Component {
                                     <h3 className='simple-icon-plus icon-glyph ml-2'/>
 
                             }
-                            <h3 className='purpleColor'>{store.header}:</h3>
+                            <h3 className={this.props.color||"purpleColor"}>{store.header}:</h3>
                         </div>
 
                         <Collapse isOpen={this.state.collapse}>
                             <div className='d-flex  w-100 flex-wrap '  >
                                 {Keys ?
                                     Keys.map((todo, index) =>
-                                        <ShowShowline label={todo} value={sub[todo]} key={index} col={'col-4'} className='fS1vw'/>
+                                        <ShowShowline label={todo} value={sub[todo]} key={index} col={ todo==='آدرس'?'col-12':this.props.col||'col-4'} className='fS1vw'/>
                                     ) : ''
                                 }
                             </div>

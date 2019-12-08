@@ -160,13 +160,13 @@ export const barChartOptions = {
           color: 'rgba(0,0,0,0.1)',
           drawBorder: false
         },
-        ticks: {
-          beginAtZero: true,
-          stepSize: 100,
-          min: 300,
-          max: 800,
-          padding: 20
-        }
+        // ticks: {
+        //   beginAtZero: true,
+          // stepSize: 10,
+          // min: 0,
+          // max: 100,
+          // padding: 20
+        // }
       }
     ],
     xAxes: [

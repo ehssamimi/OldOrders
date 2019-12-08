@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Card, CardBody, CardHeader, CardTitle} from "reactstrap";
-import ShowShowline from "../../Support/Users/UserDetails/sub/Support/sub/ReportUserBox/ShowShowLine/ShowShowline";
-import CollapseRow from "../../PresentOrders/Common/CollapseRow";
-import VoteToChichiManInInfo from "./Vote-ChichiMan-info/VoteToChichiManInInfo";
+import ShowShowline from "../../../Support/Users/UserDetails/sub/Support/sub/ReportUserBox/ShowShowLine/ShowShowline";
+import CollapseRow from "../../../PresentOrders/Common/CollapseRow";
+import VoteToChichiManInInfo from "../Vote-ChichiMan-info/VoteToChichiManInInfo";
 
 class ChichiManInfo extends Component {
     constructor(props) {
@@ -13,9 +13,8 @@ class ChichiManInfo extends Component {
             subRow:{
                 TimeProcess:{'header':"زمان شروع هر بخش ",'sub':{'زمان انجام پرداخت':'20:05','زمان ثبت شده':'21:18','جمع آوری در انبار':"21:45",' تایید پیک':"22",'رسیدن پیک':"22:30",'تحویل گیرنده':"22:45"}},
                 DurationProcess:{'header':"مدت زمان هر بخش",'sub':{'زمان انجام پرداخت':'70','زمان ثبت شده':'5','جمع آوری در انبار':"30",' تایید پیک':"15",'رسیدن پیک':'20','تحویل گیرنده':'15'}},
-                Vote:{'header':"نظرسنحی",'sub':{"ایموجی":'1','نقاط قوت':'خوش تیبپ ، خوش هیکل ، خوش سر و زبون ، با ختواده و دارای شغل عالی ','نقاط ضعف':"دست بزن ، خشن ، دارای توهمات شیزوفرنی، کمی متمایل به حالات سادیسم " }},
+                Vote:{'header':"نظرسنحی",'sub':{"ایموجی":'4','نقاط قوت':'خوش تیبپ ، خوش هیکل ، خوش سر و زبون ، با ختواده و دارای شغل عالی ','نقاط ضعف':"دست بزن ، خشن ، دارای توهمات شیزوفرنی، کمی متمایل به حالات سادیسم " }},
             }
-
         }
     }
     componentDidMount(){
@@ -44,14 +43,10 @@ class ChichiManInfo extends Component {
                                     <ShowShowline label={todo} value={Items[todo]} key={index} col={ todo==='آدرس'?'col-12':'col-6' } className='fS1vw'/>
                                 ) : ''
                             }
-
                             <CollapseRow store={subRow.TimeProcess}/>
-
                             <CollapseRow store={subRow.DurationProcess}/>
                             <VoteToChichiManInInfo store={subRow.Vote}/>
-
                         </div>
-
                      </CardBody>
                 </Card>
             </div>

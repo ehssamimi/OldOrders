@@ -94,7 +94,7 @@ class VoteToChichiManInInfo extends Component {
                              dir='rtl'>
                             <span className='collapseValue gray spanWithOutBreak'>ایموجی <span
                                 className='pl-2'>:</span></span>
-                            <div className='col-4'>
+                            <div className='col-sm-10 col-md-4'>
                                 <img src={ax} alt={ax} className='img-self-fill'/>
                             </div>
 
@@ -103,9 +103,7 @@ class VoteToChichiManInInfo extends Component {
                         <ShowShowline label={'نقاط ضعف'} value={sub['نقاط ضعف']} col={'col-4'} className='fS1vw'/>
                     </div>
                 </Collapse>
-                {/*</CardBody>*/}
 
-                {/*</Card>*/}
                 <hr/>
             </div>
         );

@@ -105,6 +105,32 @@ const data = [
             id: "chchiMan-info",
             label: "اطلاعات",
             to: "/chichi-man/info",
+            subs: [{
+                icon: "iconsminds-smartphone-4",
+                label: "سفر فعلی",
+                to: "/chichi-man/info/current-trip"
+            }, {
+                icon: "iconsminds-smartphone-4",
+                label: "تسویه حساب",
+                to: "/chichi-man/info/check-out"
+            }, {
+                icon: "iconsminds-smartphone-4",
+                label: "نتایج کلی نظرسنجی ها",
+                to: "/chichi-man/info/vote"
+            }, {
+                icon: "iconsminds-smartphone-4",
+                label: "آمارها",
+                to: "/chichi-man/info/static"
+            },{
+                icon: "iconsminds-smartphone-4",
+                label: "اطلاعات ثبت نام",
+                to: "/chichi-man/info/submit-info"
+            },{
+                icon: "iconsminds-smartphone-4",
+                label: "وضعیت ها",
+                to: "/chichi-man/info/situation"
+            },
+            ]
         },
 
         ]

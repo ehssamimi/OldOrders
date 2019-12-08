@@ -8,7 +8,7 @@ const ChichiManSignIn = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ './../../Component/ChichiMan/ChiChi Man Sign In/ChichiManSignIn')
 );
 const ChichiManInfo = React.lazy(() =>
-    import(/* webpackChunkName: "viwes-gogo" */ './../../Component/ChichiMan/ChichiMan-Info/ChichiMan-info')
+    import(/* webpackChunkName: "viwes-gogo" */ './ChichiMan-Info/ChichiMan-info')
 );
 
 
