@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {Collapse} from "reactstrap";
-import ShowShowline from "../../../../Support/Users/UserDetails/sub/Support/sub/ReportUserBox/ShowShowLine/ShowShowline";
+import { Collapse, Button, CardBody, Card } from 'reactstrap';
+ import ShowShowline from "../../../../Support/Users/UserDetails/sub/Support/sub/ReportUserBox/ShowShowLine/ShowShowline";
 
-class CollapseCheckoutRow extends Component {
+class ChichiManInfoCollapseWithImage extends Component {
     constructor(props) {
         super(props);
         this.toggle = this.toggle.bind(this);
@@ -38,6 +38,9 @@ class CollapseCheckoutRow extends Component {
 
     render() {
         let{store,sub,Keys}=this.state;
+        let{image,className,label}=this.props;
+
+
         // console.log(Keys);
         return (
             <div className='mt-5 col-12'>
@@ -49,30 +52,31 @@ class CollapseCheckoutRow extends Component {
                             <h3 className='simple-icon-minus icon-glyph ml-2'/>
                             :
                             <h3 className='simple-icon-plus icon-glyph ml-2'/>
+
                     }
-                    <h3 className='purpleColor'>{store.header}:</h3>
+                    <h3 className={this.props.color||"purpleColor"}>{store.header}:</h3>
                 </div>
 
-                <Collapse isOpen={this.state.collapse} >
-                    <div className='d-flex w-100'>
-                        <div className='d-flex  col-8 flex-wrap h-20vh '  >
+                <Collapse isOpen={this.state.collapse}>
+                    <div>
+                        <div className='d-flex  w-100 flex-wrap '  >
                             {Keys ?
                                 Keys.map((todo, index) =>
-                                    <ShowShowline label={todo} value={sub[todo]} key={index} col={ todo==='مسئول پرداخت'?'col-6':'col-6' } className='fS1vw'/>
+                                    <ShowShowline label={todo} value={sub[todo]} key={index} col={ todo==='آدرس'?'col-12':this.props.col||'col-4'} className='fS1vw'/>
                                 ) : ''
                             }
                         </div>
-                        <div className='col-4 h-20vh d-flex flex-column align-items-center justify-content-center'>
-                            <img src={this.props.ax} alt={'checkout'} className="img-self-fill"/>
-
-                            <div className={['d-flex', 'fs-08vw'].join(' ')}
-                                 dir='rtl'>
-                            <span className='  gray spanWithOutBreak'>{this.props.label} <span
-                                className='pl-2'>:</span></span>
-                                <span className="DRTl  d-flex  ">{this.props.value}</span>
-                            </div>
-
-                         </div>
+                        <div className='d-flex mt-2  '>
+                            {image.length>0 ?
+                                image.map((todo, index) =>
+                                    <div key={index} className={['h-100','d-flex','flex-column', 'mt-2' ,'align-items-center' , className || ''].join(' ')}>
+                                        <label htmlFor={index}><ShowShowline label={'عکس'} value={label[index] }  col={ 'col-12'} className='fS1vw'/>
+                                            </label>
+                                        <img src={todo} alt={todo} className='img-self-fill'/>
+                                    </div>
+                                ) : ''
+                            }
+                        </div>
                     </div>
 
                 </Collapse>
@@ -85,4 +89,4 @@ class CollapseCheckoutRow extends Component {
     }
 }
 
-export default CollapseCheckoutRow;
+export default ChichiManInfoCollapseWithImage;

@@ -24,7 +24,7 @@ class VoteToChichiManInInfo extends Component {
             store, sub,Keys
         });
         let ax;
-        console.log(sub['ایموجی']);
+        // console.log(sub['ایموجی']);
         switch(sub['ایموجی']) {
             case "1":
                 ax = ax1;
@@ -74,7 +74,7 @@ class VoteToChichiManInInfo extends Component {
         console.log('ax');
         console.log(ax);
         return (
-            <div className='mt-5 col-12'>
+            <div className='mt-5 col-12 p-0'>
                 {/*<Card>*/}
                 {/*<CardBody>*/}
                 <div className='d-flex justify-content-start align-items-center ' onClick={this.toggle} >
@@ -90,17 +90,45 @@ class VoteToChichiManInInfo extends Component {
 
                 <Collapse isOpen={this.state.collapse}>
                     <div className='d-flex  w-100 flex-wrap '>
-                        <div className={['d-flex', 'mt-2', 'col-4',"align-items-center"].join(' ')}
-                             dir='rtl'>
-                            <span className='collapseValue gray spanWithOutBreak'>ایموجی <span
-                                className='pl-2'>:</span></span>
-                            <div className='col-sm-10 col-md-4'>
-                                <img src={ax} alt={ax} className='img-self-fill'/>
-                            </div>
+                        {/*<div className={['d-flex', 'mt-2', 'col-4',"align-items-center"].join(' ')}*/}
+                             {/*dir='rtl'>*/}
+                            {/*<span className='collapseValue gray spanWithOutBreak'>ایموجی <span*/}
+                                {/*className='pl-2'>:</span></span>*/}
+                            {/*<div className='col-sm-10 col-md-4'>*/}
+                                {/*<img src={ax} alt={ax} className='img-self-fill'/>*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
 
+                        <div className='d-flex  w-100 flex-wrap '  >
+                            {Keys ?
+                                Keys.map((todo, index) =>
+                                    <div key={index} className={['d-flex','flex-wrap',todo === 'آدرس' ? 'col-12' : this.props.col || 'col-6'].join(" ")}>
+                                        {
+                                            todo==='ایموجی'?
+                                            <div className={['d-flex', 'mt-2', 'col-4', "align-items-center"].join(' ')}
+                                            dir='rtl'>
+                                            <span className='collapseValue gray spanWithOutBreak'>ایموجی <span
+                                            className='pl-2'>:</span></span>
+                                            <div className='col-sm-10 col-md-4'>
+                                            <img src={ax} alt={ax} className='img-self-fill'/>
+                                            </div>
+                                            </div>
+                                        :
+                                            <ShowShowline label={todo} value={sub[todo]} key={index}
+                                                          // col={todo === 'آدرس' ? 'col-12' : this.props.col || 'col-6'}
+                                                          col={'col-12'}
+                                                          className='fS1vw'/>
+                                        }
+                                    </div>
+
+                                ) : ''
+                            }
                         </div>
-                        <ShowShowline label={'نقاط قوت'} value={sub['نقاط قوت']} col={'col-4'} className='fS1vw'/>
-                        <ShowShowline label={'نقاط ضعف'} value={sub['نقاط ضعف']} col={'col-4'} className='fS1vw'/>
+
+
+
+                        {/*<ShowShowline label={'نقاط قوت'} value={sub['نقاط قوت']} col={'col-4'} className='fS1vw'/>*/}
+                        {/*<ShowShowline label={'نقاط ضعف'} value={sub['نقاط ضعف']} col={'col-4'} className='fS1vw'/>*/}
                     </div>
                 </Collapse>
 

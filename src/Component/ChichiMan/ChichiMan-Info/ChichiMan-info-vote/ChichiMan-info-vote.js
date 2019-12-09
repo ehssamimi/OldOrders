@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Doughnut from "../../../../components/charts/Doughnut";
 import { ThemeColors } from '../../../../helpers/ThemeColors'
 import Bar from "../../../../components/charts/Bar";
+import HeaderComponentChichiInfo from "../Header-component-chichi-info/Header-component-chichi-info";
+import {Card, CardBody} from "reactstrap";
 const colors = ThemeColors();
 const doughnutChartData={
     labels: ['خیلی بد', 'بد', 'متوسط','خوب', 'خیلی خوب' ],
@@ -55,19 +57,32 @@ const barChartData2 = {
 class ChichiManInfoVote extends Component {
     render() {
         return (
-            <div className='d-flex flex-column h-100'>
-                <div className='w-100 d-flex '>
-                    <div className="col-6 chart-container">
-                        <Doughnut shadow  data={doughnutChartData}/>
+            <Card>
+                {/*<div dir='rtl' className="text-right ">*/}
+
+                {/*</div>*/}
+
+                <CardBody>
+
+                    <div className='d-flex flex-column h-100'>
+                        <HeaderComponentChichiInfo header="اطلاعات ثبت نام"/>
+
+                        <div className='w-100 d-flex '>
+                            <div className="col-6 chart-container">
+                                <Doughnut shadow data={doughnutChartData}/>
+                            </div>
+                            <div className="col-6 chart-container">
+                                <Bar shadow data={barChartData}/>
+                            </div>
+                        </div>
+                        <div className="col-12 chart-container h-40vh mt-2 ">
+                            <Bar shadow data={barChartData2}/>
+                        </div>
                     </div>
-                    <div className="col-6 chart-container">
-                        <Bar shadow data={barChartData} />
-                    </div>
-                </div>
-                <div className="col-12 chart-container h-40vh mt-2 ">
-                    <Bar shadow data={barChartData2} />
-                </div>
-            </div>
+
+                </CardBody>
+            </Card>
+
         );
     }
 }

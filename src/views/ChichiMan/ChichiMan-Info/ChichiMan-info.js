@@ -3,6 +3,7 @@ import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import AppLayout from './../../../layout/AppLayout';
+import MainChichiInfo from "../../../Component/ChichiMan/ChichiMan-Info/Main-Chichi-Info/Main-chichi-info";
 
 
 const ChichiManInfo = React.lazy(() =>
@@ -20,6 +21,9 @@ const ChichiManStatic = React.lazy(() =>
 const ChichiManSubmitInfo = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ './../../../Component/ChichiMan/ChichiMan-Info/ChichiMan-info-submit-info/ChichiMan-info-submit-info')
 );
+const ChichiManHistoryTrip = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ './../../../Component/ChichiMan/ChichiMan-Info/ChichiMan-info-history-trip/ChichiMAn-info-history-trip')
+);
 const ChichiManSituation = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ './../../../Component/ChichiMan/ChichiMan-Info/ChichiMan-info-situation/ChichiManInfoSituation')
 );
@@ -33,7 +37,11 @@ class App extends Component {
                 <div className="dashboard-wrapper">
                     <Suspense fallback={<div className="loading" />}>
                         <Switch>
-                            <Redirect exact from={`${match.url}/`} to={`${match.url}/current-trip`} />
+                            <Redirect exact from={`${match.url}/`} to={`${match.url}/main`} />
+                            <Route
+                                path={`${match.url}/main`}
+                                render={props => <MainChichiInfo {...props} />}
+                            />
                             <Route
                                 path={`${match.url}/current-trip`}
                                 render={props => <ChichiManInfo {...props} />}
@@ -53,6 +61,11 @@ class App extends Component {
                             <Route
                                 path={`${match.url}/submit-info`}
                                 render={props => <ChichiManSubmitInfo {...props} />}
+                            />
+
+                            <Route
+                                path={`${match.url}/trip-history`}
+                                render={props => <ChichiManHistoryTrip {...props} />}
                             />
                             <Route
                                 path={`${match.url}/situation`}

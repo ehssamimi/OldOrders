@@ -3,6 +3,7 @@ import {Card, CardBody, CardHeader, CardTitle} from "reactstrap";
 import ShowShowline from "../../../Support/Users/UserDetails/sub/Support/sub/ReportUserBox/ShowShowLine/ShowShowline";
 import CollapseRow from "../../../PresentOrders/Common/CollapseRow";
 import VoteToChichiManInInfo from "../Vote-ChichiMan-info/VoteToChichiManInInfo";
+import HeaderComponentChichiInfo from "../Header-component-chichi-info/Header-component-chichi-info";
 
 class ChichiManInfo extends Component {
     constructor(props) {
@@ -37,6 +38,8 @@ class ChichiManInfo extends Component {
                 <Card>
 
                     <CardBody>
+
+                       <HeaderComponentChichiInfo header="سفر فعلی"/>
                         <div className='d-flex flex-wrap justify-content-start' dir='rtl'>
                             {Keys ?
                                 Keys.map((todo, index) =>

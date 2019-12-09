@@ -1,23 +1,49 @@
 import React, {Component} from 'react';
-import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button,CardHeader
-} from 'reactstrap';
+import CardUserBugReport from "./CardUserBugReport/CardUserBugReport";
 import ShowShowline from "../../Support/Users/UserDetails/sub/Support/sub/ReportUserBox/ShowShowLine/ShowShowline";
+
 class BugReportUser extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state={
+            subRow:[
+                {
+                    'header': "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و باداشت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و باداشت",
+                    'sub': {
+                        'عنوان':"بازشدگی" ,
+                        'نام و نام خانوادگی': ' احسان صمیمی راد',
+                        'شماره موبایل': "09112561701",
+                    }
+                },   {
+                    'header': "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و باداشت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و باداشت",
+                    'sub': {
+                        'عنوان':"نگاه داشتن" ,
+                        'نام و نام خانوادگی': 'موسوی خوینی ها',
+                        'شماره موبایل': "09357845241",
+                    }
+                },   {
+                    'header': "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و باداشت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و باداشت",
+                    'sub': {
+                        'عنوان':"شدگی" ,
+                        'نام و نام خانوادگی': 'اسکوبی دو',
+                        'شماره موبایل': "09913548215",
+                    }
+                },
 
+            ]
+
+        }
+    }
     render() {
+        let {subRow}=this.state;
         return (
-            <div>
-                <Card>
-                    <CardHeader>
-                        <CardTitle>Card title</CardTitle>
-                    </CardHeader>
-                    <CardBody>
-                   <ShowShowline label={"label"} value={"value"} key={1} col={'col-4'} className='fS1vw'/>
-                    </CardBody>
-                </Card>
+            <div className='w-100'>
+                {subRow ?
+                    subRow.map((todo, index) =>
+                        <CardUserBugReport store={todo} index={index}/>
+                    ) : ''
+                }
             </div>
         );
     }

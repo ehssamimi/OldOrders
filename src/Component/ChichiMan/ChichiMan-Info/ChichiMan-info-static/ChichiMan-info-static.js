@@ -3,18 +3,18 @@ import {Card, CardBody, Collapse} from "reactstrap";
 import ShowShowline from "../../../Support/Users/UserDetails/sub/Support/sub/ReportUserBox/ShowShowLine/ShowShowline";
 import CollapseRow from "../../../PresentOrders/Common/CollapseRow";
 import VoteToChichiManInInfo from "../Vote-ChichiMan-info/VoteToChichiManInInfo";
+import HeaderComponentChichiInfo from "../Header-component-chichi-info/Header-component-chichi-info";
 
 class ChichiManInfoStatic extends Component {
     constructor(props) {
         super(props);
         this.toggle = this.toggle.bind(this);
         this.state={
-            Items:{'شماره سفارش':'IR32513','نام و نام خانوادگی':'هوشنک ابتهاج'  ,'ساعت سفر':'16:08:21'  ,   'وضعیت سفر':'انتظار بسته برای پیک'  ,'آدرس':"زحل، قمر کویینتزار، شهر نیگارا، میدان سیزارتا، کوچه دالی، پلا 13"
+            Items:{'شماره سفارش':'IR32513','نام و نام خانوادگی':'هوشنک ابتهاج' ,'ساعت سفر':'16:08:21' , 'وضعیت سفر':'انتظار بسته برای پیک','آدرس':"زحل، قمر کویینتزار، شهر نیگارا، میدان سیزارتا، کوچه دالی، پلا 13"
             },
             subRow:{
                 TotalInfo:{'header':"اطلاعات کلی هر بخش ",'sub':{'تعداد سفر':'10','درآمد':'1,200,300','زمان تقریبی کل':"6:20:10",'زمان انجام کل':"5:20:12" }},
                 BaseOnSuccess:{'header':"بر اساس موفقیت",'sub':{'موفق':'7','لغو توسط کاربر':'2','خرابی وسیله نقلیه':"1" }},
-
              },
             History: [
                 {
@@ -107,6 +107,8 @@ class ChichiManInfoStatic extends Component {
                 <Card>
 
                     <CardBody>
+                        <HeaderComponentChichiInfo header="آمار ها"/>
+
                         <div className='d-flex flex-wrap justify-content-start' dir='rtl'>
                             {/*{Keys ?*/}
                                 {/*Keys.map((todo, index) =>*/}

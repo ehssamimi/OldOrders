@@ -3,6 +3,9 @@ import {Card, CardBody} from "reactstrap";
 import ShowShowline from "../../../Support/Users/UserDetails/sub/Support/sub/ReportUserBox/ShowShowLine/ShowShowline";
 import CollapseRow from "../../../PresentOrders/Common/CollapseRow";
 import VoteToChichiManInInfo from "../Vote-ChichiMan-info/VoteToChichiManInInfo";
+import ChichiManInfoCollapseWithImage from "./ChichiMan-info-collapse-with-image/ChichiMan-info-collapse-with-image";
+import ax from './../../../../assets/img/4th-1.jpg'
+import HeaderComponentChichiInfo from "../Header-component-chichi-info/Header-component-chichi-info";
 
 class ChichiManInfoSubmitInfo extends Component {
     constructor(props) {
@@ -40,15 +43,18 @@ class ChichiManInfoSubmitInfo extends Component {
 
                     <CardBody>
                         <div className='d-flex flex-wrap justify-content-start' dir='rtl'>
+                            <HeaderComponentChichiInfo header="اطلاعات ثبت نام"/>
+
                             {/*{Keys ?*/}
                                 {/*Keys.map((todo, index) =>*/}
                                     {/*<ShowShowline label={todo} value={Items[todo]} key={index} col={ todo==='آدرس'?'col-12':'col-6' } className='fS1vw'/>*/}
                                 {/*) : ''*/}
                             {/*}*/}
                             <CollapseRow store={subRow.Identify} col={'col-6'}/>
-                            <CollapseRow store={subRow.PersonalInfo} col={'col-6'}/>
-                            <CollapseRow store={subRow.vehicle} col={'col-6'}/>
-                            <CollapseRow store={subRow.contact} col={'col-6'}/>
+                               <ChichiManInfoCollapseWithImage store={subRow.PersonalInfo} col={'col-6'} image={[ax,ax,ax]} label={['تصویر شناسنامه','تصویر کارت ملی','عکس پرسنلی ']} className='col-4'/>
+                              <ChichiManInfoCollapseWithImage store={subRow.vehicle} col={'col-6'} image={[ax,ax]} label={['تصویر کارت وسیله نقلیه','تصویر گواهی نامه ']} className='col-6'/>
+                             <ChichiManInfoCollapseWithImage store={subRow.contact} col={'col-4'} image={[ax,ax]} label={['تصویر سفته','تصویر گواهی سو پیشینه']} className='col-6'/>
+
                             <CollapseRow store={subRow.BankInfo} col={'col-6'}/>
                             {/*<CollapseRow store={subRow.DurationProcess}/>*/}
                             {/*<VoteToChichiManInInfo store={subRow.Vote}/>*/}
