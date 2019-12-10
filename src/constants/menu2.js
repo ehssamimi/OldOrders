@@ -154,6 +154,23 @@ const data = [
             id: "users",
             label: "کاربران",
             to: "/support/users",
+        },{
+            icon: "iconsminds-user",
+            id: "support-message",
+            label: "پیامها",
+            to: "/support/message",
+            subs: [{
+                icon: "iconsminds-new-mail",
+                id: "support-message-user",
+                label: "پیام های کاربران",
+                to: "/support/message/users",
+                subs: [{
+                    icon: "iconsminds-smartphone-4",
+                    id: "mobilehomepage",
+                    label: "صفحه اصلی موبایل",
+                    to: "/home-page/main"
+                }]
+            }]
         },
         ]
     },

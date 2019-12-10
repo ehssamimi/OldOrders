@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class ShowLineUserReport extends Component {
     render() {
         let{value,className}=this.props;
-        console.log(value)
+        console.log(value);
         return (
             <div className={['d-flex','p-1','col-12',' justify-content-between','align-items-center', className || ''].join(' ')}
                  dir='rtl'>

@@ -2,18 +2,16 @@ import React, { Component, Suspense } from 'react';
 import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import AppLayout from './../../layout/AppLayout';
+
 // import SupportUsers from "../../Component/Support/Users/SupportUsers";
 
 const SupportUsers = React.lazy(() =>
-    import(/* webpackChunkName: "viwes-gogo" */ './../../Component/Support/Users/SupportUsers')
+    import(/* webpackChunkName: "viwes-gogo" */ './../../../Component/Support/Message/Support-Message-Users/SupportMessageUser')
 );
-const UserInfoCard = React.lazy(() =>
-    import(/* webpackChunkName: "viwes-gogo" */ './../../Component/Support/Users/UserDetails/UserDetailsInfo')
-);
-const SupportMessageUserMain = React.lazy(() =>
-    import(/* webpackChunkName: "viwes-gogo" */ './message/SupportMessageMain')
-);
+
+// const PresentOrdersMain = React.lazy(() =>
+//     import(/* webpackChunkName: "viwes-gogo" */ './PresentOrders/PresentOrdersMain')
+// );
 
 
 class App extends Component {
@@ -21,7 +19,7 @@ class App extends Component {
         const { match } = this.props;
 
         return (
-            <AppLayout>
+
                 <div className="dashboard-wrapper">
                     <Suspense fallback={<div className="loading" />}>
                         <Switch>
@@ -30,19 +28,12 @@ class App extends Component {
                                 path={`${match.url}/users`}
                                 render={props => <SupportUsers {...props} />}
                             />
-                            <Route
-                                path={`${match.url}/user/info/:userId`}
-                                render={props => <UserInfoCard {...props} />}
-                            />
-                            <Route
-                                path={`${match.url}/message`}
-                                render={props => <SupportMessageUserMain {...props} />}
-                            />
+
                             <Redirect to="/error" />
                         </Switch>
                     </Suspense>
                 </div>
-            </AppLayout>
+
         );
     }
 }
