@@ -20,11 +20,14 @@ import {
 } from "../../../../containers/form-validations/FormikFields";
 import {WithWizard} from "react-albus/lib";
 import WizardBottonNavigations from "../Sub/WizardBottonNavigations";
+import {VerifyChichiManPhoneNumber} from "../../../functions/ServerConnection";
+import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
+import Loader from "../../../HomePages/Sub/Loader/Loader";
 // import * as Const from "../../../Const";
 const SignupSchema = Yup.object().shape({
 
-    // CodeNumber: Yup.number()
-    //     .required("کد هراز هویت اجباری است!").min(1000,'باید 4 کاراکتر داشته باشد'),
+    CodeNumber: Yup.number()
+        .required("کد هراز هویت اجباری است!").min(1000,'باید 4 رقم باشد').max(9999, 'باید 4 رقمی  باشد '),
 
 });
 
@@ -43,7 +46,7 @@ class Step2 extends Component {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state={
-            loaderActive:true,ChanceTypeOption:[]
+            loaderActive:true,ChanceTypeOption:[],showLoader:false
         }
     }
     // componentDidMount(){
@@ -75,7 +78,7 @@ class Step2 extends Component {
     // }
 
 
-    handleSubmit = (values, { setSubmitting }) => {
+    handleSubmit = async (values, { setSubmitting }) => {
         const payload = {
             ...values,
             // TagKind: values.TagKind.value,
@@ -84,38 +87,51 @@ class Step2 extends Component {
 
         };
         console.log(payload);
-        let send=document.getElementById("sendItems");
-        send.click()
-        // let headers = {
-        //     'Id': `${Const.ID}`,
-        //     'Token': `${Const.Token}`
-        // };
-        // let form = new FormData();
-        // form.append('Tag', payload.TagKind);
-        // form.append('ChanceType', payload.ChanceType);
-        // form.append('ItemType', payload.ItemType);
-        // form.append('ImageUrl', payload.ImageUrl);
-        // form.append('Key', payload.KeyItem);
-        // form.append('Name', payload.Name);
-        // axios.post(`${Const.URL}admin/gameitem/add` ,form, {headers:headers}).then(responsive=>
-        // {
-        //     const {Description}=responsive.data;
-        //     if (Description === "D"){
-        //         NotificationManager.success(
-        //             "Success message",
-        //             "Title here",
-        //             3000,
-        //             null,
-        //             null,
-        //             "success"
-        //         );
-        //     }
-        //     setTimeout(function () {
-        //         window.location.reload()
-        //     }, 3000);
-        //     setTimeout(function(){ window.location.reload(); }, 3000);
-        //     console.log(Description)
-        // }).catch(error=>{console.log(error)});
+        console.log(payload);
+        console.log(this.props.PhoneNumber);
+
+
+        // let send=document.getElementById("sendItems");
+        // send.click()
+
+
+
+
+        // this.setState({
+        //     showLoader:true
+        // });
+        // let Register = await VerifyChichiManPhoneNumber(this.props.PhoneNumber,payload.CodeNumber);
+        // console.log(Register);
+        // this.setState({
+        //     showLoader: false
+        // });
+        // let {state, Description} = Register;
+        // if (state) {
+        //     NotificationManager.success(
+        //         "congratulation",
+        //         "کد شما تایید شد",
+        //         3000,
+        //         null,
+        //         null,
+        //         "success"
+        //     );
+        //     let send=document.getElementById("sendItems");
+        //     send.click();
+        // } else {
+        //     NotificationManager.error(
+        //         "error",
+        //         Description,
+        //         3000,
+        //         null,
+        //         null,
+        //         "error"
+        //     );
+        // }
+
+
+
+
+
     };
 
 
@@ -124,6 +140,13 @@ class Step2 extends Component {
 
     render() {
         return (
+            this.state.showLoader?
+                <div className='d-flex justify-content-center align-items-center'>
+                    <div className='col-6'>
+                        <Loader/>
+                    </div>
+                </div>
+                :
             <div dir='rtl'>
                 <Row className="mb-4">
                     <Colxx xxs="12">

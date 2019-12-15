@@ -728,4 +728,66 @@ export async  function  DeleteHomePages(Name){
     return status;
 }
 
-
+// ***************************************************************************ChiChiMan**********************************************
+// ******Register***********
+export async  function  RegisterChichiMan(Data){
+     let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+     };
+    let resp ={state:false,Description:""};
+    console.log(Data);
+    await axios.post(`${Const.ChichiMan}admin/chichiman/register`, Data).then(function (response) {
+        let {status} = response;
+        let{State,Description}=JSON.parse(response.data);
+         // console.log(response);
+        if (status===200 ){
+             resp ={state:State,Description:Description};
+         }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+           resp ={state:false,Description:error.message};
+     });
+    return resp;
+}
+export async  function  VerifyChichiManPhoneNumber(phoneNumber,code){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    let resp ={state:false,Description:""};
+     await axios.get(`${Const.ChichiMan}chichiman/verify/${phoneNumber}/${code}`).then(function (response) {
+        let {status} = response;
+        let{State,Description}=JSON.parse(response.data);
+        // console.log(response);
+        if (status===200 ){
+            resp ={state:State,Description:Description};
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}
+export async  function  UpdateChichiManPersonalInfo(data){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    let resp ={state:false,Description:""};
+     await axios.post(`${Const.ChichiMan}admin/chichiman/info/personal`,data).then(function (response) {
+        let {status} = response;
+        let{State,Description}=JSON.parse(response.data);
+        // console.log(response);
+        if (status===200 ){
+            resp ={state:State,Description:Description};
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}

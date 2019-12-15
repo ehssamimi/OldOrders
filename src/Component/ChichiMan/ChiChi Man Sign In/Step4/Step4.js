@@ -22,6 +22,8 @@ import {
 import ImgComponent from "../Sub/ImgComponent";
 import {WithWizard} from "react-albus/lib";
 import WizardBottonNavigations from "../Sub/WizardBottonNavigations";
+import {sendImg, UpdateChichiManPersonalInfo} from "../../../functions/ServerConnection";
+import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
 const SignupSchema = Yup.object().shape({
 
     // Kind: Yup.object()
@@ -57,7 +59,8 @@ class Step4 extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state={
             loaderActive:true,ChanceTypeOption:[],
-            Img:{'VCImg':'',"DLImg":''}
+           ax:{"VCImg":"", "DLImg": "" },axError:{"VCImg":"", "DLImg": "" },
+            showLoader:false
         }
     }
 
@@ -69,7 +72,7 @@ class Step4 extends Component {
 
     }
 
-    handleSubmit = (values, { setSubmitting }) => {
+    handleSubmit = async (values, { setSubmitting }) => {
         const payload = {
             ...values,
           Kind: values.Kind.value,
@@ -79,7 +82,109 @@ class Step4 extends Component {
         };
         console.log(payload);
         let send=document.getElementById("sendItems");
-        send.click()
+        send.click();
+        let {Date, ax, axError} = this.state;
+        console.log(Date);
+        let axValid = true;
+        if (ax['VCImg'] === '') {
+            axValid = false;
+            axError['VCImg'] = "عکس کارت ماشین اجباری است  "
+        }else {
+            axError['VCImg'] = ""
+        }
+        if (ax['DLImg'] === '') {
+            axValid = false;
+            axError['DLImg'] = "عکس گواهینامه اجباری است "
+        }else {
+            axError['DLImg'] = ""
+        }
+        this.setState({
+            axError
+        }, () => {
+
+        })
+
+        if (axValid) {
+            this.setState({
+                showLoader:true
+            });
+            let ImgeFiles = [ax['VCImg'], ax['DLImg'] ];
+            let ImgeId = []
+
+            for (let i = 0; i < ImgeFiles.length; i++) {
+                let idax = await sendImg(ImgeFiles[i], 'Public');
+                console.log(idax);
+                ImgeId.push(idax);
+            }
+            console.log(ImgeId);
+            // ImgeId = ["5df62418386b8a3235aefde7",
+            //     "5df6241a386b8a3235aefde8",
+            //     "5df6241c696e5a631f0dc9c8"];
+
+
+            // let Data = {
+            //     "PhoneNumber": "09112561701",
+            //     "FirstName": "ehsan",
+            //     "LastName": "samimi",
+            //     "SSN": "2092204971",
+            //     "Serial": "8566",
+            //     "ProfilePic": ImgeId[2],
+            //     "Birthday": "12-9-98",
+            //     "Address": "sari m iman",
+            //     "MartialStatus": "single",
+            //     "Sex": "man",
+            //     "PlaceOfIssue": "sari",
+            //     "HomePhone": "011336529092",
+            //     "SSN_IMAGE": ImgeId[0],
+            //     "SERIAL_IMAGE": ImgeId[1]
+            // };
+            let Data={
+
+                "PhoneNumber": "09112561701",
+                "DeliveryType": payload.Kind,
+                "PlateNumber": payload.Plaque,
+                "CardNumber": payload.VCN,
+                // "VehicleModel": "string",
+                // "VehicleColor": "string",
+                "VehicleCardImage": "13254",
+                "LicenseNumber": payload.DLN,
+                "LicenseImage": "132546"
+            };
+            console.log(Data);
+
+            // let Register = await UpdateChichiManPersonalInfo(JSON.stringify(Data));
+            // console.log(Register);
+            // this.setState({
+            //     showLoader: false
+            // });
+            // let {state, Description} = Register;
+            // if (state) {
+            //     NotificationManager.success(
+            //         "congratulation",
+            //         "اطلاعات شما با موفقیت ثبت شد",
+            //         3000,
+            //         null,
+            //         null,
+            //         "success"
+            //     );
+            //     let send=document.getElementById("sendItems");
+            //     send.click();
+            // } else {
+            //     NotificationManager.error(
+            //         "error",
+            //         Description,
+            //         3000,
+            //         null,
+            //         null,
+            //         "error"
+            //     );
+            // }
+
+
+
+        }
+
+
         // console.log(values);
         // let headers = {
         //     'Id': `${Const.ID}`,

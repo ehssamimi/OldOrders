@@ -18,19 +18,25 @@ import {
     FormikReactSelect,
 } from "../../../../containers/form-validations/FormikFields";
 import WizardBottonNavigations from "../Sub/WizardBottonNavigations";
-// import * as Const from "../../../Const";
-const SignupSchema = Yup.object().shape({
+import {RegisterChichiMan} from "../../../functions/ServerConnection";
+import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
+import Loader from "../../../HomePages/Sub/Loader/Loader";
 
-    TagKind: Yup.object()
-        .shape({
-            label: Yup.string().required(),
-            value: Yup.string().required()
-        })
-        .nullable()
-        .required("نوع وسیله نقلیه اجباری است!"),
 
-    PhoneNumber: Yup.number()
-        .required("شماره تلفن اجباری است!").min(1000000000,'شماره تلفن باید یازده کاراکتر باشد')
+
+
+ const SignupSchema = Yup.object().shape({
+
+    // TagKind: Yup.object()
+    //     .shape({
+    //         label: Yup.string().required(),
+    //         value: Yup.string().required()
+    //     })
+    //     .nullable()
+    //     .required("نوع وسیله نقلیه اجباری است!"),
+    //
+    // PhoneNumber: Yup.number()
+    //     .required("شماره تلفن اجباری است!").min(1000000000,'شماره تلفن باید یازده کاراکتر باشد').max(100000000000,'شماره تلفن نباید بیشتر از 11 کاراکتر باشد')
 
 });
 
@@ -48,13 +54,13 @@ class Step1 extends Component {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state={
-            loaderActive:true,ChanceTypeOption:[]
+            loaderActive:true,ChanceTypeOption:[],showLoader:false
         }
     }
 
 
 
-    handleSubmit = (values, { setSubmitting }) => {
+    handleSubmit = async (values, { setSubmitting }) => {
         const payload = {
             ...values,
             TagKind: values.TagKind.value,
@@ -62,40 +68,50 @@ class Step1 extends Component {
             // Name: values.Name.value,
 
         };
-        console.log(payload);
-       let send=document.getElementById("sendItems");
-       send.click()
-           // window.getElementId('')
-        // let headers = {
-        //     'Id': `${Const.ID}`,
-        //     'Token': `${Const.Token}`
+        console.log(payload.PhoneNumber);
+        this.props.GetPhoneNumber("0"+payload.PhoneNumber.toString());
+
+        let send=document.getElementById("sendItems");
+            send.click();
+
+        // console.log("0"+payload.PhoneNumber.toString());
+        // let Data={
+        //     // "PhoneNumber": payload.PhoneNumber.toString(),
+        //     "PhoneNumber":"0"+payload.PhoneNumber.toString(),
         // };
-        // let form = new FormData();
-        // form.append('Tag', payload.TagKind);
-        // form.append('ChanceType', payload.ChanceType);
-        // form.append('ItemType', payload.ItemType);
-        // form.append('ImageUrl', payload.ImageUrl);
-        // form.append('Key', payload.KeyItem);
-        // form.append('Name', payload.Name);
-        // axios.post(`${Const.URL}admin/gameitem/add` ,form, {headers:headers}).then(responsive=>
-        // {
-        //     const {Description}=responsive.data;
-        //     if (Description === "D"){
-        //         NotificationManager.success(
-        //             "Success message",
-        //             "Title here",
-        //             3000,
-        //             null,
-        //             null,
-        //             "success"
-        //         );
-        //     }
-        //     setTimeout(function () {
-        //         window.location.reload()
-        //     }, 3000);
-        //     setTimeout(function(){ window.location.reload(); }, 3000);
-        //     console.log(Description)
-        // }).catch(error=>{console.log(error)});
+        // console.log(Data);
+        // this.setState({
+        //     showLoader:true
+        // });
+        // let Register = await RegisterChichiMan(JSON.stringify(Data));
+        // console.log(Register);
+        // this.setState({
+        //     showLoader: false
+        // });
+        // let {state, Description} = Register;
+        // if (state) {
+        //     NotificationManager.success(
+        //         "congratulation",
+        //         "کد مورد نظر به شماره شما ارسال شد",
+        //         3000,
+        //         null,
+        //         null,
+        //         "success"
+        //     );
+        //     let send=document.getElementById("sendItems");
+        //     send.click();
+        // } else {
+        //     NotificationManager.error(
+        //         "error",
+        //         Description,
+        //         3000,
+        //         null,
+        //         null,
+        //         "error"
+        //     );
+        // }
+
+
     };
 
 
@@ -104,7 +120,13 @@ class Step1 extends Component {
 
     render() {
         return (
-            <div dir='rtl'>
+            this.state.showLoader?
+                <div className='d-flex justify-content-center align-items-center'>
+                    <div className='col-6'>
+                        <Loader/>
+                    </div>
+                </div>
+               : <div dir='rtl'>
                 <Row className="mb-4">
                     <Colxx xxs="12">
                         <Card>

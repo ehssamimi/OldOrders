@@ -61,7 +61,7 @@ class ImgComponent extends Component {
                 </InputGroup>
                 {src && (
                     <div className='height40vh w-100'>
-                        <img  alt="img" className='img-self' src={src} />
+                        <img  alt="img" className='img-self-fill' src={src} />
                     </div>
                 )}
             </div>

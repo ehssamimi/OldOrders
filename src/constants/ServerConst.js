@@ -8,3 +8,4 @@ export const Download_Server_URL="https://api.chichiapp.ir/v1/mediaservice/";
 // export const HomePage="http://chichiapp.ir:30036/";
 // export const HomePage="http://193.176.240.222:30036/";
 export const HomePage="https://api.chichiapp.ir/v1/homagepageservice/";
+export const ChichiMan="http://chichiapp.ir:30033/";

@@ -24,6 +24,7 @@ class ChichiManSignIn extends Component {
             name: "",
             email: "",
             password: "",
+            phoneNumber:""
         }
     }
 
@@ -52,9 +53,16 @@ class ChichiManSignIn extends Component {
 
     }
 
+    getPhoneNumber(phoneNumber) {
+        this.setState({
+            phoneNumber
+        })
+    }
+
 
     render() {
         // const { messages } = this.props.intl;
+        let{phoneNumber}=this.state;
         return (
             <div className='wizard wizard-default col-12'>
                 <Wizard>
@@ -62,29 +70,29 @@ class ChichiManSignIn extends Component {
                     <Steps>
                         <Step id="step1" name={"ثبت شماره موبایل"}>
                             <div className="wizard-basic-step">
-                                <Step1 onClickNext={this.onClickNext} onClickPrev={this.onClickPrev} className="justify-content-center" prevLabel={"مرحله قبل"} nextLabel={"ذخیره اطلاعات"}/>
+                                <Step1 onClickNext={this.onClickNext} onClickPrev={this.onClickPrev} className="justify-content-center" prevLabel={"مرحله قبل"} nextLabel={"ذخیره اطلاعات"} GetPhoneNumber={this.getPhoneNumber.bind(this)}/>
                             </div>
                         </Step>
                         <Step id="step2" name={"اهراز هویت"}>
                             <div className="wizard-basic-step">
-                                <Step2 onClickNext={this.onClickNext} onClickPrev={this.onClickPrev} className="justify-content-center" prevLabel={"مرحله قبل"} nextLabel={"مرحله بعد"}/>
+                                <Step2 onClickNext={this.onClickNext} onClickPrev={this.onClickPrev} className="justify-content-center" prevLabel={"مرحله قبل"} nextLabel={"مرحله بعد"} PhoneNumber={phoneNumber}/>
                             </div>
                         </Step>
                         <Step id="step3" name={"اطلاعات اولیه"} >
                             <div className="wizard-basic-step">
-                                <Step3 onClickNext={this.onClickNext} onClickPrev={this.onClickPrev} className="justify-content-center" prevLabel={"مرحله قبل"} nextLabel={"مرحله بعد"}/>
+                                <Step3 onClickNext={this.onClickNext} onClickPrev={this.onClickPrev} className="justify-content-center" prevLabel={"مرحله قبل"} nextLabel={"مرحله بعد"} PhoneNumber={phoneNumber}/>
                             </div>
                         </Step>
                         <Step id="step4" name={"اطلاعات نقلیه"}>
                             <div className="wizard-basic-step">
-                                <Step4 onClickNext={this.onClickNext} onClickPrev={this.onClickPrev} className="justify-content-center" prevLabel={"مرحله قبل"} nextLabel={"مرحله بعد"}/>
+                                <Step4 onClickNext={this.onClickNext} onClickPrev={this.onClickPrev} className="justify-content-center" prevLabel={"مرحله قبل"} nextLabel={"مرحله بعد"} PhoneNumber={phoneNumber}/>
                             </div>
                         </Step>
                         <Step id="step5" name={"مستندات قرارداد"}
                             // desc={"wizard.step-desc-5"}
                         >
                             <div className="wizard-basic-step">
-                                <Step5 onClickNext={this.onClickNext} onClickPrev={this.onClickPrev} className="justify-content-center" prevLabel={"مرحله قبل"} nextLabel={"مرحله بعد"}/>
+                                <Step5 onClickNext={this.onClickNext} onClickPrev={this.onClickPrev} className="justify-content-center" prevLabel={"مرحله قبل"} nextLabel={"مرحله بعد"} PhoneNumber={phoneNumber}/>
                             </div>
                         </Step>
                         <Step id="step6" name={"اطلاعات مالی"}
