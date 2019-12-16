@@ -22,24 +22,25 @@ import {
 import ImgComponent from "../Sub/ImgComponent";
 import {WithWizard} from "react-albus/lib";
 import WizardBottonNavigations from "../Sub/WizardBottonNavigations";
-import {sendImg, UpdateChichiManPersonalInfo} from "../../../functions/ServerConnection";
+import {sendImg, UpdateChichiManVehicleInfo} from "../../../functions/ServerConnection";
 import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
+import Loader from "../../../HomePages/Sub/Loader/Loader";
 const SignupSchema = Yup.object().shape({
 
-    // Kind: Yup.object()
-    //     .shape({
-    //         label: Yup.string().required(),
-    //         value: Yup.string().required()
-    //     })
-    //     .nullable()
-    //     .required("نوع وسیله نقلیه اجباری است!"),
-    //
-    // DLN: Yup.number()
-    //     .required("شماره گواهینامه اجباری است!"),
-    // VCN: Yup.number()
-    //     .required("شماره کارت اجباری است!"),
-    // Plaque: Yup.number()
-    //     .required("شماره پلاک اجباری است!"),
+    Kind: Yup.object()
+        .shape({
+            label: Yup.string().required(),
+            value: Yup.string().required()
+        })
+        .nullable()
+        .required("نوع وسیله نقلیه اجباری است!"),
+
+    DLN: Yup.number()
+        .required("شماره گواهینامه اجباری است!"),
+    VCN: Yup.string()
+        .required("شماره کارت اجباری است!"),
+    Plaque: Yup.string()
+        .required("شماره پلاک اجباری است!"),
 
 });
 
@@ -65,10 +66,18 @@ class Step4 extends Component {
     }
 
     GetImag(Type,value){
-        console.log('Type');
-        console.log(Type);
-        console.log('value');
-        console.log(value);
+        // console.log('Type');
+        //         // console.log(Type);
+        //         // console.log('value');
+        //         // console.log(value);
+        let {ax}=this.state;
+        ax[Type]=value;
+        this.setState({
+            ax
+        },()=>{
+            // console.log(ax)
+            // console.log(ax['SSN'])
+        })
 
     }
 
@@ -81,8 +90,7 @@ class Step4 extends Component {
 
         };
         console.log(payload);
-        let send=document.getElementById("sendItems");
-        send.click();
+
         let {Date, ax, axError} = this.state;
         console.log(Date);
         let axValid = true;
@@ -117,110 +125,70 @@ class Step4 extends Component {
                 ImgeId.push(idax);
             }
             console.log(ImgeId);
-            // ImgeId = ["5df62418386b8a3235aefde7",
-            //     "5df6241a386b8a3235aefde8",
-            //     "5df6241c696e5a631f0dc9c8"];
 
-
-            // let Data = {
-            //     "PhoneNumber": "09112561701",
-            //     "FirstName": "ehsan",
-            //     "LastName": "samimi",
-            //     "SSN": "2092204971",
-            //     "Serial": "8566",
-            //     "ProfilePic": ImgeId[2],
-            //     "Birthday": "12-9-98",
-            //     "Address": "sari m iman",
-            //     "MartialStatus": "single",
-            //     "Sex": "man",
-            //     "PlaceOfIssue": "sari",
-            //     "HomePhone": "011336529092",
-            //     "SSN_IMAGE": ImgeId[0],
-            //     "SERIAL_IMAGE": ImgeId[1]
-            // };
             let Data={
-
-                "PhoneNumber": "09112561701",
+                "PhoneNumber": this.props.PhoneNumber,
                 "DeliveryType": payload.Kind,
                 "PlateNumber": payload.Plaque,
                 "CardNumber": payload.VCN,
                 // "VehicleModel": "string",
                 // "VehicleColor": "string",
-                "VehicleCardImage": "13254",
+                "VehicleCardImage": ImgeId[0],
                 "LicenseNumber": payload.DLN,
-                "LicenseImage": "132546"
+                "LicenseImage": ImgeId[1]
             };
             console.log(Data);
+            console.log(axError);
+            // let send=document.getElementById("sendItems");
+            // send.click();
 
-            // let Register = await UpdateChichiManPersonalInfo(JSON.stringify(Data));
-            // console.log(Register);
-            // this.setState({
-            //     showLoader: false
-            // });
-            // let {state, Description} = Register;
-            // if (state) {
-            //     NotificationManager.success(
-            //         "congratulation",
-            //         "اطلاعات شما با موفقیت ثبت شد",
-            //         3000,
-            //         null,
-            //         null,
-            //         "success"
-            //     );
-            //     let send=document.getElementById("sendItems");
-            //     send.click();
-            // } else {
-            //     NotificationManager.error(
-            //         "error",
-            //         Description,
-            //         3000,
-            //         null,
-            //         null,
-            //         "error"
-            //     );
-            // }
+            let Register = await UpdateChichiManVehicleInfo(JSON.stringify(Data));
+            console.log(Register);
+            this.setState({
+                showLoader: false
+            });
+            let {state, Description} = Register;
+            if (state) {
+                NotificationManager.success(
+                    "congratulation",
+                    "اطلاعات شما با موفقیت ثبت شد",
+                    3000,
+                    null,
+                    null,
+                    "success"
+                );
+                let send=document.getElementById("sendItems");
+                send.click();
+            } else {
+                NotificationManager.error(
+                    "error",
+                    Description,
+                    3000,
+                    null,
+                    null,
+                    "error"
+                );
+            }
 
 
 
         }
 
 
-        // console.log(values);
-        // let headers = {
-        //     'Id': `${Const.ID}`,
-        //     'Token': `${Const.Token}`
-        // };
-        // let form = new FormData();
-        // form.append('Tag', payload.TagKind);
-        // form.append('ChanceType', payload.ChanceType);
-        // form.append('ItemType', payload.ItemType);
-        // form.append('ImageUrl', payload.ImageUrl);
-        // form.append('Key', payload.KeyItem);
-        // form.append('Name', payload.Name);
-        // axios.post(`${Const.URL}admin/gameitem/add` ,form, {headers:headers}).then(responsive=>
-        // {
-        //     const {Description}=responsive.data;
-        //     if (Description === "D"){
-        //         NotificationManager.success(
-        //             "Success message",
-        //             "Title here",
-        //             3000,
-        //             null,
-        //             null,
-        //             "success"
-        //         );
-        //     }
-        //     setTimeout(function () {
-        //         window.location.reload()
-        //     }, 3000);
-        //     setTimeout(function(){ window.location.reload(); }, 3000);
-        //     console.log(Description)
-        // }).catch(error=>{console.log(error)});
     };
 
 
     render() {
+        let{axError}=this.state;
+        console.log()
         return (
+            this.state.showLoader?
+                <div className='d-flex justify-content-center align-items-center'>
+                    <div className='col-6'>
+                        <Loader/>
+                    </div>
+                </div>
+                :
             <div dir='rtl'>
                 <Row className="mb-4">
                     <Colxx xxs="12">
@@ -297,7 +265,7 @@ class Step4 extends Component {
                                                         <Label>
                                                             <IntlMessages id="کارت ماشین" />
                                                         </Label>
-                                                        <Field className="form-control" name="VCN" type='number'   onBlur={setFieldTouched}
+                                                        <Field className="form-control" name="VCN" type='text'   onBlur={setFieldTouched}
                                                                placeholder="شماره کارت وسیله نقلیه را وارد کنید !" />
                                                         {errors.VCN && touched.VCN ? (
                                                             <div className="invalid-feedback d-block">
@@ -311,7 +279,7 @@ class Step4 extends Component {
                                                         <Label>
                                                             <IntlMessages id="پلاک" />
                                                         </Label>
-                                                        <Field className="form-control" name="Plaque" type='number'  onBlur={setFieldTouched}
+                                                        <Field className="form-control" name="Plaque" type='text'  onBlur={setFieldTouched}
                                                                placeholder="پلاک وسیله نقلیه را وارد کنید !" />
                                                         {errors.Plaque && touched.Plaque ? (
                                                             <div className="invalid-feedback d-block">
@@ -327,22 +295,32 @@ class Step4 extends Component {
                                                     <FormGroup className="form-group  position-relative ">
                                                         <div className='d-flex justify-content-start'>
                                                             <Label>
-                                                                <IntlMessages id="عکس کارت ماشین" />
+                                                                <span>عکس کارت ماشین</span>
+
+                                                                {/*<IntlMessages id="عکس کارت ماشین" />*/}
                                                             </Label>
                                                         </div>
 
                                                     <ImgComponent Type='VCImg' GetData={this.GetImag.bind(this)}/>
+                                                        {
+                                                            axError["VCImg"].length>1?<span className=" invalid-feedback d-block">{axError["VCImg"]} </span>:""
+                                                        }
                                                     </FormGroup>
                                                 </div>
                                                 <div className="col-sm-6">
                                                     <FormGroup className="form-group  position-relative ">
                                                         <div className='d-flex justify-content-start'>
                                                             <Label>
-                                                                <IntlMessages id="عکس گواهینامه" />
+                                                                <span>عکس گواهینامه</span>
+                                                                {/*<IntlMessages id="عکس گواهینامه" />*/}
                                                             </Label>
                                                         </div>
                                                     <ImgComponent  Type='DLImg' GetData={this.GetImag.bind(this)}/>
-                                                    </FormGroup>
+                                                        {
+                                                            axError["DLImg"].length>1?<span className=" invalid-feedback d-block">{axError["DLImg"]} </span>:""
+                                                        }
+
+                                                     </FormGroup>
                                                 </div>
 
                                             </div>

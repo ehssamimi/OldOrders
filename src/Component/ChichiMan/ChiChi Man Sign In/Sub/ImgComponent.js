@@ -45,7 +45,7 @@ class ImgComponent extends Component {
     render() {
         let{src,ImgName}=this.state;
         // console.log(src);
-        console.log(ImgName);
+        // console.log(ImgName);
         return (
             <div className='w-100'>
                 <InputGroup className="mb-3">

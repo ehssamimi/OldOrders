@@ -23,6 +23,9 @@ import ImgComponent from "../Sub/ImgComponent";
 import {WithWizard} from "react-albus/lib";
 import WizardBottonNavigations from "../Sub/WizardBottonNavigations";
 import PersianClassCalender from "../../../OldOrders/SelectTime/Headers/sub/PersianClassCalender";
+import {sendImg, UpdateChichiManContactInfo} from "../../../functions/ServerConnection";
+import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
+import Loader from "../../../HomePages/Sub/Loader/Loader";
 const SignupSchema = Yup.object().shape({
 
     // Kind: Yup.object()
@@ -45,9 +48,9 @@ const SignupSchema = Yup.object().shape({
 
 
 const options = [
-    { value: "موتور", label: "موتور" },
-    { value: "ماشین", label: "ماشین" },
-    { value: "دوچرخه", label: "دوچرخه" },
+    { value: "فعال", label: "فعال" },
+    { value: "غیر فعال", label: "غیر فعال" },
+    { value: "نا مشخص", label: "نامشخص" },
     // { value: "Gun", label: "Gun" }
 ];
 
@@ -58,77 +61,154 @@ class Step5 extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state={
             loaderActive:true,
-            Img:{'contract':'',"safte":'',"soePishine":''}
+            Img:{'contract':'',"safte":'',"soePishine":''},  ax:{'contract':'',"safte":'',"soePishine":''},axError:{'contract':'',"safte":'',"soePishine":''},
+            showLoader:false,Date:[]
         }
     }
 
     GetImag(Type,value){
-        console.log('Type');
-        console.log(Type);
-        console.log('value');
-        console.log(value);
+        let {ax}=this.state;
+        ax[Type]=value;
+        this.setState({
+            ax
+        },()=>{
+            // console.log(ax)
+            // console.log(ax['SSN'])
+        })
+        // console.log('Type');
+        // console.log(Type);
+        // console.log('value');
+        // console.log(value);
 
     }
 
-    handleSubmit = (values, { setSubmitting }) => {
+    handleSubmit = async (values, { setSubmitting }) => {
         const payload = {
             ...values,
-            // Kind: values.Kind.value,
+            Kind: values.Kind.value,
             // ChanceType: values.ChanceType.value,
             // Name: values.Name.value,
 
         };
         console.log(payload);
-        let send=document.getElementById("sendItems");
-        send.click()
-        // console.log(values);
-        // let headers = {
-        //     'Id': `${Const.ID}`,
-        //     'Token': `${Const.Token}`
-        // };
-        // let form = new FormData();
-        // form.append('Tag', payload.TagKind);
-        // form.append('ChanceType', payload.ChanceType);
-        // form.append('ItemType', payload.ItemType);
-        // form.append('ImageUrl', payload.ImageUrl);
-        // form.append('Key', payload.KeyItem);
-        // form.append('Name', payload.Name);
-        // axios.post(`${Const.URL}admin/gameitem/add` ,form, {headers:headers}).then(responsive=>
-        // {
-        //     const {Description}=responsive.data;
-        //     if (Description === "D"){
-        //         NotificationManager.success(
-        //             "Success message",
-        //             "Title here",
-        //             3000,
-        //             null,
-        //             null,
-        //             "success"
-        //         );
-        //     }
-        //     setTimeout(function () {
-        //         window.location.reload()
-        //     }, 3000);
-        //     setTimeout(function(){ window.location.reload(); }, 3000);
-        //     console.log(Description)
-        // }).catch(error=>{console.log(error)});
-    };
-    GetData(Data){
-        // console.log(Data)
-        if (Data!==null){
-            let date=`${Data.year}/${Data.month}/${Data.day}`;
-            console.log(date);
-            this.setState({
-                Date: date
-            });
 
+        let {Date, ax, axError} = this.state;
+         let axValid = true;
+
+        if (ax['contract'] === '') {
+            axValid = false;
+            axError['contract'] = "عکس  قرارداد اجباری است  "
+        }else {
+            axError['contract'] = ""
+        }
+        if (ax['safte'] === '') {
+            axValid = false;
+            axError['safte'] = "عکس سفته اجباری است "
+        }else {
+            axError['safte'] = ""
+        }
+        if (ax['soePishine'] === '') {
+            axValid = false;
+            axError['soePishine'] = "عکس سوپیشینه اجباری است "
+        }else {
+            axError['soePishine'] = ""
+        }
+
+        this.setState({
+            axError
+        }, () => {
+            console.log(this.state.axError)
+        })
+
+        if (axValid) {
+            this.setState({
+                showLoader:true
+            });
+             let ImgeFiles = [ax['contract'], ax['safte'] , ax['soePishine'] ];
+            let ImgeId = [];
+
+            for (let i = 0; i < ImgeFiles.length; i++) {
+                let idax = await sendImg(ImgeFiles[i], 'Public');
+                console.log(idax);
+                ImgeId.push(idax);
+            }
+            console.log(ImgeId);
+            let Data={
+                "PhoneNumber": this.props.PhoneNumber,
+                "Image": ImgeId[0],
+                "Status": payload.Kind,
+                "BasePayment": payload.darsad,
+                "EndOfContract": Date['end'],
+                "BeginOfContract": Date['begin'],
+                "Percentage": payload.sabet,
+                "FormNumber": payload.form,
+                "AttachmentNumber": payload.attachNumber,
+                "SoePishineImage": ImgeId[2],
+                "Safteh": ImgeId[1]
+             };
+            console.log(Data);
+            console.log(axError);
+
+            let Register = await UpdateChichiManContactInfo(JSON.stringify(Data));
+            console.log(Register);
+            this.setState({
+                showLoader: false
+            });
+            let {state, Description} = Register;
+            if (state) {
+                NotificationManager.success(
+                    "congratulation",
+                    "اطلاعات شما با موفقیت ثبت شد",
+                    3000,
+                    null,
+                    null,
+                    "success"
+                );
+                let send=document.getElementById("sendItems");
+                send.click();
+            } else {
+                NotificationManager.error(
+                    "error",
+                    Description,
+                    3000,
+                    null,
+                    null,
+                    "error"
+                );
+            }
+
+
+
+        }
+
+    };
+    GetData(Data,type){
+        console.log(type);
+        console.log(Data);
+        if (type!==null){
+            let date=`${type.year}/${type.month}/${type.day}`;
+            console.log(date);
+            let {Date}=this.state;
+            Date[Data]=date;
+            this.setState({
+                Date
+            });
         }
         // console.log(date)
     }
 
 
     render() {
+        let{axError}=this.state;
         return (
+
+            this.state.showLoader?
+                <div className='d-flex justify-content-center align-items-center'>
+                    <div className='col-6'>
+                        <Loader/>
+                    </div>
+                </div>
+                :
             <div dir='rtl'>
                 <Row className="mb-4">
                     <Colxx xxs="12">
@@ -146,7 +226,7 @@ class Step5 extends Component {
                                         attachNumber:'',
                                         sabet: "",
                                         darsad:'',
-                                        // TagKind: {value: "موتور",label: "موتور"},
+                                        Kind: {value: "فعال", label: "فعال"},
                                     }}
                                     validationSchema={SignupSchema}
                                     onSubmit={this.handleSubmit}
@@ -164,10 +244,10 @@ class Step5 extends Component {
                                       }) => (
                                         <Form className="av-tooltip tooltip-label-bottom">
                                             <div className="w-100 d-flex ">
-                                                <div className="col-sm-4 ">
+                                                <div className="col-sm-3 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="شماره نامه/فرم" />
+                                                            <span>شماره نامه/فرم</span>
                                                         </Label>
                                                         <Field className="form-control" name="form" type='number' onBlur={setFieldTouched}
                                                                placeholder="شماره نامه/فرم را وارد کنید!" />
@@ -178,34 +258,56 @@ class Step5 extends Component {
                                                         ) : null}
                                                     </FormGroup>
                                                 </div>
-                                                <div className="col-sm-4 rowInput">
+                                                <div className="col-sm-3 rowInput">
                                                     <FormGroup className=" has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="تا تاریخ" />
-                                                        </Label>
+                                                            <span>تا تاریخ</span>
+                                                         </Label>
                                                         <div >
-                                                            <PersianClassCalender GetData={this.GetData.bind(this)}/>
+                                                            <PersianClassCalender GetData={this.GetData.bind(this,'end')}/>
                                                         </div>
                                                     </FormGroup>
                                                 </div>
-                                                <div className="col-sm-4 rowInput">
+                                                <div className="col-sm-3 rowInput">
                                                     <FormGroup className=" has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="از تاریخ " />
-                                                        </Label>
+                                                            <span>از تاریخ</span>
+                                                         </Label>
                                                         <div >
-                                                            <PersianClassCalender GetData={this.GetData.bind(this)}/>
+                                                            <PersianClassCalender GetData={this.GetData.bind(this,'begin')}/>
                                                         </div>
                                                     </FormGroup>
                                                 </div>
+                                                <div className="col-sm-3 ">
+                                                    <FormGroup className="form-group has-float-label">
+                                                        <Label>
+                                                            <IntlMessages id="وضعیت" />
+                                                        </Label>
+                                                        <FormikReactSelect
+                                                            name="Kind"
+                                                            id="Kind"
+                                                            value={values.Kind}
+                                                            options={options}
+                                                            onChange={setFieldValue}
+                                                            onBlur={setFieldTouched}
+                                                        />
+                                                        {errors.Kind && touched.Kind ? (
+                                                            <div className="invalid-feedback d-block">
+                                                                {errors.Kind}
+                                                            </div>
+                                                        ) : null}
+                                                    </FormGroup>
+                                                </div>
+
 
                                             </div>
                                             <div className="w-100 d-flex ">
                                                 <div className="col-sm-4 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="شماره پیوست" />
-                                                        </Label>
+                                                            <span>شماره پیوست</span>
+
+                                                         </Label>
                                                         <Field className="form-control" name="attachNumber" type='number' onBlur={setFieldTouched}
                                                                placeholder="شماره پیوست را وارد کنید !" />
                                                         {errors.attachNumber && touched.attachNumber ? (
@@ -218,8 +320,8 @@ class Step5 extends Component {
                                                 <div className="col-sm-4 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="حقوق ثابت" />
-                                                        </Label>
+                                                            <span>حقوق ثابت</span>
+                                                         </Label>
                                                         <Field className="form-control" name="darsad" type='number' onBlur={setFieldTouched}
                                                                placeholder="قرارداد درصدی را وارد کنید !" />
                                                         {errors.darsad && touched.darsad ? (
@@ -233,8 +335,8 @@ class Step5 extends Component {
                                                 <div className="col-sm-4 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="قرارداد درصدی" />
-                                                        </Label>
+                                                            <span>قرارداد درصدی</span>
+                                                         </Label>
                                                         <Field className="form-control" name="sabet" type='number' onBlur={setFieldTouched}
                                                                placeholder="درصد قرار داد را وارد کنید" />
                                                         {errors.sabet && touched.sabet ? (
@@ -253,10 +355,13 @@ class Step5 extends Component {
                                                     <FormGroup className="form-group  position-relative ">
                                                         <div className='d-flex justify-content-start'>
                                                             <Label>
-                                                                <IntlMessages id="عکس قرارداد" />
-                                                            </Label>
+                                                                <span>عکس قرارداد</span>
+                                                             </Label>
                                                         </div>
                                                         <ImgComponent Type='contract' GetData={this.GetImag.bind(this)}/>
+                                                         {
+                                                            axError["contract"].length>1?<span className=" invalid-feedback d-block">{axError["contract"]} </span>:""
+                                                        }
                                                     </FormGroup>
 
                                                 </div>
@@ -264,21 +369,27 @@ class Step5 extends Component {
                                                     <FormGroup className="form-group  position-relative ">
                                                         <div className='d-flex justify-content-start'>
                                                             <Label>
-                                                                <IntlMessages id="عکس سفته" />
-                                                            </Label>
+                                                                <span>عکس سفته</span>
+                                                             </Label>
                                                         </div>
 
                                                         <ImgComponent  Type='safte' GetData={this.GetImag.bind(this)}/>
+                                                        {
+                                                            axError["safte"].length>1?<span className=" invalid-feedback d-block">{axError["safte"]} </span>:""
+                                                        }
                                                     </FormGroup>
                                                 </div>
                                                 <div className="col-sm-4">
                                                     <FormGroup className="form-group  position-relative ">
                                                         <div className='d-flex justify-content-start'>
                                                             <Label>
-                                                                <IntlMessages id="عکس سوپیشینه" />
-                                                            </Label>
+                                                                <span>عکس سوپیشینه</span>
+                                                             </Label>
                                                         </div>
                                                         <ImgComponent  Type='soePishine' GetData={this.GetImag.bind(this)}/>
+                                                        {
+                                                            axError["soePishine"].length>1?<span className=" invalid-feedback d-block">{axError["soePishine"]} </span>:""
+                                                        }
                                                     </FormGroup>
                                                 </div>
                                             </div>

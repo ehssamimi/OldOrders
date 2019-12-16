@@ -20,6 +20,9 @@ import {
 import ImgComponent from "../Sub/ImgComponent";
 import {WithWizard} from "react-albus/lib";
 import WizardBottonNavigations from "../Sub/WizardBottonNavigations";
+import Loader from "../../../HomePages/Sub/Loader/Loader";
+import {sendImg, UpdateChichiManContactInfo} from "../../../functions/ServerConnection";
+import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
 const SignupSchema = Yup.object().shape({
     //
     // Kind: Yup.object()
@@ -61,6 +64,7 @@ class Step6 extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state={
             loaderActive:true,
+            showLoader:false
         }
     }
 
@@ -72,7 +76,7 @@ class Step6 extends Component {
 
     }
 
-    handleSubmit = (values, { setSubmitting }) => {
+    handleSubmit = async (values, { setSubmitting }) => {
         const payload = {
             ...values,
             // ChanceType: values.ChanceType.value,
@@ -80,8 +84,62 @@ class Step6 extends Component {
 
         };
         console.log(payload);
-        let send=document.getElementById("sendItems");
-        send.click()
+
+        this.setState({
+            showLoader:true
+        });
+
+
+        // Bank: "سپه"
+        // Card: 60292556974548960000
+        // Hesab: 60292556974548960000
+        // Name: "احسان صمیمی "
+        // Shaba: "23165215]ريال"
+        // Shobe: "میدان امام "
+
+         let Data={
+            "PhoneNumber": this.props.PhoneNumber,
+            "Name": payload.Name,
+            "CardNumber": payload.Card,
+            "AccountNumber": payload.Hesab,
+            "BankName": payload.Bank,
+            "IBAN": payload.Shaba,
+            "BankBranch": payload.Shobe
+        };
+        console.log(Data);
+
+        // let Register = await UpdateChichiManContactInfo(JSON.stringify(Data));
+        // console.log(Register);
+        // this.setState({
+        //     showLoader: false
+        // });
+        // let {state, Description} = Register;
+        // if (state) {
+        //     NotificationManager.success(
+        //         "congratulation",
+        //         "اطلاعات شما با موفقیت ثبت شد",
+        //         3000,
+        //         null,
+        //         null,
+        //         "success"
+        //     );
+        //     let send=document.getElementById("sendItems");
+        //     send.click();
+        // } else {
+        //     NotificationManager.error(
+        //         "error",
+        //         Description,
+        //         3000,
+        //         null,
+        //         null,
+        //         "error"
+        //     );
+        // }
+
+
+
+        // let send=document.getElementById("sendItems");
+        // send.click()
         // console.log(values);
         // let headers = {
         //     'Id': `${Const.ID}`,
@@ -114,23 +172,18 @@ class Step6 extends Component {
         //     console.log(Description)
         // }).catch(error=>{console.log(error)});
     };
-//     Kind: Yup.object()
-// .shape({
-//            label: Yup.string().required(),
-//     value: Yup.string().required()
-// })
-// .nullable()
-//     .required("نوع وسیله نقلیه اجباری است!"),
-//
-//     DLN: Yup.number()
-//     .required("شماره تلفن اجباری است!"),
-//     VCN: Yup.number()
-//     .required("شماره شناسنامه اجباری است!"),
-//     Plaque: Yup.number()
-//     .required("شماره کد ملی  اجباری است!"),
+
 
     render() {
         return (
+
+            this.state.showLoader?
+                <div className='d-flex justify-content-center align-items-center'>
+                    <div className='col-6'>
+                        <Loader/>
+                    </div>
+                </div>
+                :
             <div dir='rtl'>
                 <Row className="mb-4">
                     <Colxx xxs="12">

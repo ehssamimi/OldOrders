@@ -729,7 +729,7 @@ export async  function  DeleteHomePages(Name){
 }
 
 // ***************************************************************************ChiChiMan**********************************************
-// ******Register***********
+// ******SignUp***********
 export async  function  RegisterChichiMan(Data){
      let headers = {
         'Token': Const.Token,
@@ -778,6 +778,46 @@ export async  function  UpdateChichiManPersonalInfo(data){
     };
     let resp ={state:false,Description:""};
      await axios.post(`${Const.ChichiMan}admin/chichiman/info/personal`,data).then(function (response) {
+        let {status} = response;
+        let{State,Description}=JSON.parse(response.data);
+        // console.log(response);
+        if (status===200 ){
+            resp ={state:State,Description:Description};
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}
+export async  function  UpdateChichiManVehicleInfo(data){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    let resp ={state:false,Description:""};
+     await axios.post(`${Const.ChichiMan}admin/chichiman/info/delivery`,data).then(function (response) {
+        let {status} = response;
+        let{State,Description}=JSON.parse(response.data);
+        // console.log(response);
+        if (status===200 ){
+            resp ={state:State,Description:Description};
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}
+export async  function  UpdateChichiManContactInfo(data){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    let resp ={state:false,Description:""};
+     await axios.post(`${Const.ChichiMan}admin/chichiman/info/contract`,data).then(function (response) {
         let {status} = response;
         let{State,Description}=JSON.parse(response.data);
         // console.log(response);
