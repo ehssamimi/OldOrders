@@ -89,7 +89,6 @@ const data = [
             }
         ]
     },
-
     {
         id: "ChchiMan",
         icon: "iconsminds-digital-drawing",
@@ -260,6 +259,75 @@ const data = [
                 label: "ادمین",
                 to: "/bug-report/admin",
             },
+        ]
+    },
+    {
+        id: "content",
+        icon: "iconsminds-mail",
+        label: "محتوا",
+        to: "/content",
+        subs: [{
+            icon: "iconsminds-smartphone-4",
+            id: "product",
+            label: "محصولات",
+            to: "/content/product",
+            subs: [{
+                icon: "iconsminds-posterous",
+                label: "همه",
+                to: "/content/product/all"
+            }, {
+                icon: "iconsminds-add",
+                label: "اضافه کردن",
+                to: "/content/product/add"
+            }, {
+                icon: "iconsminds-file-edit",
+                label: "حذف و ویرایش",
+                to: "/content/product/delete-edit"
+            },
+            ]
+        },
+            {
+                icon: "iconsminds-posterous",
+                id: "categories",
+                label: "دسته بندی",
+                to: "/content/category",
+                subs: [{
+                    icon: "iconsminds-posterous",
+                    label: "همه",
+                    to: "/content/category/all"
+                }, {
+                    icon: "iconsminds-add",
+                    label: "اضافه کردن",
+                    to: "/content/category/add"
+                }, {
+                    icon: "iconsminds-file-edit",
+                    label: "حذف و ویرایش",
+                    to: "/content/category/delete-edit"
+                },
+                ]
+            },
+            {
+                icon: "iconsminds-delicious",
+                id: "sub-category",
+                label: "زیر دسته",
+                to: "/content/sub-category",
+                subs: [{
+                    icon: "iconsminds-posterous",
+                    label: "همه",
+                    to: "/content/sub-category/all"
+                }, {
+                    icon: "iconsminds-add",
+                    label: "اضاقه کردن",
+                    to: "/content/sub-category/add"
+                }, {
+                    icon: "iconsminds-file-edit",
+                    label: "حذف و ویرایش",
+                    to: "/content/sub-category/delete-edit"
+                },
+                ]
+            },
+
+
         ]
     },
 ];

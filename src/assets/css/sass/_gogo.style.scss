@@ -92,7 +92,7 @@ $theme-color-orange: #e2863b;
 $theme-color-red: #880a1f;
 
 $info-color: #3195a5;
-$success-color: #3e884f;
+$success-color: #68e585;
 $warning-color: #b69329;
 $error-color: #c43d4b;
 
@@ -9364,6 +9364,9 @@ font-family: IRANSans !important;
 .fs-5vw{
   font-size: 5vw!important;
 }
+.fs-06vw{
+  font-size: 0.6vw!important;
+}
 .bg-black{
   background: #110d0a !important;
 }
@@ -9462,4 +9465,71 @@ font-family: IRANSans !important;
   background: $warning-color;
 }.background9{
   background: $error-color;
+}
+//*************Product *******
+.bg-circle-product{
+  width: 7vw;
+  height:7vw ;
+  border-radius:50% ;
+  background: #ebf4ff !important;
+}
+.ax-Product-circle{
+  position: absolute;
+  top: -12%;
+  width: 4vw;
+  height:7vw;
+  border-radius:50%;
+ }
+.color-gray{
+  color: #546e7a;
+}
+.br-product{
+  border-radius:3%!important;
+}
+.quarter-circle-top-right{
+  width: 100%;
+  height: 80%;
+  background: #eceff1;
+  border-radius: 0 0 0 100%;
+  -moz-border-radius: 0 0 0 100%;
+  -webkit-border-radius: 0 0 0 100%;
+}
+.product-div-img-detail{
+  position: absolute;
+  top: 20%;
+  right: 25%;
+  width: 55%;
+  height: 60%;
+}
+.lineOverText{
+  text-decoration-line: line-through;
+}
+.border-box{
+  box-sizing: border-box;
+}
+.padding-box{
+  box-sizing: padding-box;
+}
+.content-box{
+  box-sizing: content-box;
+}
+.bg-off-Product{
+  position: absolute;
+  top:80%;
+  right:0 ;
+}
+.badge2 {
+  padding: 0.70em 0.85em 0.7em 0.85em;
+  font-size: 74%;
+
+  &.badge2-pill {
+    padding-right: 1.4em;
+    padding-left: 1.4em;
+  }
+}
+.badge-outline-success2 {
+  background: unset;
+  border: 2px solid #36de5c;
+  border-radius: 25%;
+  color: #36de5c;
 }

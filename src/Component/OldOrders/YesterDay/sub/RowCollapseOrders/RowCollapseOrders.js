@@ -28,9 +28,8 @@ class RowCollapseOrders extends Component {
         let Keys;
         Keys=Object.keys(sub);
         this.setState({
-           sub,Keys
+            sub,Keys
         });
-
     }
     toggle() {
         this.setState(state => ({ collapse: !state.collapse }));

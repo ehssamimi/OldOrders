@@ -831,3 +831,42 @@ export async  function  UpdateChichiManContactInfo(data){
     });
     return resp;
 }
+
+
+// **************************Content**************
+export async  function  GetAllProduct(id){
+
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    var resp ="";
+    await axios.get(`${Const.product}admin/product/all?page=${id}`, {headers: headers}).then(function (response) {
+         // console.log(response.data);
+        let {Description}=response.data;
+        // let {Items} = response.data;
+        resp=Description;
+    }).catch(function (error) {
+        console.log(error);
+        resp='error'
+    });
+    return resp;
+}
+export async  function  GetProductDetail(id){
+
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    var resp ="";
+    await axios.get(`${Const.product}admin/product/${id}`, {headers: headers}).then(function (response) {
+         // console.log(response.data);
+        let {Description}=response.data;
+        // let {Items} = response.data;
+        resp=Description;
+    }).catch(function (error) {
+        console.log(error);
+        resp='error'
+    });
+    return resp;
+}

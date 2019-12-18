@@ -37,6 +37,9 @@ const HomePages = React.lazy(() =>
 const BugReporters = React.lazy(() =>
     import(/* webpackChunkName: "views-error" */ './views/Bug-Report/BugReportersMain')
 );
+const Content = React.lazy(() =>
+    import(/* webpackChunkName: "views-error" */ './views/Content/ContentMain')
+);
 
 
 const AuthRoute = ({ component: Component, authUser, ...rest }) => {
@@ -120,10 +123,10 @@ class App extends Component {
                         authUser={this.state.loginUser}
                         component={BugReporters}
                     />
-                    {/*<Route*/}
-                        {/*path="/orders"*/}
-                        {/*render={props => <MainOrders {...props} />}*/}
-                    {/*/>*/}
+                    <Route
+                        path="/content"
+                        render={props => <Content {...props} />}
+                    />
                   <Route
                     path="/error"
                     exact
