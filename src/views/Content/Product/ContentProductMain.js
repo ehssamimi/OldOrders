@@ -32,8 +32,9 @@ class App extends Component {
                         />
                         <Route
                             path={`${match.url}/each/info/:Id`}
-                            render={props => <Info {...props} />}
-                        />
+
+                            render={(props) => <Info {...props} />}
+                         />
                         <Route
                             path={`${match.url}/add`}
                             render={props => <Add {...props} />}

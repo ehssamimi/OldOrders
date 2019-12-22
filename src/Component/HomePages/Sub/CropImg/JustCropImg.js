@@ -1,3 +1,4 @@
+
 import React, {Component} from 'react';
 import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css'; // see installation section above for versions of NPM older than 3.0.0
@@ -16,7 +17,7 @@ import imageCompression from 'browser-image-compression';
 
 const cropper = React.createRef(null);
 
-class CropImgCropper extends Component {
+class JustCropImg extends Component {
     constructor(props) {
         super(props);
         this.state =
@@ -24,8 +25,7 @@ class CropImgCropper extends Component {
                 src: '',
                 cropResult: null,
                 type:'',name:'',
-                id:'',
-                error:{'name':"",'id':"",'DestinationString':''}
+                 error:{'name':"",'DestinationString':''}
             };
         this.onChangeImage = this.onChangeImage.bind(this);
         this.cropImage = this.cropImage.bind(this);
@@ -57,7 +57,7 @@ class CropImgCropper extends Component {
         if (typeof this.cropper.getCroppedCanvas() === 'undefined') {
             return;
         }
-        var validate=true; ; var error={'name':"",'id':"",'DestinationString':''};
+        var validate=true; ; var error={'name':"",'DestinationString':''};
         if (this.state.src==='') {
             validate=false;
             error['name']='لطفا عکس رو انتخاب کنید ';
@@ -69,12 +69,7 @@ class CropImgCropper extends Component {
         //
         //     // alertTxt+='DestinationString is not found ';
         // }
-        if(this.state.id===''){
-            validate=false;
-            error['id']='لطفانام اسلایدر انتخاب کنبد';
 
-            // alertTxt+='destination is not found ';
-        }
         this.setState({
             error
         });
@@ -208,45 +203,22 @@ class CropImgCropper extends Component {
             <div>
                 {/***********Suggest********/}
                 {/*<div className='col-12'>*/}
-                    {/*<FormGroup className="form-group  position-relative has-float-label w-100 ">*/}
-                        {/*<Label>*/}
-                            {/*<IntlMessages id={'نوع محصول'} />*/}
-                        {/*</Label>*/}
+                {/*<FormGroup className="form-group  position-relative has-float-label w-100 ">*/}
+                {/*<Label>*/}
+                {/*<IntlMessages id={'نوع محصول'} />*/}
+                {/*</Label>*/}
 
-                        {/*/!*<AutoSuggestEdit*!/*/}
-                            {/*/!*placeholder={"type item name"}*!/*/}
-                            {/*/!*data={rightData}*!/*/}
-                            {/*/!*onChange={value => this.handelChange(this, value)*!/*/}
-                            {/*/!*}*!/*/}
-                        {/*/>*/}
+                {/*/!*<AutoSuggestEdit*!/*/}
+                {/*/!*placeholder={"type item name"}*!/*/}
+                {/*/!*data={rightData}*!/*/}
+                {/*/!*onChange={value => this.handelChange(this, value)*!/*/}
+                {/*/!*}*!/*/}
+                {/*/>*/}
 
-                    {/*</FormGroup>*/}
+                {/*</FormGroup>*/}
                 {/*</div>*/}
 
-                <div className="col-sm-12">
 
-                    <FormGroup className="form-group  position-relative has-float-label w-100">
-                        <div className='d-flex justify-content-end'>
-                            <Label className='z-5'>
-                                <span> مقصد </span>
-                                {/*<IntlMessages id={"مقصد"} />*/}
-                            </Label>
-                        </div>
-                        <InputGroup className="mb-3">
-                            <Input
-                                type="text"
-                                id="id"
-                                name="id"
-                                onChange={this.handelChangeName}
-                                label={this.state.id ||'انتخاب عکس'}
-                            />
-                         </InputGroup>
-
-                    </FormGroup>
-                    {
-                        this.state.error['id']!==''?<span className='fs-08vw color-theme-1 mr-3 d-flex justify-content-end mb-5'  >{this.state.error['id']}</span>:''
-                    }
-                </div>
 
 
                 <div className="col-sm-12">
@@ -297,4 +269,4 @@ class CropImgCropper extends Component {
     }
 }
 
-export default CropImgCropper;
+export default JustCropImg;

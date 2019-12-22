@@ -870,3 +870,46 @@ export async  function  GetProductDetail(id){
     });
     return resp;
 }
+export  async  function  AddProduct(data){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    console.log(data);
+    let resp ={state:false,Description:""};
+    await axios.post(`${Const.product}admin/product/add`, data , {headers: headers}).then(function (response) {
+        let {status} = response;
+        let{State,Description}=JSON.parse(response.data);
+        // console.log(response);
+        if (status===200 ){
+            resp ={state:State,Description:Description};
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}
+
+export  async  function  getAllCategories( ){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    let resp ={state:false,Description:""};
+    await axios.get(`${Const.product}category/get/all-name`).then(function (response) {
+        let {status} = response;
+        console.log( (response.data))
+        let{Result}= (response.data);
+        console.log(Result);
+        if (status===200 ){
+            resp = Result;
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}

@@ -27,10 +27,10 @@ class PreviewProduct extends Component {
         let {Off}=Main
         // Enable: true, Percentage: 0.1
         if (Off!==undefined) {
-            console.log(Off['Enable']);
-            console.log(Off['Percentage']);
+            // console.log(Off['Enable']);
+            // console.log(Off['Percentage']);
         }else {
-            console.log("hasent off")
+            // console.log("hasent off")
         }
 
 

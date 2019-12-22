@@ -154,7 +154,7 @@ class Step3 extends Component {
                 console.log(idax)
                 ImgeId.push(idax)
             }
-            console.log(ImgeId)
+            console.log(ImgeId);
             // ImgeId = ["5df62418386b8a3235aefde7",
             //     "5df6241a386b8a3235aefde8",
             //     "5df6241c696e5a631f0dc9c8"];

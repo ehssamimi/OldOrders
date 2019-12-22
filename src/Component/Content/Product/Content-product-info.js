@@ -5,7 +5,7 @@ class ContentProductInfo extends Component {
     render() {
         return (
             <div>
-                <PreviewProductDetail/>
+                <PreviewProductDetail {...this.props}/>
             </div>
         );
     }

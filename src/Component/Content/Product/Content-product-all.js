@@ -62,6 +62,9 @@ class ContentProductAll extends Component {
     render() {
         let {productSeparate}=this.state;
         console.log(productSeparate.length);
+        console.log(this.props);
+
+
         return (
 
                 <div className='d-flex  w-100 ' style={{'flex-wrap': 'wrap'}}>
