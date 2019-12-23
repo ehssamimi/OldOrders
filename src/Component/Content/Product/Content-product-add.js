@@ -9,7 +9,7 @@ import {FormikReactSelect} from "../../../containers/form-validations/FormikFiel
 import ImgComponent from "../../ChichiMan/ChiChi Man Sign In/Sub/ImgComponent";
 import WizardBottonNavigations from "../../ChichiMan/ChiChi Man Sign In/Sub/WizardBottonNavigations";
 import * as Yup from "yup";
-import {sendImg, UpdateChichiManPersonalInfo,getAllCategories,AddProduct} from "../../functions/ServerConnection";
+import {sendImg, ProductDetail,getAllCategories,AddProduct} from "../../functions/ServerConnection";
 import NotificationManager from "../../../components/common/react-notifications/NotificationManager";
 import CropImgCropper from "../../HomePages/Sub/CropImg/CropImgCropper";
 import JustCropImg from "../../HomePages/Sub/CropImg/JustCropImg";
@@ -60,7 +60,20 @@ class ContentProductAdd extends Component {
             ax1File: "",
             ax1: ax,
             axError: '',
-            showLoader: false
+            showLoader: false,
+            initialData:{
+                Name:'',
+                Manufacture:'',
+                Count: "",
+                Price:'',
+                percent:'',
+                Category:{ },
+                sub_category:{ },
+                isOff:{value: false ,label: "تخفیف ندارد"},
+                Description:"" ,
+                Attribute:""
+                // TagKind: {value: "موتور",label: "موتور"},
+            }
         }
     }
 
@@ -90,11 +103,54 @@ class ContentProductAdd extends Component {
                 :[{ value:"we have not sub category", label: "we have not sub category" }] ;
             Subs[each.name]=SubCatCondition;
         });
+        let Description = await ProductDetail('5d907a3a007049cfe08e3f88');
+        let productDetail = Description['Description'];
+        console.log(productDetail)
+        // _id: "5d907a3a007049cfe08e3f88"
+        // UniqueValue: "برنج ارزون↵"
+        // Name: "برنج ارزون↵"
+        // Count: 19
+        // SalesCount: null
+        // ViewCount: 0
+        // Create_at: "2019-09-29 14:02:38.988889"
+        // Updated_at: "2019-09-29 14:02:38.988906"
+        // Attribute: "۱۰ گرم"
+        // Manufacture: "ارزون↵"
+        // PrevPrice: 1000
+        // CurrentPrice: 2572
+        // Description: "description1"
+        // Category: "گروه ۲"
+        // Images: ["http://chichiapp.ir:3005/download/5d9884457c1e36d6e452598e"]
+        // Off: {Enable: true, Percentage: 0.1}
+
+
+
+        let initialData={
+            Name: productDetail['UniqueValue'],
+            Manufacture: productDetail['Manufacture'],
+            Count: productDetail['Count'],
+            Price: productDetail['CurrentPrice'],
+            percent: productDetail['Off']['Percentage'],
+            Category: {},
+            sub_category: {},
+            isOff: productDetail['Off']['Enable'] === false ? {value: false, label: "تخفیف ندارد"} : {
+                value: true,
+                label: "تخفیف دارد"
+            },
+            Description: productDetail['Description'],
+            Attribute: productDetail['Attribute']
+            // TagKind: {value: "موتور",label: "موتور"},
+        };
+
+
+
+
+
         // console.log(CategoryOption);
         // console.log(Subs);
 
          this.setState({
-            CategoryOption,Subs
+            CategoryOption,Subs,initialData
         })
 
 
@@ -197,14 +253,6 @@ class ContentProductAdd extends Component {
             });
             // console.log(payload);
 
-            // Name: "Hny"
-            // Manufacture: "132"
-            // Count: 88888888
-            // Price: 444444444
-            // percent: 12
-            // Category: undefined
-            // sub_category: "نوشیدنی"
-            // isOff: "تخفیف دارد"
 
             let idax = await sendImg(ax1File, 'Public');
 
@@ -347,19 +395,11 @@ class ContentProductAdd extends Component {
                                          </div>
                                     </CardTitle>
                                     <Formik
-                                        initialValues={{
-                                            Name:'',
-                                            Manufacture:'',
-                                            Count: "",
-                                            Price:'',
-                                            percent:'',
-                                            Category:{ },
-                                            sub_category:{ },
-                                            isOff:{value: false ,label: "تخفیف ندارد"},
-                                            Description:"" ,
-                                            Attribute:""
-                                            // TagKind: {value: "موتور",label: "موتور"},
-                                        }}
+                                        initialValues={
+                                            this.state.initialData
+
+
+                                        }
                                         validationSchema={SignupSchema}
                                         onSubmit={this.handleSubmit}
                                     >
@@ -584,17 +624,11 @@ class ContentProductAdd extends Component {
                                                         }
 
 
-
-
                                                     </div>
                                                     <button className="btn btn-success" type="submit">
                                                         فرستادن
                                                     </button>
                                                 </div>
-
-
-
-
 
                                              </Form>
                                         )}
@@ -613,7 +647,6 @@ class ContentProductAdd extends Component {
                         <ModalBody>
                             <div className='col-12 d-flex flex-column'>
                                 { <JustCropImg label='عکس اول' aspect={1/1} GetImgFile={this.GetImgFile.bind(this)}  /> }
-
                             </div>
                         </ModalBody>
                     </Modal>

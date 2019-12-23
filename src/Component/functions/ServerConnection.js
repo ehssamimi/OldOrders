@@ -834,6 +834,8 @@ export async  function  UpdateChichiManContactInfo(data){
 
 
 // **************************Content**************
+
+// **************product********
 export async  function  GetAllProduct(id){
 
     let headers = {
@@ -891,6 +893,30 @@ export  async  function  AddProduct(data){
     });
     return resp;
 }
+export  async  function  ProductDetail(id){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    // console.log(id);
+    let resp ={state:false,Description:""};
+    await axios.get(`${Const.product}admin/product/${id}` , {headers: headers}).then(function (response) {
+        let {status} = response;
+        let{State,Description}= response.data ;
+        // console.log(response);
+        // console.log(Description);
+        if (status===200 ){
+            resp ={state:State,Description:Description};
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}
+
+// **************category********
 
 export  async  function  getAllCategories( ){
     let headers = {
@@ -900,11 +926,35 @@ export  async  function  getAllCategories( ){
     let resp ={state:false,Description:""};
     await axios.get(`${Const.product}category/get/all-name`).then(function (response) {
         let {status} = response;
-        console.log( (response.data))
+        // console.log( (response.data))
         let{Result}= (response.data);
-        console.log(Result);
+        // console.log(Result);
         if (status===200 ){
             resp = Result;
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}
+export  async  function  getAllCategoriesList( ){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    let resp ={state:false,Description:""};
+    await axios.get(`${Const.product}admin/category/get-all`).then(function (response) {
+         // console.log( (response ))
+        let{data,status}= (response );
+        // console.log(data)
+        // console.log(status)
+        // console.log(Result);
+        if (status===200 ){
+            resp = data;
+        }else{
+            resp = "not recognize error";
         }
         // resp = status;
     }).catch(function (error) {

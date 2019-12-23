@@ -31,13 +31,14 @@ class App extends Component {
                                 render={props => <All {...props} />}
                             />
                             <Route
+                                path={`${match.url}/detail/info/:Id`}
+                                render={props => <Info {...props} />}
+                            />
+                            <Route
                                 path={`${match.url}/add`}
                                 render={props => <Add {...props} />}
                             />
-                            <Route
-                                path={`${match.url}/all/info/:Id`}
-                                render={props => <Info {...props} />}
-                            />
+
                             <Route
                                 path={`${match.url}/delete-edit`}
                                 render={props => <Update {...props} />}
