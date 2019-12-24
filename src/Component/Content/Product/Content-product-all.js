@@ -40,22 +40,7 @@ class ContentProductAll extends Component {
         })
 
 
-        // _id: "5d907a3a007049cfe08e3f88"
-        // UniqueValue: "برنج ارزون↵"
-        // Name: "برنج ارزون↵"
-        // Count: 19
-        // SalesCount: null
-        // ViewCount: 0
-        // Create_at: "2019-09-29 14:02:38.988889"
-        // Updated_at: "2019-09-29 14:02:38.988906"
-        // Attribute: "۱۰ گرم"
-        // Manufacture: "ارزون↵"
-        // PrevPrice: 1000
-        // CurrentPrice: 2572
-        // Description: "description1"
-        // Category: "گروه ۲"
-        // Images: ["http://chichiapp.ir:3005/download/5d9884457c1e36d6e452598e"]
-        // Off: {Enable: true, Percentage: 0.1}
+
 
 
     }

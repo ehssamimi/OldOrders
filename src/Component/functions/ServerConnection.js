@@ -915,6 +915,28 @@ export  async  function  ProductDetail(id){
     });
     return resp;
 }
+export  async  function  getProductinSubCategogy(name,page){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    // console.log(id);
+    let resp ={state:false,Description:""};
+    await axios.get(`${Const.product}admin/product/in/${name}?page=${page}` , {headers: headers}).then(function (response) {
+        let {status} = response;
+        let{State,Description}= response.data ;
+        // console.log(response);
+        // console.log(Description);
+        if (status===200 ){
+            resp ={state:State,Description:Description};
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}
 
 // **************category********
 
@@ -963,3 +985,52 @@ export  async  function  getAllCategoriesList( ){
     });
     return resp;
 }
+export  async  function  getCategoryDetailwithId(id){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    let resp ={state:false,Description:""};
+    await axios.get(`${Const.product}admin/category/get/detail?key=id&value=${id}`).then(function (response) {
+        // console.log( (response ))
+        let{data,status}= (response );
+        // console.log(data)
+        // console.log(status)
+        // console.log(Result);
+        if (status===200 ){
+            resp = data;
+        }else{
+            resp = "not recognize error";
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}
+export  async  function  getCategoryDetailwithName(name){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    let resp ={state:false,Description:""};
+    await axios.get(`${Const.product}admin/category/get/detail?key=name&value=${name}`).then(function (response) {
+        // console.log( (response ))
+        let{data,status}= (response );
+        // console.log(data)
+        // console.log(status)
+        // console.log(Result);
+        if (status===200 ){
+            resp = data;
+        }else{
+            resp = "not recognize error";
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}
+

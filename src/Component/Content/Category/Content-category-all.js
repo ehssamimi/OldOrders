@@ -31,7 +31,6 @@ class ContentCategoryAll extends Component {
                                 <CategoryEachItems data={itemData}/>
                             </Colxx>) :<Loader/>
                         }
-
                     </Row>
          );
     }
