@@ -939,7 +939,31 @@ export  async  function  getProductinSubCategogy(name,page){
 }
 
 // **************category********
-
+export async  function  AddCategory(Data){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    let resp ={state:false,Description:""};
+    console.log(Data);
+    await axios.post(`${Const.product}admin/category/add`, Data).then(function (response) {
+        console.log(response);
+         // let{State,data}=JSON.parse(response);
+        let{status,data}= response ;
+        console.log(status);
+        console.log( data);
+        if (status===200 ){
+            resp ={state:status,Description:data};
+        }else {
+            resp ={state:status,Description:data};
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}
 export  async  function  getAllCategories( ){
     let headers = {
         'Token': Const.Token,
