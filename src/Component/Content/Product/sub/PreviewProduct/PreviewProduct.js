@@ -20,11 +20,19 @@ class PreviewProduct extends Component {
         Keys=Object.keys(sub);
         this.setState({
             sub,Keys,Main
+        },()=>{
+
+            console.log('sub');
+            console.log(sub)
+            console.log('Main');
+            console.log(Main)
+            console.log('Keys');
+            console.log(Keys)
         });
     }
     render() {
         let{sub,Keys,Main}=this.state;
-        let {Off}=Main
+                 let {Off}=Main
         // Enable: true, Percentage: 0.1
         if (Off!==undefined) {
             // console.log(Off['Enable']);
@@ -38,21 +46,27 @@ class PreviewProduct extends Component {
             <div className={['   h-40vh align-items-center  mt-1', this.props.class.length>1?this.props.class:"" ].join(' ')}>
                 <NavLink to={`/content/product/each/info/${Main['id']}`} className="d-flex">
                      <Card className='d-flex flex-column h-100 align-items-center br-product w-100'>
+                         {
+                             Off !== undefined ?
+                                 Off['Enable'] ?
+                                     <div className='w-100'>
+                                         <div className='triangle '>
+                                         </div>
+                                         <span className='persentSale'>{ Off['Percentage']*100  }%</span>
+                                     </div>
+                                     :
+                                     ""
+                                 : ""
+                         }
+
+
                         <div className="h-20vh d-flex align-items-end  ">
+
 
                             <div className="bg-circle-product d-flex justify-content-center align-items-center position-relative">
                                 <div className="ax-Product-circle">
                                     <img src={Main['Images']} alt={ax} className="img-self-fill"/>
                                 </div>
-                                {
-                                    Off !== undefined ?
-                                        Off['Enable'] ?
-                                            <span
-                                                className="badge2 badge-outline-success2 mb-1 mr-1 badge2-pill bg-off-Product  ">{Off['Percentage']*100} %</span>
-                                            :
-                                            ""
-                                        : ""
-                                }
                             </div>
 
                         </div>
@@ -62,7 +76,7 @@ class PreviewProduct extends Component {
                                 {
                                     Off !== undefined ?
                                         Off['Enable'] ?
-                                            <div className='d-flex col-8 offset-2 '>
+                                            <div className='d-flex col-10 offset-1 '>
                                             <span className="fs-08vw color-gray lineOverText text-muted  "
                                                   dir='rtl'>{Main['PrevPrice']} تومن </span>
                                                 <span className="fs-08vw color-gray   ml-auto"

@@ -8,7 +8,7 @@ import {
 } from "reactstrap";
 import {NavLink} from "react-router-dom";
 import SubCategoryElement from "./SUb/SubCategoryElement/SubCategoryElement";
-import {AddCategory, getCategoryDetailwithId, sendImg} from "../../functions/ServerConnection";
+import {AddCategory, getCategoryDetailwithId, sendImg,Add_Remove_SubCategory} from "../../functions/ServerConnection";
 import PreviewProduct from "../Product/sub/PreviewProduct/PreviewProduct";
 import NotificationManager from "../../../components/common/react-notifications/NotificationManager";
 import TweenMax from 'gsap/TweenMax'
@@ -20,7 +20,7 @@ class ContentCategoryInfo extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.state={
-            SubCatInfo:undefined,name:'',error:{name :""},loader:false
+            SubCatInfo:undefined,name:'',error:{name :""},loader:false,catName:''
         }
     }
 
@@ -28,40 +28,140 @@ class ContentCategoryInfo extends Component {
         const {match: {params}} = this.props;
         // console.log(params.Id);
         let CatInfo= await getCategoryDetailwithId(params.Id);
-        // console.log(CatInfo['sub_categories'])
-        this.setState({
-            SubCatInfo:CatInfo['sub_categories']
+         this.setState({
+            SubCatInfo:CatInfo['sub_categories'],
+            catName:CatInfo['name']
         })
 
     }
     handleChange(event) {
         this.setState({name: event.target.value});
     }
-    handelClickAdd(){
-        console.log("arsenal")
-        let input=document.getElementById('input');
-        let icon=document.getElementById('icon');
-        // TweenLite.to('#input', 2, {width: "100%"});
-        if (icon.classList.contains("iconsminds-previous")){
 
+    async handleSubmit(event) {
+         var  validate=true;
+        // error:{name :"", ax:""}
+
+        let{name }=this.state;
+        console.log(name);
+         if (name.length<1){
+            validate = false;
+            let {error} = this.state;
+            error['name'] = "اسم باید مشخص شود ";
+            this.setState({
+                error
+            })
+        }else {
+            let {error} = this.state;
+            error['name'] = "";
+            this.setState({
+                error
+            })
         }
 
 
+        if (validate===true){
+            this.setState({
+                loader:true
+            });
 
+             let{name,catName}=this.state;
+            // action,category,subcategory
+            let addCat=await Add_Remove_SubCategory( 'add',catName,name);
+            // console.log(addCat)
+            this.setState({
+                loader:false
+            });
+            // console.log(addCat)
+            let {state,Description}= addCat ;
+            if (state===200){
+                NotificationManager.success(
+                    "congratulation",
+                    "your Sub-category add",
+                    3000,
+                    null,
+                    null,
+                    "success"
+                );
+                return validate;
 
-
-
-            //
-            if (!input.classList.contains("active")) {
-                TweenMax.fromTo(input, 1, { opacity: 0,}, {width:0});
-                input.classList.add("active");
-                icon.classList.remove("iconsminds-previous");
-                icon.classList.add("iconsminds-add");
             } else {
-                TweenMax.fromTo(input, 1 ,{ opacity: 1,  }, {width:'98%'});
-                input.classList.remove("active");
-                input.classList.remove("iconsminds-add");
+                NotificationManager.error(
+                    "error",
+                    Description,
+                    3000,
+                    null,
+                    null,
+                    "error"
+                );
+                return false;
+            }
+
+        }else {
+            return validate;
+        }
+
+
+    }
+
+
+    async UpdateSubCategory(){
+        const {match: {params}} = this.props;
+        let CatInfo= await getCategoryDetailwithId(params.Id);
+        this.setState({
+            SubCatInfo:CatInfo['sub_categories'],
+            catName:CatInfo['name']
+        },()=>{
+            console.log(this.state.SubCatInfo)
+        });
+    }
+
+
+
+
+    async handelClickAdd(){
+         let input=document.getElementById('input');
+        let icon=document.getElementById('icon');
+        // TweenLite.to('#input', 2, {width: "100%"});
+
+            if (!input.classList.contains("active")) {
+                TweenMax.fromTo(input, 1, { opacity: 1}, {width:'96%'});
+                input.classList.add("active");
+                // icon.classList.remove("iconsminds-previous");
+                // icon.classList.add("iconsminds-add");
                 icon.classList.add("iconsminds-previous");
+                icon.classList.remove("iconsminds-add");
+            } else {
+                 console.log(this.state.catName)
+               let Submit= await this.handleSubmit();
+                console.log(Submit);
+                if (Submit){
+                    const {match: {params}} = this.props;
+                    // console.log(params.Id);
+                    let CatInfo= await getCategoryDetailwithId(params.Id);
+                    this.setState({
+                        SubCatInfo:CatInfo['sub_categories'],
+                        catName:CatInfo['name']
+                    },()=>{
+                        console.log(this.state.SubCatInfo)
+                    });
+                    TweenMax.fromTo(input, 1 ,{ opacity: 0,  }, {width:0});
+                    input.classList.remove("active");
+                    // input.classList.remove("iconsminds-add");
+                    // icon.classList.add("iconsminds-previous");
+                    icon.classList.add("iconsminds-add");
+                    icon.classList.remove("iconsminds-previous");
+                } else {
+
+                }
+
+
+
+
+
+                // let addSubCategory=await Add_Remove_SubCategory('add',category,subcategory)
+
+
             }
 
 //         TweenMax.to(input, 1, {width: "100%"});
@@ -85,111 +185,39 @@ class ContentCategoryInfo extends Component {
     async
 
 
-    async handleSubmit(event) {
-        event.preventDefault();
-        var  validate=true;
-        // error:{name :"", ax:""}
 
-        let{name,ax1File}=this.state;
-        console.log(name);
-        console.log(ax1File);
-        if (name.length<1){
-            validate = false;
-            let {error} = this.state;
-            error['name'] = "اسم باید مشخص شود ";
-            this.setState({
-                error
-            })
-        }else {
-            let {error} = this.state;
-            error['name'] = "";
-            this.setState({
-                error
-            })
-        }
-
-
-        if (validate===true){
-            this.setState({
-                loader:true
-            })
-            console.log("varidate")
-            let{name,ax1File}=this.state;
-            let idax = await sendImg(ax1File, 'Public');
-            let Data={
-                "name": name,
-                "image": idax
-            };
-            console.log(JSON.stringify(Data));
-            let addCat=await AddCategory(JSON.stringify(Data))
-            this.setState({
-                loader:false
-            });
-
-            console.log(addCat)
-            let{state,Description}= addCat ;
-            if (state===200){
-                NotificationManager.success(
-                    "congratulation",
-                    "your category add",
-                    3000,
-                    null,
-                    null,
-                    "success"
-                );
-            } else {
-                NotificationManager.error(
-                    "error",
-                    Description,
-                    3000,
-                    null,
-                    null,
-                    "error"
-                );
-            }
-
-        }
-
-
-    }
     render() {
-        let{SubCatInfo,error}=this.state;
-        // console.log(CatInfo)
+        let{SubCatInfo,error,catName}=this.state;
+        console.log(SubCatInfo)
         return (
             <Card>
-                <div className='col-sm-12 row m-0' dir='rtl'
+                <div className='col-sm-12   m-0' dir='rtl'
                 >
                     <div className="col-sm-12 col-md-3  d-flex align-items-center">
                         <div className='h-25vh w-100'>
                             <img src={ax} alt="categoryImg" className='card-img-top'/>
                         </div>
                     </div>
-                    <div className='d-flex flex-column col-sm-12 col-md-9'>
+                    <div className='d-flex flex-column col-sm-12   p-0'>
                         {
                             SubCatInfo !== undefined ?
                                 SubCatInfo.map((name, index) =>
-                                    <SubCategoryElement {...this.props} name={name} key={index}/>
+                                    <SubCategoryElement {...this.props} name={name} key={index} catName={catName} UpdateSubCategory={this.UpdateSubCategory.bind(this)}/>
                                 ) :
                                 <div className='d-flex justify-content-center align-items-center'><p>این دسته بندی هیچ
                                     زیر مجموعه ای ندارد</p></div>
                         }
 
-                        <div className='d-flex col-12 h-1vh'>
+                        <div className='d-flex col-12 h-1vh p-0'>
                             <div id='icon' className='glyph-icon iconsminds-add purpleColor fs-23vw' onClick={this.handelClickAdd.bind(this)}></div>
-                            <form onSubmit={this.handleSubmit}  className='col-12'  >
+                            <form onSubmit={this.handleSubmit}  className='col-12 p-0'  >
                                 <div className="d-flex flex-column align-items-center justify-content-center">
-                                    <div className='w-100 d-flex ' >
-                                        <FormGroup className="form-group has-float-label position-relative">
-                                            {/*<Label>*/}
-                                                {/*<span>نام</span>*/}
-                                            {/*</Label>*/}
-                                            <input type="text"  id='input' className="form-control opacity-0 " value={this.state.name || ''}
+                                    <div className='w-100 d-flex  '   >
+                                        <FormGroup className="form-group has-float-label position-relative opacity-0" id='input'>
+                                            <input type="text"  className="form-control mt-2  " value={this.state.name || ''}
                                                    onChange={this.handleChange}  />
-
                                         </FormGroup>
                                      </div>
-
-
                                     <div className='d-flex flex-column col-6'>
                                         {
                                             error['name'].length>1?<span className='alert alert-danger mt-3 col-12'>{error['name']}</span>:""

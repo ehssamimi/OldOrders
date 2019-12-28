@@ -5,14 +5,19 @@ import "react-multi-carousel/lib/styles.css";
 import {Card, CardTitle, Row} from "reactstrap";
 import GlideComponent from "../../../../../components/carousel/GlideComponent";
 import {Colxx} from "../../../../../components/common/CustomBootstrap";
+import PreviewProductDetail from "../../../Product/sub/PreviewProductDetail/PreviewProductDetail";
+import PreviewProduct from "../../../Product/sub/PreviewProduct/PreviewProduct";
 
-const NoControlCarouselItem = ({ Destination, img }) => {
-
+const NoControlCarouselItem = ({ Main,sub }) => {
+console.log('Main');
+console.log(Main);
+console.log('sub');
+console.log(sub);
     return (
         <div className="glide-item col-12 cursor-pointer" >
             <Card>
                 <div className="position-relative vh25">
-                    <img className="card-img-top img-self-fill " src={img} alt={img} />
+                    <img className="card-img-top img-self-fill " src={Main['Images']} alt={ 'a'} />
                     {/*Destination: null*/}
                     {/*DestinationId: null*/}
                     {/*Image: "http://chichiapp.ir:3005/download/5d9884457c1e36d6e452598e"*/}
@@ -24,17 +29,7 @@ const NoControlCarouselItem = ({ Destination, img }) => {
     );
 };
 
-// const CustomDot = ({onClick, ...rest}) => {
-//     const {onMove, index, active, carouselState: {currentSlide, deviceType}} = rest;
-//     const carouselItems = [ CarouselItem1, CaourselItem2, CarouselItem3];
-//     // onMove means if dragging or swiping in progress.
-//     // active is provided by this lib for checking if the item is active or not.
-// return (
-//                 <button className={active ? 'active' : 'inactive'} onClick={() => onClick()}>
-//                     {React.Children.toArray(carouselItems)[index]}
-//                 </button>
-// )
-// }
+
 const CustomDot = ({ onClick, active, index, carouselState }) => {
     const { currentSlide } = carouselState;
     return (
@@ -81,7 +76,9 @@ class SliderProductDetail extends Component {
     }
 
     render() {
-        let{header}=this.props;
+        let{files}=this.state;
+        //
+        // console.log(files);
         return (
             <Row id='addSlider'>
 
@@ -110,7 +107,7 @@ class SliderProductDetail extends Component {
                                         max: 3000,
                                         min: 1024
                                     },
-                                    items: 2,
+                                    items: 3,
                                     partialVisibilityGutter: 40
                                 },
                                 mobile: {
@@ -118,7 +115,7 @@ class SliderProductDetail extends Component {
                                         max: 464,
                                         min: 0
                                     },
-                                    items: 1,
+                                    items:2,
                                     partialVisibilityGutter: 30
                                 },
                                 tablet: {
@@ -126,7 +123,7 @@ class SliderProductDetail extends Component {
                                         max: 1024,
                                         min: 464
                                     },
-                                    items: 2,
+                                    items: 3,
                                     partialVisibilityGutter: 30
                                 }
                             }}
@@ -138,7 +135,8 @@ class SliderProductDetail extends Component {
                             {this.state.files.map((item,key) => {
                                 return (
                                     <div key={key}   >
-                                        <NoControlCarouselItem {...item} />
+                                        <PreviewProduct Main={item['Main']} sub={item['sub']}  class={''}/>
+                                        {/*<NoControlCarouselItem Main={item['Main']} sub={item['Main']}/>*/}
                                     </div>
                                 );
                             })}

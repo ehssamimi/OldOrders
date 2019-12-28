@@ -19,14 +19,14 @@ const SignupSchema = Yup.object().shape({
 
 
     //
-    // Count: Yup.number()
-    //     .required("تعداد محصول اجباری است!") ,
-    // Price: Yup.number()
-    //     .required("قیمت اجباری است!") ,
-    // Name: Yup.string()
-    //     .required("نام اجباری است!"),
-    // Manufacture: Yup.string()
-    //     .required("نام تولید کننده اجباری است!"),
+    Count: Yup.number()
+        .required("تعداد محصول اجباری است!") ,
+    Price: Yup.number()
+        .required("قیمت اجباری است!") ,
+    Name: Yup.string()
+        .required("نام اجباری است!"),
+    Manufacture: Yup.string()
+        .required("نام تولید کننده اجباری است!"),
 
 
 
@@ -106,6 +106,9 @@ class ContentProductAdd extends Component {
         let Description = await ProductDetail('5d907a3a007049cfe08e3f88');
         let productDetail = Description['Description'];
         console.log(productDetail)
+
+
+        // **************************sample*********************
         // _id: "5d907a3a007049cfe08e3f88"
         // UniqueValue: "برنج ارزون↵"
         // Name: "برنج ارزون↵"
@@ -123,24 +126,38 @@ class ContentProductAdd extends Component {
         // Images: ["http://chichiapp.ir:3005/download/5d9884457c1e36d6e452598e"]
         // Off: {Enable: true, Percentage: 0.1}
 
+        // **************************inital value for update*********************
 
 
+        // let initialData={
+        //     Name: productDetail['UniqueValue'],
+        //     Manufacture: productDetail['Manufacture'],
+        //     Count: productDetail['Count'],
+        //     Price: productDetail['CurrentPrice'],
+        //     percent: productDetail['Off']['Percentage'],
+        //     Category: {},
+        //     sub_category: {},
+        //     isOff: productDetail['Off']['Enable'] === false ? {value: false, label: "تخفیف ندارد"} : {
+        //         value: true,
+        //         label: "تخفیف دارد"
+        //     },
+        //     Description: productDetail['Description'],
+        //     Attribute: productDetail['Attribute']
+        //     // TagKind: {value: "موتور",label: "موتور"},
+        // };
         let initialData={
-            Name: productDetail['UniqueValue'],
-            Manufacture: productDetail['Manufacture'],
-            Count: productDetail['Count'],
-            Price: productDetail['CurrentPrice'],
-            percent: productDetail['Off']['Percentage'],
-            Category: {},
-            sub_category: {},
-            isOff: productDetail['Off']['Enable'] === false ? {value: false, label: "تخفیف ندارد"} : {
-                value: true,
-                label: "تخفیف دارد"
-            },
-            Description: productDetail['Description'],
-            Attribute: productDetail['Attribute']
+            Name:'',
+            Manufacture:'',
+            Count: "",
+            Price:'',
+            percent:'',
+            Category:{ },
+            sub_category:{ },
+            isOff:{value: false ,label: "تخفیف ندارد"},
+            Description:"" ,
+            Attribute:""
             // TagKind: {value: "موتور",label: "موتور"},
-        };
+        }
 
 
 
@@ -275,36 +292,36 @@ class ContentProductAdd extends Component {
             //     "IsOffEnable": payload.isOff
             // };
 
-            // let Data={
-            //     "UniqueValue": payload.Name,
-            //     "Name":payload.Name,
-            //     "Attribute": payload.Attribute,
-            //     "Manufacture": payload.Manufacture,
-            //     "Count": payload.Count.toString(),
-            //     "Price": payload.Price,
-            //     "Description":payload.Description,
-            //     "Category":payload.sub_category,
-            //     "Images": [
-            //         idax.toString()
-            //  ],
-            //     "Off": payload.percent,
-            //     "IsOffEnable": payload.isOff
-            // };
             let Data={
-                "UniqueValue": "ابلیموی طبیعی سیی ",
-                "Name": "ابلیموی طبیعی  سیی",
-                "Attribute": "طبیعی",
-                "Manufacture": "سمیه",
-                "Count": "20",
-                "Price": 2000,
-                "Description": "این یک موقعیت عالی است برای این توضیحات این بخش",
-                "Category": "نوشیدنی",
+                "UniqueValue": payload.Name,
+                "Name":payload.Name,
+                "Attribute": payload.Attribute,
+                "Manufacture": payload.Manufacture,
+                "Count": payload.Count.toString(),
+                "Price": payload.Price,
+                "Description":payload.Description,
+                "Category":payload.sub_category,
                 "Images": [
-                "5dff768b696e5a631f0dc9db"
-            ],
-                "Off": 22,
-                "IsOffEnable": true
+                    idax.toString()
+             ],
+                "Off": payload.percent,
+                "IsOffEnable": payload.isOff
             };
+            // let Data={
+            //     "UniqueValue": "برنج شاندیز 200گرمی",
+            //     "Name": "برنج شاندیز 200گرمی",
+            //     "Attribute": "طبیعی",
+            //     "Manufacture": "شاندیز",
+            //     "Count": "20",
+            //     "Price": 500000,
+            //     "Description": "این یک موقعیت عالی است برای این توضیحات این بخش",
+            //     "Category": "نوشیدنی",
+            //     "Images": [
+            //     "5dff768b696e5a631f0dc9db"
+            // ],
+            //     "Off": 22,
+            //     "IsOffEnable": true
+            // };
 
             console.log(Data);
 
@@ -345,7 +362,7 @@ class ContentProductAdd extends Component {
                 showLoader: false
             });
             let {state, Description} = Register;
-            if (state) {
+            if (state ) {
                 NotificationManager.success(
                     "congratulation",
                     "اطلاعات شما با موفقیت ثبت شد",
@@ -354,8 +371,6 @@ class ContentProductAdd extends Component {
                     null,
                     "success"
                 );
-                let send=document.getElementById("sendItems");
-                send.click();
             } else {
                 NotificationManager.error(
                     "error",

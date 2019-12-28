@@ -876,14 +876,17 @@ export  async  function  AddProduct(data){
     let headers = {
         'Token': Const.Token,
         'Id': Const.ID,
+        "accept": "application/json"
     };
     console.log(data);
     let resp ={state:false,Description:""};
     await axios.post(`${Const.product}admin/product/add`, data , {headers: headers}).then(function (response) {
-        let {status} = response;
-        let{State,Description}=JSON.parse(response.data);
+        console.log(response);
+        let{State,Description}= response.data ;
         // console.log(response);
-        if (status===200 ){
+        if (State===200 ){
+            resp ={state:State,Description:Description};
+        }else {
             resp ={state:State,Description:Description};
         }
         // resp = status;
@@ -1057,4 +1060,31 @@ export  async  function  getCategoryDetailwithName(name){
     });
     return resp;
 }
+//************subCategory
+export async  function  Add_Remove_SubCategory(action,category,subcategory){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+        "accept": "application/json"
+    };
+    let resp ={state:false,Description:""};
+     await axios.post(`${Const.product}admin/category/sub-category/${action}?category=${category}&sub_category=${subcategory}`, null,{headers: headers}).then(function (response) {
+        console.log(response);
+        // let{State,data}=JSON.parse(response);
+        let{status,data}= response ;
+        console.log(status);
+        console.log( data);
+        if (status===200 ){
+            resp ={state:status,Description:data};
+        }else {
+            resp ={state:status,Description:data};
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}
+
 
