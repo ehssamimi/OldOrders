@@ -278,7 +278,7 @@ const data = [
             }, {
                 icon: "iconsminds-add",
                 label: "اضافه کردن",
-                to: "/content/product/add"
+                to: "/content/product/add/:Id?"
             }, {
                 icon: "iconsminds-file-edit",
                 label: "حذف و ویرایش",

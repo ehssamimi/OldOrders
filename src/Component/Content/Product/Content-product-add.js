@@ -9,7 +9,7 @@ import {FormikReactSelect} from "../../../containers/form-validations/FormikFiel
 import ImgComponent from "../../ChichiMan/ChiChi Man Sign In/Sub/ImgComponent";
 import WizardBottonNavigations from "../../ChichiMan/ChiChi Man Sign In/Sub/WizardBottonNavigations";
 import * as Yup from "yup";
-import {sendImg, ProductDetail,getAllCategories,AddProduct} from "../../functions/ServerConnection";
+import {sendImg, ProductDetail, getAllCategories, AddProduct, GetProductDetail} from "../../functions/ServerConnection";
 import NotificationManager from "../../../components/common/react-notifications/NotificationManager";
 import CropImgCropper from "../../HomePages/Sub/CropImg/CropImgCropper";
 import JustCropImg from "../../HomePages/Sub/CropImg/JustCropImg";
@@ -103,10 +103,57 @@ class ContentProductAdd extends Component {
                 :[{ value:"we have not sub category", label: "we have not sub category" }] ;
             Subs[each.name]=SubCatCondition;
         });
-        let Description = await ProductDetail('5d907a3a007049cfe08e3f88');
-        let productDetail = Description['Description'];
-        console.log(productDetail)
 
+
+
+
+        const {match: {params}} = this.props;
+        console.log(params);
+        var initialData="";
+
+        // console.log(params.Id=== undefined ?true:false);
+        if (params.Id===undefined){
+            // **************************inital value  *********************
+
+            initialData={
+                Name:'',
+                Manufacture:'',
+                Count: "",
+                Price:'',
+                percent:'',
+                Category:{ },
+                sub_category:{ },
+                isOff:{value: false ,label: "تخفیف ندارد"},
+                Description:"" ,
+                Attribute:""
+                // TagKind: {value: "موتور",label: "موتور"},
+            }
+        }else {
+            // **************************inital value for update*********************
+            let Description = await ProductDetail(params.Id);
+            let productDetail = Description['Description'];
+            initialData={
+                Name: productDetail['UniqueValue'],
+                Manufacture: productDetail['Manufacture'],
+                Count: productDetail['Count'],
+                Price: productDetail['CurrentPrice'],
+                percent: productDetail['Off']['Percentage'],
+                Category: {},
+                sub_category: {},
+                isOff: productDetail['Off']['Enable'] === false ? {value: false, label: "تخفیف ندارد"} : {
+                    value: true,
+                    label: "تخفیف دارد"
+                },
+                Description: productDetail['Description'],
+                Attribute: productDetail['Attribute']
+                // TagKind: {value: "موتور",label: "موتور"},
+            };
+
+        }
+        this.setState({
+            CategoryOption,Subs,initialData
+        })
+        // let each=await GetProductDetail(params.Id);
 
         // **************************sample*********************
         // _id: "5d907a3a007049cfe08e3f88"
@@ -125,51 +172,6 @@ class ContentProductAdd extends Component {
         // Category: "گروه ۲"
         // Images: ["http://chichiapp.ir:3005/download/5d9884457c1e36d6e452598e"]
         // Off: {Enable: true, Percentage: 0.1}
-
-        // **************************inital value for update*********************
-
-
-        // let initialData={
-        //     Name: productDetail['UniqueValue'],
-        //     Manufacture: productDetail['Manufacture'],
-        //     Count: productDetail['Count'],
-        //     Price: productDetail['CurrentPrice'],
-        //     percent: productDetail['Off']['Percentage'],
-        //     Category: {},
-        //     sub_category: {},
-        //     isOff: productDetail['Off']['Enable'] === false ? {value: false, label: "تخفیف ندارد"} : {
-        //         value: true,
-        //         label: "تخفیف دارد"
-        //     },
-        //     Description: productDetail['Description'],
-        //     Attribute: productDetail['Attribute']
-        //     // TagKind: {value: "موتور",label: "موتور"},
-        // };
-        let initialData={
-            Name:'',
-            Manufacture:'',
-            Count: "",
-            Price:'',
-            percent:'',
-            Category:{ },
-            sub_category:{ },
-            isOff:{value: false ,label: "تخفیف ندارد"},
-            Description:"" ,
-            Attribute:""
-            // TagKind: {value: "موتور",label: "موتور"},
-        }
-
-
-
-
-
-        // console.log(CategoryOption);
-        // console.log(Subs);
-
-         this.setState({
-            CategoryOption,Subs,initialData
-        })
-
 
     }
 
@@ -307,53 +309,13 @@ class ContentProductAdd extends Component {
                 "Off": payload.percent,
                 "IsOffEnable": payload.isOff
             };
-            // let Data={
-            //     "UniqueValue": "برنج شاندیز 200گرمی",
-            //     "Name": "برنج شاندیز 200گرمی",
-            //     "Attribute": "طبیعی",
-            //     "Manufacture": "شاندیز",
-            //     "Count": "20",
-            //     "Price": 500000,
-            //     "Description": "این یک موقعیت عالی است برای این توضیحات این بخش",
-            //     "Category": "نوشیدنی",
-            //     "Images": [
-            //     "5dff768b696e5a631f0dc9db"
-            // ],
-            //     "Off": 22,
-            //     "IsOffEnable": true
-            // };
+
 
             console.log(Data);
 
 
 
-            // let ImgeFiles = [ax['Img'],  ];
-            // let ImgeId = []
-            //
-            // for (let i = 0; i < ImgeFiles.length; i++) {
-            //
-            //     let idax = await sendImg(ImgeFiles[i], 'Public');
-            //     console.log(idax)
-            //     ImgeId.push(idax)
-            // }
-            // console.log(ImgeId)
-            // let Data={
-            //     "PhoneNumber":this.props.PhoneNumber,
-            //     "FirstName": payload.Name,
-            //     "LastName": payload.LastName,
-            //     "SSN": payload.SSN,
-            //     "Serial": payload.CN,
-            //     "ProfilePic": ImgeId[2],
-            //     "Birthday": Date,
-            //     "Address": payload.Address,
-            //     "MartialStatus": payload.MartialStatus,
-            //     "Sex": payload.Sex,
-            //     "PlaceOfIssue": payload.CNPlace,
-            //     "HomePhone": payload.PhoneNumber,
-            //     "SSN_IMAGE": ImgeId[0],
-            //     "SERIAL_IMAGE": ImgeId[1]
-            // };
-            // console.log(Data);
+
 
             let Register = await AddProduct(JSON.stringify(Data));
 
@@ -435,7 +397,6 @@ class ContentProductAdd extends Component {
                                                         <div className='d-flex justify-content-start col-12'>
                                                             <Label  className='d-flex  ml-2 mr-2'>
                                                                 <span className='ml-auto  '>عکس محصول</span>
-
                                                             </Label>
                                                         </div>
                                                         <div className='d-flex col-12 flex-column paddingZero  '>

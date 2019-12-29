@@ -844,7 +844,7 @@ export async  function  GetAllProduct(id){
     };
     var resp ="";
     await axios.get(`${Const.product}admin/product/all?page=${id}`, {headers: headers}).then(function (response) {
-         // console.log(response.data);
+         // console.log(response );
         let {Description}=response.data;
         // let {Items} = response.data;
         resp=Description;
@@ -881,6 +881,31 @@ export  async  function  AddProduct(data){
     console.log(data);
     let resp ={state:false,Description:""};
     await axios.post(`${Const.product}admin/product/add`, data , {headers: headers}).then(function (response) {
+        console.log(response);
+        let{State,Description}= response.data ;
+        // console.log(response);
+        if (State===200 ){
+            resp ={state:State,Description:Description};
+        }else {
+            resp ={state:State,Description:Description};
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}
+export  async  function  DeleteProduct(UniqueValue ){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+     };
+    let formData = new FormData();
+    formData.append("UniqueValue",UniqueValue);
+    console.log(UniqueValue );
+    let resp ={state:false,Description:""};
+    await axios.post(`${Const.product}admin/product/delete`, formData , {headers: headers}).then(function (response) {
         console.log(response);
         let{State,Description}= response.data ;
         // console.log(response);
