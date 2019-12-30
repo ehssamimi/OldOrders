@@ -953,10 +953,13 @@ export  async  function  getProductinSubCategogy(name,page){
     await axios.get(`${Const.product}admin/product/in/${name}?page=${page}` , {headers: headers}).then(function (response) {
         let {status} = response;
         let{State,Description}= response.data ;
-        // console.log(response);
+        console.log(response);
         // console.log(Description);
         if (status===200 ){
             resp ={state:State,Description:Description};
+        }else {
+            resp ={state:State,Description:Description};
+
         }
         // resp = status;
     }).catch(function (error) {

@@ -17,8 +17,6 @@ import ax from './../../../assets/img/2574.jpg'
 
 const SignupSchema = Yup.object().shape({
 
-
-    //
     Count: Yup.number()
         .required("تعداد محصول اجباری است!") ,
     Price: Yup.number()
@@ -27,9 +25,6 @@ const SignupSchema = Yup.object().shape({
         .required("نام اجباری است!"),
     Manufacture: Yup.string()
         .required("نام تولید کننده اجباری است!"),
-
-
-
 
 });
 
@@ -112,7 +107,7 @@ class ContentProductAdd extends Component {
         var initialData="";
 
         // console.log(params.Id=== undefined ?true:false);
-        if (params.Id===undefined){
+        if (params.Id===':Id'){
             // **************************inital value  *********************
 
             initialData={
@@ -132,7 +127,7 @@ class ContentProductAdd extends Component {
             // **************************inital value for update*********************
             let Description = await ProductDetail(params.Id);
             let productDetail = Description['Description'];
-            initialData={
+            initialData = {
                 Name: productDetail['UniqueValue'],
                 Manufacture: productDetail['Manufacture'],
                 Count: productDetail['Count'],
@@ -144,14 +139,20 @@ class ContentProductAdd extends Component {
                     value: true,
                     label: "تخفیف دارد"
                 },
+                Images: productDetail['Images'][0],
                 Description: productDetail['Description'],
                 Attribute: productDetail['Attribute']
                 // TagKind: {value: "موتور",label: "موتور"},
             };
+            // console.log(initialData);
+
+            this.setState({
+                ax1: initialData['Images']
+            })
 
         }
         this.setState({
-            CategoryOption,Subs,initialData
+            CategoryOption,Subs,initialData,
         })
         // let each=await GetProductDetail(params.Id);
 

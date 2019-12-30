@@ -90,6 +90,20 @@ class PreviewProductDetail extends Component {
 
             <Card className='w-100 flex-row     m-0  br-product ' style={{height:"auto",minHeight:"40vh"}}>
 
+                {
+                    Off !== undefined ?
+                        Off['Enable'] ?
+                            <div className='w-100 '>
+                                <div className='triangle   '>
+                                </div>
+                                <span className='persentSale'>{ Off['Percentage']*100  }%</span>
+                            </div>
+                            :
+                            ""
+                        : ""
+                }
+
+
                 <div className='col-8 d-flex flex-column align-items-center justify-content-center'>
                     <p className="fs-13vw color-gray">{Main['name']}</p>
                     <div className='d-flex  w-100 flex-wrap justify-content-center' dir='rtl'>
@@ -123,19 +137,19 @@ class PreviewProductDetail extends Component {
 
                     <div className="product-div-img-detail">
                         <img src={Main['Images']} alt="ax" className="img-self-fill"/>
-                        <div className=' w-100 '>
-                            {
-                                Off !== undefined ?
-                                    Off['Enable'] ?
-                                        <span
-                                            className="badge2 badge-outline-success2 mb-1 mr-1 badge2-pill bg-off-Product2 fs-08vw  ">{Off['Percentage']*100} %</span>
-                                        :
-                                        ""
-                                    : ""
-                            }
+                        {/*<div className=' w-100 '>*/}
+                            {/*{*/}
+                                {/*Off !== undefined ?*/}
+                                    {/*Off['Enable'] ?*/}
+                                        {/*<span*/}
+                                            {/*className="badge2 badge-outline-success2 mb-1 mr-1 badge2-pill bg-off-Product2 fs-08vw  ">{Off['Percentage']*100} %</span>*/}
+                                        {/*:*/}
+                                        {/*""*/}
+                                    {/*: ""*/}
+                            {/*}*/}
 
 
-                        </div>
+                        {/*</div>*/}
                     </div>
 
                 </div>

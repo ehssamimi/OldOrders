@@ -16,6 +16,7 @@ import JustCropImg from "../../../../HomePages/Sub/CropImg/JustCropImg";
 import NotificationManager from "../../../../../components/common/react-notifications/NotificationManager";
 import {Power4, TweenMax} from "gsap/TweenMax";
 import ContentCategoryUpdate from "../../Content-category-update";
+import SubCategoryProductInfinityScroll from "../SubCategoryProductInfinityScroll/SubCategoryProductInfinityScroll";
 
 
 
@@ -147,11 +148,13 @@ class SubCategoryElement extends Component {
             const duration = 2;
             const from = { opacity: 0};
             TweenMax.to($el, duration, from);
-            await setTimeout(() => {
+             await setTimeout(() => {
                 $el.remove();
             }, 2000);
-            this.props.UpdateSubCategory();
-            this.deleteToggle();
+            await setTimeout(() => {
+                this.props.UpdateSubCategory();
+            }, 3000);
+             this.deleteToggle();
 
         } else {
             NotificationManager.error(
@@ -171,7 +174,7 @@ class SubCategoryElement extends Component {
         let{productSeparate}=this.state;
         console.log(productSeparate);
         return (
-            <div className='mt-3 w-100' dir='rtl' id={this.props.name} >
+            <div className='mt-3 w-100'   id={this.props.name} >
                 <Card>
                     <CardBody>
                         <div className='mt-2 w-100 d-flex' >
@@ -189,13 +192,12 @@ class SubCategoryElement extends Component {
                                 <h3 className='glyph-icon simple-icon-trash purpleColor  Scale-Delete mb0  ml-1'/>
                             </div>
                         </div>
-                        <Collapse className='h-40vh w-100' isOpen={this.state.collapse}  >
-                            {
+                        <Collapse className='h-40vh w-100 hiddenScroll mt-3' isOpen={this.state.collapse}  >
+                            {/*{*/}
+                                {/*productSeparate.length>0?<SliderProductDetail  productSeparate={ productSeparate}/>:""*/}
+                            {/*}*/}
 
-
-
-                                productSeparate.length>0?<SliderProductDetail  productSeparate={ productSeparate}/>:""
-                            }
+                            <SubCategoryProductInfinityScroll name={this.props.name}/>
                         </Collapse>
                     </CardBody>
 

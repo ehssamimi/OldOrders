@@ -39,7 +39,7 @@ class CategoryEachItems extends Component {
 
 
                     <CardBody className='w-100 d-flex justify-content-center'>
-                        <RowShowShowColEdit label='نام' value={data.name} col="col-8" />
+                        <RowShowShowColEdit label='نام' value={data.name} col="col-12" className='text-center' />
                      </CardBody>
                 </div>
             </Card>

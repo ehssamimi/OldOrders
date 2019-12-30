@@ -89,7 +89,7 @@ class PreviewProduct extends Component {
 
 
         return (
-            <div className={['   h-40vh align-items-center  mt-3 position-relative', this.props.class.length>1?this.props.class:"" ].join(' ')} id={Main['id']}>
+            <div className={['   h-50vh align-items-center  mt-3 position-relative', this.props.class.length>1?this.props.class:"" ].join(' ')} id={Main['id']}>
 
                      <Card className='d-flex flex-column h-100 align-items-center br-product w-100'>
                          {
@@ -117,27 +117,27 @@ class PreviewProduct extends Component {
                              </NavLink>
                          </div>
 
-
+                         <NavLink to={`/content/product/each/info/${Main['id']}`} className="d-flex">
                         <div className="h-20vh d-flex align-items-end  ">
                             <div className="bg-circle-product d-flex justify-content-center align-items-center position-relative">
                                 <div className="ax-Product-circle">
                                     <img src={Main['Images']} alt={ax} className="img-self-fill"/>
                                 </div>
                             </div>
-
                         </div>
+                         </NavLink>
                          <NavLink to={`/content/product/each/info/${Main['id']}`} className="d-flex">
 
                         <div className="h-20vh d-flex align-items-center justify-content-center flex-column w-100">
-                            <p className="fs-13vw color-gray">{Main['name']}</p>
+                            <p className="fs-13vw color-gray text-center">{Main['name']}</p>
                             <div className=' w-100 '>
                                 {
                                     Off !== undefined ?
                                         Off['Enable'] ?
-                                            <div className='d-flex col-10 offset-1 '>
-                                                   <span className="fs-1vw color-gray   "
+                                            <div className='d-flex col-12   '>
+                                                   <span className="fs-1vw color-gray col-6 text-center "
                                                          dir='rtl'>{Main['CurrentPrice']} تومن </span>
-                                                <span className="fs-1vw color-gray lineOverText text-muted ml-auto "
+                                                <span className="fs-1vw color-gray lineOverText text-muted col-6 text-center "
                                                       dir='rtl'>{Main['PrevPrice']} تومن </span>
                                             </div> :
                                             <div className='d-flex justify-content-center '>
@@ -152,7 +152,7 @@ class PreviewProduct extends Component {
                             <div className='d-flex  w-100 flex-wrap justify-content-center' dir='rtl'>
                                 {Keys ?
                                     Keys.map((todo, index) =>
-                                        <RowShowShowColEdit label={todo} value={sub[todo]} key={index} col={todo==='ادرس'?'col-12':'col-6'} className='p-0 d-flex justify-content-center' />
+                                        <RowShowShowColEdit label={todo} value={sub[todo]} key={index} col={todo==='دسته بندی'?'col-12':'col-6'} className='p-0 d-flex justify-content-center' />
                                     ) : ''
                                 }
 

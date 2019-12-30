@@ -4,6 +4,7 @@ import PreviewProductDetail from "./sub/PreviewProductDetail/PreviewProductDetai
 import {GetAllProduct} from './../../functions/ServerConnection'
 import RowShowShow from "../../PresentOrders/RowShowShow";
 import InfiniteScroll from 'react-infinite-scroller';
+import Loader from "../../HomePages/Sub/Loader/Loader";
 
 class ContentProductAll extends Component {
     constructor(props) {
@@ -14,21 +15,15 @@ class ContentProductAll extends Component {
             hasMore:true,
             last_page:12
         }
-
-
-
     }
 
-    async componentDidMount() {
-        let Response = await GetAllProduct(1);
-        let {Products} = Response;
-
-
-
-
-    }
+    // async componentDidMount() {
+    //     let Response = await GetAllProduct(1);
+    //     let {Products} = Response;
+    // }
 
    async loadMore(){
+       console.log("loadMore")
 
        let{pageStart,last_page}=this.state;
 
@@ -53,20 +48,11 @@ class ContentProductAll extends Component {
                productSeparate.push(row)
            }
        );
-
-
-
-       // console.log(Products)
-       // console.log(Response)
        this.setState(prevState=>({
            productSeparate:[ ...prevState.productSeparate , ...productSeparate ],
            hasMore:Page !== last_page,
            pageStart:Page+1
        }));
-       // console.log(pageStart);
-
-
-
    }
 
 
@@ -80,11 +66,11 @@ class ContentProductAll extends Component {
         return (
 
             <InfiniteScroll
-                className="row rtl"
+                className="row rtl m-0"
                 pageStart={0}
                 loadMore={this.loadMore.bind(this)}
                 hasMore={this.state.hasMore}
-                loader={<div className="loader" key={0}>Loading ...</div>}
+                loader={<div className="loader " key={0}><Loader/></div>}
             >
 
                 <div className='d-flex  w-100  flex-wrap'  >

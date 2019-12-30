@@ -25,9 +25,9 @@ class ContentCategoryAll extends Component {
     render() {
         let {CatList}=this.state;
         return (
-                    <Row>
+                    <Row className='m-0'>
                         {CatList.length > 0 ?
-                            CatList.map((itemData,key) => <Colxx xxs="12" md="6" lg="4" key={key}>
+                            CatList.map((itemData,key) => <Colxx xxs="12" md="4" lg="3" key={key}>
                                 <CategoryEachItems data={itemData}/>
                             </Colxx>) :<Loader/>
                         }

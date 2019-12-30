@@ -37,8 +37,20 @@ class ContentCategoryInfo extends Component {
     handleChange(event) {
         this.setState({name: event.target.value});
     }
+    async UpdateSubCategory(){
+        const {match: {params}} = this.props;
+        let CatInfo= await getCategoryDetailwithId(params.Id);
+        this.setState({
+            SubCatInfo:CatInfo['sub_categories'],
+            catName:CatInfo['name']
+        },()=>{
+            console.log(this.state.SubCatInfo)
+        });
+    }
+
 
     async handleSubmit(event) {
+
          var  validate=true;
         // error:{name :"", ax:""}
 
@@ -83,7 +95,7 @@ class ContentCategoryInfo extends Component {
                     null,
                     "success"
                 );
-                return validate;
+                 return validate;
 
             } else {
                 NotificationManager.error(
@@ -105,16 +117,7 @@ class ContentCategoryInfo extends Component {
     }
 
 
-    async UpdateSubCategory(){
-        const {match: {params}} = this.props;
-        let CatInfo= await getCategoryDetailwithId(params.Id);
-        this.setState({
-            SubCatInfo:CatInfo['sub_categories'],
-            catName:CatInfo['name']
-        },()=>{
-            console.log(this.state.SubCatInfo)
-        });
-    }
+
 
 
 
@@ -145,7 +148,8 @@ class ContentCategoryInfo extends Component {
                     },()=>{
                         console.log(this.state.SubCatInfo)
                     });
-                    TweenMax.fromTo(input, 1 ,{ opacity: 0,  }, {width:0});
+                    TweenMax.fromTo(input, 1 ,{ opacity: 0,  },
+                        {width:0});
                     input.classList.remove("active");
                     // input.classList.remove("iconsminds-add");
                     // icon.classList.add("iconsminds-previous");
@@ -207,7 +211,6 @@ class ContentCategoryInfo extends Component {
                                 <div className='d-flex justify-content-center align-items-center'><p>این دسته بندی هیچ
                                     زیر مجموعه ای ندارد</p></div>
                         }
-
                         <div className='d-flex col-12 h-1vh p-0'>
                             <div id='icon' className='glyph-icon iconsminds-add purpleColor fs-23vw' onClick={this.handelClickAdd.bind(this)}></div>
                             <form onSubmit={this.handleSubmit}  className='col-12 p-0'  >
