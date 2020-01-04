@@ -37,7 +37,12 @@ class ContentCategoryInfo extends Component {
     handleChange(event) {
         this.setState({name: event.target.value});
     }
-    async UpdateSubCategory(){
+    async UpdateSubCategory(id){
+        // const $el = document.getElementById(`${id}`);
+        // const duration = 2;
+        // const from = { opacity: 0};
+        // await TweenMax.to($el, duration, from);
+
         const {match: {params}} = this.props;
         let CatInfo= await getCategoryDetailwithId(params.Id);
         this.setState({
@@ -123,7 +128,7 @@ class ContentCategoryInfo extends Component {
 
 
     async handelClickAdd(){
-         let input=document.getElementById('input');
+         let input=document.getElementById('input-text');
         let icon=document.getElementById('icon');
         // TweenLite.to('#input', 2, {width: "100%"});
 
@@ -216,7 +221,7 @@ class ContentCategoryInfo extends Component {
                             <form onSubmit={this.handleSubmit}  className='col-12 p-0'  >
                                 <div className="d-flex flex-column align-items-center justify-content-center">
                                     <div className='w-100 d-flex  '   >
-                                        <FormGroup className="form-group has-float-label position-relative opacity-0" id='input'>
+                                        <FormGroup className="form-group has-float-label position-relative opacity-0" id='input-text'>
                                             <input type="text"  className="form-control mt-2  " value={this.state.name || ''}
                                                    onChange={this.handleChange}  />
                                         </FormGroup>

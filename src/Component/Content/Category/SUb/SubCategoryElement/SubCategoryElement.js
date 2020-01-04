@@ -144,16 +144,17 @@ class SubCategoryElement extends Component {
                 "success"
             );
             let id=this.props.name;
-            const $el = document.getElementById(`${id}`);
-            const duration = 2;
-            const from = { opacity: 0};
-            TweenMax.to($el, duration, from);
-             await setTimeout(() => {
-                $el.remove();
-            }, 2000);
-            await setTimeout(() => {
-                this.props.UpdateSubCategory();
-            }, 3000);
+            console.log(id);
+            // const $el = document.getElementById(`${id}`);
+            // const duration = 2;
+            // const from = { opacity: 0};
+            // await TweenMax.to($el, duration, from);
+            //  await setTimeout(() => {
+            //     $el.remove();
+            // }, 2000);
+            //  await setTimeout(() => {
+                this.props.UpdateSubCategory(id);
+             // }, 3000);
              this.deleteToggle();
 
         } else {

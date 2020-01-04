@@ -76,7 +76,7 @@ class SubCategoryProductInfinityScroll extends Component {
                     <div className='d-flex  w-100  flex-wrap'  >
                         {productSeparate.length>1 ?
                             productSeparate.map((todo, index) =>
-                                <PreviewProduct Main={todo.Main} sub={todo.sub}  key={index} class={' col-sm-6 col-lg-3  '}/>
+                                <PreviewProduct Main={todo.Main} sub={todo.sub}  key={index} class={' col-sm-6 col-lg-4  '}/>
                             ) : <div className='d-flex justify-content-center align-items-center w-100 h-100'>
                                 <span className='fs-13vw purpleColor'>محصولی درون این دسته بندی وجود ندارد!</span>
                             </div>

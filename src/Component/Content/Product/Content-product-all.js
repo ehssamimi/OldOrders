@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import PreviewProduct from "./sub/PreviewProduct/PreviewProduct";
-import PreviewProductDetail from "./sub/PreviewProductDetail/PreviewProductDetail";
-import {GetAllProduct} from './../../functions/ServerConnection'
-import RowShowShow from "../../PresentOrders/RowShowShow";
-import InfiniteScroll from 'react-infinite-scroller';
+ import {GetAllProduct} from './../../functions/ServerConnection'
+ import InfiniteScroll from 'react-infinite-scroller';
 import Loader from "../../HomePages/Sub/Loader/Loader";
 
 class ContentProductAll extends Component {
@@ -13,24 +11,18 @@ class ContentProductAll extends Component {
             productSeparate:[],
             pageStart:1,
             hasMore:true,
-            last_page:12
+            last_page:40
         }
     }
 
-    // async componentDidMount() {
-    //     let Response = await GetAllProduct(1);
-    //     let {Products} = Response;
-    // }
 
+// **********Load more function forinfinity scroll***********
    async loadMore(){
-       console.log("loadMore")
-
+       console.log("loadMore");
        let{pageStart,last_page}=this.state;
-
        let Response = await GetAllProduct(pageStart);
        let{Products,Page}=Response;
-       // console.log(Products);
-       let productSeparate=[]
+        let productSeparate=[];
        Products.map((each, index) => {
                let sub = {"تعداد": each['Count'],"تولید": each['Manufacture'],"دسته بندی": each['Category'] };
                let Main = {
@@ -46,8 +38,7 @@ class ContentProductAll extends Component {
                };
                let row={'Main':Main,'sub':sub};
                productSeparate.push(row)
-           }
-       );
+           });
        this.setState(prevState=>({
            productSeparate:[ ...prevState.productSeparate , ...productSeparate ],
            hasMore:Page !== last_page,
@@ -56,12 +47,8 @@ class ContentProductAll extends Component {
    }
 
 
-
     render() {
         let {productSeparate}=this.state;
-        // console.log(productSeparate);
-        // console.log(this.props);
-
 
         return (
 
@@ -80,13 +67,7 @@ class ContentProductAll extends Component {
                         ) : ''
                     }
                 </div>
-                {/*{this.state.article.map((product, index)=><Iteam product={product} key={index}/>)}*/}
-            </InfiniteScroll>
-
-
-
-
-
+             </InfiniteScroll>
         );
     }
 }

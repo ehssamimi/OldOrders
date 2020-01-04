@@ -10,6 +10,21 @@ const ChichiManSignIn = React.lazy(() =>
 const ChichiManInfo = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ './ChichiMan-Info/ChichiMan-info')
 );
+const Vote = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ './ChichiMan-vote/ChichiMan-vote')
+);
+const Statistic = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ './ChichiMan-statistic/ChichiMan-statistic')
+);
+const ChichiList = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ './../../Component/ChichiMan/chichiMan-List/ChichiManList')
+);
+
+const ChichiManInfoSubmit = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ './../../Component/ChichiMan/chichiMan-List/ChichiMan-info-submit-info/ChichiMan-info-submit-info')
+);
+
+
 
 
 class App extends Component {
@@ -26,10 +41,40 @@ class App extends Component {
                                 path={`${match.url}/sign-in`}
                                 render={props => <ChichiManSignIn {...props} />}
                             />
+                            {/*<Route*/}
+                                {/*path={`${match.url}/info`}*/}
+                                {/*render={props => <ChichiManInfo {...props} />}*/}
+                            {/*/>*/}
+
                             <Route
-                                path={`${match.url}/info`}
+                                path={`${match.url}/list`}
+                                render={props => <ChichiList {...props} />}
+                            />
+                            <Route
+                                path={`${match.url}/history-orders`}
                                 render={props => <ChichiManInfo {...props} />}
                             />
+                            <Route
+                                path={`${match.url}/vote`}
+                                render={props => <Vote {...props} />}
+                            />
+                            <Route
+                                path={`${match.url}/statistic`}
+                                render={props => <Statistic {...props} />}
+                            />
+                            <Route
+                                path={`${match.url}/check-out`}
+                                render={props => <ChichiManInfo {...props} />}
+                            />
+                            <Route
+                                path={`${match.url}/status`}
+                                render={props => <ChichiManInfo {...props} />}
+                            />
+                            <Route
+                                path={`${match.url}/info/:userId`}
+                                render={props => <ChichiManInfoSubmit {...props} />}
+                            />
+
                             <Redirect to="/error" />
                         </Switch>
                     </Suspense>

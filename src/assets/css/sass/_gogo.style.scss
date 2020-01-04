@@ -9475,8 +9475,8 @@ font-family: IRANSans !important;
 }
 .ax-Product-circle{
   position: absolute;
-  top: -12%;
-  width: 4vw;
+  top: -8%;
+  width: 90%;
   height:7vw;
   border-radius:50%;
  }
@@ -9496,10 +9496,12 @@ font-family: IRANSans !important;
 }
 .product-div-img-detail{
   position: absolute;
-  top: 20%;
-  right: 25%;
-  width: 55%;
-  height: 60%;
+  //top: 20%;
+  //right: 25%;
+  ////width: 55%;
+  //height: 60%;
+  top:0;
+  right: 0;
 }
 .lineOverText{
   text-decoration-line: line-through;
@@ -9556,4 +9558,7 @@ font-family: IRANSans !important;
 }
 .hiddenScroll{
   overflow: auto;
+}
+.b-0{
+  border: 0!important;
 }

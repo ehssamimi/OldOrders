@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import ax from "./../../../../../assets/img/Arsenal_FC.png";
 import {Button, Card, CardBody, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap'
-import RowShowShow from "../../../../PresentOrders/RowShowShow";
-import RowShowShowColEdit from "../../../../Support/Users/UserDetails/sub/RowShowShowColEdit/RowShowShowColEdit";
+ import RowShowShowColEdit from "../../../../Support/Users/UserDetails/sub/RowShowShowColEdit/RowShowShowColEdit";
 import {  TweenMax} from "gsap/TweenMax";
 import {NavLink} from "react-router-dom";
 import {DeleteProduct} from "../../../../functions/ServerConnection";
@@ -17,22 +16,21 @@ class PreviewProduct extends Component {
         this.deleteToggle = this.deleteToggle.bind(this);
     }
 
+    // *********separate  data from props ********
     componentDidMount(){
         let{sub,Main}=this.props;
         let Keys;
         Keys=Object.keys(sub);
         this.setState({
             sub,Keys,Main
-        },()=>{
-
-            // console.log('sub');
-            // console.log(sub)
-            // console.log('Main');
-            // console.log(Main)
-            // console.log('Keys');
-            // console.log(Keys)
         });
     }
+    // *********handel delete modal ********
+
+    deleteToggle() {
+        this.setState(state => ({ DeleteModal: !state.DeleteModal }));
+    }
+    // *********  delete function ********
     async handelDelete(){
         let {Main}=this.state;
         let deleteProduct =await DeleteProduct(Main['name']);
@@ -52,9 +50,11 @@ class PreviewProduct extends Component {
             const duration = 2;
             const from = { opacity: 0};
             TweenMax.to($el, duration, from);
+            this.deleteToggle();
+
             setTimeout(() => {
                 $el.remove();
-            }, 2000)
+            }, 1000)
 
 
         } else {
@@ -70,28 +70,18 @@ class PreviewProduct extends Component {
 
 
     }
-    deleteToggle() {
-        this.setState(state => ({ DeleteModal: !state.DeleteModal }));
-    }
-
 
 
     render() {
         let{sub,Keys,Main}=this.state;
-                 let {Off}=Main;
-        // Enable: true, Percentage: 0.1
-        if (Off!==undefined) {
-            // console.log(Off['Enable']);
-            // console.log(Off['Percentage']);
-        }else {
-            // console.log("hasent off")
-        }
-
+        let {Off}=Main;
 
         return (
             <div className={['   h-50vh align-items-center  mt-3 position-relative', this.props.class.length>1?this.props.class:"" ].join(' ')} id={Main['id']}>
 
                      <Card className='d-flex flex-column h-100 align-items-center br-product w-100'>
+                         {/********** product off and percentage*********/}
+
                          {
                              Off !== undefined ?
                                  Off['Enable'] ?
@@ -118,7 +108,8 @@ class PreviewProduct extends Component {
                          </div>
 
                          <NavLink to={`/content/product/each/info/${Main['id']}`} className="d-flex">
-                        <div className="h-20vh d-flex align-items-end  ">
+                             {/**********background product image********/}
+                             <div className="h-20vh d-flex align-items-end  ">
                             <div className="bg-circle-product d-flex justify-content-center align-items-center position-relative">
                                 <div className="ax-Product-circle">
                                     <img src={Main['Images']} alt={ax} className="img-self-fill"/>
@@ -131,6 +122,7 @@ class PreviewProduct extends Component {
                         <div className="h-20vh d-flex align-items-center justify-content-center flex-column w-100">
                             <p className="fs-13vw color-gray text-center">{Main['name']}</p>
                             <div className=' w-100 '>
+                                {/********** product value*********/}
                                 {
                                     Off !== undefined ?
                                         Off['Enable'] ?
@@ -143,11 +135,8 @@ class PreviewProduct extends Component {
                                             <div className='d-flex justify-content-center '>
                                                 <p className="fs-1w color-gray" dir='rtl'>{Main['CurrentPrice']} تومن </p>
                                             </div>
-
                                         : ""
                                 }
-
-
                             </div>
                             <div className='d-flex  w-100 flex-wrap justify-content-center' dir='rtl'>
                                 {Keys ?

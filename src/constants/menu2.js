@@ -99,7 +99,67 @@ const data = [
             id: "chchiMan-sign",
             label: "ثبت نام",
             to: "/chichi-man/sign-in",
-        },{
+        },
+            {
+                icon: "simple-icon-list",
+                id: "chchiMan-list",
+                label: "لیست",
+                to: "/chichi-man/list",
+            },
+
+            {
+                icon: "simple-icon-present",
+                id: "chchiMan-history-orders",
+                label: "تاریخچه سفارشات",
+                to: "/chichi-man/history-orders",
+            },
+            {
+                icon: "simple-icon-user-follow",
+                id: "chchiMan-vote",
+                label: "نظر سنجی",
+                to: "/chichi-man/vote",
+                subs: [{
+                    icon: "iconsminds-bar-chart-4",
+                    label: "کاربر به چی چی",
+                    to: "/chichi-man/vote/users-to-chichi"
+                },
+                    {
+                        icon: "iconsminds-statistic",
+                        label: "چی چی به کاربر",
+                        to: "/chichi-man/vote/chichi-to-users"
+                    }]
+            },
+            {
+                icon: "simple-icon-user-follow",
+                id: "chchiMan-statistic",
+                label: "آمارها",
+                to: "/chichi-man/statistic",
+                subs: [{
+                    icon: "iconsminds-bar-chart-4",
+                    label: "کیفی",
+                    to: "/chichi-man/statistic/quality"
+                },
+                    {
+                        icon: "iconsminds-statistic",
+                        label: "کمی",
+                        to: "/chichi-man/statistic/quantity"
+                    }]
+            },
+            {
+                icon: "simple-icon-wallet",
+                id: "chchiMan-check-out",
+                label: "تسویه حساب ها",
+                to: "/chichi-man/check-out",
+            },
+            {
+                icon: "iconsminds-check",
+                id: "chchiMan-status",
+                label: "وضعیت",
+                to: "/chichi-man/status",
+            },
+
+
+        {
             icon: "simple-icon-info",
             id: "chchiMan-info",
             label: "اطلاعات",
@@ -279,11 +339,13 @@ const data = [
                 icon: "iconsminds-add",
                 label: "اضافه کردن",
                 to: "/content/product/add/:Id?"
-            }, {
-                icon: "iconsminds-file-edit",
-                label: "حذف و ویرایش",
-                to: "/content/product/delete-edit"
             },
+            //     {
+            //     icon: "iconsminds-file-edit",
+            //     label: "حذف و ویرایش",
+            //     to: "/content/product/delete-edit"
+            // },
+            //
             ]
         },
             {
@@ -299,33 +361,34 @@ const data = [
                     icon: "iconsminds-add",
                     label: "اضافه کردن",
                     to: "/content/category/add"
-                }, {
-                    icon: "iconsminds-file-edit",
-                    label: "حذف و ویرایش",
-                    to: "/content/category/delete-edit"
                 },
+                //     {
+                //     icon: "iconsminds-file-edit",
+                //     label: "حذف و ویرایش",
+                //     to: "/content/category/delete-edit"
+                // },
                 ]
             },
-            {
-                icon: "iconsminds-delicious",
-                id: "sub-category",
-                label: "زیر دسته",
-                to: "/content/sub-category",
-                subs: [{
-                    icon: "iconsminds-posterous",
-                    label: "همه",
-                    to: "/content/sub-category/all"
-                }, {
-                    icon: "iconsminds-add",
-                    label: "اضاقه کردن",
-                    to: "/content/sub-category/add"
-                }, {
-                    icon: "iconsminds-file-edit",
-                    label: "حذف و ویرایش",
-                    to: "/content/sub-category/delete-edit"
-                },
-                ]
-            },
+            // {
+            //     icon: "iconsminds-delicious",
+            //     id: "sub-category",
+            //     label: "زیر دسته",
+            //     to: "/content/sub-category",
+            //     subs: [{
+            //         icon: "iconsminds-posterous",
+            //         label: "همه",
+            //         to: "/content/sub-category/all"
+            //     }, {
+            //         icon: "iconsminds-add",
+            //         label: "اضاقه کردن",
+            //         to: "/content/sub-category/add"
+            //     }, {
+            //         icon: "iconsminds-file-edit",
+            //         label: "حذف و ویرایش",
+            //         to: "/content/sub-category/delete-edit"
+            //     },
+            //     ]
+            // },
 
 
         ]
