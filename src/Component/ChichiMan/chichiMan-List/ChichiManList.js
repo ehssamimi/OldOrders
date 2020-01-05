@@ -36,7 +36,7 @@ class ChichiManList extends Component {
             <div className='row m-0 w-100'>
                 {
                     listChichiMan.length>0?
-                        listChichiMan.map((chichiMan ,index)=><ChichiManInfoCard id={index} key={index} chichiMan={chichiMan}  header='info' {...this.props } class='col-sm-6 col-md-4 col-lg-3'  />):""
+                        listChichiMan.map((chichiMan ,index)=><ChichiManInfoCard id={index} key={index} chichiMan={chichiMan}  {...this.props } class='col-sm-6 col-md-4 col-lg-3'  />):""
                 }
 
             </div>

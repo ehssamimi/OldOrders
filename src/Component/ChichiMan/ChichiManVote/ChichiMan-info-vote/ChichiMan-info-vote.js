@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Doughnut from "../../../../components/charts/Doughnut";
 import { ThemeColors } from '../../../../helpers/ThemeColors'
 import Bar from "../../../../components/charts/Bar";
-import HeaderComponentChichiInfo from "../Header-component-chichi-info/Header-component-chichi-info";
+import HeaderComponentChichiInfo from "../../Header-component-chichi-info/Header-component-chichi-info";
 import {Card, CardBody} from "reactstrap";
 const colors = ThemeColors();
 const doughnutChartData={
@@ -10,10 +10,7 @@ const doughnutChartData={
     datasets: [
         {
             label: '',
-            borderColor: ["#2a93d5", "#ad8c1b", "#c43d4b", "#104978", "#5a5a5a"
-                // , colors.themeColor6
-                // ,"#922c88"
-            ],
+            borderColor: ["#2a93d5", "#ad8c1b", "#c43d4b", "#104978", "#5a5a5a"],
             backgroundColor: [
                 "rgba(42, 147, 213, 0.1)",
                 "rgba(173, 140, 23, 0.1)",
@@ -40,8 +37,7 @@ const doughnutChartData={
         },
 
     ]
-}
-
+};
 const barChartData2 = {
     labels: ['تاخیر در رسیدن', 'توهین و بی احترامی', 'ظاهر نامناسب', 'عدم دریافت در محل دقیق' , 'درخواست مبلغ اضافی', 'بسته بندی مخدوش', 'عدم تطابق وسیله نقلیه', 'عدم تطابق چی چی من' ],
     datasets: [
@@ -53,16 +49,14 @@ const barChartData2 = {
             borderWidth: 2
         },
     ]
-}
+};
 class ChichiManInfoVote extends Component {
     render() {
         return (
             <Card>
                 <CardBody>
-
                     <div className='d-flex flex-column h-100'>
                         <HeaderComponentChichiInfo header="اطلاعات ثبت نام"/>
-
                         <div className='w-100 d-flex '>
                             <div className="col-6 chart-container">
                                 <Doughnut shadow data={doughnutChartData}/>

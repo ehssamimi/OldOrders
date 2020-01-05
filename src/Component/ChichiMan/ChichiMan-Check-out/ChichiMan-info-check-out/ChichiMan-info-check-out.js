@@ -3,7 +3,7 @@ import {Card, CardBody} from "reactstrap";
 
 import CollapseCheckoutRow from "./Collapse-Checkout-row/CollapseCheckoutRow";
 import ax from'./../../../../assets/img/4th-1.jpg'
-import HeaderComponentChichiInfo from "../Header-component-chichi-info/Header-component-chichi-info";
+import HeaderComponentChichiInfo from "../../Header-component-chichi-info/Header-component-chichi-info";
 
 class ChichiManInfoCheckOut extends Component {
     constructor(props) {
@@ -27,6 +27,7 @@ class ChichiManInfoCheckOut extends Component {
         return (
             <div>
                 <Card>
+
                     <CardBody>
                         <HeaderComponentChichiInfo header="تسویه حساب"/>
                         <div className='d-flex flex-wrap justify-content-start' dir='rtl'>

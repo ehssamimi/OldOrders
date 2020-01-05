@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {Card, CardBody, CardHeader, Collapse} from "reactstrap";
+import {Card, CardBody, Collapse} from "reactstrap";
  import CollapseRow from "../../../PresentOrders/Common/CollapseRow";
-import VoteToChichiManInInfo from "../Vote-ChichiMan-info/VoteToChichiManInInfo";
-import HeaderComponentChichiInfo from "../Header-component-chichi-info/Header-component-chichi-info";
+import VoteToChichiManInInfo from "../../ChichiManVote/Vote-ChichiMan-info/VoteToChichiManInInfo";
+import HeaderComponentChichiInfo from "../../Header-component-chichi-info/Header-component-chichi-info";
 
 class ChichiMAnInfoHistoryTrip extends Component {
     constructor(props) {
@@ -106,10 +106,6 @@ class ChichiMAnInfoHistoryTrip extends Component {
         return (
             <div>
                 <Card>
-                     {/*<div dir='rtl' className="text-right ">*/}
-
-                    {/*</div>*/}
-
                     <CardBody>
                         <HeaderComponentChichiInfo header="تاریخچه سفر"/>
                          <div className='d-flex flex-wrap justify-content-start' dir='rtl'>

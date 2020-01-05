@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
+import ChichiManInfoVoteChichiManToUser from "./ChichiMan-info-vote/ChichiMan-Info-Vote-ChichiMan-To-User";
 
 class ChichiManVoteChichiToUser extends Component {
     render() {
         return (
             <div>
-                <h2>chichi-man vote  chichi to user</h2>
+                <ChichiManInfoVoteChichiManToUser/>
             </div>
         );
     }
