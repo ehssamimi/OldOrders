@@ -55,7 +55,7 @@ class ChichiManInfoVoteChichiManToUser extends Component {
                                 <Doughnut shadow data={doughnutChartData}/>
                             </div>
                             <div className=' col-6 d-flex flex-wrap justify-content-start' dir='rtl'>
-                                <CollapseRow store={subRow.Situations}/>
+                                <CollapseRow store={subRow.Situations} col='col-12'/>
                             </div>
                         </div>
 

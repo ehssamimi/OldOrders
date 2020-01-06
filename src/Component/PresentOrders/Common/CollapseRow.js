@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
-import RowShowShow from "../RowShowShow";
-import ShowShowline from "../../Support/Users/UserDetails/sub/Support/sub/ReportUserBox/ShowShowLine/ShowShowline";
+ import ShowShowline from "../../Support/Users/UserDetails/sub/Support/sub/ReportUserBox/ShowShowLine/ShowShowline";
 
 class CollapseRow extends Component {
     constructor(props) {
@@ -19,20 +18,6 @@ class CollapseRow extends Component {
             store, sub,Keys
         });
     }
-
-    // static getDerivedStateFromProps(props, state) {
-    //     if (props.collapse){
-    //         if (props.collapse !== state.collapse) {
-    //             return {
-    //                 collapse: props.collapse,
-    //             };
-    //         }
-    //         // Return null if the state hasn't changed
-    //         return null
-    //     }
-    //
-    // }
-
     toggle() {
         this.setState(state => ({ collapse: !state.collapse }));
     }

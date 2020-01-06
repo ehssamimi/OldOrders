@@ -106,6 +106,12 @@ const data = [
                 label: "لیست",
                 to: "/chichi-man/list",
             },
+            {
+                icon: "iconsminds-preview",
+                id: "chchiMan-situation",
+                label: "وضعیت چی چی من ها",
+                to: "/chichi-man/situation",
+            },
 
             {
                 icon: "simple-icon-present",
@@ -159,47 +165,47 @@ const data = [
             },
 
 
-        {
-            icon: "simple-icon-info",
-            id: "chchiMan-info",
-            label: "اطلاعات",
-            to: "/chichi-man/info",
-            subs: [{
-                icon: "iconsminds-smartphone-4",
-                label: "سفر فعلی",
-                to: "/chichi-man/info/current-trip"
-            },{
-                icon: "iconsminds-smartphone-4",
-                label: "اصلی",
-                to: "/chichi-man/info/main"
-            }, {
-                icon: "iconsminds-smartphone-4",
-                label: "تسویه حساب",
-                to: "/chichi-man/info/check-out"
-            }, {
-                icon: "iconsminds-smartphone-4",
-                label: "نتایج کلی نظرسنجی ها",
-                to: "/chichi-man/info/vote"
-            }, {
-                icon: "iconsminds-smartphone-4",
-                label: "آمارها",
-                to: "/chichi-man/info/static"
-            },{
-                icon: "iconsminds-smartphone-4",
-                label: "اطلاعات ثبت نام",
-                to: "/chichi-man/info/submit-info"
-            },{
-                icon: "iconsminds-smartphone-4",
-                label: "تاریخچه سفرها ",
-                to: "/chichi-man/info/trip-history"
-            }
-            ,{
-                icon: "iconsminds-smartphone-4",
-                label: "وضعیت ها",
-                to: "/chichi-man/info/situation"
-            },
-            ]
-        },
+        // {
+        //     icon: "simple-icon-info",
+        //     id: "chchiMan-info",
+        //     label: "اطلاعات",
+        //     to: "/chichi-man/info",
+        //     subs: [{
+        //         icon: "iconsminds-smartphone-4",
+        //         label: "سفر فعلی",
+        //         to: "/chichi-man/info/current-trip"
+        //     },{
+        //         icon: "iconsminds-smartphone-4",
+        //         label: "اصلی",
+        //         to: "/chichi-man/info/main"
+        //     }, {
+        //         icon: "iconsminds-smartphone-4",
+        //         label: "تسویه حساب",
+        //         to: "/chichi-man/info/check-out"
+        //     }, {
+        //         icon: "iconsminds-smartphone-4",
+        //         label: "نتایج کلی نظرسنجی ها",
+        //         to: "/chichi-man/info/vote"
+        //     }, {
+        //         icon: "iconsminds-smartphone-4",
+        //         label: "آمارها",
+        //         to: "/chichi-man/info/static"
+        //     },{
+        //         icon: "iconsminds-smartphone-4",
+        //         label: "اطلاعات ثبت نام",
+        //         to: "/chichi-man/info/submit-info"
+        //     },{
+        //         icon: "iconsminds-smartphone-4",
+        //         label: "تاریخچه سفرها ",
+        //         to: "/chichi-man/info/trip-history"
+        //     }
+        //     ,{
+        //         icon: "iconsminds-smartphone-4",
+        //         label: "وضعیت ها",
+        //         to: "/chichi-man/info/situation"
+        //     },
+        //     ]
+        // },
 
         ]
     },

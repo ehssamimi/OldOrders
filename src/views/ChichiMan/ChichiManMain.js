@@ -46,6 +46,9 @@ const Quantity = React.lazy(() =>
 const Quality = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ '../../Component/ChichiMan/ChichiMan statistic/ChichiMaStatisticQality')
 );
+const Situation = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-gogo" */ '../../Component/ChichiMan/ChichiMan-orders-chichiman/ChichiMan-orders-chichiMan')
+);
 
 
 
@@ -63,10 +66,10 @@ class App extends Component {
                                 path={`${match.url}/sign-in`}
                                 render={props => <ChichiManSignIn {...props} />}
                             />
-                            <Route
-                                path={`${match.url}/info`}
-                                render={props => <ChichiManInfo {...props} />}
-                            />
+                            {/*<Route*/}
+                                {/*path={`${match.url}/info`}*/}
+                                {/*render={props => <ChichiManInfo {...props} />}*/}
+                            {/*/>*/}
                             {/**************lists*************/}
                             <Route
                                 path={`${match.url}/list`}
@@ -75,6 +78,11 @@ class App extends Component {
                             <Route
                                 path={`${match.url}/list-detail/:userId`}
                                 render={props => <ChichiManInfoSubmit {...props} />}
+                            />
+                            {/**************Situation*************/}
+                            <Route
+                                path={`${match.url}/situation`}
+                                render={props => <Situation type={'chichiman'} {...props} />}
                             />
                             {/**************history-orders*************/}
 

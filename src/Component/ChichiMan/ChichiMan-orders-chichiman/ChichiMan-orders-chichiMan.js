@@ -1,48 +1,70 @@
 import React, {Component} from 'react';
 import ax from './../../../assets/img/4th-1.jpg'
+ import ChichiManOrderSituationInRow from "./ChichiMan-Order-Situation-In-Row/ChichiManOrderSituationInRow";
 
 class ChichiManOrdersChichiMan extends Component {
+    constructor(props) {
+        super(props);
+        this.state={
+            subRow: [
+                {
+                    'header': "در صف ",
+                    'image': ax,
+                    'sub': [{
+                        'product_id': 'ir 2023526',
+                        'name': 'سهند میرزایی',
+                        'time': "00:20"
+                    }, {'product_id': 'ir 2023526', 'name': 'سهند میرزایی', 'time': "00:20"}, {'product_id': 'ir 2023526', 'name': 'سهند میرزایی', 'time': "00:20"}, {'product_id': 'ir 2023526', 'name': 'سهند میرزایی', 'time': "00:20"}, {'product_id': 'ir 2023526', 'name': 'سهند میرزایی', 'time': "00:20"}]
+                },
+                {
+                    'header': "در حال دریافت از انبار ",
+                    'image': ax,
+                    'sub': [{
+                        'product_id': 'ir 2023526',
+                        'name': 'سهند میرزایی',
+                        'time': "00:20"
+                    }, {'product_id': 'ir 2023526', 'name': 'سهند میرزایی', 'time': "00:20"}]
+                },
+                {
+                    'header': "در حال ارسال ",
+                    'image': ax,
+                    'sub': [{
+                        'product_id': 'ir 2023526',
+                        'name': 'سهند میرزایی',
+                        'time': "00:20"
+                    }, {'product_id': 'ir 2023526', 'name': 'سهند میرزایی', 'time': "00:20"}]
+                },
+                {
+                    'header': "تحویل به مشتری ",
+                    'image': ax,
+                    'sub': [{
+                        'product_id': 'ir 2023526',
+                        'name': 'سهند میرزایی',
+                        'time': "00:20"
+                    }, {'product_id': 'ir 2023526', 'name': 'سهند میرزایی', 'time': "00:20"}]
+                },
+                {
+                    'header': "برگشت به انبار ",
+                    'image': ax,
+                    'sub': [{
+                        'product_id': 'ir 2023526',
+                        'name': 'سهند میرزایی',
+                        'time': "00:20"
+                    }, {'product_id': 'ir 2023526', 'name': 'سهند میرزایی', 'time': "00:20"}]
+                },
+            ]
+        }
+    }
     render() {
+        let{subRow}=this.state;
         return (
-            <div className='  w-100 d-flex  '>
-                <div className='w-20 text-center flex-column '>
-                    <div className='w-100 text-center'>
-                        {
-                            this.props.type==='chichiman'?
-                                <span className='col-8'>در صف</span>:
-                                <span className='col-8'>ثبت سفارش</span>
-                        }
-                    </div>
-                    <div className='w-100'>
-                        <img src={ax} alt="ax" className='img-self-fill'/>
-                    </div>
-                    <div className="dashboard-logs w-100" dir='rtl'>
-                        <div className="scrollbar-container ps ps--active-y">
-                            <table className="table table-sm table-borderless">
-                                <tbody>
-                                <tr>
-                                    <td><span className="log-indicator align-middle border-theme-1"></span></td>
-                                    <td><span className="font-weight-medium">ir 2023526</span></td>
-                                    <td><span className="font-weight-medium">سهند میرزایی</span></td>
-                                    <td className="text-right"><span className="text-muted">00:20</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span className="log-indicator align-middle border-theme-1"></span></td>
-                                    <td><span className="font-weight-medium">ir 2023526</span></td>
-                                    <td className="text-right"><span className="text-muted">سهند میرزایی</span></td>
-                                    <td className="text-right"><span className="text-muted">سهند میرزایی</span></td>
-                                </tr>
+            <div className='  w-100 d-flex ' dir='rtl'>
 
-
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-
-
-                </div>
-
+                {subRow.length>0 ?
+                    subRow.map((todo, index) =>
+                        <ChichiManOrderSituationInRow Main={todo} index={index} {...this.props}/>
+                    ) : ''
+                }
 
             </div>
         );
