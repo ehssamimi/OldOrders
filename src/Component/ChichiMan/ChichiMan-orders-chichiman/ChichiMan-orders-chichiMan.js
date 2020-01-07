@@ -14,7 +14,7 @@ class ChichiManOrdersChichiMan extends Component {
                         'product_id': 'ir 2023526',
                         'name': 'سهند میرزایی',
                         'time': "00:20"
-                    }, {'product_id': 'ir 2023526', 'name': 'سهند میرزایی', 'time': "00:20"}, {'product_id': 'ir 2023526', 'name': 'سهند میرزایی', 'time': "00:20"}, {'product_id': 'ir 2023526', 'name': 'سهند میرزایی', 'time': "00:20"}, {'product_id': 'ir 2023526', 'name': 'سهند میرزایی', 'time': "00:20"}]
+                    }, {'product_id': 'ir 2023526', 'name': 'سهند میرزایی', 'time': "00:20"} ]
                 },
                 {
                     'header': "در حال دریافت از انبار ",

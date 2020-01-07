@@ -4,16 +4,12 @@ import {Card, CardBody, CardTitle, FormGroup, Label, Modal, ModalBody, ModalHead
 import {Colxx} from "../../../components/common/CustomBootstrap";
 import IntlMessages from "../../../helpers/IntlMessages";
 import {Field, Form, Formik} from "formik";
-import PersianClassCalender from "../../OldOrders/SelectTime/Headers/sub/PersianClassCalender";
-import {FormikReactSelect} from "../../../containers/form-validations/FormikFields";
-import ImgComponent from "../../ChichiMan/ChiChi Man Sign In/Sub/ImgComponent";
-import WizardBottonNavigations from "../../ChichiMan/ChiChi Man Sign In/Sub/WizardBottonNavigations";
-import * as Yup from "yup";
-import {sendImg, ProductDetail, getAllCategories, AddProduct, GetProductDetail} from "../../functions/ServerConnection";
+ import {FormikReactSelect} from "../../../containers/form-validations/FormikFields";
+  import * as Yup from "yup";
+import {sendImg, ProductDetail, getAllCategories, AddProduct, UpdateProduct} from "../../functions/ServerConnection";
 import NotificationManager from "../../../components/common/react-notifications/NotificationManager";
-import CropImgCropper from "../../HomePages/Sub/CropImg/CropImgCropper";
-import JustCropImg from "../../HomePages/Sub/CropImg/JustCropImg";
-import ax from './../../../assets/img/2574.jpg'
+ import JustCropImg from "../../HomePages/Sub/CropImg/JustCropImg";
+import ax from './../../../assets/img/4th.jpg'
 
 const SignupSchema = Yup.object().shape({
 
@@ -68,7 +64,7 @@ class ContentProductAdd extends Component {
                 Description:"" ,
                 Attribute:""
                 // TagKind: {value: "موتور",label: "موتور"},
-            }
+            },id:'',updateImage:''
         }
     }
 
@@ -90,26 +86,24 @@ class ContentProductAdd extends Component {
         }
 
 //      **********Map Category to seprate Category and sub category then add to Option drop down
-        categories.map((each, index) => {
-            let CatRow = {value: each.name, label: each.name};
-            CategoryOption.push(CatRow);
-            let SubCatCondition = each.sub_categories !== undefined ?
-                SubCategory(each.sub_categories)
-                :[{ value:"we have not sub category", label: "we have not sub category" }] ;
-            Subs[each.name]=SubCatCondition;
-        });
+        if (categories.Description!=='"Network Error"'){
+            categories.map((each, index) => {
+                CategoryOption.push({value: each.name, label: each.name});
+                let SubCatCondition = each.sub_categories !== undefined ?
+                    SubCategory(each.sub_categories)
+                    :[{ value:"we have not sub category", label: "we have not sub category" }] ;
+                Subs[each.name]=SubCatCondition;
+            });
+        }
 
-
-
-
+        // ***********get params Id********
         const {match: {params}} = this.props;
         console.log(params);
         var initialData="";
 
-        // console.log(params.Id=== undefined ?true:false);
+          // ***********if update***********
         if (params.Id===':Id'){
-            // **************************inital value  *********************
-
+            // ************************** set initial  *********************
             initialData={
                 Name:'',
                 Manufacture:'',
@@ -121,20 +115,20 @@ class ContentProductAdd extends Component {
                 isOff:{value: false ,label: "تخفیف ندارد"},
                 Description:"" ,
                 Attribute:""
-                // TagKind: {value: "موتور",label: "موتور"},
-            }
+             }
+
         }else {
-            // **************************inital value for update*********************
+            // **************************initial value for update*********************
             let Description = await ProductDetail(params.Id);
             let productDetail = Description['Description'];
             initialData = {
                 Name: productDetail['UniqueValue'],
                 Manufacture: productDetail['Manufacture'],
                 Count: productDetail['Count'],
-                Price: productDetail['CurrentPrice'],
+                Price: productDetail['PrevPrice'],
                 percent: productDetail['Off']['Percentage'],
-                Category: {},
-                sub_category: {},
+                Category: {value: productDetail['Category'], label: productDetail['Category']},
+                sub_category: {value: productDetail['SubCategory'], label: productDetail['SubCategory']},
                 isOff: productDetail['Off']['Enable'] === false ? {value: false, label: "تخفیف ندارد"} : {
                     value: true,
                     label: "تخفیف دارد"
@@ -142,18 +136,18 @@ class ContentProductAdd extends Component {
                 Images: productDetail['Images'][0],
                 Description: productDetail['Description'],
                 Attribute: productDetail['Attribute']
-                // TagKind: {value: "موتور",label: "موتور"},
-            };
-            // console.log(initialData);
+             };
+            console.log('update-initial');
+            console.log(productDetail);
 
-            this.setState({
-                ax1: initialData['Images']
-            })
-
+            var catValue={value: productDetail['Category'], label: productDetail['Category']};
+            var updateImage=productDetail['Images'][0].split('/')
+            // console.log(updateImage[4])
         }
         this.setState({
-            CategoryOption,Subs,initialData,
+            CategoryOption,Subs,initialData,catValue,ax1:params.Id===':Id'?ax: initialData['Images'],id:params.Id===':Id'?"":params.Id,updateImage:params.Id===':Id'?"":updateImage[4]
         })
+
         // let each=await GetProductDetail(params.Id);
 
         // **************************sample*********************
@@ -247,107 +241,179 @@ class ContentProductAdd extends Component {
             sub_category: values.sub_category.value,
             // ChanceType: values.ChanceType.value,
             // Name: values.Name.value,
-
         };
-        console.log(payload);
-        let {  ax1File, axError} = this.state;
-        console.log('ax1File');
-        console.log(ax1File);
-         let axValid = true;
-        if (ax1File === '') {
-            axValid = false;
-            axError = "عکس محصول اجباری است "
-        }else {
-            axError = ""
-        }
-        this.setState({
-            axError
-        }, () => {
-
-        })
-
-        if (axValid) {
-            console.log(payload);
-            this.setState({
-                showLoader:true
-            });
-            // console.log(payload);
 
 
-            let idax = await sendImg(ax1File, 'Public');
+        if (this.state.id.length>2){
+            console.log("update");
+            var idax;
+             let {  ax1File ,catValue} = this.state;
+                this.setState({
+                    showLoader:true
+                });
 
 
-
-
-            // let Data={
-            //     "UniqueValue": payload.Name,
-            //     "Name":payload.Name,
-            //     "Attribute": payload.Attribute,
-            //     "Manufacture": payload.Manufacture,
-            //     "Count": payload.Count.toString(),
-            //     "Price": payload.Price,
-            //     "Description":payload.Description,
-            //     "Category":payload.sub_category,
+            //
+            // {
+            //     "Id": "string",
+            //     "UniqueValue": "string",
+            //     "Name": "string",
+            //     "Attribute": "string",
+            //     "Manufacture": "string",
+            //     "Count": "string",
+            //     "Price": 0,
+            //     "Description": "string",
+            //     "Category": "string",
+            //     "SubCategory": "string",
             //     "Images": [
-            //         idax.toString()
-            //  ],
-            //     "Off": payload.percent,
-            //     "IsOffEnable": payload.isOff
-            // };
-
-            let Data={
-                "UniqueValue": payload.Name,
-                "Name":payload.Name,
-                "Attribute": payload.Attribute,
-                "Manufacture": payload.Manufacture,
-                "Count": payload.Count.toString(),
-                "Price": payload.Price,
-                "Description":payload.Description,
-                "Category":payload.sub_category,
-                "Images": [
-                    idax.toString()
-             ],
-                "Off": payload.percent,
-                "IsOffEnable": payload.isOff
-            };
+            //     null
+            // ],
+            //     "Off": 0,
+            //     "IsOffEnable": true
+            // }
 
 
-            console.log(Data);
+                let Data={
+                    "Id": this.state.id,
+                    "UniqueValue": this.state.initialData['Name'],
+                    "Name":payload.Name,
+                    "Attribute": payload.Attribute,
+                    "Manufacture": payload.Manufacture,
+                    "Count": payload.Count.toString(),
+                    "Price": payload.Price,
+                    "Description":payload.Description,
+                    "Category":catValue.value,
+                    "SubCategory": payload.sub_category,
+                    "Images": [
+                        ax1File === ''?this.state.updateImage:await sendImg(ax1File, 'Public')
+                    ],
+                    "Off": payload.percent || 0.0,
+                    "IsOffEnable": payload.isOff,
+                };
+                console.log(Data);
+
+                let Register = await UpdateProduct(JSON.stringify(Data));
+                console.log(Register);
+
+                this.setState({
+                    showLoader: false
+                });
+                let {state, Description} = Register;
+                if (state ) {
+                    NotificationManager.success(
+                        "congratulation",
+                        "اطلاعات شما با موفقیت ثبت شد",
+                        3000,
+                        null,
+                        null,
+                        "success"
+                    );
+                } else {
+                    NotificationManager.error(
+                        "error",
+                        Description,
+                        3000,
+                        null,
+                        null,
+                        "error"
+                    );
+                }
 
 
 
-
-
-            let Register = await AddProduct(JSON.stringify(Data));
-
-            // console.log(Register);
-            this.setState({
-                showLoader: false
-            });
-            let {state, Description} = Register;
-            if (state ) {
-                NotificationManager.success(
-                    "congratulation",
-                    "اطلاعات شما با موفقیت ثبت شد",
-                    3000,
-                    null,
-                    null,
-                    "success"
-                );
-            } else {
-                NotificationManager.error(
-                    "error",
-                    Description,
-                    3000,
-                    null,
-                    null,
-                    "error"
-                );
+        } else {
+            console.log(payload);
+            let {  ax1File, axError,catValue} = this.state;
+            console.log('ax1File');
+            console.log(ax1File);
+            let axValid = true;
+            if (ax1File === '') {
+                axValid = false;
+                axError = "عکس محصول اجباری است "
+            }else {
+                axError = ""
             }
+            this.setState({
+                axError
+            }, () => {
+
+            })
+
+            if (axValid) {
 
 
 
+                    console.log(payload);
+                this.setState({
+                    showLoader:true
+                });
+                // console.log(payload);
+
+
+                let idax = await sendImg(ax1File, 'Public');
+
+                // {
+                //     "UniqueValue": "string",
+                //     "Name": "string",
+                //     "Attribute": "string",
+                //     "Manufacture": "string",
+                //     "Count": "string",
+                //     "Price": 0,
+                //     "Description": "string",
+                //     "Category": "string",
+                //     "Images": [
+                //     null
+                // ],
+                //     "Off": 0,
+                //     "IsOffEnable": false,
+                //     "SubCategory": "string"
+                // }
+
+                let Data={
+                    "UniqueValue": payload.Name,
+                    "Name":payload.Name,
+                    "Attribute": payload.Attribute,
+                    "Manufacture": payload.Manufacture,
+                    "Count": payload.Count.toString(),
+                    "Price": payload.Price,
+                    "Description":payload.Description,
+                    "Category":catValue.value,
+                    "Images": [
+                        idax.toString()
+                    ],
+                    "Off": payload.percent || 0.0,
+                    "IsOffEnable": payload.isOff,
+                    "SubCategory": payload.sub_category
+                };
+
+                let Register = await AddProduct(JSON.stringify(Data));
+
+                this.setState({
+                    showLoader: false
+                });
+                let {state, Description} = Register;
+                if (state ) {
+                    NotificationManager.success(
+                        "congratulation",
+                        "اطلاعات شما با موفقیت ثبت شد",
+                        3000,
+                        null,
+                        null,
+                        "success"
+                    );
+                } else {
+                    NotificationManager.error(
+                        "error",
+                        Description,
+                        3000,
+                        null,
+                        null,
+                        "error"
+                    );
+                }
+            }
         }
+
 
     };
     render() {
@@ -375,8 +441,6 @@ class ContentProductAdd extends Component {
                                     <Formik
                                         initialValues={
                                             this.state.initialData
-
-
                                         }
                                         validationSchema={SignupSchema}
                                         onSubmit={this.handleSubmit}
@@ -439,7 +503,6 @@ class ContentProductAdd extends Component {
                                                             <FormGroup className="form-group has-float-label position-relative">
                                                                 <Label>
                                                                     <span>تولید</span>
-
                                                                 </Label>
                                                                 <Field className="form-control" name="Manufacture"  onBlur={setFieldTouched}
                                                                        placeholder="کارخانه تولیدی را مشخص کنید !" />

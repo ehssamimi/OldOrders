@@ -896,6 +896,30 @@ export  async  function  AddProduct(data){
     });
     return resp;
 }
+export  async  function  UpdateProduct(data){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+        "accept": "application/json"
+    };
+    console.log(data);
+    let resp ={state:false,Description:""};
+    await axios.post(`${Const.product}admin/product/update`, data , {headers: headers}).then(function (response) {
+        console.log(response);
+        let{State,Description}= response.data ;
+        // console.log(response);
+        if (State===200 ){
+            resp ={state:State,Description:Description};
+        }else {
+            resp ={state:State,Description:Description};
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}
 export  async  function  DeleteProduct(UniqueValue ){
     let headers = {
         'Token': Const.Token,

@@ -128,12 +128,12 @@ class PreviewProduct extends Component {
                                         Off['Enable'] ?
                                             <div className='d-flex col-12   '>
                                                    <span className="fs-1vw color-gray col-6 text-center "
-                                                         dir='rtl'>{Main['CurrentPrice']} تومن </span>
+                                                         dir='rtl'>{Main['PrevPrice']}  تومن </span>
                                                 <span className="fs-1vw color-gray lineOverText text-muted col-6 text-center "
-                                                      dir='rtl'>{Main['PrevPrice']} تومن </span>
+                                                      dir='rtl'>{Main['CurrentPrice']} تومن </span>
                                             </div> :
                                             <div className='d-flex justify-content-center '>
-                                                <p className="fs-1w color-gray" dir='rtl'>{Main['CurrentPrice']} تومن </p>
+                                                <p className="fs-1vw color-gray" dir='rtl'>{Main['PrevPrice']} تومن </p>
                                             </div>
                                         : ""
                                 }

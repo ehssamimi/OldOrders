@@ -11,17 +11,23 @@ class ContentProductAll extends Component {
             productSeparate:[],
             pageStart:1,
             hasMore:true,
-            last_page:40
+            last_page:500
         }
     }
 
 
 // **********Load more function forinfinity scroll***********
    async loadMore(){
-       console.log("loadMore");
-       let{pageStart,last_page}=this.state;
+        let{pageStart,last_page}=this.state;
        let Response = await GetAllProduct(pageStart);
+       console.log(Response);
        let{Products,Page}=Response;
+       // if (Products.length===0){
+       //     console.log('this is the end');
+       //     this.setState({
+       //         last_page:Page+1
+       //     })
+       // }
         let productSeparate=[];
        Products.map((each, index) => {
                let sub = {"تعداد": each['Count'],"تولید": each['Manufacture'],"دسته بندی": each['Category'] };
@@ -41,8 +47,9 @@ class ContentProductAll extends Component {
            });
        this.setState(prevState=>({
            productSeparate:[ ...prevState.productSeparate , ...productSeparate ],
-           hasMore:Page !== last_page,
-           pageStart:Page+1
+           // hasMore:    Page !== last_page,
+           pageStart:Page+1,
+           hasMore:  Products.length !== 0
        }));
    }
 

@@ -8,6 +8,8 @@ import RowShowShow from "../../../PresentOrders/RowShowShow";
 import RowShowShowColEdit from "../../../Support/Users/UserDetails/sub/RowShowShowColEdit/RowShowShowColEdit";
 import CollapseRow from "../../../PresentOrders/Common/CollapseRow";
 const colors = ThemeColors();
+
+// ************chichiMan vote emoji*************
 const doughnutChartData={
     labels: ['خیلی بد', 'بد', 'متوسط','خوب', 'خیلی خوب' ],
     datasets: [
@@ -20,14 +22,11 @@ const doughnutChartData={
                 "rgba(196, 61, 75, 0.1)",
                 "rgba(16, 73, 120, 0.1)",
                 "rgba(90, 90, 90, 0.1)",
-                // colors.themeColor6_10,
-                // "rgba(146, 34, 146, 0.1)",
             ],
             borderWidth: 2,
             data: [10, 5, 20 ,25, 20 ]
         }
     ],
-
 };
 
 
@@ -36,7 +35,8 @@ class ChichiManInfoVoteChichiManToUser extends Component {
         super(props);
         this.state={
             subRow:{
-                Situations:{'header':"IR3020215",'sub':{'انبارداری':'اطلاعاتی ثبت نشد','مشتری':"اطلاعاتی ثبت نشد" }},
+                // ***************chichi comment to store and customer**************
+                Situations:[{'header':"IR3020215",'sub':{'انبارداری':'اطلاعاتی ثبت نشد','مشتری':"اطلاعاتی ثبت نشد" }},{'header':"IR3020215",'sub':{'انبارداری':'اطلاعاتی ثبت نشد','مشتری':"اطلاعاتی ثبت نشد" }},]
 
             }
         }
@@ -49,18 +49,21 @@ class ChichiManInfoVoteChichiManToUser extends Component {
             <Card>
                 <CardBody>
                     <div className='d-flex flex-column h-100'>
-                        <HeaderComponentChichiInfo header="اطلاعات ثبت نام"/>
+                        <HeaderComponentChichiInfo header="نظرسنجی چی چی من به کاربر"/>
                         <div className='w-100 d-flex '>
+                            {/*******piechart*****/}
                             <div className="col-6 chart-container">
                                 <Doughnut shadow data={doughnutChartData}/>
                             </div>
+                            {/*******right information about vote chichi to store and customer */}
                             <div className=' col-6 d-flex flex-wrap justify-content-start' dir='rtl'>
-                                <CollapseRow store={subRow.Situations} col='col-12'/>
+                                {
+                                    subRow.Situations.length>0?subRow.Situations.map((item,index)=> <CollapseRow store={item} col='col-12' index={index} />):''
+                                }
                             </div>
                         </div>
 
                     </div>
-
                 </CardBody>
             </Card>
 

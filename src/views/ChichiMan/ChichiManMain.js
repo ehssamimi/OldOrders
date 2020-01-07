@@ -131,21 +131,6 @@ class App extends Component {
                                 path={`${match.url}/statistic/quality-detail/:userId`}
                                 render={props => <Quality {...props} />}
                             />
-
-
-
-                            {/*<Route*/}
-                                {/*path={`${match.url}/statistic`}*/}
-                                {/*render={props => <Statistic {...props} />}*/}
-                            {/*/>*/}
-                            {/*<Route*/}
-                                {/*path={`${match.url}/quantity`}*/}
-                                {/*render={props => <Quantity {...props} />}*/}
-                            {/*/>*/}
-                            {/*<Route*/}
-                                {/*path={`${match.url}/quality`}*/}
-                                {/*render={props => <Quality {...props} />}*/}
-                            {/*/>*/}
                             {/**************CheckOut*************/}
                             <Route
                                 path={`${match.url}/check-out`}
@@ -164,7 +149,6 @@ class App extends Component {
                                 path={`${match.url}/status-detail/:userId`}
                                 render={props => <ChichiManStatus {...props} />}
                             />
-
 
                             <Redirect to="/error" />
                         </Switch>

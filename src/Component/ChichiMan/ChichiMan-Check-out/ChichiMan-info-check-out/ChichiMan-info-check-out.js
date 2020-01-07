@@ -9,21 +9,14 @@ class ChichiManInfoCheckOut extends Component {
     constructor(props) {
         super(props);
         this.state={
-
             subRow:{
                 MonthPay:{'header':"تسویه حساب حقوق ثابت ",'sub':{'مبلغ':'1,300,500','تاریخ پرداخت':'18/9/98','ساعت پرداخت ':"21:45",'مسئول پرداخت':"اقای احمد ذوقی",'بابت ماه':"آبان" }},
                 PercentPay:{'header':"تسویه حساب درصد",'sub':{'درصد':'70%','مبلغ کل هزینه پیک':'1,300,500','مبلغ':"5,000,000",'تاریخ پرداخت':"18/9/98",'ساعت پرداخت':'21:45','مسئول پرداخت':"اقای احمد ذوقی",'بابت ماه':"آبان" }},
              }
-
         }
     }
-    componentDidMount(){
-
-
-
-    }
     render() {
-        let{Keys,Items,subRow}=this.state;
+        let{ subRow}=this.state;
         return (
             <div>
                 <Card>
@@ -31,8 +24,10 @@ class ChichiManInfoCheckOut extends Component {
                     <CardBody>
                         <HeaderComponentChichiInfo header="تسویه حساب"/>
                         <div className='d-flex flex-wrap justify-content-start' dir='rtl'>
-                         <CollapseCheckoutRow store={subRow.MonthPay} ax={ax} label={"نوع پرداخت"} value={"آنلاین"}/>
-                         <CollapseCheckoutRow store={subRow.PercentPay} ax={ax} label={"نوع پرداخت"} value={"فیش واریزی"}/>
+                            {/***********Check out const*********/}
+                            <CollapseCheckoutRow store={subRow.MonthPay} ax={ax} label={"نوع پرداخت"} value={"آنلاین"}/>
+                            {/***********Check out percent*********/}
+                            <CollapseCheckoutRow store={subRow.PercentPay} ax={ax} label={"نوع پرداخت"} value={"فیش واریزی"}/>
                         </div>
                     </CardBody>
                 </Card>

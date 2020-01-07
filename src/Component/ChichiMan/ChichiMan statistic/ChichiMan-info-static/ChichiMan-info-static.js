@@ -8,12 +8,13 @@ class ChichiManInfoStatic extends Component {
         super(props);
         this.toggle = this.toggle.bind(this);
         this.state={
-            Items:{'شماره سفارش':'IR32513','نام و نام خانوادگی':'هوشنک ابتهاج' ,'ساعت سفر':'16:08:21' , 'وضعیت سفر':'انتظار بسته برای پیک','آدرس':"زحل، قمر کویینتزار، شهر نیگارا، میدان سیزارتا، کوچه دالی، پلا 13"
-            },
             subRow:{
-                TotalInfo:{'header':"اطلاعات کلی هر بخش ",'sub':{'تعداد سفر':'10','درآمد':'1,200,300','زمان تقریبی کل':"6:20:10",'زمان انجام کل':"5:20:12" }},
-                BaseOnSuccess:{'header':"بر اساس موفقیت",'sub':{'موفق':'7','لغو توسط کاربر':'2','خرابی وسیله نقلیه':"1" }},
+                /*********summery chichi info   **********/
+                TotalInfo:{'header':"اطلاعات کلی چی چی من ",'sub':{'تعداد سفر':'10','درآمد':'1,200,300','زمان تقریبی کل':"6:20:10",'زمان انجام کل':"5:20:12" }},
+                /*********  summery chichi info travel **********/
+                BaseOnSuccess:{'header':"اطلعات سفر ها ",'sub':{'موفق':'7','لغو توسط کاربر':'2','خرابی وسیله نقلیه':"1" }},
              },
+                /*********  chichi info history **********/
             History: [
                 {
                     'header': "روز قبل ",
@@ -75,31 +76,16 @@ class ChichiManInfoStatic extends Component {
                         'موفق': '7', 'لغو توسط کاربر': '2', 'خرابی وسیله نقلیه': "1"
                     }
                 },
-
             ],
-
             collapse:false
         }
-
     }
-    componentDidMount(){
 
-        let {Items} = this.state;
-        let Keys;
-        Keys=Object.keys(Items);
-        this.setState({
-            Keys
-        },()=>{
-            console.log(this.state.Keys);
-
-        });
-
-    }
     toggle() {
         this.setState(state => ({ collapse: !state.collapse }));
     }
     render() {
-        let{Keys,Items,subRow,History}=this.state;
+        let{ subRow,History}=this.state;
         return (
             <div>
                 <Card>
@@ -108,14 +94,13 @@ class ChichiManInfoStatic extends Component {
                         <HeaderComponentChichiInfo header="آمار ها"/>
 
                         <div className='d-flex flex-wrap justify-content-start' dir='rtl'>
-                            {/*{Keys ?*/}
-                                {/*Keys.map((todo, index) =>*/}
-                                    {/*<ShowShowline label={todo} value={Items[todo]} key={index} col={ todo==='آدرس'?'col-12':'col-6' } className='fS1vw'/>*/}
-                                {/*) : ''*/}
-                            {/*}*/}
+                            {/*********summery chichi info   **********/}
                             <CollapseRow store={subRow.TotalInfo}/>
+                            {/*********  summery chichi info travel **********/}
+
                             <CollapseRow store={subRow.BaseOnSuccess}/>
 
+                            {/*********  chichi info history **********/}
                             <div className='mt-5 col-12'>
                                 <div className='d-flex justify-content-start align-items-center ' onClick={this.toggle} >
                                     {
@@ -140,8 +125,7 @@ class ChichiManInfoStatic extends Component {
                                 </Card>
 
                             </div>
-                            {/*<VoteToChichiManInInfo store={subRow.Vote}/>*/}
-                        </div>
+                         </div>
                     </CardBody>
                 </Card>
             </div>
