@@ -248,9 +248,9 @@ class ContentProductAdd extends Component {
             console.log("update");
             var idax;
              let {  ax1File ,catValue} = this.state;
-                this.setState({
-                    showLoader:true
-                });
+                // this.setState({
+                //     showLoader:true
+                // });
 
 
             //
@@ -295,9 +295,9 @@ class ContentProductAdd extends Component {
                 let Register = await UpdateProduct(JSON.stringify(Data));
                 console.log(Register);
 
-                this.setState({
-                    showLoader: false
-                });
+                // this.setState({
+                //     showLoader: false
+                // });
                 let {state, Description} = Register;
                 if (state ) {
                     NotificationManager.success(

@@ -129,12 +129,12 @@ class Step4 extends Component {
             let Data={
                 "PhoneNumber": this.props.PhoneNumber,
                 "DeliveryType": payload.Kind,
-                "PlateNumber": payload.Plaque,
-                "CardNumber": payload.VCN,
+                "PlateNumber": payload.Plaque.toString(),
+                "CardNumber": payload.VCN.toString(),
                 // "VehicleModel": "string",
                 // "VehicleColor": "string",
                 "VehicleCardImage": ImgeId[0],
-                "LicenseNumber": payload.DLN,
+                "LicenseNumber": payload.DLN.toString(),
                 "LicenseImage": ImgeId[1]
             };
             console.log(Data);
@@ -180,8 +180,7 @@ class Step4 extends Component {
 
     render() {
         let{axError}=this.state;
-        console.log()
-        return (
+         return (
             this.state.showLoader?
                 <div className='d-flex justify-content-center align-items-center'>
                     <div className='col-6'>
@@ -196,7 +195,7 @@ class Step4 extends Component {
                             <CardBody>
                                 <CardTitle>
                                     <div className='d-flex justify-content-start'>
-                                        <IntlMessages id="اطلاعات نقلیه" />
+                                       <span>اطلاعات نقلیه</span>
                                     </div>
                                 </CardTitle>
 
@@ -227,8 +226,9 @@ class Step4 extends Component {
                                                 <div className="col-sm-6 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="شماره گواهینامه" />
-                                                        </Label>
+                                                            <span>شماره گواهینامه</span>
+
+                                                         </Label>
                                                         <Field className="form-control" name="DLN" type='number'   onBlur={setFieldTouched}
                                                                placeholder="کد ده رقمی شماره گواهینامه" />
                                                         {errors.DLN && touched.DLN ? (
@@ -241,7 +241,7 @@ class Step4 extends Component {
                                                 <div className="col-sm-6 ">
                                                     <FormGroup className="form-group has-float-label">
                                                         <Label>
-                                                            <IntlMessages id="نوع وسیله نقلیه" />
+                                                            <span>نوع وسیله نقلیه</span>
                                                         </Label>
                                                         <FormikReactSelect
                                                             name="Kind"
@@ -263,7 +263,7 @@ class Step4 extends Component {
                                                 <div className="col-sm-6 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="کارت ماشین" />
+                                                            <span>کارت ماشین</span>
                                                         </Label>
                                                         <Field className="form-control" name="VCN" type='text'   onBlur={setFieldTouched}
                                                                placeholder="شماره کارت وسیله نقلیه را وارد کنید !" />
@@ -277,8 +277,8 @@ class Step4 extends Component {
                                                 <div className="col-sm-6 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="پلاک" />
-                                                        </Label>
+                                                            <span>پلاک</span>
+                                                         </Label>
                                                         <Field className="form-control" name="Plaque" type='text'  onBlur={setFieldTouched}
                                                                placeholder="پلاک وسیله نقلیه را وارد کنید !" />
                                                         {errors.Plaque && touched.Plaque ? (

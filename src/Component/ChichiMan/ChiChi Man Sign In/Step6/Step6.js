@@ -21,7 +21,7 @@ import ImgComponent from "../Sub/ImgComponent";
 import {WithWizard} from "react-albus/lib";
 import WizardBottonNavigations from "../Sub/WizardBottonNavigations";
 import Loader from "../../../HomePages/Sub/Loader/Loader";
-import {sendImg, UpdateChichiManContactInfo} from "../../../functions/ServerConnection";
+import {sendImg, UpdateChichiManBankInfo} from "../../../functions/ServerConnection";
 import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
 const SignupSchema = Yup.object().shape({
     //
@@ -108,33 +108,33 @@ class Step6 extends Component {
         };
         console.log(Data);
 
-        // let Register = await UpdateChichiManContactInfo(JSON.stringify(Data));
-        // console.log(Register);
-        // this.setState({
-        //     showLoader: false
-        // });
-        // let {state, Description} = Register;
-        // if (state) {
-        //     NotificationManager.success(
-        //         "congratulation",
-        //         "اطلاعات شما با موفقیت ثبت شد",
-        //         3000,
-        //         null,
-        //         null,
-        //         "success"
-        //     );
-        //     let send=document.getElementById("sendItems");
-        //     send.click();
-        // } else {
-        //     NotificationManager.error(
-        //         "error",
-        //         Description,
-        //         3000,
-        //         null,
-        //         null,
-        //         "error"
-        //     );
-        // }
+        let Register = await UpdateChichiManBankInfo(JSON.stringify(Data));
+        console.log(Register);
+        this.setState({
+            showLoader: false
+        });
+        let {state, Description} = Register;
+        if (state) {
+            NotificationManager.success(
+                "congratulation",
+                "اطلاعات شما با موفقیت ثبت شد",
+                3000,
+                null,
+                null,
+                "success"
+            );
+            let send=document.getElementById("sendItems");
+            send.click();
+        } else {
+            NotificationManager.error(
+                "error",
+                Description,
+                3000,
+                null,
+                null,
+                "error"
+            );
+        }
 
 
 
@@ -191,8 +191,8 @@ class Step6 extends Component {
                             <CardBody>
                                 <CardTitle>
                                     <div className='d-flex justify-content-start'>
-                                        <IntlMessages id="اطلاعات مالی" />
-                                    </div>
+                                        <span>اطلاعات مالی</span>
+                                     </div>
                                 </CardTitle>
 
                                 <Formik
@@ -224,8 +224,8 @@ class Step6 extends Component {
                                                 <div className="col-sm-4 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="نام صاحب حساب" />
-                                                        </Label>
+                                                            <span>نام صاحب حساب</span>
+                                                         </Label>
                                                         <Field className="form-control" name="Name"  onBlur={setFieldTouched}
                                                                placeholder="نام و نام خانوادگی صاحب حساب را وارد کنید !" />
                                                         {errors.Name && touched.Name ? (
@@ -238,8 +238,8 @@ class Step6 extends Component {
                                                 <div className="col-sm-4 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="شماره کارت" />
-                                                        </Label>
+                                                            <span>شماره کارت</span>
+                                                         </Label>
                                                         <Field className="form-control" name="Card" type='number' onBlur={setFieldTouched}
                                                                placeholder="شماره کارت را وارد کنید !" />
                                                         {errors.Card && touched.Card ? (
@@ -252,8 +252,8 @@ class Step6 extends Component {
                                                 <div className="col-sm-4 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="شماره حساب" />
-                                                        </Label>
+                                                            <span>شماره حساب</span>
+                                                         </Label>
                                                         <Field className="form-control" name="Hesab" type='number' onBlur={setFieldTouched}
                                                                placeholder="شماره حساب را وارد کنید !" />
                                                         {errors.Hesab && touched.Hesab ? (
@@ -269,8 +269,8 @@ class Step6 extends Component {
                                                     <div className="col-sm-4 ">
                                                         <FormGroup className="form-group has-float-label position-relative">
                                                             <Label>
-                                                                <IntlMessages id="نام بانک" />
-                                                            </Label>
+                                                                <span>نام بانک</span>
+                                                             </Label>
                                                             <Field className="form-control" name="Bank"  onBlur={setFieldTouched}
                                                                    placeholder="نام بانک را وارد کنید !" />
                                                             {errors.Bank && touched.Bank ? (
@@ -283,8 +283,8 @@ class Step6 extends Component {
                                                     <div className="col-sm-4 ">
                                                         <FormGroup className="form-group has-float-label position-relative">
                                                             <Label>
-                                                                <IntlMessages id="شعبه" />
-                                                            </Label>
+                                                                <span>شعبه</span>
+                                                             </Label>
                                                             <Field className="form-control" name="Shobe"  onBlur={setFieldTouched}
                                                                    placeholder="شعبه را وارد کنید !" />
                                                             {errors.Shobe && touched.Shobe ? (
@@ -297,8 +297,8 @@ class Step6 extends Component {
                                                     <div className="col-sm-4 ">
                                                         <FormGroup className="form-group has-float-label position-relative">
                                                             <Label>
-                                                                <IntlMessages id="شماره شبا" />
-                                                            </Label>
+                                                                <span>شماره شبا</span>
+                                                             </Label>
                                                             <Field className="form-control" name="Shaba"  onBlur={setFieldTouched}
                                                                    placeholder="شماره حساب را وارد کنید !" />
                                                             {errors.Shaba && touched.Shaba ? (

@@ -29,22 +29,22 @@ import Loader from "../../../HomePages/Sub/Loader/Loader";
 const SignupSchema = Yup.object().shape({
 
     //
-    // PhoneNumber: Yup.number()
-    //     .required("شماره تلفن اجباری است!"),
-    // SSN: Yup.number()
-    //     .required("شماره کد ملی  اجباری است!").min(1000000000,'شماره کد ملی باید ده کاراکتر باشد'),
-    // CN: Yup.number()
-    //     .required("شماره شناسنامه اجباری است!"),
-    // CNPlace: Yup.string()
-    //     .required("محل صدور شناسنامه اجباری است!"),
-    // MartialStatus: Yup.string()
-    //     .required("وضعیت تاهل خود را انتخاب کنید "),
-    // Name: Yup.string()
-    //     .required("نام اجباری است!"),
-    // LastName: Yup.string()
-    //     .required("نام خانوادگی اجباری است!"),
-    // Address: Yup.string()
-    //     .required("آدرس اجباری است!"),
+    PhoneNumber: Yup.number()
+        .required("شماره تلفن اجباری است!"),
+    SSN: Yup.number()
+        .required("شماره کد ملی  اجباری است!").min(1000000000,'شماره کد ملی باید ده کاراکتر باشد'),
+    CN: Yup.number()
+        .required("شماره شناسنامه اجباری است!"),
+    CNPlace: Yup.string()
+        .required("محل صدور شناسنامه اجباری است!"),
+    MartialStatus: Yup.string()
+        .required("وضعیت تاهل خود را انتخاب کنید "),
+    Name: Yup.string()
+        .required("نام اجباری است!"),
+    LastName: Yup.string()
+        .required("نام خانوادگی اجباری است!"),
+    Address: Yup.string()
+        .required("آدرس اجباری است!"),
 
 
 
@@ -151,8 +151,8 @@ class Step3 extends Component {
             for (let i = 0; i < ImgeFiles.length; i++) {
 
                 let idax = await sendImg(ImgeFiles[i], 'Public');
-                console.log(idax)
-                ImgeId.push(idax)
+                console.log(idax);
+                ImgeId.push(idax);
             }
             console.log(ImgeId);
             // ImgeId = ["5df62418386b8a3235aefde7",
@@ -180,15 +180,15 @@ class Step3 extends Component {
                  "PhoneNumber":this.props.PhoneNumber,
                  "FirstName": payload.Name,
                  "LastName": payload.LastName,
-                 "SSN": payload.SSN,
-                 "Serial": payload.CN,
+                 "SSN": payload.SSN.toString(),
+                 "Serial": payload.CN.toString(),
                  "ProfilePic": ImgeId[2],
                  "Birthday": Date,
                  "Address": payload.Address,
                  "MartialStatus": payload.MartialStatus,
                  "Sex": payload.Sex,
                  "PlaceOfIssue": payload.CNPlace,
-                 "HomePhone": payload.PhoneNumber,
+                 "HomePhone": payload.PhoneNumber.toString(),
                  "SSN_IMAGE": ImgeId[0],
                  "SERIAL_IMAGE": ImgeId[1]
             };
@@ -283,9 +283,8 @@ class Step3 extends Component {
                             <CardBody>
                                 <CardTitle>
                                     <div className='d-flex justify-content-start'>
-                                        <IntlMessages id="اطلاعات اولیه" />
-                                    </div>
-
+                                        <span>اطلاعات اولیه</span>
+                                     </div>
                                 </CardTitle>
 
                                 <Formik
@@ -320,8 +319,8 @@ class Step3 extends Component {
                                                 <div className="col-sm-6 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="نام" />
-                                                        </Label>
+                                                            <span>نام</span>
+                                                         </Label>
                                                         <Field className="form-control" name="Name"   onBlur={setFieldTouched}
                                                                placeholder="نام چی چی من رو وارد کنید !" />
                                                         {errors.Name && touched.Name ? (
@@ -334,8 +333,8 @@ class Step3 extends Component {
                                                 <div className="col-sm-6 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="نام خانوادگی" />
-                                                        </Label>
+                                                            <span>نام خانوادگی</span>
+                                                         </Label>
                                                         <Field className="form-control" name="LastName"  onBlur={setFieldTouched}
                                                                placeholder="نام خانوادگی چی چی من رو وارد کنید !" />
                                                         {errors.LastName && touched.LastName ? (
@@ -353,8 +352,8 @@ class Step3 extends Component {
                                                 <div className="col-sm-8 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="آدرس" />
-                                                        </Label>
+                                                            <span>آدرس</span>
+                                                         </Label>
                                                         <Field className="form-control" name="Address"   onBlur={setFieldTouched}
                                                                placeholder="آدرس را وارد کنید !" />
                                                         {errors.Address && touched.Address ? (
@@ -368,8 +367,8 @@ class Step3 extends Component {
                                                 <div className="col-sm-4 rowInput">
                                                     <FormGroup className=" has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="تاریخ تولد" />
-                                                        </Label>
+                                                            <span>تاریخ تولد</span>
+                                                         </Label>
                                                         <div >
                                                             <PersianClassCalender GetData={this.GetData.bind(this)}/>
                                                         </div>
@@ -381,8 +380,8 @@ class Step3 extends Component {
                                                 <div className="col-sm-4 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="شماره تماس منزل" />
-                                                        </Label>
+                                                            <span>شماره تماس منزل</span>
+                                                         </Label>
                                                         <Field className="form-control" name="PhoneNumber" type='number'   onBlur={setFieldTouched}
                                                                placeholder="011-1111111" />
                                                         {errors.PhoneNumber && touched.PhoneNumber ? (
@@ -395,8 +394,8 @@ class Step3 extends Component {
                                                 <div className="col-sm-4 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="شماره کد ملی" />
-                                                        </Label>
+                                                            <span>شماره کد ملی</span>
+                                                         </Label>
                                                         <Field className="form-control" name="SSN" type='number'  onBlur={setFieldTouched}
                                                                placeholder=" شماره ده رقمی  کارت ملی را وارد کنید!" />
                                                         {errors.SSN && touched.SSN ? (
@@ -409,8 +408,8 @@ class Step3 extends Component {
                                                 <div className="col-sm-4 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="شماره شناسنامه" />
-                                                        </Label>
+                                                            <span>شماره شناسنامه</span>
+                                                         </Label>
                                                         <Field className="form-control" name="CN" type='number' onBlur={setFieldTouched}
                                                                placeholder="شماره شناسنامه را وارد کنید !" />
                                                         {errors.CN && touched.CN ? (
@@ -424,8 +423,8 @@ class Step3 extends Component {
                                                 <div className="col-sm-4 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="صادره از " />
-                                                        </Label>
+                                                            <span>صادره از</span>
+                                                         </Label>
                                                         <Field className="form-control" name="CNPlace" type='text' onBlur={setFieldTouched}
                                                                placeholder="محل صدور شناسنامه را وارد کنید " />
                                                         {errors.CNPlace && touched.CNPlace ? (
@@ -441,8 +440,8 @@ class Step3 extends Component {
 
                                                     <FormGroup className="form-group has-float-label">
                                                         <Label>
-                                                            <IntlMessages id="جنسیت" />
-                                                        </Label>
+                                                            <span>جنسیت</span>
+                                                         </Label>
                                                         <FormikReactSelect
                                                             name="Sex"
                                                             id="Sex"
@@ -478,8 +477,8 @@ class Step3 extends Component {
 
                                                     <FormGroup className="form-group has-float-label">
                                                         <Label>
-                                                            <IntlMessages id="وضعیت تاهل" />
-                                                        </Label>
+                                                            <span>وضعیت تاهل</span>
+                                                         </Label>
                                                         <FormikReactSelect
                                                             name="MartialStatus"
                                                             id="MartialStatus"

@@ -20,7 +20,7 @@ import {
 } from "../../../../containers/form-validations/FormikFields";
 import {WithWizard} from "react-albus/lib";
 import WizardBottonNavigations from "../Sub/WizardBottonNavigations";
-import {VerifyChichiManPhoneNumber} from "../../../functions/ServerConnection";
+import {VerifyChichiManPhoneNumber,GetVerificationCode} from "../../../functions/ServerConnection";
 import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
 import Loader from "../../../HomePages/Sub/Loader/Loader";
 // import * as Const from "../../../Const";
@@ -76,6 +76,10 @@ class Step2 extends Component {
     //
     //     TweenMax.staggerFrom( '.rowInput', 1, {autoAlpha:0, y: 100} ,0.1);﻿﻿﻿
     // }
+    async componentDidMount(){
+        let verificationCode=await GetVerificationCode(this.props.PhoneNumber);
+        console.log(verificationCode);
+    }
 
 
     handleSubmit = async (values, { setSubmitting }) => {
@@ -97,36 +101,36 @@ class Step2 extends Component {
 
 
 
-        // this.setState({
-        //     showLoader:true
-        // });
-        // let Register = await VerifyChichiManPhoneNumber(this.props.PhoneNumber,payload.CodeNumber);
-        // console.log(Register);
-        // this.setState({
-        //     showLoader: false
-        // });
-        // let {state, Description} = Register;
-        // if (state) {
-        //     NotificationManager.success(
-        //         "congratulation",
-        //         "کد شما تایید شد",
-        //         3000,
-        //         null,
-        //         null,
-        //         "success"
-        //     );
-        //     let send=document.getElementById("sendItems");
-        //     send.click();
-        // } else {
-        //     NotificationManager.error(
-        //         "error",
-        //         Description,
-        //         3000,
-        //         null,
-        //         null,
-        //         "error"
-        //     );
-        // }
+        this.setState({
+            showLoader:true
+        });
+        let Register = await VerifyChichiManPhoneNumber(this.props.PhoneNumber,payload.CodeNumber);
+        console.log(Register);
+        this.setState({
+            showLoader: false
+        });
+        let {state, Description} = Register;
+        if (state) {
+            NotificationManager.success(
+                "congratulation",
+                "کد شما تایید شد",
+                3000,
+                null,
+                null,
+                "success"
+            );
+            let send=document.getElementById("sendItems");
+            send.click();
+        } else {
+            NotificationManager.error(
+                "error",
+                Description,
+                3000,
+                null,
+                null,
+                "error"
+            );
+        }
 
 
 
@@ -154,7 +158,7 @@ class Step2 extends Component {
                             <CardBody>
                                 <CardTitle>
                                     <div className='d-flex justify-content-start'>
-                                        <IntlMessages id="اهراز هویت" />
+                                        <span>اهراز هویت</span>
                                     </div>
 
                                 </CardTitle>
@@ -185,8 +189,8 @@ class Step2 extends Component {
 
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="کد اهراز هویت" />
-                                                        </Label>
+                                                            <span>کد اهراز هویت</span>
+                                                         </Label>
                                                         <Field className="form-control" name="CodeNumber" type='number'  onBlur={setFieldTouched}
                                                                placeholder="کد خود رو وارد کنید !" />
                                                         {errors.CodeNumber && touched.CodeNumber ? (

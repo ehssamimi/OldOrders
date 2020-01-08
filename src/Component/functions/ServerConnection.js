@@ -751,13 +751,34 @@ export async  function  RegisterChichiMan(Data){
      });
     return resp;
 }
+export async  function  GetVerificationCode(phoneNumber){
+     let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+         "accept": "application/json"
+     };
+    let resp ={state:false,Description:""};
+     await axios.get(`${Const.ChichiMan}chichiman/code/${phoneNumber}`, {headers: headers}).then(function (response) {
+        let {status} = response;
+        let{State,Description}=JSON.parse(response.data);
+         // console.log(response);
+        if (status===200 ){
+             resp ={state:State,Description:Description};
+         }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+           resp ={state:false,Description:error.message};
+     });
+    return resp;
+}
 export async  function  VerifyChichiManPhoneNumber(phoneNumber,code){
     let headers = {
         'Token': Const.Token,
         'Id': Const.ID,
     };
     let resp ={state:false,Description:""};
-     await axios.get(`${Const.ChichiMan}chichiman/verify/${phoneNumber}/${code}`).then(function (response) {
+     await axios.get(`${Const.ChichiMan}chichiman/verify/${phoneNumber}/${code}` ,{headers: headers}).then(function (response) {
         let {status} = response;
         let{State,Description}=JSON.parse(response.data);
         // console.log(response);
@@ -777,7 +798,7 @@ export async  function  UpdateChichiManPersonalInfo(data){
         'Id': Const.ID,
     };
     let resp ={state:false,Description:""};
-     await axios.post(`${Const.ChichiMan}admin/chichiman/info/personal`,data).then(function (response) {
+     await axios.post(`${Const.ChichiMan}admin/chichiman/info/personal`,data  ,{headers: headers}).then(function (response) {
         let {status} = response;
         let{State,Description}=JSON.parse(response.data);
         // console.log(response);
@@ -797,7 +818,7 @@ export async  function  UpdateChichiManVehicleInfo(data){
         'Id': Const.ID,
     };
     let resp ={state:false,Description:""};
-     await axios.post(`${Const.ChichiMan}admin/chichiman/info/delivery`,data).then(function (response) {
+     await axios.post(`${Const.ChichiMan}admin/chichiman/info/delivery`,data  ,{headers: headers}).then(function (response) {
         let {status} = response;
         let{State,Description}=JSON.parse(response.data);
         // console.log(response);
@@ -817,7 +838,7 @@ export async  function  UpdateChichiManContactInfo(data){
         'Id': Const.ID,
     };
     let resp ={state:false,Description:""};
-     await axios.post(`${Const.ChichiMan}admin/chichiman/info/contract`,data).then(function (response) {
+     await axios.post(`${Const.ChichiMan}admin/chichiman/info/contract`,data ,{headers: headers}).then(function (response) {
         let {status} = response;
         let{State,Description}=JSON.parse(response.data);
         // console.log(response);
@@ -831,7 +852,26 @@ export async  function  UpdateChichiManContactInfo(data){
     });
     return resp;
 }
-
+export async  function  UpdateChichiManBankInfo(data){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    let resp ={state:false,Description:""};
+    await axios.post(`${Const.ChichiMan}admin/chichiman/info/bank`,data ,{headers: headers}).then(function (response) {
+        let {status} = response;
+        let{State,Description}=JSON.parse(response.data);
+        // console.log(response);
+        if (status===200 ){
+            resp ={state:State,Description:Description};
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}
 
 // **************************Content**************
 

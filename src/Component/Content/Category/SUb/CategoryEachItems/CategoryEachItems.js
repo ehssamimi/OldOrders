@@ -17,8 +17,7 @@ class CategoryEachItems extends Component {
 
     render() {
         let {data}=this.props;
-        console.log(data);
-        return (
+         return (
             <Card className="d-flex flex-column mb-4 br02" id={data._id}>
                 <div className='position-relative'>
                     <NavLink to= {`/content/category/detail/info/${data._id}`} className="d-flex h-20vh w-100 ">

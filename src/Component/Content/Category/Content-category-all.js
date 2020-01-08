@@ -23,7 +23,7 @@ class ContentCategoryAll extends Component {
         console.log(CatList)
     }
     render() {
-        let {CatList}=this.state;
+         let {CatList}=this.state;
         return (
                     <Row className='m-0'>
                         {CatList.length > 0 ?

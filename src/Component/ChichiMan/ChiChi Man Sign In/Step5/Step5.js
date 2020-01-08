@@ -35,17 +35,17 @@ const SignupSchema = Yup.object().shape({
     //     })
     //     .nullable()
     //     .required("نوع وسیله نقلیه اجباری است!"),
-    //
-    // DLN: Yup.number()
-    //     .required("شماره گواهینامه اجباری است!"),
-    // VCN: Yup.number()
-    //     .required("شماره کارت اجباری است!"),
-    // Plaque: Yup.number()
-    //     .required("شماره پلاک اجباری است!"),
+
+    form: Yup.number()
+        .required("شماره فرم اجباری است!"),
+    attachNumber: Yup.number()
+        .required("شماره پیوست اجباری است!"),
+    sabet: Yup.number()
+        .required("ثبت میزان حقوق ثابت اجباری است!"),
+    darsad: Yup.number()
+        .required("ثبت میزان حقوق درصدی اجباری است!"),
 
 });
-
-
 
 const options = [
     { value: "فعال", label: "فعال" },
@@ -135,14 +135,14 @@ class Step5 extends Component {
             console.log(ImgeId);
             let Data={
                 "PhoneNumber": this.props.PhoneNumber,
-                "Image": ImgeId[0],
+                "Image": ImgeId[0].toString(),
                 "Status": payload.Kind,
-                "BasePayment": payload.darsad,
+                "BasePayment": payload.darsad.toString(),
                 "EndOfContract": Date['end'],
                 "BeginOfContract": Date['begin'],
-                "Percentage": payload.sabet,
-                "FormNumber": payload.form,
-                "AttachmentNumber": payload.attachNumber,
+                "Percentage": payload.sabet.toString(),
+                "FormNumber": payload.form.toString(),
+                "AttachmentNumber": payload.attachNumber.toString(),
                 "SoePishineImage": ImgeId[2],
                 "Safteh": ImgeId[1]
              };
@@ -216,8 +216,8 @@ class Step5 extends Component {
                             <CardBody>
                                 <CardTitle>
                                     <div className='d-flex justify-content-start'>
-                                        <IntlMessages id="مستندات قرارداد" />
-                                    </div>
+                                        <span>مستندات قرارداد</span>
+                                     </div>
                                 </CardTitle>
 
                                 <Formik
@@ -281,8 +281,8 @@ class Step5 extends Component {
                                                 <div className="col-sm-3 ">
                                                     <FormGroup className="form-group has-float-label">
                                                         <Label>
-                                                            <IntlMessages id="وضعیت" />
-                                                        </Label>
+                                                            <span>وضعیت</span>
+                                                         </Label>
                                                         <FormikReactSelect
                                                             name="Kind"
                                                             id="Kind"
@@ -306,7 +306,6 @@ class Step5 extends Component {
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
                                                             <span>شماره پیوست</span>
-
                                                          </Label>
                                                         <Field className="form-control" name="attachNumber" type='number' onBlur={setFieldTouched}
                                                                placeholder="شماره پیوست را وارد کنید !" />

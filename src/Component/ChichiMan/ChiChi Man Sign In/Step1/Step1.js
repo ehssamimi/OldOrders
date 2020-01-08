@@ -27,16 +27,16 @@ import Loader from "../../../HomePages/Sub/Loader/Loader";
 
  const SignupSchema = Yup.object().shape({
 
-    // TagKind: Yup.object()
-    //     .shape({
-    //         label: Yup.string().required(),
-    //         value: Yup.string().required()
-    //     })
-    //     .nullable()
-    //     .required("نوع وسیله نقلیه اجباری است!"),
-    //
-    // PhoneNumber: Yup.number()
-    //     .required("شماره تلفن اجباری است!").min(1000000000,'شماره تلفن باید یازده کاراکتر باشد').max(100000000000,'شماره تلفن نباید بیشتر از 11 کاراکتر باشد')
+    TagKind: Yup.object()
+        .shape({
+            label: Yup.string().required(),
+            value: Yup.string().required()
+        })
+        .nullable()
+        .required("نوع وسیله نقلیه اجباری است!"),
+
+    PhoneNumber: Yup.number()
+        .required("شماره تلفن اجباری است!").min(1000000000,'شماره تلفن باید یازده کاراکتر باشد').max(100000000000,'شماره تلفن نباید بیشتر از 11 کاراکتر باشد')
 
 });
 
@@ -74,42 +74,42 @@ class Step1 extends Component {
         let send=document.getElementById("sendItems");
             send.click();
 
-        // console.log("0"+payload.PhoneNumber.toString());
-        // let Data={
-        //     // "PhoneNumber": payload.PhoneNumber.toString(),
-        //     "PhoneNumber":"0"+payload.PhoneNumber.toString(),
-        // };
-        // console.log(Data);
-        // this.setState({
-        //     showLoader:true
-        // });
-        // let Register = await RegisterChichiMan(JSON.stringify(Data));
-        // console.log(Register);
-        // this.setState({
-        //     showLoader: false
-        // });
-        // let {state, Description} = Register;
-        // if (state) {
-        //     NotificationManager.success(
-        //         "congratulation",
-        //         "کد مورد نظر به شماره شما ارسال شد",
-        //         3000,
-        //         null,
-        //         null,
-        //         "success"
-        //     );
-        //     let send=document.getElementById("sendItems");
-        //     send.click();
-        // } else {
-        //     NotificationManager.error(
-        //         "error",
-        //         Description,
-        //         3000,
-        //         null,
-        //         null,
-        //         "error"
-        //     );
-        // }
+        console.log("0"+payload.PhoneNumber.toString());
+        let Data={
+            // "PhoneNumber": payload.PhoneNumber.toString(),
+            "PhoneNumber":"0"+payload.PhoneNumber.toString(),
+        };
+        console.log(Data);
+        this.setState({
+            showLoader:true
+        });
+        let Register = await RegisterChichiMan(JSON.stringify(Data));
+        console.log(Register);
+        this.setState({
+            showLoader: false
+        });
+        let {state, Description} = Register;
+        if (state) {
+            NotificationManager.success(
+                "congratulation",
+                "کد مورد نظر به شماره شما ارسال شد",
+                3000,
+                null,
+                null,
+                "success"
+            );
+            let send=document.getElementById("sendItems");
+            send.click();
+        } else {
+            NotificationManager.error(
+                "error",
+                Description,
+                3000,
+                null,
+                null,
+                "error"
+            );
+        }
 
 
     };
@@ -133,8 +133,8 @@ class Step1 extends Component {
                             <CardBody>
                                 <CardTitle>
                                     <div className='d-flex justify-content-start'>
-                                        <IntlMessages id="ثبت شماره موبایل " />
-                                    </div>
+                                        <span>ثبت شماره موبایل</span>
+                                     </div>
 
                                 </CardTitle>
 
@@ -162,8 +162,8 @@ class Step1 extends Component {
                                                 <div className="col-sm-6 ">
                                                     <FormGroup className="form-group has-float-label">
                                                         <Label>
-                                                            <IntlMessages id="نوع وسیله نقلیه" />
-                                                        </Label>
+                                                            <span>نوع وسیله نقلیه</span>
+                                                         </Label>
                                                         <FormikReactSelect
                                                             name="TagKind"
                                                             id="TagKind"
@@ -183,8 +183,8 @@ class Step1 extends Component {
 
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <IntlMessages id="شماره موبایل" />
-                                                        </Label>
+                                                            <span>شماره موبایل</span>
+                                                         </Label>
                                                         <Field className="form-control" name="PhoneNumber" type='number'  onBlur={setFieldTouched}
                                                                placeholder="09**-***-****" />
                                                         {errors.PhoneNumber && touched.PhoneNumber ? (

@@ -20,7 +20,7 @@ class ContentCategoryInfo extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.state={
-            SubCatInfo:undefined,name:'',error:{name :""},loader:false,catName:''
+            SubCatInfo:undefined,name:'',error:{name :""},loader:false,catName:'',image:ax
         }
     }
 
@@ -28,9 +28,12 @@ class ContentCategoryInfo extends Component {
         const {match: {params}} = this.props;
         // console.log(params.Id);
         let CatInfo= await getCategoryDetailwithId(params.Id);
+        console.log('CatInfo');
+        console.log(CatInfo);
          this.setState({
             SubCatInfo:CatInfo['sub_categories'],
-            catName:CatInfo['name']
+            catName:CatInfo['name'],
+             image:CatInfo['image']
         })
 
     }
@@ -45,6 +48,7 @@ class ContentCategoryInfo extends Component {
 
         const {match: {params}} = this.props;
         let CatInfo= await getCategoryDetailwithId(params.Id);
+
         this.setState({
             SubCatInfo:CatInfo['sub_categories'],
             catName:CatInfo['name']
@@ -52,7 +56,6 @@ class ContentCategoryInfo extends Component {
             console.log(this.state.SubCatInfo)
         });
     }
-
 
     async handleSubmit(event) {
 
@@ -120,12 +123,6 @@ class ContentCategoryInfo extends Component {
 
 
     }
-
-
-
-
-
-
 
     async handelClickAdd(){
          let input=document.getElementById('input-text');
@@ -204,7 +201,7 @@ class ContentCategoryInfo extends Component {
                 >
                     <div className="col-sm-12 col-md-3  d-flex align-items-center">
                         <div className='h-25vh w-100'>
-                            <img src={ax} alt="categoryImg" className='card-img-top'/>
+                            <img src={this.state.image} alt="categoryImg" className='card-img-top'/>
                         </div>
                     </div>
                     <div className='d-flex flex-column col-sm-12   p-0'>
