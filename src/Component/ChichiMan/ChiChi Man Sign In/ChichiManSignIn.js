@@ -66,7 +66,7 @@ class ChichiManSignIn extends Component {
         return (
             <div className='wizard wizard-default col-12'>
                 <Wizard>
-                    <TopNavigation className="justify-content-center" disableNav={true} topNavClick={this.topNavClick} />
+                    <TopNavigation className="justify-content-center" disableNav={false} topNavClick={this.topNavClick} />
                     <Steps>
                         <Step id="step1" name={"ثبت شماره موبایل"}>
                             <div className="wizard-basic-step">

@@ -872,7 +872,28 @@ export async  function  UpdateChichiManBankInfo(data){
     });
     return resp;
 }
-
+// ******Show-List***********
+export async  function  ChichiManListSummery(Page){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+        "accept": "application/json"
+    };
+    let resp ={state:false,Description:""};
+    await axios.get(`${Const.ChichiMan}admin/panel/chichimans-list?page=${Page}`, {headers: headers}).then(function (response) {
+        console.log(response);
+         let{Code,Description}=JSON.parse(response.data);
+        // console.log(response);
+        if (Code===200 ){
+            resp ={Code:Code,Description:Description,};
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}
 // **************************Content**************
 
 // **************product********
@@ -1051,6 +1072,53 @@ export async  function  AddCategory(Data){
             resp ={state:status,Description:data};
         }else {
             resp ={state:status,Description:data};
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}
+export async  function  DeleteCategory(name){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+    let resp ={state:false,Description:""};
+     await axios.delete(`${Const.product}admin/category/delete/${name}`).then(function (response) {
+        console.log(response);
+        let{status,data}= response ;
+        console.log(status);
+        console.log( data);
+        if (status===200 ){
+            resp ={state:status,Description:data};
+        }else {
+            resp ={state:status,Description:data};
+        }
+     }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}
+export  async  function  UpdateCategory(id,imag_id ){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+        "accept": "application/json"
+    };
+    let resp ={state:false,Description:""};
+    // console.log(`${Const.product}category/image/update?Id=${id}&new_image=${imag_id}`);
+    await axios.get(`${Const.product}category/image/update?Id=${id}&new_image=${imag_id}`).then(function (response) {
+        let {status} = response;
+        console.log( response );
+        // data: "d"
+        // status: 200
+        var data= (response.data);
+        // console.log(Result);
+        if (status===200 ){
+            resp = {state:status,Description:data};
         }
         // resp = status;
     }).catch(function (error) {

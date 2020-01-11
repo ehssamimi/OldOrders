@@ -337,7 +337,7 @@ import {TweenMax} from "gsap/TweenMax";
 
                 <div className='col-6' >
                     {
-                        SlidersPrev.length>0?
+                        SlidersPrev.length>0 && Array.isArray(SlidersPrev)  ?
                              SlidersPrev.map((slider, index) => <PreviewMainSlider id={slider._id} key={slider._id}
                                                                                   header={slider.Name}
                                                                                   slider={slider}

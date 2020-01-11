@@ -408,10 +408,10 @@ class Step3 extends Component {
                                                 <div className="col-sm-4 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
-                                                            <span>شماره شناسنامه</span>
+                                                            <span>شماره سریال شناسنامه</span>
                                                          </Label>
                                                         <Field className="form-control" name="CN" type='number' onBlur={setFieldTouched}
-                                                               placeholder="شماره شناسنامه را وارد کنید !" />
+                                                               placeholder="شماره سریال شناسنامه را وارد کنید !" />
                                                         {errors.CN && touched.CN ? (
                                                             <div className="invalid-feedback d-block">
                                                                 {errors.CN}

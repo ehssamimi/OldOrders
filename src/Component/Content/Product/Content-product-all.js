@@ -21,15 +21,17 @@ class ContentProductAll extends Component {
         let{pageStart,last_page}=this.state;
        let Response = await GetAllProduct(pageStart);
        console.log(Response);
-       let{Products,Page}=Response;
-       // if (Products.length===0){
-       //     console.log('this is the end');
-       //     this.setState({
-       //         last_page:Page+1
-       //     })
-       // }
-        let productSeparate=[];
-       Products.map((each, index) => {
+
+       if (Response!=='error') {
+           let{Products,Page}=Response;
+           // if (Products.length===0){
+           //     console.log('this is the end');
+           //     this.setState({
+           //         last_page:Page+1
+           //     })
+           // }
+           let productSeparate=[];
+           Products.map((each, index) => {
                let sub = {"تعداد": each['Count'],"تولید": each['Manufacture'],"دسته بندی": each['Category'] };
                let Main = {
                    "name": each['UniqueValue'],
@@ -45,12 +47,14 @@ class ContentProductAll extends Component {
                let row={'Main':Main,'sub':sub};
                productSeparate.push(row)
            });
-       this.setState(prevState=>({
-           productSeparate:[ ...prevState.productSeparate , ...productSeparate ],
-           // hasMore:    Page !== last_page,
-           pageStart:Page+1,
-           hasMore:  Products.length !== 0
-       }));
+           this.setState(prevState=>({
+               productSeparate:[ ...prevState.productSeparate , ...productSeparate ],
+               // hasMore:    Page !== last_page,
+               pageStart:Page+1,
+               hasMore:  Products.length !== 0
+           }));
+       }
+
    }
 
 
@@ -68,7 +72,9 @@ class ContentProductAll extends Component {
             >
 
                 <div className='d-flex  w-100  flex-wrap'  >
-                    {productSeparate.length>1 ?
+
+
+                    {productSeparate.length>0 && Array.isArray(productSeparate)  ?
                         productSeparate.map((todo, index) =>
                             <PreviewProduct Main={todo.Main} sub={todo.sub}  key={index} class={' col-sm-6 col-lg-3  '}/>
                         ) : ''

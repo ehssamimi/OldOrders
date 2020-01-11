@@ -40,7 +40,7 @@ class App extends Component {
                             />
 
                             <Route
-                                path={`${match.url}/delete-edit`}
+                                path={`${match.url}/each/info/:Id`}
                                 render={props => <Update {...props} />}
                             />
                             <Redirect to="/error" />

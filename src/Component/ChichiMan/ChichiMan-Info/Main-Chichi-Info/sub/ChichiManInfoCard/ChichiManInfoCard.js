@@ -7,8 +7,8 @@ class ChichiManInfoCard extends Component {
 
     render() {
         let{chichiMan}=this.props;
-         console.log('ax');
-        console.log(chichiMan['image'] );
+         // console.log('ax');
+        // console.log(chichiMan['image'] );
         return (
             <div className={this.props.class} dir='rtl'>
                 <NavLink to={`/chichi-man/${this.props.header}/${this.props.id}`}>

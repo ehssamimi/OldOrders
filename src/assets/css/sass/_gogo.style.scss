@@ -9082,7 +9082,10 @@ font-family: IRANSans !important;
   height: 25vh;
 }
 .primary-color{
-  color: $primary-color;
+  color: $primary-color !important;
+}
+.secondary-color{
+  color: $secondary-color!important;
 }
 .text-line{
   text-decoration-line: line-through;

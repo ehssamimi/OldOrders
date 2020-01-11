@@ -1,33 +1,21 @@
- import React, {Component} from 'react';
+import React, {Component} from 'react';
 import {FormGroup, Label, Modal, ModalBody, ModalHeader} from "reactstrap";
 import ax1 from './../../../assets/img/4th-1.jpg'
 import JustCropImg from "../../HomePages/Sub/CropImg/JustCropImg";
 import {Field} from "formik";
 import {sendImg} from "../../functions/ServerConnection";
-import {getCategoryDetailwithId,UpdateCategory} from './../../functions/ServerConnection'
+import {AddCategory} from './../../functions/ServerConnection'
 import Loader from "../../HomePages/Sub/Loader/Loader";
 import NotificationManager from "../../../components/common/react-notifications/NotificationManager";
- import RowShowShowColEdit from "../../Support/Users/UserDetails/sub/RowShowShowColEdit/RowShowShowColEdit";
 
 
 
-class ContentCategoryUpdate extends Component {
+class ContentCategoryEdit extends Component {
     constructor(props) {
         super(props);
-        this.state={modalLarge:false, Destination1: "", ax1File:"" , name:'',ax1:ax1,error:{  ax:""},loader:false,id:''};
+        this.state={modalLarge:false, Destination1: "", ax1File:"" ,ax1:ax1,error:{  ax:""},loader:false};
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    async componentDidMount(){
-        const {match: {params}} = this.props;
-
-        let DetailCategory=await getCategoryDetailwithId(params.Id);
-        console.log(DetailCategory);
-        this.setState({
-            ax1: DetailCategory['image'],
-            name: DetailCategory['name'],
-            id: DetailCategory['_id']
-        });
-     }
 
     toggleLarge = () => {
         this.setState(prevState => ({
@@ -43,7 +31,7 @@ class ContentCategoryUpdate extends Component {
         // error:{name :"", ax:""}
 
         let{ax1File}=this.state;
-        console.log(ax1File);
+         console.log(ax1File);
 
         if (ax1File.length<1){
             validate = false;
@@ -61,38 +49,43 @@ class ContentCategoryUpdate extends Component {
         }
 
         if (validate===true){
-             this.setState({
-                loader:true
-            });
-             let{ax1File}=this.state;
-            let idax = await sendImg(ax1File, 'Public');
-
-            let updateCat=await UpdateCategory(this.state.id ,idax);
-            this.setState({
-                loader:false
-            });
-
-            console.log(updateCat)
-            let{state,Description}= updateCat ;
-            if (state===200){
-                NotificationManager.success(
-                    "congratulation",
-                    "your category update",
-                    3000,
-                    null,
-                    null,
-                    "success"
-                );
-            } else {
-                NotificationManager.error(
-                    "error",
-                    Description,
-                    3000,
-                    null,
-                    null,
-                    "error"
-                );
-            }
+            console.log("true")
+            // this.setState({
+            //     loader:true
+            // })
+            // console.log("varidate")
+            // let{ax1File}=this.state;
+            // let idax = await sendImg(ax1File, 'Public');
+            // let Data={
+            //     "image": idax
+            // };
+            // console.log(JSON.stringify(Data));
+            // let addCat=await AddCategory(JSON.stringify(Data))
+            // this.setState({
+            //     loader:false
+            // });
+            //
+            // console.log(addCat)
+            // let{state,Description}= addCat ;
+            // if (state===200){
+            //     NotificationManager.success(
+            //         "congratulation",
+            //         "your category add",
+            //         3000,
+            //         null,
+            //         null,
+            //         "success"
+            //     );
+            // } else {
+            //     NotificationManager.error(
+            //         "error",
+            //         Description,
+            //         3000,
+            //         null,
+            //         null,
+            //         "error"
+            //     );
+            // }
 
         }
 
@@ -126,9 +119,6 @@ class ContentCategoryUpdate extends Component {
                         <div className="d-flex flex-column align-items-center justify-content-center">
 
                             <div className="col-6">
-                                <div className='d-flex col-12 d-flex justify-content-center m-2'>
-                                    <RowShowShowColEdit label='اسم' value={this.state.name} col='col-12 d-flex justify-content-center'/>
-                                </div>
                                 <div className='d-flex col-12 flex-column paddingZero  '>
                                     <div className="col-12 p-0">
                                         <div className=' w-100    mb-1 pointer h-30vh'
@@ -140,13 +130,17 @@ class ContentCategoryUpdate extends Component {
                             </div>
                             <button type='submit' className='btn btn-primary'>ارسال</button>
                             <div className='d-flex flex-column col-6'>
+
                                 {
                                     error['ax'].length>1?<span className='alert alert-danger mt-3 col-12'>{error['ax']}</span>:""
                                 }
+
                             </div>
                         </div>
 
                     </form>
+
+
 
                     <Modal
                         isOpen={this.state.modalLarge}
@@ -168,4 +162,4 @@ class ContentCategoryUpdate extends Component {
     }
 }
 
-export default ContentCategoryUpdate;
+export default ContentCategoryEdit;
