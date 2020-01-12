@@ -6,8 +6,7 @@ import CategoriesPreviewHomePages from "../../Edit/PreviewHomePages/Components/C
 import PackagePreviewHomePages from "../../Edit/PreviewHomePages/Components/PackagePreviewHomePages";
 import SliderHomePagesPreview from "../../Edit/PreviewHomePages/Components/SliderHomePagesPreview";
 import BannerHomePagePreview from "../../Edit/PreviewHomePages/Components/BannerHomePagePreview";
-import {Card} from "reactstrap";
-import {
+ import {
     GetBannersDetail,
     GetCategorieyDetail, GetHeaderSliderDetail,
     GetItemDetail,
@@ -17,6 +16,8 @@ import {
 import HeaderSliderPreview from "../../Edit/PreviewHomePages/Components/HeaderSliderPreview";
 import UndoComponents from "../../Edit/PreviewHomePages/Components/UndoComponents";
 
+
+// ***********style of draggable component*********
 const Container = styled.div`
   border: 1px solid lightgrey;
   border-radius: 2px;
@@ -33,7 +34,7 @@ const Container = styled.div`
 
 export default class Task extends React.Component {
 
-
+// ********** change value with component selected need to send id , type and value  of component in row to grand parent component   ********
     async ChangeComponent(Name, Type, Position) {
         let Value;
         switch (Type) {
@@ -56,30 +57,17 @@ export default class Task extends React.Component {
                 Value = await GetHeaderSliderDetail(Name);
                 break;
         }
-        // console.log(Name);
-        // console.log(Type);
+
         this.props.handelEditComponent(Value,this.props.task['id'],Type,Position)
     }
+    // ********** Delete component with send id to upper  grandParent component********
     deleteComponent(Name, Type, Position){
-        // console.log(Name);
-        // console.log(Type);
-        // console.log(Position);
-
-        // console.log(this.props.task.id);
         this.props.handelDeleteItems(this.props.task.id)
     }
 
-
-
   render() {
-    // const isDragDisabled = this.props.task.id === 'task-1'
-    //   let {task}=this.props;
       let item =this.props.task;
-      // let item=task.content;
-      // console.log(this.props.task['Data']['Data']._id )
-      // console.log(this.props.task.id );
       console.log(this.props.task);
-
       return (
       <Draggable
         // draggableId={this.props.task.id}
@@ -97,8 +85,6 @@ export default class Task extends React.Component {
             isDragging={snapshot.isDragging}
             // isDragDisabled={isDragDisabled}
           >
-
-
               {item.ObjectType==="ItemList"?<SLiderItemsHomePagePreview items={item.Data} position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)}/>:""}
               {item.ObjectType==="Category"?<CategoriesPreviewHomePages  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={false} deleteComponent={this.deleteComponent.bind(this)}/>:""}
               {item.ObjectType==="Package"?<PackagePreviewHomePages  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={false} deleteComponent={this.deleteComponent.bind(this)}/>:""}
@@ -106,8 +92,7 @@ export default class Task extends React.Component {
               {item.ObjectType==="Banner"?<BannerHomePagePreview  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)}  edit={false}/>:""}
               {item.ObjectType==="HeaderSlider"?<HeaderSliderPreview  items={item.Data}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={false}/>:""}
               {item.ObjectType==="Deleted"?<UndoComponents  items={item.Data} id={this.props.task.id}  position={item.Position} ChangeComponent={this.ChangeComponent.bind(this)} edit={false} {...this.props}/>:""}
-            {/*{this.props.item.content}*/}
-          </Container>
+           </Container>
         )}
       </Draggable>
     )

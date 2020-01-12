@@ -6,8 +6,7 @@ import CategoriesPreviewHomePages from "../Edit/PreviewHomePages/Components/Cate
 import PackagePreviewHomePages from "../Edit/PreviewHomePages/Components/PackagePreviewHomePages";
 import SliderHomePagesPreview from "../Edit/PreviewHomePages/Components/SliderHomePagesPreview";
 import BannerHomePagePreview from "../Edit/PreviewHomePages/Components/BannerHomePagePreview";
-import {Card} from "reactstrap";
-import {
+ import {
     GetBannersDetail,
     GetCategorieyDetail, GetHeaderSliderDetail,
     GetItemDetail,

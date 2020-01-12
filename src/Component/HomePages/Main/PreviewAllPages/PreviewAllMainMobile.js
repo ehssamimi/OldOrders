@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {GetAllHomePages} from './../../../../Component/functions/ServerConnection'
-import Task from "../Add/task";
-import AllPreviewHomePages from "./Sub";
 import MoveRowIndex from "../Edit/NewEdit";
 import Loader from "../../Sub/Loader/Loader";
 
@@ -15,27 +13,21 @@ class PreviewAllMainMobile extends Component {
     }
 
     async componentDidMount(){
+        // ******get all Homepage ********
        let Data= await GetAllHomePages();
-       // console.log(Data);
-       // console.log(Data[0]);
        this.setState({
            Data
-       },()=>{
-           // console.log(this.state.Data)
        });
     }
     render() {
         let {Data}=this.state;
-        // console.log(Data)
-        return (
+         return (
 
                 <div className='w-100 d-flex  active-Coluumn '>
                     {
                         Data.length>0?Data.map((item, index) => <MoveRowIndex key={item._id} id={item._id} item={item} Name={item.Name} index={index}/>):<div className='col-6'><Loader/></div>
-                        //  {/*<MoveRowIndex key={Data._id} item={Data} Name={Data.Name} index={1}/>*/}
-                    }
+                     }
                 </div>
-
 
         );
     }

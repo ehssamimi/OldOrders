@@ -2,17 +2,13 @@ import React, {Component} from 'react';
 import ax from './../../../assets/img/4th-1.jpg'
 import {
     Card,
-    CardBody,
-    CardSubtitle,
-    CardText, FormGroup, Label
+    FormGroup
 } from "reactstrap";
-import {NavLink} from "react-router-dom";
 import SubCategoryElement from "./SUb/SubCategoryElement/SubCategoryElement";
-import {AddCategory, getCategoryDetailwithId, sendImg,Add_Remove_SubCategory} from "../../functions/ServerConnection";
-import PreviewProduct from "../Product/sub/PreviewProduct/PreviewProduct";
+import {  getCategoryDetailwithId,  Add_Remove_SubCategory} from "../../functions/ServerConnection";
 import NotificationManager from "../../../components/common/react-notifications/NotificationManager";
 import TweenMax from 'gsap/TweenMax'
-import TimelineMax from 'gsap/TimelineMax'
+
 
 class ContentCategoryInfo extends Component {
     constructor(props) {
@@ -20,51 +16,49 @@ class ContentCategoryInfo extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.state={
-            SubCatInfo:undefined,name:'',error:{name :""},loader:false,catName:'',image:ax
+            SubCatInfo:undefined,
+            name:'',
+            error:{name :""},
+            loader:false,
+            catName:'',
+            image:ax
         }
     }
 
     async componentDidMount(){
+        // *************get id from params and get Category Detail with that id**********
         const {match: {params}} = this.props;
-        // console.log(params.Id);
         let CatInfo= await getCategoryDetailwithId(params.Id);
-        console.log('CatInfo');
-        console.log(CatInfo);
-         this.setState({
-            SubCatInfo:CatInfo['sub_categories'],
-            catName:CatInfo['name'],
-             image:CatInfo['image']
+        this.setState({
+            SubCatInfo: CatInfo['sub_categories'],
+            catName: CatInfo['name'],
+            image: CatInfo['image']
         })
 
     }
+    // ***********handel get Name of sub-category for add to category **********
     handleChange(event) {
         this.setState({name: event.target.value});
     }
-    async UpdateSubCategory(id){
-        // const $el = document.getElementById(`${id}`);
-        // const duration = 2;
-        // const from = { opacity: 0};
-        // await TweenMax.to($el, duration, from);
 
+
+    // ***********when delete subcategory need to update the list of sub-category this function do this  **********
+    async UpdateSubCategory( ){
         const {match: {params}} = this.props;
         let CatInfo= await getCategoryDetailwithId(params.Id);
-
         this.setState({
             SubCatInfo:CatInfo['sub_categories'],
             catName:CatInfo['name']
-        },()=>{
-            console.log(this.state.SubCatInfo)
         });
     }
 
+
+        // *************submit Sub-category name to add category **********
     async handleSubmit(event) {
-
+        // *********checking validation- in this case need to have a name to submit to server**********
          var  validate=true;
-        // error:{name :"", ax:""}
-
         let{name }=this.state;
-        console.log(name);
-         if (name.length<1){
+          if (name.length<1){
             validate = false;
             let {error} = this.state;
             error['name'] = "اسم باید مشخص شود ";
@@ -79,21 +73,18 @@ class ContentCategoryInfo extends Component {
             })
         }
 
-
+        // *********if validate is true then submit name to add subcategory**********
         if (validate===true){
             this.setState({
                 loader:true
             });
 
              let{name,catName}=this.state;
-            // action,category,subcategory
-            let addCat=await Add_Remove_SubCategory( 'add',catName,name);
-            // console.log(addCat)
-            this.setState({
+             let addCat=await Add_Remove_SubCategory( 'add',catName,name);
+             this.setState({
                 loader:false
             });
-            // console.log(addCat)
-            let {state,Description}= addCat ;
+             let {state,Description}= addCat ;
             if (state===200){
                 NotificationManager.success(
                     "congratulation",
@@ -120,90 +111,53 @@ class ContentCategoryInfo extends Component {
         }else {
             return validate;
         }
-
-
     }
+    // *********Handel click add/submit input **********
 
     async handelClickAdd(){
          let input=document.getElementById('input-text');
-        let icon=document.getElementById('icon');
-        // TweenLite.to('#input', 2, {width: "100%"});
-
+         let icon=document.getElementById('icon');
+                // *********cahnge icon of input to add /submit***********
             if (!input.classList.contains("active")) {
                 TweenMax.fromTo(input, 1, { opacity: 1}, {width:'96%'});
                 input.classList.add("active");
-                // icon.classList.remove("iconsminds-previous");
-                // icon.classList.add("iconsminds-add");
                 icon.classList.add("iconsminds-previous");
                 icon.classList.remove("iconsminds-add");
             } else {
-                 console.log(this.state.catName)
-               let Submit= await this.handleSubmit();
-                console.log(Submit);
-                if (Submit){
+                // *********send name of subcategory to category even checking this name was validate  or not  *********
+                let Submit= await this.handleSubmit();
+                 if (Submit){
                     const {match: {params}} = this.props;
-                    // console.log(params.Id);
                     let CatInfo= await getCategoryDetailwithId(params.Id);
                     this.setState({
                         SubCatInfo:CatInfo['sub_categories'],
                         catName:CatInfo['name']
-                    },()=>{
-                        console.log(this.state.SubCatInfo)
                     });
-                    TweenMax.fromTo(input, 1 ,{ opacity: 0,  },
-                        {width:0});
+                    TweenMax.fromTo(input, 1 ,{ opacity: 0,  }, {width:0});
                     input.classList.remove("active");
-                    // input.classList.remove("iconsminds-add");
-                    // icon.classList.add("iconsminds-previous");
                     icon.classList.add("iconsminds-add");
                     icon.classList.remove("iconsminds-previous");
-                } else {
-
                 }
-
-
-
-
-
-                // let addSubCategory=await Add_Remove_SubCategory('add',category,subcategory)
-
 
             }
 
-//         TweenMax.to(input, 1, {width: "100%"});
-//         var t = TweenLite.to('#input', 2, {width:"100%"});
-//
-// // set the reversed property to true
-//         t.reversed(true);
-//
-// // toggle function
-//         function toggleDirection()
-//         {
-//             t.reversed() ? t.play() : t.reverse();
-//         }
-//
-//         toggleDirection()
-
-
-        // TweenMax.set(('.icon-line'), {autoAlpha:0,width: "0%", ease: Sine.easeInOut},'.1');
-        // TweenMax.to('.icon-line', 2, {autoAlpha:1,width: "35%", ease: Sine.easeInOut },'.2') ;
     }
-    async
+
 
 
 
     render() {
         let{SubCatInfo,error,catName}=this.state;
-        console.log(SubCatInfo)
-        return (
+         return (
             <Card>
-                <div className='col-sm-12   m-0' dir='rtl'
+                <div className='col-sm-12   m-0' style={{minHeight:"30vh"}} dir='rtl'
                 >
-                    <div className="col-sm-12 col-md-3  d-flex align-items-center">
-                        <div className='h-25vh w-100'>
-                            <img src={this.state.image} alt="categoryImg" className='card-img-top'/>
+                    {/***********Header image category********/}
+                        <div className='h-40vh   col-8 marginAuto '>
+                            <img src={this.state.image} alt="categoryImg" className='w-100 fit-fill h-100'/>
                         </div>
-                    </div>
+                    {/***********sub-category lists with delete items ********/}
+
                     <div className='d-flex flex-column col-sm-12   p-0'>
                         {
                             SubCatInfo !== undefined ?
@@ -213,8 +167,11 @@ class ContentCategoryInfo extends Component {
                                 <div className='d-flex justify-content-center align-items-center'><p>این دسته بندی هیچ
                                     زیر مجموعه ای ندارد</p></div>
                         }
+
+                        {/***********input form submit ********/}
                         <div className='d-flex col-12 h-1vh p-0'>
                             <div id='icon' className='glyph-icon iconsminds-add purpleColor fs-23vw' onClick={this.handelClickAdd.bind(this)}></div>
+
                             <form onSubmit={this.handleSubmit}  className='col-12 p-0'  >
                                 <div className="d-flex flex-column align-items-center justify-content-center">
                                     <div className='w-100 d-flex  '   >
@@ -223,14 +180,13 @@ class ContentCategoryInfo extends Component {
                                                    onChange={this.handleChange}  />
                                         </FormGroup>
                                      </div>
+                                    {/***********error of input ********/}
                                     <div className='d-flex flex-column col-6'>
                                         {
                                             error['name'].length>1?<span className='alert alert-danger mt-3 col-12'>{error['name']}</span>:""
                                         }
-
                                     </div>
                                 </div>
-
                             </form>
 
                         </div>

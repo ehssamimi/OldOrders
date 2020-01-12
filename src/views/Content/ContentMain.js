@@ -10,9 +10,6 @@ const ContentProduct = React.lazy(() =>
 const ContentCategory = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ './Category/ContentCategoryMain')
 );
-const ContentSubCategory = React.lazy(() =>
-    import(/* webpackChunkName: "viwes-gogo" */ './SubCategory/ContentSubCategoryMain')
-);
 
 
 class App extends Component {
@@ -33,10 +30,7 @@ class App extends Component {
                                 path={`${match.url}/category`}
                                 render={props => <ContentCategory {...props} />}
                             />
-                            <Route
-                                path={`${match.url}/sub-category`}
-                                render={props => <ContentSubCategory {...props} />}
-                            />
+
                             <Redirect to="/error" />
                         </Switch>
                     </Suspense>

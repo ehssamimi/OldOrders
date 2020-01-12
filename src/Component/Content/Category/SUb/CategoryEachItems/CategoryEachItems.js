@@ -1,18 +1,13 @@
 import React, {Component} from 'react';
 import { NavLink } from "react-router-dom";
-import ax from '../../../../../assets/img/4th-1.jpg'
- import {
+  import {
      Button,
      Card,
-    CardBody,
-    CardSubtitle,
-    CardText, Modal, ModalBody, ModalFooter, ModalHeader
+    CardBody, Modal, ModalBody, ModalFooter, ModalHeader
  } from "reactstrap";
-import {DeleteCategory, DeleteProduct} from '../../../../functions/ServerConnection'
-
+import {DeleteCategory} from '../../../../functions/ServerConnection'
 import {  TweenMax} from "gsap/TweenMax";
 import NotificationManager from "../../../../../components/common/react-notifications/NotificationManager";
-
 
 class CategoryEachItems extends Component {
     constructor(props) {
@@ -69,45 +64,55 @@ class CategoryEachItems extends Component {
          return (
              <div >
                  <Card className="d-flex flex-column mb-4 br02" id={data._id}>
+
+
+                     {/**********show category image and go to category info in ./category/categoryInfo  ***********/}
                      <div className='position-relative'>
                          <NavLink to= {`/content/category/detail/info/${data._id}`} className="d-flex h-20vh w-100 ">
-                             <img src={data.image} alt="profile" className='card-img-top'/>
+                             <img src={data.image} alt="profile" className='w-100  br-tr2'/>
                          </NavLink>
-
                      </div>
 
 
                      <div className=" d-flex flex-grow-1 min-width-zero">
-                         {/*<CardBody*/}
-                         {/*className=" pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero">*/}
-                         {/*<div className="min-width-zero">*/}
-                         {/*<CardSubtitle className="truncate mb-1">name</CardSubtitle>*/}
-                         {/*<CardText className="text-muted text-small mb-2">status</CardText>*/}
-                         {/*</div>*/}
-                         {/*</CardBody>*/}
+                         <CardBody className='w-100   justify-content-center align-items-center h-20vh  '>
+                             {/******************delete Btn*********/}
 
-
-                         <CardBody className='w-100 d-flex justify-content-center align-items-center'>
-                        <span
-                            className=" btn btn-primary col-1 glyph-icon iconsminds-folder-close d-flex justify-content-center align-items-center h-50"
-                            onClick={this.deleteToggle }> </span>
-                             <div className={['d-flex','collapseSpanHeight','text-center d-flex justify-content-center align-items-center','align-items-end',' ' , 'col-10'].join(' ')} dir='rtl'>
+                             {/******************category name*********/}
+                             <div
+                                 className={['d-flex', 'collapseSpanHeight', 'text-center d-flex justify-content-center align-items-center', 'align-items-end', ' ', 'col-10'].join(' ')}
+                                 dir='rtl'>
                                  <span className='collapseValue gray'> نام  <span className='pl-2'>:</span></span>
-                                 <span className=' collapseValue'>{data.name}</span>
+                                 <span className=' collapseValue '>{data.name}</span>
                              </div>
+                             {/******************category Update Btn and go to Category image Update*********/}
+                              <div className='col-8 offset-2 d-flex justify-content-between      mt-5 align-items-center'>
+                                  <button
+                                      className='badge badge-outline-primary col-6 d-flex justify-content-center fs-08vw  cursor-pointer'
+                                      onClick={this.deleteToggle}> حذف
+                                  </button>
+                                  <NavLink to={`/content/category/each/info/${data._id}`} className="d-flex  badge col-6">
+                                      <button
+                                          className=' badge badge-outline-secondary w-100 d-flex justify-content-center fs-08vw   cursor-pointer '> ویرایش
+                                      </button>
+                                  </NavLink>
 
-                             {/*<RowShowShowColEdit label='نام' value={data.name} col="col-10 " className='text-center d-flex justify-content-center align-items-center'/>*/}
 
-                             <NavLink to= {`/content/category/each/info/${data._id}`} className="d-flex h-20vh w-100 ">
-                                 <span
-                                     className=' btn btn-secondary col-1 glyph-icon iconsminds-folder-edit d-flex justify-content-center align-items-center h-50'
-                                     onClick={this.handelEditCategory.bind(this)}> </span>
-                              </NavLink>
+
+                                 {/*<span className=" badge badge-outline-primary   d-flex justify-content-center align-items-center h-50  " onClick={this.deleteToggle}>حذف </span>*/}
+                                 {/*<NavLink to={`/content/category/each/info/${data._id}`}*/}
+                                          {/*className="d-flex   badge badge-outline-secondary  h-50 ">*/}
+                                 {/*<span*/}
+                                     {/*className='  col-1   d-flex justify-content-center align-items-center h-100'*/}
+                                     {/*onClick={this.handelEditCategory.bind(this)}>edit </span>*/}
+                                 {/*</NavLink>*/}
+                             </div>
 
                          </CardBody>
                      </div>
                  </Card>
-                 {/**************Modal for delete Product:are us sure?************/}
+
+                 {/**************Modal for delete Category:are us sure?************/}
                  <Modal
                      isOpen={this.state.DeleteModal}
                      size="lg"

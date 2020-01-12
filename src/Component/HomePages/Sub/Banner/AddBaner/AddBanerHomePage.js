@@ -5,8 +5,7 @@ import {addBaner, sendImg, UpdateCategories} from "../../../../functions/ServerC
 import NotificationManager from "../../../../../components/common/react-notifications/NotificationManager";
 import {FormGroup, Input, InputGroup, Label, Modal, ModalBody, ModalHeader} from "reactstrap";
 import ax from './../../../../../assets/img/4th.jpg'
-import IntlMessages from "../../../../../helpers/IntlMessages";
-import Loader from "../../Loader/Loader";
+ import Loader from "../../Loader/Loader";
 
 class AddBanerHomePage extends Component {
     constructor(props) {

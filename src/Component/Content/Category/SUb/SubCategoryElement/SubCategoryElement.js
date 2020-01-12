@@ -173,7 +173,7 @@ class SubCategoryElement extends Component {
 
     render() {
         let{productSeparate}=this.state;
-        console.log(productSeparate);
+        // console.log(productSeparate);
         return (
             <div className='mt-3 w-100'   id={this.props.name} >
                 <Card>

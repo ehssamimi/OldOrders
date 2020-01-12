@@ -53,6 +53,7 @@ class ContentProductAll extends Component {
                pageStart:Page+1,
                hasMore:  Products.length !== 0
            }));
+
        }
 
    }

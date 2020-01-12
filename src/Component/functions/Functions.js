@@ -6,7 +6,8 @@ import axios from "axios";
 
 // Convert a Base64-encoded string to a File object
 export function base64StringtoFile (base64String, filename, type) {
-    var arr = base64String.split(','), mime = arr[0].match(/:(.*?);/)[1],
+    var arr = base64String.split(','),
+        // , mime = arr[0].match(/:(.*?);/)[1],
         bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n)
     while (n--) {
         u8arr[n] = bstr.charCodeAt(n)
@@ -73,7 +74,7 @@ export function gregorian_to_jalali(g_y, g_m, g_d) {
 
     for (var i = 0; i < gm; ++i)
         g_day_no += g_days_in_month[i];
-    if (gm > 1 && ((gy % 4 == 0 && gy % 100 != 0) || (gy % 400 == 0)))
+    if (gm > 1 && ((gy % 4 === 0 && gy % 100 !== 0) || (gy % 400 === 0)))
     /* leap and after Feb */
         g_day_no++;
     g_day_no += gd;
@@ -93,7 +94,7 @@ export function gregorian_to_jalali(g_y, g_m, g_d) {
         jy += div(j_day_no - 1, 365);
         j_day_no = (j_day_no - 1) % 365;
     }
-    for (var i = 0; i < 11 && j_day_no >= j_days_in_month[i]; ++i)
+    for (  i = 0; i < 11 && j_day_no >= j_days_in_month[i]; ++i)
         j_day_no -= j_days_in_month[i];
     var jm = i + 1;
     var jd = j_day_no + 1;

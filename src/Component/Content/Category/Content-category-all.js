@@ -16,6 +16,7 @@ class ContentCategoryAll extends Component {
     }
 
     async componentDidMount(){
+// ********************get category list*********
         let CatList= await getAllCategoriesList();
         this.setState({
             CatList
@@ -26,6 +27,8 @@ class ContentCategoryAll extends Component {
          let {CatList}=this.state;
         return (
                     <Row className='m-0'>
+                  {/********************* map category list**********/}
+
                         {CatList.length > 0 ?
                             CatList.map((itemData,key) => <Colxx xxs="12" md="4" lg="3" key={key}  >
                                 <CategoryEachItems data={itemData}/>
