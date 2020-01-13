@@ -11,17 +11,36 @@ import NotificationManager from "../../../components/common/react-notifications/
  import JustCropImg from "../../HomePages/Sub/CropImg/JustCropImg";
 import ax from './../../../assets/img/4th.jpg'
 
+const FormInput = ({ label,name,placeHolder,setFieldTouched,errors,touched }) => (
+    <FormGroup className="form-group has-float-label position-relative">
+        <Label>
+            <span>{label}</span>
+        </Label>
+        <Field className="form-control" name={name}   onBlur={setFieldTouched}
+               placeholder="نام محصول را وارد کنید !" />
+        {errors[`${name}`]  && touched[`${name}`] ? (
+            <div className="invalid-feedback d-block">
+                {errors[`${name}`]}
+            </div>
+        ) : null}
+    </FormGroup>
+);
+
+
+
 const SignupSchema = Yup.object().shape({
 
-    Count: Yup.number()
-        .required("تعداد محصول اجباری است!") ,
+    Count: Yup.number().positive('تعداد محصول باید عدد مثبت  باشد').integer('تعداد محصول باید عدد صحیح باشد')
+        .required("تعداد محصول اجباری است!"),
     Price: Yup.number()
-        .required("قیمت اجباری است!") ,
+        .positive("قیمت باید عدد مثبت باشد")
+        .required("قیمت اجباری است!"),
     Name: Yup.string()
         .required("نام اجباری است!"),
     Manufacture: Yup.string()
         .required("نام تولید کننده اجباری است!"),
-
+    Description: Yup.string()
+        .required("توضیحات محصول اجباری است!"),
 });
 
 
@@ -50,7 +69,7 @@ class ContentProductAdd extends Component {
             Destination1: "",
             ax1File: "",
             ax1: ax,
-            axError: '',
+            axError: '', catError:{'cat':"",'sub':""},
             showLoader: false,
             initialData:{
                 Name:'',
@@ -59,7 +78,7 @@ class ContentProductAdd extends Component {
                 Price:'',
                 percent:'',
                 Category:{ },
-                sub_category:{ },
+                sub_category:{label:"",value:""},
                 isOff:{value: false ,label: "تخفیف ندارد"},
                 Description:"" ,
                 Attribute:""
@@ -84,9 +103,8 @@ class ContentProductAdd extends Component {
             });
             return SubCat;
         }
-
-//      **********Map Category to seprate Category and sub category then add to Option drop down
-        if (categories.Description!=='"Network Error"'){
+//      **********Map Category to separate Category and sub category then add to Option drop down
+        if (categories.Description!=='Network Error'){
             categories.map((each, index) => {
                 CategoryOption.push({value: each.name, label: each.name});
                 let SubCatCondition = each.sub_categories !== undefined ?
@@ -94,6 +112,15 @@ class ContentProductAdd extends Component {
                     :[{ value:"we have not sub category", label: "we have not sub category" }] ;
                 Subs[each.name]=SubCatCondition;
             });
+        }else {
+            NotificationManager.error(
+                "error",
+                'Network Error',
+                3000,
+                null,
+                null,
+                "error"
+            );
         }
 
         // ***********get params Id********
@@ -111,7 +138,7 @@ class ContentProductAdd extends Component {
                 Price:'',
                 percent:'',
                 Category:{ },
-                sub_category:{ },
+                sub_category:{label:"",value:"" },
                 isOff:{value: false ,label: "تخفیف ندارد"},
                 Description:"" ,
                 Attribute:""
@@ -142,13 +169,10 @@ class ContentProductAdd extends Component {
 
             var catValue={value: productDetail['Category'], label: productDetail['Category']};
             var updateImage=productDetail['Images'][0].split('/')
-            // console.log(updateImage[4])
-        }
+         }
         this.setState({
             CategoryOption,Subs,initialData,catValue,ax1:params.Id===':Id'?ax: initialData['Images'],id:params.Id===':Id'?"":params.Id,updateImage:params.Id===':Id'?"":updateImage[4]
         })
-
-        // let each=await GetProductDetail(params.Id);
 
         // **************************sample*********************
         // _id: "5d907a3a007049cfe08e3f88"
@@ -169,27 +193,15 @@ class ContentProductAdd extends Component {
         // Off: {Enable: true, Percentage: 0.1}
 
     }
-
+// **********Handel open modal for get image*********
     toggleLarge = () => {
         this.setState(prevState => ({
             modalLarge: !prevState.modalLarge
         }));
     };
 
-    // GetImag(Type,value){
-    //     let {ax}=this.state;
-    //     ax[Type]=value;
-    //     this.setState({
-    //         ax
-    //     },()=>{
-    //         // console.log(ax)
-    //         // console.log(ax['SSN'])
-    //     })
-    // }
+    // **********get image from modal and close it*********
     GetImgFile(file,Destination , label ,base64){
-        // console.log(file);
-        // console.log(Destination);
-        // console.log(label);
         switch(label) {
             case 'عکس اول':
                 this.setState({
@@ -199,38 +211,28 @@ class ContentProductAdd extends Component {
             default:
                 console.log("cant know why? but your sucks")
         }
-
         this.setState(prevState => ({
             modalLarge: !prevState.modalLarge
         }));
-
-
     }
 
-
-
-
+// **************Get Date************
     GetData(Data){
-        // console.log(Data)
-        if (Data!==null){
+         if (Data!==null){
             let Date=`${Data.year}/${Data.month}/${Data.day}`;
-            console.log(Date);
-            this.setState({
+             this.setState({
                 Date
             });
-
         }
-        // console.log(date)
-    }
+     }
 
+// **************Change sub-category from change category ************
     onChange = (event,value) => {
         let {Subs}=this.state;
         let Options=Subs[value.value];
-        // console.log(Subs[value.value]);
         this.setState({
             catValue:value ,SubsOption:Options
         });
-
     };
 
     handleSubmit = async (values, { setSubmitting }) => {
@@ -239,39 +241,14 @@ class ContentProductAdd extends Component {
             isOff: values.isOff.value,
             Category: values.Category.value,
             sub_category: values.sub_category.value,
-            // ChanceType: values.ChanceType.value,
-            // Name: values.Name.value,
         };
 
+// **************check its update or just add **********
 
+        // **************update product **********
         if (this.state.id.length>2){
-            console.log("update");
             var idax;
              let {  ax1File ,catValue} = this.state;
-                // this.setState({
-                //     showLoader:true
-                // });
-
-
-            //
-            // {
-            //     "Id": "string",
-            //     "UniqueValue": "string",
-            //     "Name": "string",
-            //     "Attribute": "string",
-            //     "Manufacture": "string",
-            //     "Count": "string",
-            //     "Price": 0,
-            //     "Description": "string",
-            //     "Category": "string",
-            //     "SubCategory": "string",
-            //     "Images": [
-            //     null
-            // ],
-            //     "Off": 0,
-            //     "IsOffEnable": true
-            // }
-
 
                 let Data={
                     "Id": this.state.id,
@@ -290,14 +267,7 @@ class ContentProductAdd extends Component {
                     "Off": payload.percent || 0.0,
                     "IsOffEnable": payload.isOff,
                 };
-                console.log(Data);
-
                 let Register = await UpdateProduct(JSON.stringify(Data));
-                console.log(Register);
-
-                // this.setState({
-                //     showLoader: false
-                // });
                 let {state, Description} = Register;
                 if (state ) {
                     NotificationManager.success(
@@ -318,14 +288,10 @@ class ContentProductAdd extends Component {
                         "error"
                     );
                 }
-
-
-
+        // **************add product **********
         } else {
-            console.log(payload);
-            let {  ax1File, axError,catValue} = this.state;
-            console.log('ax1File');
-            console.log(ax1File);
+             let {  ax1File, axError,catValue,catError} = this.state;
+             // ****check validation form for category sub-category image**********
             let axValid = true;
             if (ax1File === '') {
                 axValid = false;
@@ -333,42 +299,28 @@ class ContentProductAdd extends Component {
             }else {
                 axError = ""
             }
+
+            if (catValue === undefined) {
+                axValid = false;
+                catError.cat = "دسته بندی اجباری است"
+            }else {
+                catError.cat = ""
+            }
+            if (payload.sub_category === '') {
+                axValid = false;
+                catError.sub = "زیر دسته اجباری است"
+            }else {
+                catError.sub = ""
+            }
             this.setState({
-                axError
-            }, () => {
-
-            })
-
+                axError,catError
+            });
+            // **********send validate data*********
             if (axValid) {
-
-
-
-                    console.log(payload);
-                this.setState({
+                 this.setState({
                     showLoader:true
                 });
-                // console.log(payload);
-
-
                 let idax = await sendImg(ax1File, 'Public');
-
-                // {
-                //     "UniqueValue": "string",
-                //     "Name": "string",
-                //     "Attribute": "string",
-                //     "Manufacture": "string",
-                //     "Count": "string",
-                //     "Price": 0,
-                //     "Description": "string",
-                //     "Category": "string",
-                //     "Images": [
-                //     null
-                // ],
-                //     "Off": 0,
-                //     "IsOffEnable": false,
-                //     "SubCategory": "string"
-                // }
-
                 let Data={
                     "UniqueValue": payload.Name,
                     "Name":payload.Name,
@@ -391,6 +343,7 @@ class ContentProductAdd extends Component {
                 this.setState({
                     showLoader: false
                 });
+
                 let {state, Description} = Register;
                 if (state ) {
                     NotificationManager.success(
@@ -418,16 +371,15 @@ class ContentProductAdd extends Component {
     };
     render() {
 
-        let{axError,ax1,CategoryOption,SubsOption}=this.state;
+        let{axError,ax1,CategoryOption,SubsOption,catError}=this.state;
          return (
-            this.state.showLoader ||Object.entries(CategoryOption).length===0?
+            this.state.showLoader || Object.entries(CategoryOption).length===0?   // *******checking for submit form or get category Option is then loader start then loader close**********
                 <div className='d-flex justify-content-center align-items-center'>
                     <div className='col-6'>
                         <Loader/>
                     </div>
                 </div>
                 :
-
                 <div dir='rtl'>
                     <Row className="mb-4">
                         <Colxx xxs="12">
@@ -458,6 +410,7 @@ class ContentProductAdd extends Component {
                                           }) => (
                                             <Form className="av-tooltip tooltip-label-bottom w-100 row m-0" style={{height:'45vh',minHeight:"45vh"}}>
                                                 <div className="col-sm-12 col-md-3 ">
+                                                    {/*********show image and open modal ***********/}
                                                     <FormGroup className="form-group  position-relative">
                                                         <div className='d-flex justify-content-start col-12'>
                                                             <Label  className='d-flex  ml-2 mr-2'>
@@ -471,77 +424,34 @@ class ContentProductAdd extends Component {
                                                                     <img src={ax1} className='img-self-fill br02'/>
                                                                 </div>
                                                             </div>
-
                                                         </div>
-
-                                                        {/*<ImgComponent Type='Img' GetData={this.GetImag.bind(this)}/>*/}
-
-                                                        {
-                                                            axError.length>1?<span className=" invalid-feedback d-block">{axError} </span>:""
-                                                        }
+                                                         {axError.length>1 && touched.Category ? (
+                                                            <div className="invalid-feedback d-block">
+                                                                {axError}
+                                                            </div>
+                                                        ) : null}
                                                     </FormGroup>
                                                 </div>
+
                                                 <div className="col-sm-12 col-md-9 d-flex flex-column justify-content-between">
 
                                                     <div className="w-100 row m-0 ">
-                                                        <div className="col-sm-12 col-md-6 ">
-                                                            <FormGroup className="form-group has-float-label position-relative">
-                                                                <Label>
-                                                                    <span>نام</span>
 
-                                                                </Label>
-                                                                <Field className="form-control" name="Name"   onBlur={setFieldTouched}
-                                                                       placeholder="نام محصول را وارد کنید !" />
-                                                                {errors.Name && touched.Name ? (
-                                                                    <div className="invalid-feedback d-block">
-                                                                        {errors.Name}
-                                                                    </div>
-                                                                ) : null}
-                                                            </FormGroup>
+                                                        <div className="col-sm-12 col-md-6 ">
+                                                            <FormInput label='نام' name='Name' placeHolder='نام محصول را وارد کنید !' setFieldTouched={setFieldTouched} errors={errors} touched={touched}/>
                                                         </div>
                                                         <div className="col-sm-12 col-md-6 ">
-                                                            <FormGroup className="form-group has-float-label position-relative">
-                                                                <Label>
-                                                                    <span>تولید</span>
-                                                                </Label>
-                                                                <Field className="form-control" name="Manufacture"  onBlur={setFieldTouched}
-                                                                       placeholder="کارخانه تولیدی را مشخص کنید !" />
-                                                                {errors.Manufacture && touched.Manufacture ? (
-                                                                    <div className="invalid-feedback d-block">
-                                                                        {errors.Manufacture}
-                                                                    </div>
-                                                                ) : null}
-                                                            </FormGroup>
+                                                            <FormInput label='تولید' name='Manufacture' placeHolder='کارخانه تولیدی را مشخص کنید !' setFieldTouched={setFieldTouched} errors={errors} touched={touched}/>
                                                         </div>
-                                                        <div className="col-sm-12 col-md-6 ">
-                                                            <FormGroup className="form-group has-float-label position-relative">
-                                                                <Label>
-                                                                    <span>قیمت</span>
 
-                                                                </Label>
-                                                                <Field className="form-control" name="Price" type="number" onBlur={setFieldTouched}
-                                                                       placeholder="قیمت را مشخص کنید !" />
-                                                                {errors.Price && touched.Price ? (
-                                                                    <div className="invalid-feedback d-block">
-                                                                        {errors.Price}
-                                                                    </div>
-                                                                ) : null}
-                                                            </FormGroup>
-                                                        </div>
                                                         <div className="col-sm-12 col-md-6 ">
-                                                            <FormGroup className="form-group has-float-label position-relative">
-                                                                <Label>
-                                                                    <span>تعداد</span>
-                                                                </Label>
-                                                                <Field className="form-control" name="Count"  type="number" onBlur={setFieldTouched}
-                                                                       placeholder="تعداد را مشخص کنید !" />
-                                                                {errors.Count && touched.Count ? (
-                                                                    <div className="invalid-feedback d-block">
-                                                                        {errors.Count}
-                                                                    </div>
-                                                                ) : null}
-                                                            </FormGroup>
+                                                            <FormInput label='قیمت' name='Price' placeHolder='نام محصول را وارد کنید !' setFieldTouched={setFieldTouched} errors={errors} touched={touched}/>
                                                         </div>
+
+                                                        <div className="col-sm-12 col-md-6 ">
+                                                            <FormInput label='تعداد' name='Count' placeHolder='تعداد را مشخص کنید !' setFieldTouched={setFieldTouched} errors={errors} touched={touched}/>
+                                                        </div>
+
                                                         <div className="col-sm-12 col-md-6  ">
 
                                                             <FormGroup className="form-group has-float-label">
@@ -556,15 +466,15 @@ class ContentProductAdd extends Component {
                                                                     onChange={this.onChange.bind( values.Category) }
                                                                     onBlur={setFieldTouched}
                                                                 />
-                                                                {errors.Category && touched.Category ? (
+                                                                {catError['cat'].length>1 && touched.Category ? (
                                                                     <div className="invalid-feedback d-block">
-                                                                        {errors.Category}
+                                                                        {catError['cat']}
                                                                     </div>
                                                                 ) : null}
                                                             </FormGroup>
                                                         </div>
-                                                        <div className="col-sm-12 col-md-6 ">
 
+                                                        <div className="col-sm-12 col-md-6 ">
                                                             <FormGroup className="form-group has-float-label">
                                                                 <Label>
                                                                     <span>زیر دسته بندی</span>
@@ -577,28 +487,18 @@ class ContentProductAdd extends Component {
                                                                     onChange={setFieldValue}
                                                                     onBlur={setFieldTouched}
                                                                 />
-                                                                {errors.sub_category && touched.sub_category ? (
+                                                                {catError['sub'].length>1 && touched.sub_category ? (
                                                                     <div className="invalid-feedback d-block">
-                                                                        {errors.sub_category}
+                                                                        {catError['sub']}
                                                                     </div>
                                                                 ) : null}
                                                             </FormGroup>
                                                         </div>
-                                                        <div className="col-sm-12  ">
 
-                                                            <FormGroup className="form-group has-float-label">
-                                                                <Label>
-                                                                    <span>مشخصات</span>
-                                                                </Label>
-                                                                <Field className="form-control" name="Attribute"  type="text" onBlur={setFieldTouched}
-                                                                       placeholder="مشخصات محصول را وارد کنید " />
-                                                                {errors.Attribute && touched.Attribute ? (
-                                                                    <div className="invalid-feedback d-block">
-                                                                        {errors.Attribute}
-                                                                    </div>
-                                                                ) : null}
-                                                            </FormGroup>
+                                                        <div className="col-sm-12  ">
+                                                            <FormInput label='مشخصات' name='Attribute' placeHolder='مشخصات محصول را وارد کنید' setFieldTouched={setFieldTouched} errors={errors} touched={touched}/>
                                                         </div>
+
                                                         <div className="col-sm-12">
 
                                                             <FormGroup className="form-group has-float-label">
@@ -622,7 +522,6 @@ class ContentProductAdd extends Component {
                                                             <FormGroup className="form-group has-float-label">
                                                                 <Label>
                                                                     <span>تخفیف</span>
-
                                                                 </Label>
                                                                 <FormikReactSelect
                                                                     name="isOff"
@@ -640,8 +539,8 @@ class ContentProductAdd extends Component {
                                                             </FormGroup>
                                                         </div>
                                                         {
+                                                            // **********check is off is set then set the number*******
                                                             values.isOff.value === true ?
-
                                                                 <div className="col-sm-12 col-md-6 ">
                                                                     <FormGroup
                                                                         className="form-group has-float-label position-relative">
@@ -651,19 +550,10 @@ class ContentProductAdd extends Component {
                                                                         <Field className="form-control" name="percent"
                                                                                type="number" onBlur={setFieldTouched}
                                                                                placeholder="درصد را مشخص کنید !"/>
-                                                                        {/*{errors.Count && touched.Count ? (*/}
-                                                                        {/*<div className="invalid-feedback d-block">*/}
-                                                                        {/*{errors.Count}*/}
-                                                                        {/*</div>*/}
-                                                                        {/*) : null}*/}
                                                                     </FormGroup>
                                                                 </div>
-
-
                                                                 :""
                                                         }
-
-
                                                     </div>
                                                     <button className="btn btn-success" type="submit">
                                                         فرستادن
@@ -677,6 +567,8 @@ class ContentProductAdd extends Component {
                             </Card>
                         </Colxx>
                     </Row>
+
+                    {/********Modal for get image**********/}
                     <Modal
                         isOpen={this.state.modalLarge}
                         size="lg"

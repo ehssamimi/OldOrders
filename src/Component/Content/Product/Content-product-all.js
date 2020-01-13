@@ -3,6 +3,7 @@ import PreviewProduct from "./sub/PreviewProduct/PreviewProduct";
  import {GetAllProduct} from './../../functions/ServerConnection'
  import InfiniteScroll from 'react-infinite-scroller';
 import Loader from "../../HomePages/Sub/Loader/Loader";
+import NotificationManager from "../../../components/common/react-notifications/NotificationManager";
 
 class ContentProductAll extends Component {
     constructor(props) {
@@ -24,12 +25,6 @@ class ContentProductAll extends Component {
 
        if (Response!=='error') {
            let{Products,Page}=Response;
-           // if (Products.length===0){
-           //     console.log('this is the end');
-           //     this.setState({
-           //         last_page:Page+1
-           //     })
-           // }
            let productSeparate=[];
            Products.map((each, index) => {
                let sub = {"تعداد": each['Count'],"تولید": each['Manufacture'],"دسته بندی": each['Category'] };
@@ -53,11 +48,18 @@ class ContentProductAll extends Component {
                pageStart:Page+1,
                hasMore:  Products.length !== 0
            }));
-
+       }else {
+           NotificationManager.error(
+               "Network Error",
+               Response,
+               3000,
+               null,
+               null,
+               "error"
+           );
        }
 
    }
-
 
     render() {
         let {productSeparate}=this.state;
@@ -69,7 +71,7 @@ class ContentProductAll extends Component {
                 pageStart={0}
                 loadMore={this.loadMore.bind(this)}
                 hasMore={this.state.hasMore}
-                loader={<div className="loader " key={0}><Loader/></div>}
+                loader={<div className="loader col-6 offset-3" key={0}><Loader/></div>}
             >
 
                 <div className='d-flex  w-100  flex-wrap'  >

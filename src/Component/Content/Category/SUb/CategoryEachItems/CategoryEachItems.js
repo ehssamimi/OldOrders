@@ -17,15 +17,12 @@ class CategoryEachItems extends Component {
             DeleteModal:false
         }
     }
-
+    // **********Handel Delete Category Modal********
     deleteToggle() {
         this.setState(state => ({ DeleteModal: !state.DeleteModal }));
     }
 
-    handelEditCategory(){
-
-    }
-    async DeleteCategory(){
+     async DeleteCategory(){
         let deleteProduct = await DeleteCategory(this.props.data['name']);
         var id = this.props.data['_id'];
         let {state, Description} = deleteProduct;
@@ -38,6 +35,7 @@ class CategoryEachItems extends Component {
                 null,
                 "success"
             );
+            // **********delete and fade-out element********
             const $el = document.getElementById(`${id}`);
             const duration = 2;
             const from = {opacity: 0};
@@ -64,8 +62,6 @@ class CategoryEachItems extends Component {
          return (
              <div >
                  <Card className="d-flex flex-column mb-4 br02" id={data._id}>
-
-
                      {/**********show category image and go to category info in ./category/categoryInfo  ***********/}
                      <div className='position-relative'>
                          <NavLink to= {`/content/category/detail/info/${data._id}`} className="d-flex h-20vh w-100 ">
@@ -73,20 +69,19 @@ class CategoryEachItems extends Component {
                          </NavLink>
                      </div>
 
-
                      <div className=" d-flex flex-grow-1 min-width-zero">
                          <CardBody className='w-100   justify-content-center align-items-center h-20vh  '>
-                             {/******************delete Btn*********/}
+
 
                              {/******************category name*********/}
                              <div
-                                 className={['d-flex', 'collapseSpanHeight', 'text-center d-flex justify-content-center align-items-center', 'align-items-end', ' ', 'col-10'].join(' ')}
+                                 className={['d-flex', 'collapseSpanHeight', 'text-center d-flex justify-content-center align-items-center', 'align-items-end', ' ', 'col-12'].join(' ')}
                                  dir='rtl'>
                                  <span className='collapseValue gray'> نام  <span className='pl-2'>:</span></span>
                                  <span className=' collapseValue '>{data.name}</span>
                              </div>
-                             {/******************category Update Btn and go to Category image Update*********/}
-                              <div className='col-8 offset-2 d-flex justify-content-between      mt-5 align-items-center'>
+                             {/******************category Update and Delete Btn and go to Category image Update*********/}
+                              <div className='col-8 offset-2 d-flex justify-content-between  mt-5 align-items-center'>
                                   <button
                                       className='badge badge-outline-primary col-6 d-flex justify-content-center fs-08vw  cursor-pointer'
                                       onClick={this.deleteToggle}> حذف
@@ -97,15 +92,6 @@ class CategoryEachItems extends Component {
                                       </button>
                                   </NavLink>
 
-
-
-                                 {/*<span className=" badge badge-outline-primary   d-flex justify-content-center align-items-center h-50  " onClick={this.deleteToggle}>حذف </span>*/}
-                                 {/*<NavLink to={`/content/category/each/info/${data._id}`}*/}
-                                          {/*className="d-flex   badge badge-outline-secondary  h-50 ">*/}
-                                 {/*<span*/}
-                                     {/*className='  col-1   d-flex justify-content-center align-items-center h-100'*/}
-                                     {/*onClick={this.handelEditCategory.bind(this)}>edit </span>*/}
-                                 {/*</NavLink>*/}
                              </div>
 
                          </CardBody>

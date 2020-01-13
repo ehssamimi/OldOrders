@@ -19,16 +19,26 @@ class ContentCategoryUpdate extends Component {
     }
     async componentDidMount(){
         const {match: {params}} = this.props;
-
+        // ****************Get Category Detail with ID**********
         let DetailCategory=await getCategoryDetailwithId(params.Id);
-        console.log(DetailCategory);
+        // **********checking to get validate Data*********
+         if (DetailCategory['Description']!==undefined){
+            NotificationManager.error(
+                "error",
+                DetailCategory['Description'],
+                3000,
+                null,
+                null,
+                "error"
+            );
+        }
         this.setState({
             ax1: DetailCategory['image'],
             name: DetailCategory['name'],
             id: DetailCategory['_id']
         });
      }
-
+    // *********handel modal for get image********
     toggleLarge = () => {
         this.setState(prevState => ({
             modalLarge: !prevState.modalLarge
@@ -36,15 +46,11 @@ class ContentCategoryUpdate extends Component {
     };
 
 
-
+    // ******handel subimt form for update category********
     async handleSubmit(event) {
         event.preventDefault();
         var  validate=true;
-        // error:{name :"", ax:""}
-
         let{ax1File}=this.state;
-        console.log(ax1File);
-
         if (ax1File.length<1){
             validate = false;
             let {error} = this.state;
@@ -59,22 +65,19 @@ class ContentCategoryUpdate extends Component {
                 error
             })
         }
-
-        if (validate===true){
-             this.setState({
-                loader:true
-            });
-             let{ax1File}=this.state;
-            let idax = await sendImg(ax1File, 'Public');
-
-            let updateCat=await UpdateCategory(this.state.id ,idax);
-            this.setState({
-                loader:false
-            });
-
-            console.log(updateCat)
-            let{state,Description}= updateCat ;
-            if (state===200){
+        // ***********if validation is true then submit form*********
+            if (validate===true){
+                this.setState({
+                    loader:true
+                });
+                let{ax1File}=this.state;
+                let idax = await sendImg(ax1File, 'Public');
+                let updateCat=await UpdateCategory(this.state.id ,idax);
+                this.setState({
+                    loader:false
+                });
+                let{state,Description}= updateCat ;
+                if (state===200){
                 NotificationManager.success(
                     "congratulation",
                     "your category update",
@@ -83,7 +86,7 @@ class ContentCategoryUpdate extends Component {
                     null,
                     "success"
                 );
-            } else {
+            }else {
                 NotificationManager.error(
                     "error",
                     Description,
@@ -95,13 +98,9 @@ class ContentCategoryUpdate extends Component {
             }
 
         }
-
-
     }
+    // *********GET image values function and close modal for get image********
     GetImgFile(file,Destination , label ,base64){
-        // console.log(file);
-        // console.log(Destination);
-        // console.log(label);
         switch(label) {
             case 'عکس اول':
                 this.setState({
@@ -149,7 +148,7 @@ class ContentCategoryUpdate extends Component {
                     </form>
 
                     <Modal
-                        isOpen={this.state.modalLarge}
+                        isOpen={ modalLarge}
                         size="lg"
                         toggle={this.toggleLarge}
                     >

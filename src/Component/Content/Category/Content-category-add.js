@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {FormGroup, Label, Modal, ModalBody, ModalHeader} from "reactstrap";
-import ax1 from './../../../assets/img/4th-1.jpg'
+import ax1 from './../../../assets/img/4th.jpg'
 import JustCropImg from "../../HomePages/Sub/CropImg/JustCropImg";
-import {Field} from "formik";
-import {sendImg} from "../../functions/ServerConnection";
+ import {sendImg} from "../../functions/ServerConnection";
 import {AddCategory} from './../../functions/ServerConnection'
 import Loader from "../../HomePages/Sub/Loader/Loader";
 import NotificationManager from "../../../components/common/react-notifications/NotificationManager";
@@ -29,9 +28,8 @@ class ContentCategoryAdd extends Component {
 
    async handleSubmit(event) {
          event.preventDefault();
+         // ***** check validate form***********
          var  validate=true;
-        // error:{name :"", ax:""}
-
         let{name,ax1File}=this.state;
         console.log(name);
         console.log(ax1File);
@@ -63,26 +61,24 @@ class ContentCategoryAdd extends Component {
                 error
             })
         }
+       // ***** submit form if validation is true***********
 
         if (validate===true){
             this.setState({
                 loader:true
-            })
-            console.log("varidate")
-            let{name,ax1File}=this.state;
+            });
+             let{name,ax1File}=this.state;
             let idax = await sendImg(ax1File, 'Public');
             let Data={
                 "name": name,
                 "image": idax
             };
-            console.log(JSON.stringify(Data));
-            let addCat=await AddCategory(JSON.stringify(Data))
+             let addCat=await AddCategory(JSON.stringify(Data));
             this.setState({
                 loader:false
             });
 
-            console.log(addCat)
-             let{state,Description}= addCat ;
+            let{state,Description}= addCat ;
             if (state===200){
                 NotificationManager.success(
                     "congratulation",
@@ -127,21 +123,27 @@ class ContentCategoryAdd extends Component {
     render() {
         let{modalLarge,ax1,name,error,loader}=this.state;
         return (
-            loader?<div className='d-flex col-6 justify-content-center h-25vh'>
-                <Loader/>
-                </div>:
-            <div  >
+            loader?
+                <div className='d-flex col-6 justify-content-center h-25vh'>
+                    <Loader/>
+                </div>
+            :
+            <div>
                 <form onSubmit={this.handleSubmit}>
                     <div className="d-flex flex-column align-items-center justify-content-center">
                         <div className='col-6'>
+
+                            {/********get name of category**********/}
                             <FormGroup className="form-group has-float-label position-relative">
                                 <Label>
                                     <span>نام</span>
                                 </Label>
-                                <input type="text" className="form-control" value={this.state.name || ''}
+                                <input type="text" className="form-control" value={ name || ''}
                                        onChange={this.handleChange}/>
                             </FormGroup>
                         </div>
+                        {/********open modal for get image of category**********/}
+
                         <div className="col-6">
                             <div className='d-flex col-12 flex-column paddingZero  '>
                                 <div className="col-12 p-0">
@@ -153,6 +155,8 @@ class ContentCategoryAdd extends Component {
                             </div>
                         </div>
                         <button type='submit' className='btn btn-primary'>ارسال</button>
+                        {/********show errors of form to get name and image**********/}
+
                         <div className='d-flex flex-column col-6'>
                             {
                                 error['name'].length>1?<span className='alert alert-danger mt-3 col-12'>{error['name']}</span>:""
@@ -167,9 +171,10 @@ class ContentCategoryAdd extends Component {
                 </form>
 
 
+                {/********  modal for get image of category**********/}
 
                 <Modal
-                    isOpen={this.state.modalLarge}
+                    isOpen={ modalLarge}
                     size="lg"
                     toggle={this.toggleLarge}
                 >
