@@ -1,24 +1,16 @@
 import React, {Component} from 'react';
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
-
-
 import {
     Row,
     Card,
     CardBody,
     FormGroup,
     Label,
-    Button,
-    CardTitle
+     CardTitle
 } from "reactstrap";
-import IntlMessages from "../../../../helpers/IntlMessages";
-import {Colxx} from "../../../../components/common/CustomBootstrap";
-import {
-    FormikReactSelect,
-} from "../../../../containers/form-validations/FormikFields";
-import {WithWizard} from "react-albus/lib";
+ import {Colxx} from "../../../../components/common/CustomBootstrap";
+
 import WizardBottonNavigations from "../Sub/WizardBottonNavigations";
 import {VerifyChichiManPhoneNumber,GetVerificationCode} from "../../../functions/ServerConnection";
 import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
@@ -30,17 +22,6 @@ const SignupSchema = Yup.object().shape({
         .required("کد هراز هویت اجباری است!").min(1000,'باید 4 رقم باشد').max(9999, 'باید 4 رقمی  باشد '),
 
 });
-
-const options = [
-    { value: "موتور", label: "موتور" },
-    { value: "ماشین", label: "ماشین" },
-    { value: "دوچرخه", label: "دوچرخه" },
-    // { value: "Gun", label: "Gun" }
-];
-
-
-
-
 class Step2 extends Component {
     constructor(props) {
         super(props);
@@ -77,8 +58,10 @@ class Step2 extends Component {
     //     TweenMax.staggerFrom( '.rowInput', 1, {autoAlpha:0, y: 100} ,0.1);﻿﻿﻿
     // }
     async componentDidMount(){
-        let verificationCode=await GetVerificationCode(this.props.PhoneNumber);
-        console.log(verificationCode);
+        // let getCode=await GetVerificationCode(this.props.PhoneNumber);
+        const {Description: {Code}} = await GetVerificationCode(this.props.PhoneNumber);
+        console.log(Code)
+
     }
 
 
@@ -90,7 +73,6 @@ class Step2 extends Component {
             // Name: values.Name.value,
 
         };
-        console.log(payload);
         console.log(payload);
         console.log(this.props.PhoneNumber);
 
@@ -132,10 +114,6 @@ class Step2 extends Component {
             );
         }
 
-
-
-
-
     };
 
 
@@ -160,7 +138,6 @@ class Step2 extends Component {
                                     <div className='d-flex justify-content-start'>
                                         <span>اهراز هویت</span>
                                     </div>
-
                                 </CardTitle>
 
                                 <Formik
@@ -184,9 +161,7 @@ class Step2 extends Component {
                                       }) => (
                                         <Form className="av-tooltip tooltip-label-bottom">
                                             <div className="w-100 d-flex  justify-content-center">
-
                                                 <div className="col-12  " >
-
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
                                                             <span>کد اهراز هویت</span>
@@ -199,9 +174,7 @@ class Step2 extends Component {
                                                             </div>
                                                         ) : null}
                                                     </FormGroup>
-
                                                 </div>
-
                                             </div>
 
                                             <WizardBottonNavigations {...this.props}/>

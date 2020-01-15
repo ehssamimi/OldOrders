@@ -1,10 +1,7 @@
-// import React, {Component} from 'react';
-import React, { Component } from "react";
-import { Card, CardBody, Form, FormGroup, Input, Label } from "reactstrap";
-import IntlMessages from "../../../helpers/IntlMessages";
-import { Wizard, Steps, Step } from 'react-albus';
-import { injectIntl } from 'react-intl';
-import { BottomNavigation } from "../../../components/wizard/BottomNavigation";
+ import React, { Component } from "react";
+ import IntlMessages from "../../../helpers/IntlMessages";
+import {Wizard, Steps, Step, WithWizard} from 'react-albus';
+ // import { BottomNavigation } from "../../../components/wizard/BottomNavigation";
 import { TopNavigation } from "../../../components/wizard/TopNavigation";
 import Step1 from "./Step1/Step1";
 import Step2 from "./Step2/Step2";
@@ -12,6 +9,7 @@ import Step3 from "./Step3/Step3";
 import Step4 from "./Step4/Step4";
 import Step5 from "./Step5/Step5";
 import Step6 from "./Step6/Step6";
+ import {ChichiManIfoDetail} from "../../functions/ServerConnection";
 
 
 class ChichiManSignIn extends Component {
@@ -24,11 +22,39 @@ class ChichiManSignIn extends Component {
             name: "",
             email: "",
             password: "",
-            phoneNumber:""
+            phoneNumber:"",
+            // item:{id: "step3", name: "اطلاعات اولیه"},
+            item:"",
+            Info:{}
         }
     }
+  async componentDidMount(){
+      let Detail= await ChichiManIfoDetail('5e157a4fede841331a180afc');
+      console.log(Detail);
+
+      // console.log(Detail['vehicle']);
+
+      // Identify: {header: "اهراز هویت", sub: {…}}
+      // PersonalInfo: {header: "اطلاعات شخصی", sub: {…}, Images: {…}}
+      // vehicle: {header: "اطلاعات وسیله نقلیه", sub: {…}, images: {…}}
+      // contract: {header: "مستندات قرارداد", sub: {…}, images: {…}}
+      // BankInfo: {header: "اطلاعات بانکی", sub: {…}}
+
+      this.setState({
+          item:{id: "step4", name: "اطلاعات وسیله نقلیه"},
+          Info:Detail,
+          phoneNumber:Detail['Identify']['sub']['شماره موبال']
+      },()=>{
+          console.log(this.state.Info['vehicle']['sub'])
+      });
+
+
+
+  }
+
 
     topNavClick(stepItem, push) {
+        console.log(stepItem);
         push(stepItem.id);
     }
 
@@ -60,13 +86,15 @@ class ChichiManSignIn extends Component {
     }
 
 
+
     render() {
         // const { messages } = this.props.intl;
-        let{phoneNumber}=this.state;
+        let{phoneNumber,item}=this.state;
+        // console.log(item);
         return (
             <div className='wizard wizard-default col-12'>
                 <Wizard>
-                    <TopNavigation className="justify-content-center" disableNav={false} topNavClick={this.topNavClick} />
+                    <TopNavigation className="justify-content-center" disableNav={false} topNavClick={this.topNavClick} item={item}   />
                     <Steps>
                         <Step id="step1" name={"ثبت شماره موبایل"}>
                             <div className="wizard-basic-step">
@@ -85,12 +113,10 @@ class ChichiManSignIn extends Component {
                         </Step>
                         <Step id="step4" name={"اطلاعات نقلیه"}>
                             <div className="wizard-basic-step">
-                                <Step4 onClickNext={this.onClickNext} onClickPrev={this.onClickPrev} className="justify-content-center" prevLabel={"مرحله قبل"} nextLabel={"مرحله بعد"} PhoneNumber={phoneNumber}/>
+                                <Step4 onClickNext={this.onClickNext} onClickPrev={this.onClickPrev} className="justify-content-center" prevLabel={"مرحله قبل"} nextLabel={"مرحله بعد"} PhoneNumber={phoneNumber} info={Object.keys(this.state.Info).length!==0?this.state.Info['vehicle']['sub']:""}/>
                             </div>
                         </Step>
-                        <Step id="step5" name={"مستندات قرارداد"}
-                            // desc={"wizard.step-desc-5"}
-                        >
+                        <Step id="step5" name={"مستندات قرارداد"}>
                             <div className="wizard-basic-step">
                                 <Step5 onClickNext={this.onClickNext} onClickPrev={this.onClickPrev} className="justify-content-center" prevLabel={"مرحله قبل"} nextLabel={"مرحله بعد"} PhoneNumber={phoneNumber}/>
                             </div>
@@ -119,5 +145,4 @@ class ChichiManSignIn extends Component {
         );
     }
 }
-
-export default ChichiManSignIn;
+  export default ChichiManSignIn;

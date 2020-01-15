@@ -9,68 +9,55 @@ class ChichiManList extends Component {
     constructor(props) {
         super(props);
         this.state={
-            listChichiMan: [{
-                'name': "احسان صمیمی راد",
-                'phoneNumber': "09112561701",
-                'image': ax,
-                'vehicle': "موتور برقی",
-                'Plaque': '62 ب ایران 62'
-            }, {
-                'name': "سهند میرزایی",
-                'phoneNumber': "09365265",
-                'image':  '',
-                'vehicle': "موتور برقی",
-                'Plaque': '62 ب ایران 62'
-            },
-                {
-                    'name': "احسان صمیمی راد",
-                    'phoneNumber': "09112561701",
-                    'image': ax,
-                    'vehicle': "موتور برقی",
-                    'Plaque': '62 ب ایران 62'
-                },
-            ],
-            productSeparate:[],
+            listChichiMan: [],
             pageStart:1,
             hasMore:true,
             last_page:500
         }
     }
     async loadMore(){
-        let{pageStart,last_page}=this.state;
+        let{pageStart,last_page,listChichiMan}=this.state;
         let Response = await ChichiManListSummery(pageStart);
         // let Response2 = await ChichiManListSummery(pageStart);
-        console.log(Response);
-        let{Products,Page}=Response;
-        // if (Products.length===0){
-        //     console.log('this is the end');
-        //     this.setState({
-        //         last_page:Page+1
-        //     })
-        // }
-        let productSeparate=[];
-        Products.map((each, index) => {
-            let sub = {"تعداد": each['Count'],"تولید": each['Manufacture'],"دسته بندی": each['Category'] };
-            let Main = {
-                "name": each['UniqueValue'],
-                "Attribute": each['Attribute'],
-                "Description": each['Description'],
-                "PrevPrice": each['PrevPrice'],
-                "CurrentPrice": each['CurrentPrice'],
-                "Images": each['Images'][0],
-                "ViewCount": each['ViewCount'] ,
-                "Off": each['Off'],
-                "id":each['_id']
-            };
-            let row={'Main':Main,'sub':sub};
-            productSeparate.push(row)
-        });
-        this.setState(prevState=>({
-            productSeparate:[ ...prevState.productSeparate , ...productSeparate ],
-            // hasMore:    Page !== last_page,
-            pageStart:Page+1,
-            hasMore:  Products.length !== 0
-        }));
+        let {Description ,Code}=Response;
+        let Page=1;
+
+      if (Code===200) {
+          this.setState(prevState=>({
+              listChichiMan:[ ...prevState.listChichiMan , ...Description ],
+              // hasMore:    Page !== last_page,
+              pageStart:Page+1,
+              hasMore:  Description.length !== 0
+          }));
+      }else {
+
+
+      }
+
+
+        // let productSeparate=[];
+        // Products.map((each, index) => {
+        //     let sub = {"تعداد": each['Count'],"تولید": each['Manufacture'],"دسته بندی": each['Category'] };
+        //     let Main = {
+        //         "name": each['UniqueValue'],
+        //         "Attribute": each['Attribute'],
+        //         "Description": each['Description'],
+        //         "PrevPrice": each['PrevPrice'],
+        //         "CurrentPrice": each['CurrentPrice'],
+        //         "Images": each['Images'][0],
+        //         "ViewCount": each['ViewCount'] ,
+        //         "Off": each['Off'],
+        //         "id":each['_id']
+        //     };
+        //     let row={'Main':Main,'sub':sub};
+        //     productSeparate.push(row)
+        // });
+        // this.setState(prevState=>({
+        //     productSeparate:[ ...prevState.productSeparate , ...productSeparate ],
+        //     // hasMore:    Page !== last_page,
+        //     pageStart:Page+1,
+        //     hasMore:  Products.length !== 0
+        // }));
     }
 
     render() {
@@ -85,9 +72,9 @@ class ChichiManList extends Component {
         //     </div>
         // );
 
-        let{listChichiMan,productSeparate}=this.state;
-        console.log('productSeparate');
-        console.log(productSeparate);
+        let{listChichiMan}=this.state;
+        console.log('listChichiMan');
+        console.log(listChichiMan);
         return (
 
             <InfiniteScroll
@@ -97,15 +84,12 @@ class ChichiManList extends Component {
                 hasMore={this.state.hasMore}
                 loader={<div className="loader " key={0}><Loader/></div>}
             >
-
                 <div className='row m-0 w-100'>
                     {
                         listChichiMan.length > 0 ?
-                            listChichiMan.map((chichiMan, index) => <ChichiManInfoCard id={index} key={index}
-                                                                                       chichiMan={chichiMan}  {...this.props}
+                            listChichiMan.map((chichiMan, index) => <ChichiManInfoCard id={chichiMan['_id']} key={index} chichiMan={chichiMan}  {...this.props}
                                                                                        class='col-sm-6 col-md-4 col-lg-3'/>) : ""
                     }
-
                 </div>
             </InfiniteScroll>
         );

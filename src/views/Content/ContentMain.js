@@ -30,7 +30,6 @@ class App extends Component {
                                 path={`${match.url}/category`}
                                 render={props => <ContentCategory {...props} />}
                             />
-
                             <Redirect to="/error" />
                         </Switch>
                     </Suspense>

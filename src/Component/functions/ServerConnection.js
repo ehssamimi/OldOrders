@@ -882,10 +882,32 @@ export async  function  ChichiManListSummery(Page){
     let resp ={state:false,Description:""};
     await axios.get(`${Const.ChichiMan}admin/panel/chichimans-list?page=${Page}`, {headers: headers}).then(function (response) {
         console.log(response);
-         let{Code,Description}=JSON.parse(response.data);
+         let{Code,Description}= response.data ;
         // console.log(response);
         if (Code===200 ){
             resp ={Code:Code,Description:Description,};
+        }
+        // resp = status;
+    }).catch(function (error) {
+        console.log(error);
+        resp ={state:false,Description:error.message};
+    });
+    return resp;
+}
+export async  function  ChichiManIfoDetail(id){
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+        "accept": "application/json"
+    };
+    let resp ={state:false,Description:""};
+
+    await axios.get(`${Const.ChichiMan}admin/chichiman/detail?_id=${id}`, {headers: headers}).then(function (response) {
+        console.log(response);
+        let{status,data}= response ;
+        console.log(data);
+        if (status===200 ){
+            resp=data;
         }
         // resp = status;
     }).catch(function (error) {

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Card, CardBody, CardSubtitle, CardText} from "reactstrap";
+import {  Card, CardBody, CardSubtitle, CardText} from "reactstrap";
 import {NavLink} from "react-router-dom";
 import ThumbnailLetters from "../../../../../../components/cards/ThumbnailLetters";
 
@@ -7,14 +7,13 @@ class ChichiManInfoCard extends Component {
 
     render() {
         let{chichiMan}=this.props;
-         // console.log('ax');
-        // console.log(chichiMan['image'] );
+
         return (
             <div className={this.props.class} dir='rtl'>
                 <NavLink to={`/chichi-man/${this.props.header}/${this.props.id}`}>
                     <Card className="d-flex flex-row mb-4">
                         {
-                            chichiMan['image'].length>0?  <div className='align-self-center list-thumbnail-letters   undefined  rounded-circle'>
+                            chichiMan['image'].length>0?  <div className='align-self-center list-thumbnail-letters  rounded-circle'>
                                 <img src={chichiMan['image']} alt='image' className='img-self-fill br50'/>
                             </div>:<ThumbnailLetters rounded text={chichiMan['name']}/>
                         }

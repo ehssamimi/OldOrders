@@ -9,9 +9,7 @@ const All = React.lazy(() =>
 const Add = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ './../../../Component/Content/Product/Content-product-add')
 );
-const Update = React.lazy(() =>
-    import(/* webpackChunkName: "viwes-gogo" */ './../../../Component/Content/Product/Content-product-update')
-);
+
 const Info = React.lazy(() =>
     import(/* webpackChunkName: "viwes-gogo" */ './../../../Component/Content/Product/Content-product-info')
 );
@@ -39,10 +37,7 @@ class App extends Component {
                             path={`${match.url}/add/:Id?`}
                             render={props => <Add {...props} />}
                         />
-                        <Route
-                            path={`${match.url}/delete-edit`}
-                            render={props => <Update {...props} />}
-                        />
+
                         <Redirect to="/error" />
                     </Switch>
                 </Suspense>

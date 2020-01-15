@@ -64,7 +64,7 @@ class App extends Component {
                             <Redirect exact from={`${match.url}/`} to={`${match.url}/sign-in`} />
                             <Route
                                 path={`${match.url}/sign-in`}
-                                render={props => <ChichiManSignIn {...props} />}
+                                render={props => <ChichiManSignIn {...props} item={"ثبت شماره موبایل"} />}
                             />
                             {/*<Route*/}
                                 {/*path={`${match.url}/info`}*/}

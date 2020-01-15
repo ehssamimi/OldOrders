@@ -156,7 +156,6 @@ class ContentCategoryAdd extends Component {
                         </div>
                         <button type='submit' className='btn btn-primary'>ارسال</button>
                         {/********show errors of form to get name and image**********/}
-
                         <div className='d-flex flex-column col-6'>
                             {
                                 error['name'].length>1?<span className='alert alert-danger mt-3 col-12'>{error['name']}</span>:""
@@ -169,8 +168,6 @@ class ContentCategoryAdd extends Component {
                     </div>
 
                 </form>
-
-
                 {/********  modal for get image of category**********/}
 
                 <Modal

@@ -54,6 +54,8 @@ const options = [
 ];
 
 
+
+
 class Step4 extends Component {
     constructor(props) {
         super(props);
@@ -63,6 +65,9 @@ class Step4 extends Component {
            ax:{"VCImg":"", "DLImg": "" },axError:{"VCImg":"", "DLImg": "" },
             showLoader:false
         }
+    }
+    componentDidMount(){
+        console.log(this.props.info)
     }
 
     GetImag(Type,value){
@@ -141,7 +146,7 @@ class Step4 extends Component {
             console.log(axError);
             // let send=document.getElementById("sendItems");
             // send.click();
-
+            // VehicleCardImage  LicenseImage
             let Register = await UpdateChichiManVehicleInfo(JSON.stringify(Data));
             console.log(Register);
             this.setState({

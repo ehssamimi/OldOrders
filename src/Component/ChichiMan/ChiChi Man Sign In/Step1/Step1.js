@@ -71,8 +71,8 @@ class Step1 extends Component {
         console.log(payload.PhoneNumber);
         this.props.GetPhoneNumber("0"+payload.PhoneNumber.toString());
 
-        let send=document.getElementById("sendItems");
-            send.click();
+        // let send=document.getElementById("sendItems");
+        //     send.click();
 
         console.log("0"+payload.PhoneNumber.toString());
         let Data={
