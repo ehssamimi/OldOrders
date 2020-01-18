@@ -98,7 +98,7 @@ const data = [
             icon: "simple-icon-user-follow",
             id: "chchiMan-sign",
             label: "ثبت نام",
-            to: "/chichi-man/sign-in",
+            to: "/chichi-man/sign-in/:id?/:step?",
         },
             {
                 icon: "simple-icon-list",
@@ -112,7 +112,6 @@ const data = [
                 label: "وضعیت چی چی من ها",
                 to: "/chichi-man/situation",
             },
-
             {
                 icon: "simple-icon-present",
                 id: "chchiMan-history-orders",

@@ -29,8 +29,35 @@ class ChichiManSignIn extends Component {
         }
     }
   async componentDidMount(){
-      let Detail= await ChichiManIfoDetail('5e157a4fede841331a180afc');
-      console.log(Detail);
+      const {match: {params}} = this.props;
+      let{id,step}=params;
+      var item={id: "", name: ""};
+
+      switch(step) {
+          case "step1":
+              item = {id: step, name: "ثبت شماره موبایل"};
+              break;
+          case "step2":
+              item = {id: step, name: "اهراز هویت"};
+              break;
+          case "step3":
+              item = {id: step, name: "اطلاعات اولیه"};
+              break;
+          case "step4":
+              item = {id: step, name: "اطلاعات نقلیه"};
+              break;
+          case "step5":
+              item = {id: step, name: "مستندات قرارداد"};
+              break;
+          case "step6":
+              item = {id: step, name: "اطلاعات مالی"};
+              break;
+          default:
+              item = {id: step, name: "اطلاعات اولیه"};
+      }
+
+       let Info= await ChichiManIfoDetail(id);
+      // console.log(Info);
 
       // console.log(Detail['vehicle']);
 
@@ -41,11 +68,11 @@ class ChichiManSignIn extends Component {
       // BankInfo: {header: "اطلاعات بانکی", sub: {…}}
 
       this.setState({
-          item:{id: "step4", name: "اطلاعات وسیله نقلیه"},
-          Info:Detail,
-          phoneNumber:Detail['Identify']['sub']['شماره موبال']
+          item ,
+          Info,
+          phoneNumber:Info['Identify']['sub']['شماره موبال']
       },()=>{
-          console.log(this.state.Info['vehicle']['sub'])
+          // console.log(this.state.Info['vehicle']['sub'])
       });
 
 

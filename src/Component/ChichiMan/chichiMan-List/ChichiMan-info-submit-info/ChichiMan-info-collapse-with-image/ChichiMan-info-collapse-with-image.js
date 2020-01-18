@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
  import ShowShowline from "../../../../Support/Users/UserDetails/sub/Support/sub/ReportUserBox/ShowShowLine/ShowShowline";
+import { FaUserEdit } from "react-icons/fa";
+import {NavLink} from "react-router-dom";
 
 class ChichiManInfoCollapseWithImage extends Component {
     constructor(props) {
@@ -55,6 +57,13 @@ class ChichiManInfoCollapseWithImage extends Component {
 
                     }
                     <h3 className={this.props.color||"purpleColor"}>{store.header}:</h3>
+                    <NavLink to={`/chichi-man/sign-in/${this.props.id}/${this.props.step}`}>
+                    <div  className=' mr-auto h3-style'>
+                        <FaUserEdit/>
+                    </div>
+                    </NavLink>
+                    {/*<h3 className='simple-icon-plus icon-glyph ml-auto'/>*/}
+
                 </div>
 
                 <Collapse isOpen={this.state.collapse}>

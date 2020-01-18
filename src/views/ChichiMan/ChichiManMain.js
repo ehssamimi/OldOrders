@@ -61,9 +61,9 @@ class App extends Component {
                 <div className="dashboard-wrapper">
                     <Suspense fallback={<div className="loading" />}>
                         <Switch>
-                            <Redirect exact from={`${match.url}/`} to={`${match.url}/sign-in`} />
+                            <Redirect exact from={`${match.url}/`} to={`${match.url}/sign-in/:id?/:step?`} />
                             <Route
-                                path={`${match.url}/sign-in`}
+                                path={`${match.url}/sign-in/:id?/:step?`}
                                 render={props => <ChichiManSignIn {...props} item={"ثبت شماره موبایل"} />}
                             />
                             {/*<Route*/}

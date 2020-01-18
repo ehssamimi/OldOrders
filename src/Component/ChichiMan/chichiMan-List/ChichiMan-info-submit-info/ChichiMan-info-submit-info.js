@@ -19,7 +19,8 @@ class ChichiManInfoSubmitInfo extends Component {
                 // contract:{'header':"مستندات قرارداد",'sub':{"تاریخ شروع":'98-8-12','تاریخ پایان':'98-8-10','شماره نامه/فرم':"12-89-98 ",'شماره پیوست':"IR-32-5354" ,'حقوق ثابت':"1,500,795",'قرارداد درصدی':"55%"}},
                 // BankInfo:{'header':"اطلاعات بانکی",'sub':{"شماره کارت":'6037-9985-123-456-6','شماره حساب':'IR-2315','نام بانک':"صادرات ",'شعبه':"بلوار کشاورز",'شماره شبا':"IR-209132154835",'نام و نام خاتوادگی صاحب حساب':"احمد ذوقی" }},
 
-            }
+            },
+            id:''
         }
     }
     async componentDidMount(){
@@ -29,7 +30,7 @@ class ChichiManInfoSubmitInfo extends Component {
         console.log(subRow);
         console.log(subRow);
         this.setState({
-            subRow
+            subRow,id:params.userId
         });
         // contract:
         //     header: "مستندات قرارداد"
@@ -41,7 +42,7 @@ class ChichiManInfoSubmitInfo extends Component {
     }
 
     render() {
-        let{subRow}=this.state;
+        let{subRow,id}=this.state;
         return (
             <div>
 
@@ -52,14 +53,16 @@ class ChichiManInfoSubmitInfo extends Component {
                                 <div className='d-flex flex-wrap justify-content-start' dir='rtl'>
                                     <HeaderComponentChichiInfo header="اطلاعات ثبت نام"/>
                                     <CollapseRow store={subRow.Identify} col={'col-6'}/>
-                                    <ChichiManInfoCollapseWithImage store={subRow.PersonalInfo} col={'col-6'}
+                                    <ChichiManInfoCollapseWithImage store={subRow.PersonalInfo} col={'col-6'} id={id} step={'step3'}
                                                                     image={[subRow['PersonalInfo']['Images']['Profile'], subRow['PersonalInfo']['Images']['SERIAL_IMAGE'], subRow['PersonalInfo']['Images']['SSN_IMAGE']]}
                                                                     label={['تصویر شناسنامه', 'تصویر کارت ملی', 'عکس پرسنلی ']}
                                                                     className='col-4'/>
-                                    <ChichiManInfoCollapseWithImage store={subRow.vehicle} col={'col-6'} image={[subRow['vehicle']['images']['LicenseImage'], subRow['vehicle']['images']['VehicleCardImage']]}
+                                    <ChichiManInfoCollapseWithImage store={subRow.vehicle} col={'col-6'} id={id} step={'step4'}
+                                                                    image={[subRow['vehicle']['images']['LicenseImage'], subRow['vehicle']['images']['VehicleCardImage']]}
                                                                     label={['تصویر کارت وسیله نقلیه', 'تصویر گواهی نامه ']}
                                                                     className='col-6'/>
-                                    <ChichiManInfoCollapseWithImage store={subRow.contract} col={'col-4'} image={[subRow['contract']['images']['contract'], subRow['contract']['images']['soePishine'],subRow['contract']['images']['safteh']]}
+                                    <ChichiManInfoCollapseWithImage store={subRow.contract} col={'col-4'} id={id} step={'step5'}
+                                                                    image={[subRow['contract']['images']['contract'], subRow['contract']['images']['soePishine'],subRow['contract']['images']['safteh']]}
                                                                     label={['تصویر سفته', 'تصویر گواهی سو پیشینه']}
                                                                     className='col-4'/>
                                     <CollapseRow store={subRow.BankInfo} col={'col-6'}/>
