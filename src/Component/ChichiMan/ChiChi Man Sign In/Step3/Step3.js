@@ -69,10 +69,37 @@ class Step3 extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state={
             loaderActive:true,ChanceTypeOption:[],
-            Img:{'SSN':'',"CN":'','Personal':''},Date:'',ax:{"SSN":"", "CN": "", "Personal": ""},axError:{"SSN":"", "CN": "", "Personal": ""},
+            Img:{'SSN':'',"CN":'','Personal':''},Date:'',ax:{"SSN":"", "CN": "", "Personal": ""},axError:{"SSN":"", "CN": "", "Personal": ""},initialValue:{
+                Name:'',
+                LastName:'',
+                PhoneNumber: "",
+                Address:'',
+                SSN:'',
+                CN:'',
+                CNPlace:'',
+                Sex:{value: "مرد",label: "مرد"},
+                MartialStatus:{value: "مجرد",label: "مجرد"},
+            },
             showLoader:false
         }
     }
+
+    static getDerivedStateFromProps(props, state) {
+        console.log(props.info)
+        console.log('props.info')
+        if (props.info !== state.initialValue && props.info!==''  ) {
+            return {
+                initialValue: props.info,
+                Date: props.info['Birthday']
+            };
+        }
+        // Return null if the state hasn't changed
+        return null;
+    }
+
+
+
+
 
     GetImag(Type,value){
 
@@ -80,14 +107,7 @@ class Step3 extends Component {
         ax[Type]=value;
         this.setState({
             ax
-        },()=>{
-            // console.log(ax)
-            // console.log(ax['SSN'])
         })
-        // console.log('Type');
-        // console.log(Type);
-        // console.log('value');
-        // console.log(value);
 
     }
     GetData(Data){
@@ -112,88 +132,49 @@ class Step3 extends Component {
             // Name: values.Name.value,
 
         };
-        console.log(payload);
-        let {Date, ax, axError} = this.state;
-        console.log(Date);
-        let axValid = true;
-        if (ax['SSN'] === '') {
-            axValid = false;
-            axError['SSN'] = "عکس کد ملی اجباری است "
-        }else {
-             axError['SSN'] = ""
-        }
-        if (ax['CN'] === '') {
-            axValid = false;
-            axError['CN'] = "عکس شناسنامه اجباری است "
-        }else {
-             axError['CN'] = ""
-        }
 
-        if (ax['Personal'] === '') {
-            axValid = false;
-            axError['Personal'] = "عکس کاربری اجباری است  "
-        }else {
-             axError['Personal'] = ""
-        }
-        this.setState({
-            axError
-        }, () => {
 
-        })
+        if (this.props.info!=='' ) {
+            console.log("thi is update");
 
-        if (axValid) {
-            this.setState({
-                showLoader:true
-            });
+            let SSN_IMAGE=this.state.initialValue['SSnImg'].split("/")[6];
+            let SERIAL_IMAGE=this.state.initialValue['CNImg'].split("/")[6];
+            let ProfilePic=this.state.initialValue['personalImg'].split("/")[6];
+            let idimgs=[SSN_IMAGE,SERIAL_IMAGE,ProfilePic];
+
+            let {Date, ax} = this.state;
+
             let ImgeFiles = [ax['SSN'], ax['CN'], ax['Personal']];
-            let ImgeId = []
-
+             console.log(ImgeFiles);
+             console.log(idimgs);
+            let ImgeId = [];
+            let idax
             for (let i = 0; i < ImgeFiles.length; i++) {
-
-                let idax = await sendImg(ImgeFiles[i], 'Public');
-                console.log(idax);
-                ImgeId.push(idax);
+                if (ImgeFiles[i]!==''){
+                      idax = await sendImg(ImgeFiles[i], 'Public');
+                      console.log(idax);
+                } else {
+                      idax=idimgs[i]
+                }
+                 ImgeId.push(idax);
             }
-            console.log(ImgeId);
-            // ImgeId = ["5df62418386b8a3235aefde7",
-            //     "5df6241a386b8a3235aefde8",
-            //     "5df6241c696e5a631f0dc9c8"];
-
-
-            // let Data = {
-            //     "PhoneNumber": "09112561701",
-            //     "FirstName": "ehsan",
-            //     "LastName": "samimi",
-            //     "SSN": "2092204971",
-            //     "Serial": "8566",
-            //     "ProfilePic": ImgeId[2],
-            //     "Birthday": "12-9-98",
-            //     "Address": "sari m iman",
-            //     "MartialStatus": "single",
-            //     "Sex": "man",
-            //     "PlaceOfIssue": "sari",
-            //     "HomePhone": "011336529092",
-            //     "SSN_IMAGE": ImgeId[0],
-            //     "SERIAL_IMAGE": ImgeId[1]
-            // };
-            let Data={
-                 "PhoneNumber":this.props.PhoneNumber,
-                 "FirstName": payload.Name,
-                 "LastName": payload.LastName,
-                 "SSN": payload.SSN.toString(),
-                 "Serial": payload.CN.toString(),
-                 "ProfilePic": ImgeId[2],
-                 "Birthday": Date,
-                 "Address": payload.Address,
-                 "MartialStatus": payload.MartialStatus,
-                 "Sex": payload.Sex,
-                 "PlaceOfIssue": payload.CNPlace,
-                 "HomePhone": payload.PhoneNumber.toString(),
-                 "SSN_IMAGE": ImgeId[0],
-                 "SERIAL_IMAGE": ImgeId[1]
+             let Data={
+                "PhoneNumber":this.props.PhoneNumber,
+                "FirstName": payload.Name,
+                "LastName": payload.LastName,
+                "SSN": payload.SSN.toString(),
+                "Serial": payload.CN.toString(),
+                "ProfilePic": ImgeId[2],
+                "Birthday": Date,
+                "Address": payload.Address,
+                "MartialStatus": payload.MartialStatus,
+                "Sex": payload.Sex,
+                "PlaceOfIssue": payload.CNPlace,
+                "HomePhone": payload.PhoneNumber.toString(),
+                "SSN_IMAGE": ImgeId[0],
+                "SERIAL_IMAGE": ImgeId[1]
             };
             console.log(Data);
-
             let Register = await UpdateChichiManPersonalInfo(JSON.stringify(Data));
             console.log(Register);
             this.setState({
@@ -224,47 +205,142 @@ class Step3 extends Component {
 
 
 
+
+
+        }else {
+            console.log("this is submit")
+
+            console.log(payload);
+            let {Date, ax, axError} = this.state;
+            console.log(Date);
+            let axValid = true;
+            if (ax['SSN'] === '') {
+                axValid = false;
+                axError['SSN'] = "عکس کد ملی اجباری است "
+            }else {
+                axError['SSN'] = ""
+            }
+            if (ax['CN'] === '') {
+                axValid = false;
+                axError['CN'] = "عکس شناسنامه اجباری است "
+            }else {
+                axError['CN'] = ""
+            }
+
+            if (ax['Personal'] === '') {
+                axValid = false;
+                axError['Personal'] = "عکس کاربری اجباری است  "
+            }else {
+                axError['Personal'] = ""
+            }
+            this.setState({
+                axError
+            }, () => {
+
+            })
+
+            if (axValid) {
+
+                this.setState({
+                    showLoader:true
+                });
+
+                let ImgeFiles = [ax['SSN'], ax['CN'], ax['Personal']];
+                let ImgeId = [];
+                console.log(ImgeFiles);
+
+                for (let i = 0; i < ImgeFiles.length; i++) {
+
+                    let idax = await sendImg(ImgeFiles[i], 'Public');
+                    console.log(idax);
+                    ImgeId.push(idax);
+                }
+                console.log(ImgeId);
+                // ImgeId = ["5df62418386b8a3235aefde7",
+                //     "5df6241a386b8a3235aefde8",
+                //     "5df6241c696e5a631f0dc9c8"];
+
+
+                // let Data = {
+                //     "PhoneNumber": "09112561701",
+                //     "FirstName": "ehsan",
+                //     "LastName": "samimi",
+                //     "SSN": "2092204971",
+                //     "Serial": "8566",
+                //     "ProfilePic": ImgeId[2],
+                //     "Birthday": "12-9-98",
+                //     "Address": "sari m iman",
+                //     "MartialStatus": "single",
+                //     "Sex": "man",
+                //     "PlaceOfIssue": "sari",
+                //     "HomePhone": "011336529092",
+                //     "SSN_IMAGE": ImgeId[0],
+                //     "SERIAL_IMAGE": ImgeId[1]
+                // };
+                let Data={
+                    "PhoneNumber":this.props.PhoneNumber,
+                    "FirstName": payload.Name,
+                    "LastName": payload.LastName,
+                    "SSN": payload.SSN.toString(),
+                    "Serial": payload.CN.toString(),
+                    "ProfilePic": ImgeId[2],
+                    "Birthday": Date,
+                    "Address": payload.Address,
+                    "MartialStatus": payload.MartialStatus,
+                    "Sex": payload.Sex,
+                    "PlaceOfIssue": payload.CNPlace,
+                    "HomePhone": payload.PhoneNumber.toString(),
+                    "SSN_IMAGE": ImgeId[0],
+                    "SERIAL_IMAGE": ImgeId[1]
+                };
+                console.log(Data);
+
+                let Register = await UpdateChichiManPersonalInfo(JSON.stringify(Data));
+                console.log(Register);
+                this.setState({
+                    showLoader: false
+                });
+                let {state, Description} = Register;
+                if (state) {
+                    NotificationManager.success(
+                        "congratulation",
+                        "اطلاعات شما با موفقیت ثبت شد",
+                        3000,
+                        null,
+                        null,
+                        "success"
+                    );
+                    let send=document.getElementById("sendItems");
+                    send.click();
+                } else {
+                    NotificationManager.error(
+                        "error",
+                        Description,
+                        3000,
+                        null,
+                        null,
+                        "error"
+                    );
+                }
+
+
+
+            }
+
+
+
+
+
+
         }
 
-        // {SSN: File, CN: File, Personal: File}
-        // let send=document.getElementById("sendItems");
-        // send.click()
-        // console.log(values);
-        // let headers = {
-        //     'Id': `${Const.ID}`,
-        //     'Token': `${Const.Token}`
-        // };
-        // let form = new FormData();
-        // form.append('Tag', payload.TagKind);
-        // form.append('ChanceType', payload.ChanceType);
-        // form.append('ItemType', payload.ItemType);
-        // form.append('ImageUrl', payload.ImageUrl);
-        // form.append('Key', payload.KeyItem);
-        // form.append('Name', payload.Name);
-        // axios.post(`${Const.URL}admin/gameitem/add` ,form, {headers:headers}).then(responsive=>
-        // {
-        //     const {Description}=responsive.data;
-        //     if (Description === "D"){
-        //         NotificationManager.success(
-        //             "Success message",
-        //             "Title here",
-        //             3000,
-        //             null,
-        //             null,
-        //             "success"
-        //         );
-        //     }
-        //     setTimeout(function () {
-        //         window.location.reload()
-        //     }, 3000);
-        //     setTimeout(function(){ window.location.reload(); }, 3000);
-        //     console.log(Description)
-        // }).catch(error=>{console.log(error)});
+
+
+
     };
 
     render() {
-        // console.log('this.props.PhoneNumber');
-        // console.log(this.props.PhoneNumber);
+
 
         let{axError}=this.state;
         return (
@@ -288,20 +364,20 @@ class Step3 extends Component {
                                 </CardTitle>
 
                                 <Formik
-                                    initialValues={{
-                                        Name:'',
-                                        LastName:'',
-                                        PhoneNumber: "",
-                                        Address:'',
-                                        SSN:'',
-                                        CN:'',
-                                        CNPlace:'',
-                                        Sex:{value: "مرد",label: "مرد"},
-                                        MartialStatus:{value: "مجرد",label: "مجرد"},
-                                        // TagKind: {value: "موتور",label: "موتور"},
-                                    }}
+                                    initialValues={this.state.initialValue}
+                                    // initialValues={{
+                                    //     Name:'',
+                                    //     LastName:'',
+                                    //     PhoneNumber: "",
+                                    //     Address:'',
+                                    //     SSN:'',
+                                    //     CN:'',
+                                    //     CNPlace:'',
+                                    //     Sex:{value: "مرد",label: "مرد"},
+                                    //     MartialStatus:{value: "مجرد",label: "مجرد"},
+                                    // }}
                                     validationSchema={SignupSchema}
-                                    onSubmit={this.handleSubmit}
+                                    onSubmit={this.handleSubmit.bind(this)}
                                 >
                                     {({
                                           handleSubmit,
@@ -346,9 +422,6 @@ class Step3 extends Component {
                                                 </div>
                                             </div>
                                             <div className="w-100 row m-0 ">
-
-
-
                                                 <div className="col-sm-8 ">
                                                     <FormGroup className="form-group has-float-label position-relative">
                                                         <Label>
@@ -370,7 +443,7 @@ class Step3 extends Component {
                                                             <span>تاریخ تولد</span>
                                                          </Label>
                                                         <div >
-                                                            <PersianClassCalender GetData={this.GetData.bind(this)}/>
+                                                            <PersianClassCalender GetData={this.GetData.bind(this)} birthDay={this.state.initialValue['Birthday']}/>
                                                         </div>
                                                     </FormGroup>
                                                 </div>
@@ -456,21 +529,6 @@ class Step3 extends Component {
                                                             </div>
                                                         ) : null}
                                                     </FormGroup>
-
-
-
-                                                    {/*<FormGroup className="form-group has-float-label position-relative">*/}
-                                                        {/*<Label>*/}
-                                                            {/*<IntlMessages id="جنسیت " />*/}
-                                                        {/*</Label>*/}
-                                                        {/*<Field className="form-control" name="Sex" type='text' onBlur={setFieldTouched}*/}
-                                                               {/*placeholder="جنسیت رو انتخاب کنید " />*/}
-                                                        {/*{errors.Sex && touched.Sex ? (*/}
-                                                            {/*<div className="invalid-feedback d-block">*/}
-                                                                {/*{errors.Sex}*/}
-                                                            {/*</div>*/}
-                                                        {/*) : null}*/}
-                                                    {/*</FormGroup>*/}
                                                 </div>
 
                                                 <div className="col-sm-4 ">
@@ -495,46 +553,33 @@ class Step3 extends Component {
                                                     </FormGroup>
 
 
-                                                    {/*<FormGroup className="form-group has-float-label position-relative">*/}
-                                                        {/*<Label>*/}
-                                                            {/*<IntlMessages id="وضعیت تاهل" />*/}
-                                                        {/*</Label>*/}
-                                                        {/*<Field className="form-control" name="MartialStatus" type='text' onBlur={setFieldTouched}*/}
-                                                               {/*placeholder="انتخاب وضعیت تاهل اجباری است " />*/}
-                                                        {/*{errors.MartialStatus && touched.MartialStatus ? (*/}
-                                                            {/*<div className="invalid-feedback d-block">*/}
-                                                                {/*{errors.MartialStatus}*/}
-                                                            {/*</div>*/}
-                                                        {/*) : null}*/}
-                                                    {/*</FormGroup>*/}
+
                                                 </div>
                                             </div>
                                             <div className="w-100 d-flex mt-2 ">
                                                 <div className="col-sm-4 ">
                                                     <FormGroup className="form-group  position-relative">
                                                         <div className='d-flex justify-content-start'>
+
                                                             <Label  className='d-flex w-100 ml-2 mr-2'>
                                                                  <span className='ml-auto  '>عکس کارت ملی </span>
                                                             </Label>
                                                         </div>
 
-                                                        <ImgComponent Type='SSN' GetData={this.GetImag.bind(this)}/>
+                                                        <ImgComponent Type='SSN' GetData={this.GetImag.bind(this)}  img={this.state.initialValue['SSnImg']}/>
                                                         {
                                                             axError["SSN"].length>1?<span className=" invalid-feedback d-block">{axError["SSN"]} </span>:""
                                                         }
                                                     </FormGroup>
-
-
                                                 </div>
                                                 <div className="col-sm-4">
                                                     <FormGroup className="form-group  position-relative ">
                                                         <div className='d-flex justify-content-start'>
                                                             <Label className='d-flex w-100 ml-2 mr-2'>
-
                                                                  <span className='ml-auto  '>عکس شناسنامه</span>
                                                              </Label>
                                                         </div>
-                                                    <ImgComponent  Type='CN' GetData={this.GetImag.bind(this)}/>
+                                                    <ImgComponent  Type='CN' GetData={this.GetImag.bind(this)} img={this.state.initialValue['CNImg']}/>
                                                         {
                                                             axError["CN"].length>1?<span className=" invalid-feedback d-block">{axError["CN"]} </span>:""
                                                         }
@@ -545,12 +590,10 @@ class Step3 extends Component {
                                                         <div className='d-flex justify-content-start'>
                                                             <Label  className='d-flex w-100 ml-2 mr-2'>
                                                                 <span className='ml-auto  '>عکس پرسنلی</span>
-
                                                              </Label>
                                                         </div>
 
-                                                    <ImgComponent Type='Personal' GetData={this.GetImag.bind(this)}/>
-
+                                                    <ImgComponent Type='Personal' GetData={this.GetImag.bind(this)}  img={this.state.initialValue['personalImg']}/>
                                                         {
                                                             axError["Personal"].length>1?<span className=" invalid-feedback d-block">{axError["Personal"]} </span>:""
                                                         }

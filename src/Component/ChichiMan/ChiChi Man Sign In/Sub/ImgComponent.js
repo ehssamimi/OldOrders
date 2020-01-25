@@ -24,8 +24,19 @@ class ImgComponent extends Component {
         super(props);
         this.state={
             src:null,
-            ImgName:''
+            ImgName:'',count:1
         }
+    }
+
+    static getDerivedStateFromProps(props, state) {
+        if (props.img !== state.src && props.img!==undefined &&  state.count===1) {
+            return {
+                src: props.img,
+                count:2
+            };
+        }
+        // Return null if the state hasn't changed
+        return null;
     }
 
     onSelectFile = e => {
@@ -44,7 +55,7 @@ class ImgComponent extends Component {
     };
     render() {
         let{src,ImgName}=this.state;
-        // console.log(src);
+
         // console.log(ImgName);
         return (
             <div className='w-100'>

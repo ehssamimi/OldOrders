@@ -13,8 +13,25 @@ class PersianClassCalender extends Component {
             selectedDay:null
         }
     }
+
+    static getDerivedStateFromProps(props, state) {
+        // console.log('birthDay');
+        // console.log(props.birthDay);
+        if (props.birthDay !== state.selectedDay && props.birthDay!==undefined) {
+            // console.log(props.birthDay);
+          let Birth=  props.birthDay.split("/");
+              return {
+                selectedDay: {day: Number(Birth[2]), month: Number(Birth[1]), year: Number(Birth[0])}
+
+            };
+        }
+        // Return null if the state hasn't changed
+        return null;
+    }
     setSelectedDay(selectedDay){
-        this.setState({
+        // console.log(selectedDay)
+
+         this.setState({
             selectedDay
         });
         // console.log(selectedDay);

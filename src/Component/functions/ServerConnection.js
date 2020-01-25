@@ -739,7 +739,8 @@ export async  function  RegisterChichiMan(Data){
     console.log(Data);
     await axios.post(`${Const.ChichiMan}admin/chichiman/register`, Data).then(function (response) {
         let {status} = response;
-        let{State,Description}=JSON.parse(response.data);
+        // let{State,Description}=JSON.parse(response.data);
+        let{State,Description}= response.data ;
          // console.log(response);
         if (status===200 ){
              resp ={state:State,Description:Description};
@@ -760,7 +761,8 @@ export async  function  GetVerificationCode(phoneNumber){
     let resp ={state:false,Description:""};
      await axios.get(`${Const.ChichiMan}chichiman/code/${phoneNumber}`, {headers: headers}).then(function (response) {
         let {status} = response;
-        let{State,Description}=JSON.parse(response.data);
+        // let{State,Description}=JSON.parse(response.data);
+        let{State,Description}= response.data ;
          // console.log(response);
         if (status===200 ){
              resp ={state:State,Description:Description};
@@ -780,7 +782,8 @@ export async  function  VerifyChichiManPhoneNumber(phoneNumber,code){
     let resp ={state:false,Description:""};
      await axios.get(`${Const.ChichiMan}chichiman/verify/${phoneNumber}/${code}` ,{headers: headers}).then(function (response) {
         let {status} = response;
-        let{State,Description}=JSON.parse(response.data);
+        // let{State,Description}=JSON.parse(response.data);
+        let{State,Description}= response.data ;
         // console.log(response);
         if (status===200 ){
             resp ={state:State,Description:Description};
@@ -800,7 +803,8 @@ export async  function  UpdateChichiManPersonalInfo(data){
     let resp ={state:false,Description:""};
      await axios.post(`${Const.ChichiMan}admin/chichiman/info/personal`,data  ,{headers: headers}).then(function (response) {
         let {status} = response;
-        let{State,Description}=JSON.parse(response.data);
+        let{State,Description}= response.data ;
+        // let{State,Description}=JSON.parse(response.data);
         // console.log(response);
         if (status===200 ){
             resp ={state:State,Description:Description};
@@ -820,7 +824,7 @@ export async  function  UpdateChichiManVehicleInfo(data){
     let resp ={state:false,Description:""};
      await axios.post(`${Const.ChichiMan}admin/chichiman/info/delivery`,data  ,{headers: headers}).then(function (response) {
         let {status} = response;
-        let{State,Description}=JSON.parse(response.data);
+        let{State,Description}= response.data ;
         // console.log(response);
         if (status===200 ){
             resp ={state:State,Description:Description};
@@ -840,7 +844,7 @@ export async  function  UpdateChichiManContactInfo(data){
     let resp ={state:false,Description:""};
      await axios.post(`${Const.ChichiMan}admin/chichiman/info/contract`,data ,{headers: headers}).then(function (response) {
         let {status} = response;
-        let{State,Description}=JSON.parse(response.data);
+        let{State,Description}= response.data ;
         // console.log(response);
         if (status===200 ){
             resp ={state:State,Description:Description};
@@ -860,7 +864,7 @@ export async  function  UpdateChichiManBankInfo(data){
     let resp ={state:false,Description:""};
     await axios.post(`${Const.ChichiMan}admin/chichiman/info/bank`,data ,{headers: headers}).then(function (response) {
         let {status} = response;
-        let{State,Description}=JSON.parse(response.data);
+        let{State,Description}= response.data ;
         // console.log(response);
         if (status===200 ){
             resp ={state:State,Description:Description};
@@ -894,7 +898,7 @@ export async  function  ChichiManListSummery(Page){
     });
     return resp;
 }
-export async  function  ChichiManIfoDetail(id){
+export async  function  ChichiManIfoDetail(id,boolian=true){
     let headers = {
         'Token': Const.Token,
         'Id': Const.ID,
@@ -902,7 +906,7 @@ export async  function  ChichiManIfoDetail(id){
     };
     let resp ={state:false,Description:""};
 
-    await axios.get(`${Const.ChichiMan}admin/chichiman/detail?_id=${id}`, {headers: headers}).then(function (response) {
+    await axios.get(`${Const.ChichiMan}admin/chichiman/detail?_id=${id}&formatted=${boolian}`, {headers: headers}).then(function (response) {
         console.log(response);
         let{status,data}= response ;
         console.log(data);

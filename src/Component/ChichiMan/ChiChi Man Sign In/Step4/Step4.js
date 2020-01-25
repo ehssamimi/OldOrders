@@ -98,6 +98,7 @@ class Step4 extends Component {
 
         let {Date, ax, axError} = this.state;
         console.log(Date);
+        console.log(ax);
         let axValid = true;
         if (ax['VCImg'] === '') {
             axValid = false;

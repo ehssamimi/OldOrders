@@ -200,6 +200,8 @@ class Step5 extends Component {
 
     render() {
         let{axError}=this.state;
+        console.log('info');
+        console.log(this.props.info);
         return (
 
             this.state.showLoader?
