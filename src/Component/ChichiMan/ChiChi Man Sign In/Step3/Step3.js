@@ -84,22 +84,24 @@ class Step3 extends Component {
         }
     }
 
+
+    // ************update Data***********
     static getDerivedStateFromProps(props, state) {
-        console.log(props.info)
-        console.log('props.info')
+        console.log(props.info);
+        console.log('props.info');
         if (props.info !== state.initialValue && props.info!==''  ) {
             return {
                 initialValue: props.info,
                 Date: props.info['Birthday']
             };
         }
-        // Return null if the state hasn't changed
-        return null;
+         return null;
     }
 
 
 
 
+    // **********get image ***********
 
     GetImag(Type,value){
 
@@ -110,18 +112,21 @@ class Step3 extends Component {
         })
 
     }
+
+    // **********get time ***********
     GetData(Data){
-        // console.log(Data)
-        if (Data!==null){
+         if (Data!==null){
             let Date=`${Data.year}/${Data.month}/${Data.day}`;
             console.log(Date);
             this.setState({
                 Date
             });
-
         }
-        // console.log(date)
-    }
+     }
+
+
+
+    // **********submit function***********
 
     handleSubmit = async (values, { setSubmitting }) => {
         const payload = {
@@ -130,9 +135,9 @@ class Step3 extends Component {
             MartialStatus: values.MartialStatus.value,
             // ChanceType: values.ChanceType.value,
             // Name: values.Name.value,
-
         };
 
+        // **********if update ***********
 
         if (this.props.info!=='' ) {
             console.log("thi is update");
@@ -203,12 +208,10 @@ class Step3 extends Component {
                 );
             }
 
-
-
-
+            // **********if submit ***********
 
         }else {
-            console.log("this is submit")
+            console.log("this is submit");
 
             console.log(payload);
             let {Date, ax, axError} = this.state;
@@ -365,17 +368,6 @@ class Step3 extends Component {
 
                                 <Formik
                                     initialValues={this.state.initialValue}
-                                    // initialValues={{
-                                    //     Name:'',
-                                    //     LastName:'',
-                                    //     PhoneNumber: "",
-                                    //     Address:'',
-                                    //     SSN:'',
-                                    //     CN:'',
-                                    //     CNPlace:'',
-                                    //     Sex:{value: "مرد",label: "مرد"},
-                                    //     MartialStatus:{value: "مجرد",label: "مجرد"},
-                                    // }}
                                     validationSchema={SignupSchema}
                                     onSubmit={this.handleSubmit.bind(this)}
                                 >
@@ -551,9 +543,6 @@ class Step3 extends Component {
                                                             </div>
                                                         ) : null}
                                                     </FormGroup>
-
-
-
                                                 </div>
                                             </div>
                                             <div className="w-100 d-flex mt-2 ">

@@ -23,7 +23,7 @@ import ImgComponent from "../Sub/ImgComponent";
 import {WithWizard} from "react-albus/lib";
 import WizardBottonNavigations from "../Sub/WizardBottonNavigations";
 import PersianClassCalender from "../../../OldOrders/SelectTime/Headers/sub/PersianClassCalender";
-import {sendImg, UpdateChichiManContactInfo} from "../../../functions/ServerConnection";
+import {sendImg, UpdateChichiManContactInfo, UpdateChichiManVehicleInfo} from "../../../functions/ServerConnection";
 import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
 import Loader from "../../../HomePages/Sub/Loader/Loader";
 const SignupSchema = Yup.object().shape({
@@ -62,9 +62,29 @@ class Step5 extends Component {
         this.state={
             loaderActive:true,
             Img:{'contract':'',"safte":'',"soePishine":''},  ax:{'contract':'',"safte":'',"soePishine":''},axError:{'contract':'',"safte":'',"soePishine":''},
-            showLoader:false,Date:[]
+            initialValue:{    form: '',
+                attachNumber:'',
+                sabet: "",
+                darsad:'',
+                Kind: {value: "فعال", label: "فعال"}},
+            showLoader:false,Date:{}
         }
     }
+
+    // ************update Data***********
+    static getDerivedStateFromProps(props, state) {
+        console.log(props.info);
+        console.log('props.info');
+        if (props.info !== state.initialValue && props.info!==''  ) {
+            return {
+                initialValue: props.info,
+                Date:props.info['Date']
+            };
+        }
+        return null;
+    }
+
+
 
     GetImag(Type,value){
         let {ax}=this.state;
@@ -92,48 +112,33 @@ class Step5 extends Component {
         };
         console.log(payload);
 
-        let {Date, ax, axError} = this.state;
-         let axValid = true;
+        if (this.props.info!=='' ) {
+            console.log("thi is update");
+            // let ImgeFiles = [ax['contract'], ax['safte'] , ax['soePishine'] ];
 
-        if (ax['contract'] === '') {
-            axValid = false;
-            axError['contract'] = "عکس  قرارداد اجباری است  "
-        }else {
-            axError['contract'] = ""
-        }
-        if (ax['safte'] === '') {
-            axValid = false;
-            axError['safte'] = "عکس سفته اجباری است "
-        }else {
-            axError['safte'] = ""
-        }
-        if (ax['soePishine'] === '') {
-            axValid = false;
-            axError['soePishine'] = "عکس سوپیشینه اجباری است "
-        }else {
-            axError['soePishine'] = ""
-        }
+            let contract_IMAGE=this.state.initialValue['contract'].split("/")[6];
+            let safte_IMAGE=this.state.initialValue['safte'].split("/")[6];
+            let soePishine_IMAGE=this.state.initialValue['soePishine'].split("/")[6];
+            let idimgs=[contract_IMAGE,safte_IMAGE,soePishine_IMAGE];
 
-        this.setState({
-            axError
-        }, () => {
-            console.log(this.state.axError)
-        })
+            let {Date, ax} = this.state;
 
-        if (axValid) {
-            this.setState({
-                showLoader:true
-            });
-             let ImgeFiles = [ax['contract'], ax['safte'] , ax['soePishine'] ];
+            let ImgeFiles = [ax['contract'], ax['safte'] , ax['soePishine'] ];
+            console.log(ImgeFiles);
+            console.log(idimgs);
             let ImgeId = [];
-
+            let idax
             for (let i = 0; i < ImgeFiles.length; i++) {
-                let idax = await sendImg(ImgeFiles[i], 'Public');
-                console.log(idax);
+                if (ImgeFiles[i]!==''){
+                    idax = await sendImg(ImgeFiles[i], 'Public');
+                    console.log(idax);
+                } else {
+                    idax=idimgs[i]
+                }
                 ImgeId.push(idax);
             }
-            console.log(ImgeId);
             let Data={
+
                 "PhoneNumber": this.props.PhoneNumber,
                 "Image": ImgeId[0].toString(),
                 "Status": payload.Kind,
@@ -145,10 +150,9 @@ class Step5 extends Component {
                 "AttachmentNumber": payload.attachNumber.toString(),
                 "SoePishineImage": ImgeId[2],
                 "Safteh": ImgeId[1]
-             };
-            console.log(Data);
-            console.log(axError);
 
+            };
+            console.log(Data);
             let Register = await UpdateChichiManContactInfo(JSON.stringify(Data));
             console.log(Register);
             this.setState({
@@ -177,9 +181,102 @@ class Step5 extends Component {
                 );
             }
 
+            // **********if submit ***********
+
+        }else {
+            let {Date, ax, axError} = this.state;
+            let axValid = true;
+
+            if (ax['contract'] === '') {
+                axValid = false;
+                axError['contract'] = "عکس  قرارداد اجباری است  "
+            }else {
+                axError['contract'] = ""
+            }
+            if (ax['safte'] === '') {
+                axValid = false;
+                axError['safte'] = "عکس سفته اجباری است "
+            }else {
+                axError['safte'] = ""
+            }
+            if (ax['soePishine'] === '') {
+                axValid = false;
+                axError['soePishine'] = "عکس سوپیشینه اجباری است "
+            }else {
+                axError['soePishine'] = ""
+            }
+
+            this.setState({
+                axError
+            }, () => {
+                console.log(this.state.axError)
+            })
+
+            if (axValid) {
+                this.setState({
+                    showLoader:true
+                });
+                let ImgeFiles = [ax['contract'], ax['safte'] , ax['soePishine'] ];
+                let ImgeId = [];
+
+                for (let i = 0; i < ImgeFiles.length; i++) {
+                    let idax = await sendImg(ImgeFiles[i], 'Public');
+                    console.log(idax);
+                    ImgeId.push(idax);
+                }
+                console.log(ImgeId);
+                let Data={
+                    "PhoneNumber": this.props.PhoneNumber,
+                    "Image": ImgeId[0].toString(),
+                    "Status": payload.Kind,
+                    "BasePayment": payload.darsad.toString(),
+                    "EndOfContract": Date['end'],
+                    "BeginOfContract": Date['begin'],
+                    "Percentage": payload.sabet.toString(),
+                    "FormNumber": payload.form.toString(),
+                    "AttachmentNumber": payload.attachNumber.toString(),
+                    "SoePishineImage": ImgeId[2],
+                    "Safteh": ImgeId[1]
+                };
+                console.log(Data);
+                console.log(axError);
+
+                let Register = await UpdateChichiManContactInfo(JSON.stringify(Data));
+                console.log(Register);
+                this.setState({
+                    showLoader: false
+                });
+                let {state, Description} = Register;
+                if (state) {
+                    NotificationManager.success(
+                        "congratulation",
+                        "اطلاعات شما با موفقیت ثبت شد",
+                        3000,
+                        null,
+                        null,
+                        "success"
+                    );
+                    let send=document.getElementById("sendItems");
+                    send.click();
+                } else {
+                    NotificationManager.error(
+                        "error",
+                        Description,
+                        3000,
+                        null,
+                        null,
+                        "error"
+                    );
+                }
 
 
+
+            }
         }
+
+
+
+
 
     };
     GetData(Data,type){
@@ -192,6 +289,8 @@ class Step5 extends Component {
             Date[Data]=date;
             this.setState({
                 Date
+            },()=>{
+                console.log(this.state.Date);
             });
         }
         // console.log(date)
@@ -202,6 +301,8 @@ class Step5 extends Component {
         let{axError}=this.state;
         console.log('info');
         console.log(this.props.info);
+        console.log('begin');
+        console.log(this.state.initialValue['Date'] );
         return (
 
             this.state.showLoader?
@@ -223,13 +324,7 @@ class Step5 extends Component {
                                 </CardTitle>
 
                                 <Formik
-                                    initialValues={{
-                                        form: '',
-                                        attachNumber:'',
-                                        sabet: "",
-                                        darsad:'',
-                                        Kind: {value: "فعال", label: "فعال"},
-                                    }}
+                                    initialValues={this.state.initialValue}
                                     validationSchema={SignupSchema}
                                     onSubmit={this.handleSubmit}
                                 >
@@ -266,7 +361,7 @@ class Step5 extends Component {
                                                             <span>تا تاریخ</span>
                                                          </Label>
                                                         <div >
-                                                            <PersianClassCalender GetData={this.GetData.bind(this,'end')}/>
+                                                            <PersianClassCalender GetData={this.GetData.bind(this,'end')} birthDay={this.state.initialValue['Date'] !==undefined?this.state.initialValue['Date']['end']:undefined}/>
                                                         </div>
                                                     </FormGroup>
                                                 </div>
@@ -276,7 +371,7 @@ class Step5 extends Component {
                                                             <span>از تاریخ</span>
                                                          </Label>
                                                         <div >
-                                                            <PersianClassCalender GetData={this.GetData.bind(this,'begin')}/>
+                                                            <PersianClassCalender GetData={this.GetData.bind(this,'begin')} birthDay={this.state.initialValue['Date'] !==undefined?this.state.initialValue['Date']['begin']:undefined}/>
                                                         </div>
                                                     </FormGroup>
                                                 </div>
@@ -359,7 +454,7 @@ class Step5 extends Component {
                                                                 <span>عکس قرارداد</span>
                                                              </Label>
                                                         </div>
-                                                        <ImgComponent Type='contract' GetData={this.GetImag.bind(this)}/>
+                                                        <ImgComponent Type='contract' GetData={this.GetImag.bind(this)} img={this.state.initialValue['contract']}/>
                                                          {
                                                             axError["contract"].length>1?<span className=" invalid-feedback d-block">{axError["contract"]} </span>:""
                                                         }
@@ -374,7 +469,7 @@ class Step5 extends Component {
                                                              </Label>
                                                         </div>
 
-                                                        <ImgComponent  Type='safte' GetData={this.GetImag.bind(this)}/>
+                                                        <ImgComponent  Type='safte' GetData={this.GetImag.bind(this)} img={this.state.initialValue['soePishine']} />
                                                         {
                                                             axError["safte"].length>1?<span className=" invalid-feedback d-block">{axError["safte"]} </span>:""
                                                         }
@@ -387,7 +482,7 @@ class Step5 extends Component {
                                                                 <span>عکس سوپیشینه</span>
                                                              </Label>
                                                         </div>
-                                                        <ImgComponent  Type='soePishine' GetData={this.GetImag.bind(this)}/>
+                                                        <ImgComponent  Type='soePishine' GetData={this.GetImag.bind(this)} img={this.state.initialValue['soePishine']}/>
                                                         {
                                                             axError["soePishine"].length>1?<span className=" invalid-feedback d-block">{axError["soePishine"]} </span>:""
                                                         }

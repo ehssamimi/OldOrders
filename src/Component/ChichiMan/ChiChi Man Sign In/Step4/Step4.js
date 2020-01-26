@@ -22,7 +22,7 @@ import {
 import ImgComponent from "../Sub/ImgComponent";
 import {WithWizard} from "react-albus/lib";
 import WizardBottonNavigations from "../Sub/WizardBottonNavigations";
-import {sendImg, UpdateChichiManVehicleInfo} from "../../../functions/ServerConnection";
+import {sendImg, UpdateChichiManPersonalInfo, UpdateChichiManVehicleInfo} from "../../../functions/ServerConnection";
 import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
 import Loader from "../../../HomePages/Sub/Loader/Loader";
 const SignupSchema = Yup.object().shape({
@@ -62,10 +62,28 @@ class Step4 extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state={
             loaderActive:true,ChanceTypeOption:[],
-           ax:{"VCImg":"", "DLImg": "" },axError:{"VCImg":"", "DLImg": "" },
+             ax:{"VCImg":"", "DLImg": "" },axError:{"VCImg":"", "DLImg": "" },initialValue:{Kind: {value: "موتور",label: "موتور"},
+                DLN:'',
+                VCN: "",
+                Plaque:'' },
             showLoader:false
         }
     }
+
+
+    // ************update Data***********
+    static getDerivedStateFromProps(props, state) {
+        console.log(props.info);
+        console.log('props.info');
+        if (props.info !== state.initialValue && props.info!==''  ) {
+            return {
+                initialValue: props.info,
+             };
+        }
+        return null;
+    }
+
+
     componentDidMount(){
         console.log(this.props.info)
     }
@@ -96,43 +114,31 @@ class Step4 extends Component {
         };
         console.log(payload);
 
-        let {Date, ax, axError} = this.state;
-        console.log(Date);
-        console.log(ax);
-        let axValid = true;
-        if (ax['VCImg'] === '') {
-            axValid = false;
-            axError['VCImg'] = "عکس کارت ماشین اجباری است  "
-        }else {
-            axError['VCImg'] = ""
-        }
-        if (ax['DLImg'] === '') {
-            axValid = false;
-            axError['DLImg'] = "عکس گواهینامه اجباری است "
-        }else {
-            axError['DLImg'] = ""
-        }
-        this.setState({
-            axError
-        }, () => {
+        if (this.props.info!=='' ) {
+            console.log("thi is update");
 
-        })
+            let VCImg_IMAGE=this.state.initialValue['VCImg'].split("/")[6];
+            let DLImg_IMAGE=this.state.initialValue['DLImg'].split("/")[6];
+             let idimgs=[VCImg_IMAGE,DLImg_IMAGE];
 
-        if (axValid) {
-            this.setState({
-                showLoader:true
-            });
-            let ImgeFiles = [ax['VCImg'], ax['DLImg'] ];
-            let ImgeId = []
+            let {Date, ax} = this.state;
 
+            let ImgeFiles = [ax['VCImg'], ax['DLImg']];
+            console.log(ImgeFiles);
+            console.log(idimgs);
+            let ImgeId = [];
+            let idax
             for (let i = 0; i < ImgeFiles.length; i++) {
-                let idax = await sendImg(ImgeFiles[i], 'Public');
-                console.log(idax);
+                if (ImgeFiles[i]!==''){
+                    idax = await sendImg(ImgeFiles[i], 'Public');
+                    console.log(idax);
+                } else {
+                    idax=idimgs[i]
+                }
                 ImgeId.push(idax);
             }
-            console.log(ImgeId);
-
             let Data={
+
                 "PhoneNumber": this.props.PhoneNumber,
                 "DeliveryType": payload.Kind,
                 "PlateNumber": payload.Plaque.toString(),
@@ -142,12 +148,9 @@ class Step4 extends Component {
                 "VehicleCardImage": ImgeId[0],
                 "LicenseNumber": payload.DLN.toString(),
                 "LicenseImage": ImgeId[1]
+
             };
             console.log(Data);
-            console.log(axError);
-            // let send=document.getElementById("sendItems");
-            // send.click();
-            // VehicleCardImage  LicenseImage
             let Register = await UpdateChichiManVehicleInfo(JSON.stringify(Data));
             console.log(Register);
             this.setState({
@@ -176,9 +179,98 @@ class Step4 extends Component {
                 );
             }
 
+            // **********if submit ***********
 
+        }else {
+            let {Date, ax, axError} = this.state;
+            console.log(Date);
+            console.log(ax);
+            let axValid = true;
+            if (ax['VCImg'] === '') {
+                axValid = false;
+                axError['VCImg'] = "عکس کارت ماشین اجباری است  "
+            }else {
+                axError['VCImg'] = ""
+            }
+            if (ax['DLImg'] === '') {
+                axValid = false;
+                axError['DLImg'] = "عکس گواهینامه اجباری است "
+            }else {
+                axError['DLImg'] = ""
+            }
+            this.setState({
+                axError
+            }, () => {
+
+            });
+
+            if (axValid) {
+                this.setState({
+                    showLoader:true
+                });
+                let ImgeFiles = [ax['VCImg'], ax['DLImg'] ];
+                let ImgeId = []
+
+                for (let i = 0; i < ImgeFiles.length; i++) {
+                    let idax = await sendImg(ImgeFiles[i], 'Public');
+                    console.log(idax);
+                    ImgeId.push(idax);
+                }
+                console.log(ImgeId);
+
+                let Data={
+                    "PhoneNumber": this.props.PhoneNumber,
+                    "DeliveryType": payload.Kind,
+                    "PlateNumber": payload.Plaque.toString(),
+                    "CardNumber": payload.VCN.toString(),
+                    // "VehicleModel": "string",
+                    // "VehicleColor": "string",
+                    "VehicleCardImage": ImgeId[0],
+                    "LicenseNumber": payload.DLN.toString(),
+                    "LicenseImage": ImgeId[1]
+                };
+                console.log(Data);
+                console.log(axError);
+                // let send=document.getElementById("sendItems");
+                // send.click();
+                // VehicleCardImage  LicenseImage
+                let Register = await UpdateChichiManVehicleInfo(JSON.stringify(Data));
+                console.log(Register);
+                this.setState({
+                    showLoader: false
+                });
+                let {state, Description} = Register;
+                if (state) {
+                    NotificationManager.success(
+                        "congratulation",
+                        "اطلاعات شما با موفقیت ثبت شد",
+                        3000,
+                        null,
+                        null,
+                        "success"
+                    );
+                    let send=document.getElementById("sendItems");
+                    send.click();
+                } else {
+                    NotificationManager.error(
+                        "error",
+                        Description,
+                        3000,
+                        null,
+                        null,
+                        "error"
+                    );
+                }
+
+
+
+            }
 
         }
+
+
+
+
 
 
     };
@@ -206,13 +298,7 @@ class Step4 extends Component {
                                 </CardTitle>
 
                                 <Formik
-                                    initialValues={{
-                                        Kind: {value: "موتور",label: "موتور"},
-                                        DLN:'',
-                                        VCN: "",
-                                        Plaque:'',
-                                        // TagKind: {value: "موتور",label: "موتور"},
-                                    }}
+                                    initialValues={this.state.initialValue}
                                     validationSchema={SignupSchema}
                                     onSubmit={this.handleSubmit}
                                 >
@@ -307,7 +393,7 @@ class Step4 extends Component {
                                                             </Label>
                                                         </div>
 
-                                                    <ImgComponent Type='VCImg' GetData={this.GetImag.bind(this)}/>
+                                                    <ImgComponent Type='VCImg' GetData={this.GetImag.bind(this)} img={this.state.initialValue['VCImg']}/>
                                                         {
                                                             axError["VCImg"].length>1?<span className=" invalid-feedback d-block">{axError["VCImg"]} </span>:""
                                                         }
@@ -321,11 +407,10 @@ class Step4 extends Component {
                                                                 {/*<IntlMessages id="عکس گواهینامه" />*/}
                                                             </Label>
                                                         </div>
-                                                    <ImgComponent  Type='DLImg' GetData={this.GetImag.bind(this)}/>
+                                                    <ImgComponent  Type='DLImg' GetData={this.GetImag.bind(this)} img={this.state.initialValue['DLImg']}/>
                                                         {
                                                             axError["DLImg"].length>1?<span className=" invalid-feedback d-block">{axError["DLImg"]} </span>:""
                                                         }
-
                                                      </FormGroup>
                                                 </div>
 

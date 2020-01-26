@@ -62,9 +62,8 @@ class ChichiManSignIn extends Component {
           let Info= await ChichiManIfoDetail(id,false);
           console.log(Info);
           // console.log(Info['PersonalInfo']);
-          let{PersonalInfo}=Info;
-          console.log(PersonalInfo );
-           let initial_personalInfo= {
+          let{PersonalInfo,DeliveryInfo,ContractInfo,Financial}=Info;
+            let initial_personalInfo= {
                Name:PersonalInfo['First_Name'],
                LastName:PersonalInfo['Last_Name'],
                PhoneNumber: PersonalInfo['HomePhone'],
@@ -80,9 +79,52 @@ class ChichiManSignIn extends Component {
                personalImg:PersonalInfo['ProfilePic'],
                PersonalPhoneNumber:PersonalInfo['PhoneNumber'],
            };
+           let initial_deliveryInfo= {
+               Kind: {value: DeliveryInfo['DeliveryType'],label: DeliveryInfo['DeliveryType']},
+               DLN:DeliveryInfo['DriverLicense'],
+               VCN: DeliveryInfo['CardNumber'],
+               Plaque:DeliveryInfo['PlateNumber'],
+               VCImg:DeliveryInfo['VehicleCardImage'],
+               DLImg:DeliveryInfo['LicenseImage'],
+           };
+
+           let initial_ContractInfo= {
+               form: ContractInfo['FormNumber'],
+               attachNumber:ContractInfo['AttachNumber'],
+               sabet: ContractInfo['BasePayment'],
+               darsad:ContractInfo['Percentage'],
+               Kind: {value: ContractInfo['Status'], label: ContractInfo['Status']},
+               contract:ContractInfo['Image'],
+               safte:ContractInfo['Safteh'],
+               soePishine:ContractInfo['SoePishine'],
+                Date:{end: ContractInfo['EndOfContract'], begin: ContractInfo['BeginOfContract']}
+           };
+
+
+           let initial_Financial= {
+                Card: Financial['CardNumber'],
+               Hesab:  Financial['AccountNumber'],
+               Shobe: Financial['BankBranch'],
+               Shaba: Financial['IBAN'],
+               Bank: Financial['BankName'],
+               Name: Financial['Name'],
+           };
+
+
+
+
+
+
+
+
+
            // console.log(initial_personalInfo);
            let{Infos}=this.state;
            Infos['initial_personalInfo']=initial_personalInfo;
+           Infos['initial_deliveryInfo']=initial_deliveryInfo;
+           Infos['initial_ContractInfo']=initial_ContractInfo;
+           Infos['initial_Financial']=initial_Financial;
+
 
            // ContractInfo: {Image: "https://api.chichiapp.ir/v1/mediaservice/download/5e2bef7ac34a14efd2c6826c", Create_at: "2020-01-25T07:34:21.584000", Status: "فعال", SSN_Card_Image: null, BasePayment: "20000000", …}
            // Status: {Text: null, Description: null}
@@ -181,7 +223,7 @@ class ChichiManSignIn extends Component {
                                 <Step4 onClickNext={this.onClickNext} onClickPrev={this.onClickPrev}
                                        className="justify-content-center" prevLabel={"مرحله قبل"}
                                        nextLabel={"مرحله بعد"} PhoneNumber={phoneNumber}
-                                       // info={Object.keys(this.state.Info).length !== 0 ? this.state.Info['vehicle']['sub'] : ""}
+                                       info={Object.keys(this.state.Infos).length!==0?this.state.Infos['initial_deliveryInfo']:""}
                                 />
                             </div>
                         </Step>
@@ -190,8 +232,7 @@ class ChichiManSignIn extends Component {
                                 <Step5 onClickNext={this.onClickNext} onClickPrev={this.onClickPrev}
                                        className="justify-content-center" prevLabel={"مرحله قبل"}
                                        nextLabel={"مرحله بعد"} PhoneNumber={phoneNumber}
-                                       // info={Object.keys(this.state.Info).length!==0?this.state.Info['contract']['sub']:""}
-
+                                       info={Object.keys(this.state.Infos).length!==0?this.state.Infos['initial_ContractInfo']:""}
                                 />
                             </div>
                         </Step>
@@ -202,7 +243,7 @@ class ChichiManSignIn extends Component {
                                 <Step6 onClickNext={this.onClickNext} onClickPrev={this.onClickPrev}
                                        className="justify-content-center" prevLabel={"مرحله قبل"}
                                        nextLabel={"مرحله بعد"} PhoneNumber={phoneNumber}
-                                       // info={Object.keys(this.state.Info).length!==0?this.state.Info['BankInfo']['sub']:""}
+                                       info={Object.keys(this.state.Infos).length!==0?this.state.Infos['initial_Financial']:""}
                                 />
                             </div>
                         </Step>

@@ -64,9 +64,32 @@ class Step6 extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state={
             loaderActive:true,
-            showLoader:false
+            showLoader:false,
+            initialValue:{
+                Card:'',
+                Hesab:'',
+                Shobe: "",
+                Shaba:'',
+                Bank:'',
+                Name:'',
+                },
         }
     }
+
+
+    // ************update Data***********
+    static getDerivedStateFromProps(props, state) {
+        console.log(props.info);
+        console.log('props.info');
+        if (props.info !== state.initialValue && props.info!==''  ) {
+            return {
+                initialValue: props.info,
+
+            };
+        }
+        return null;
+    }
+
 
     GetImag(Type,value){
         console.log('Type');
@@ -90,12 +113,6 @@ class Step6 extends Component {
         });
 
 
-        // Bank: "سپه"
-        // Card: 60292556974548960000
-        // Hesab: 60292556974548960000
-        // Name: "احسان صمیمی "
-        // Shaba: "23165215]ريال"
-        // Shobe: "میدان امام "
 
          let Data={
             "PhoneNumber": this.props.PhoneNumber,
@@ -196,15 +213,7 @@ class Step6 extends Component {
                                 </CardTitle>
 
                                 <Formik
-                                    initialValues={{
-                                        Card:'',
-                                        Hesab:'',
-                                        Shobe: "",
-                                        Shaba:'',
-                                        Bank:'',
-                                        Name:'',
-                                        // TagKind: {value: "موتور",label: "موتور"},
-                                    }}
+                                    initialValues={this.state.initialValue}
                                     validationSchema={SignupSchema}
                                     onSubmit={this.handleSubmit}
                                 >
