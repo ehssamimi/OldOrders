@@ -149,7 +149,8 @@ class ContentProductAdd extends Component {
             let Description = await ProductDetail(params.Id);
             let productDetail = Description['Description'];
             initialData = {
-                Name: productDetail['UniqueValue'],
+                Name: productDetail['Name'],
+                UniqueName: productDetail['UniqueValue'],
                 Manufacture: productDetail['Manufacture'],
                 Count: productDetail['Count'],
                 Price: productDetail['PrevPrice'],
@@ -249,10 +250,12 @@ class ContentProductAdd extends Component {
         if (this.state.id.length>2){
             var idax;
              let {  ax1File ,catValue} = this.state;
+            let off=payload.percent.toString().length>1?payload.percent>1?payload.percent/100:payload.percent:0.0;
 
-                let Data={
+
+            let Data={
                     "Id": this.state.id,
-                    "UniqueValue": this.state.initialData['Name'],
+                    "UniqueValue": this.state.initialData['UniqueName'],
                     "Name":payload.Name,
                     "Attribute": payload.Attribute,
                     "Manufacture": payload.Manufacture,
@@ -264,7 +267,7 @@ class ContentProductAdd extends Component {
                     "Images": [
                         ax1File === ''?this.state.updateImage:await sendImg(ax1File, 'Public')
                     ],
-                    "Off": payload.percent || 0.0,
+                    "Off":off || 0.0,
                     "IsOffEnable": payload.isOff,
                 };
                 let Register = await UpdateProduct(JSON.stringify(Data));
@@ -321,6 +324,11 @@ class ContentProductAdd extends Component {
                     showLoader:true
                 });
                 let idax = await sendImg(ax1File, 'Public');
+                let off=payload.percent.toString().length>1?payload.percent>1?payload.percent/100:payload.percent:0.0;
+                console.log("off");
+                console.log(off);
+
+
                 let Data={
                     "UniqueValue": payload.Name,
                     "Name":payload.Name,
@@ -333,7 +341,7 @@ class ContentProductAdd extends Component {
                     "Images": [
                         idax.toString()
                     ],
-                    "Off": payload.percent || 0.0,
+                    "Off": off || 0.0,
                     "IsOffEnable": payload.isOff,
                     "SubCategory": payload.sub_category
                 };
@@ -372,6 +380,8 @@ class ContentProductAdd extends Component {
     render() {
 
         let{axError,ax1,CategoryOption,SubsOption,catError}=this.state;
+        console.log('SubsOption')
+        console.log(SubsOption)
          return (
             this.state.showLoader || Object.entries(CategoryOption).length===0?   // *******checking for submit form or get category Option is then loader start then loader close**********
                 <div className='d-flex justify-content-center align-items-center'>
@@ -475,24 +485,28 @@ class ContentProductAdd extends Component {
                                                         </div>
 
                                                         <div className="col-sm-12 col-md-6 ">
-                                                            <FormGroup className="form-group has-float-label">
-                                                                <Label>
-                                                                    <span>زیر دسته بندی</span>
-                                                                </Label>
-                                                                <FormikReactSelect
-                                                                    name="sub_category"
-                                                                    id="sub_category"
-                                                                    value={values.sub_category}
-                                                                    options={SubsOption}
-                                                                    onChange={setFieldValue}
-                                                                    onBlur={setFieldTouched}
-                                                                />
-                                                                {catError['sub'].length>1 && touched.sub_category ? (
-                                                                    <div className="invalid-feedback d-block">
-                                                                        {catError['sub']}
-                                                                    </div>
-                                                                ) : null}
-                                                            </FormGroup>
+
+                                                               <FormGroup className="form-group has-float-label">
+                                                                    <Label>
+                                                                        <span>زیر دسته بندی</span>
+                                                                    </Label>
+                                                                    <FormikReactSelect
+                                                                        name="sub_category"
+                                                                        id="sub_category"
+                                                                        className={ SubsOption.length!==0?'':'pointer-none'}
+                                                                        value={values.sub_category}
+                                                                        options={SubsOption}
+                                                                        onChange={setFieldValue}
+                                                                        onBlur={setFieldTouched}
+                                                                    />
+                                                                    {catError['sub'].length>1 && touched.sub_category ? (
+                                                                        <div className="invalid-feedback d-block">
+                                                                            {catError['sub']}
+                                                                        </div>
+                                                                    ) : null}
+                                                                </FormGroup>
+
+
                                                         </div>
 
                                                         <div className="col-sm-12  ">

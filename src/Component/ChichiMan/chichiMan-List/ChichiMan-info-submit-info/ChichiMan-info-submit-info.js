@@ -6,6 +6,7 @@ import ax from './../../../../assets/img/4th-1.jpg'
 import HeaderComponentChichiInfo from "../../ChichiMan-Info/Header-component-chichi-info/Header-component-chichi-info";
 import {ChichiManIfoDetail} from './../../../functions/ServerConnection'
 import Loader from "../../../HomePages/Sub/Loader/Loader";
+import ChichimanInfoCollapseWithoutImg from "./ChichiMan-info-collapse-without-img/ChichimanInfoCollapseWithoutImg";
 
 class ChichiManInfoSubmitInfo extends Component {
     constructor(props) {
@@ -65,7 +66,9 @@ class ChichiManInfoSubmitInfo extends Component {
                                                                     image={[subRow['contract']['images']['contract'], subRow['contract']['images']['soePishine'],subRow['contract']['images']['safteh']]}
                                                                     label={['تصویر سفته', 'تصویر گواهی سو پیشینه']}
                                                                     className='col-4'/>
-                                    <CollapseRow store={subRow.BankInfo} col={'col-6'}/>
+
+                                    <ChichimanInfoCollapseWithoutImg  store={subRow.BankInfo} col={'col-6'} id={id} step={'step6'} />
+                                    {/*<CollapseRow store={subRow.BankInfo} col={'col-6'}/>*/}
 
                                 </div>
                             </CardBody>

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import RowShowShowColEdit from "../../../Support/Users/UserDetails/sub/RowShowShowColEdit/RowShowShowColEdit";
 
 class ChichiManOrderSituationInRow extends Component {
     render() {
@@ -28,6 +29,7 @@ class ChichiManOrderSituationInRow extends Component {
                                         <div className='text-right d-flex align-items-center w-100  '><span className=" font-weight-medium w-50  text-muted fs-08vw">{todo['name']}</span><span className="font-weight-medium w-50 pt-1 fs-08vw text-muted ">{todo['time']}</span></div>
                                         <div className='  mt-2'>
                                         </div>
+                                        <RowShowShowColEdit/>
                                     </div>
 
                                 ) : ''

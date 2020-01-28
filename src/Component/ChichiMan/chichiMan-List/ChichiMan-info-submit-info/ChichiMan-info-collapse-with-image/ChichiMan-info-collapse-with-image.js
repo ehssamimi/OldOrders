@@ -4,7 +4,8 @@ import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import { FaUserEdit } from "react-icons/fa";
 import {NavLink} from "react-router-dom";
 
-class ChichiManInfoCollapseWithImage extends Component {
+class
+ChichiManInfoCollapseWithImage extends Component {
     constructor(props) {
         super(props);
         this.toggle = this.toggle.bind(this);

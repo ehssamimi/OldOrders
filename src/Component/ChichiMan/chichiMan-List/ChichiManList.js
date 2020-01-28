@@ -88,7 +88,7 @@ class ChichiManList extends Component {
                     {
                         listChichiMan.length > 0 ?
                             listChichiMan.map((chichiMan, index) => <ChichiManInfoCard id={chichiMan['_id']} key={index} chichiMan={chichiMan}  {...this.props}
-                                                                                       class='col-sm-6 col-md-4 col-lg-3'/>) : ""
+                                                                                       class='col-sm-6 col-md-4 col-lg-3'/>) : <div className='container d-flex justify-content-center fs-13vw'>هیچ چی چی من  ثبت نشده است! </div>
                     }
                 </div>
             </InfiniteScroll>
