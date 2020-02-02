@@ -18,6 +18,7 @@ import Loader from "../Loader/Loader";
 import PreviewMainSlider from "../SliderAddHomePage/PreviewSliderMAin/PreviewMainSlider";
 import {Link} from "react-scroll/modules";
 import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
+import AddSliderWithSuggest from "../SliderAddHomePage/Add-slider-with-suggest/AddSliderWithSuggest";
 
 class HeaderSliderMain extends Component {
     constructor(props) {
@@ -389,7 +390,8 @@ class HeaderSliderMain extends Component {
                     </ModalHeader>
                     <ModalBody>
                         <div className='col-12 d-flex flex-column'>
-                            <FormAddSlider header={`عکس(${this.state.id+1 })`} GetData={this.GetData.bind(this)}/>
+                            {/*<FormAddSlider header={`عکس(${this.state.id+1 })`} GetData={this.GetData.bind(this)}/>*/}
+                            <AddSliderWithSuggest header={`عکس(${this.state.id+1 })`} GetData={this.GetData.bind(this)}/>
                         </div>
                     </ModalBody>
                 </Modal>

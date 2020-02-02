@@ -138,6 +138,45 @@ let resp='';
     // // console.log(data);
     // return status;
 }
+export async  function  GetCategoriesNameID(){
+
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+
+    let res = await axios.get(`${Const.product}admin/category/get/list-image-id`, {headers: headers});
+       let { status,data} = res ;
+
+    if (status===200) {
+        return data
+    }else {
+        return ""
+    }
+
+
+}
+export async  function  GetProductNameID(name){
+
+    let headers = {
+        'Token': Const.Token,
+        'Id': Const.ID,
+    };
+
+    let res = await axios.get(`${Const.product}admin/homepage/product-list?name=${name}`, {headers: headers});
+    console.log(res);
+
+       let { status,data} = res ;
+
+    if (status===200) {
+        return data
+    }else {
+        return ""
+    }
+
+
+}
+
 
 
 // *****Add Package******
@@ -727,6 +766,7 @@ export async  function  DeleteHomePages(Name){
     console.log(res);
     return status;
 }
+
 
 // ***************************************************************************ChiChiMan**********************************************
 // ******SignUp***********

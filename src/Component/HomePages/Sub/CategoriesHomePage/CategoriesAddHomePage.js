@@ -28,6 +28,7 @@ import NotificationManager from "../../../../components/common/react-notificatio
 import Loader from "../Loader/Loader";
 import PreviewHeaderSlider from "../HeaderSlider/Preview/PreviewHeaderSlider";
 import {Link} from "react-scroll/modules";
+import ModalGetIdImgCategories from "./Modal-get-id-img-category/ModalGetIDImgCategories";
 
 class CategoriesAddHomePage extends Component {
     constructor(props) {
@@ -158,6 +159,7 @@ class CategoriesAddHomePage extends Component {
     async HandelSubmit(){
 
         let {ax1File, ax2File, ax3File, ax4File, CatName, Destination1, Destination2, Destination3, Destination4} = this.state;
+        let Destinations=[Destination1,Destination2,Destination3,Destination4];
         let validateSlider = true;
         if (ax1File.length<1 || ax2File.length<1 || ax3File.length<1 || ax4File.length<1){
             validateSlider = false;
@@ -212,9 +214,9 @@ class CategoriesAddHomePage extends Component {
             if (acceptCategoryName===true){
                 var axandCategoryok=true;
                 for (let i=0;i<ctaImg.length;i++) {
-                    let idax = await sendImg(ctaImg[i], 'Public');
-                    console.log(idax)
-                    if (idax==='error'){
+                    // let idax = await sendImg(ctaImg[i], 'Public');
+                    let idax = true;
+                     if (idax==='error'){
                         NotificationManager.error(
                             "error",
                             "your category don't accept",
@@ -230,8 +232,11 @@ class CategoriesAddHomePage extends Component {
                         // return false
                         return axandCategoryok
                     }else {
-                        let updateCategories1 = await UpdateCategories(catNameServer, i, idax , catNameServer);
-                        console.log(updateCategories1)
+                        // CatId,Position,Image,DestinationId
+                        // let updateCategories1 = await UpdateCategories(catNameServer, i, idax , catNameServer);
+                        let updateCategories1 = await UpdateCategories(catNameServer, i, ctaImg[i] ,Destinations[i] );
+                        console.log(catNameServer, i, ctaImg[i] ,Destinations[i]);
+                        console.log(updateCategories1);
                         if (updateCategories1==='error'){
                            NotificationManager.error(
                                "error",
@@ -496,10 +501,12 @@ class CategoriesAddHomePage extends Component {
                     </ModalHeader>
                     <ModalBody>
                         <div className='col-12 d-flex flex-column'>
-                            {type==='1'?<CropImgCropper label='عکس اول' aspect={3/2} GetImgFile={this.GetImgFile.bind(this)}/>:''}
-                            {type==='2'?<CropImgCropper label='عکس دوم' aspect={3/1} GetImgFile={this.GetImgFile.bind(this)}/>:''}
-                            {type==='3'?<CropImgCropper label='عکس سوم' aspect={3/1} GetImgFile={this.GetImgFile.bind(this)}/>:''}
-                            {type==='4'?<CropImgCropper label='عکس چهارم' aspect={3/2} GetImgFile={this.GetImgFile.bind(this)}/>:''}
+
+                            {type==='1'?<ModalGetIdImgCategories label='عکس اول'   GetImgFile={this.GetImgFile.bind(this)}/>:''}
+                            {type==='2'?<ModalGetIdImgCategories label='عکس دوم'   GetImgFile={this.GetImgFile.bind(this)}/>:''}
+                            {type==='3'?<ModalGetIdImgCategories label='عکس سوم'   GetImgFile={this.GetImgFile.bind(this)}/>:''}
+                            {type==='4'?<ModalGetIdImgCategories label='عکس چهارم'  GetImgFile={this.GetImgFile.bind(this)}/>:''}
+                            {/*{type==='4'?<CropImgCropper label='عکس چهارم' aspect={3/2} GetImgFile={this.GetImgFile.bind(this)}/>:''}*/}
                         </div>
                     </ModalBody>
                 </Modal>

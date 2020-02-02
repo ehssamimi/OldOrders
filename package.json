@@ -21,7 +21,7 @@
     "rc-switch": "^1.6.0",
     "react": "^16.9.0",
     "react-albus": "^2.0.0",
-    "react-autosuggest": "^9.3.4",
+    "react-autosuggest": "^9.4.3",
     "react-beautiful-dnd": "^12.0.0",
     "react-big-calendar": "^0.22.0",
     "react-chartjs-2": "^2.7.4",

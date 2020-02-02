@@ -56,15 +56,15 @@ class ChichiManInfoSubmitInfo extends Component {
                                     <CollapseRow store={subRow.Identify} col={'col-6'}/>
                                     <ChichiManInfoCollapseWithImage store={subRow.PersonalInfo} col={'col-6'} id={id} step={'step3'}
                                                                     image={[subRow['PersonalInfo']['Images']['Profile'], subRow['PersonalInfo']['Images']['SERIAL_IMAGE'], subRow['PersonalInfo']['Images']['SSN_IMAGE']]}
-                                                                    label={['تصویر شناسنامه', 'تصویر کارت ملی', 'عکس پرسنلی ']}
+                                                                    label={['عکس پرسنلی','تصویر شناسنامه' ,'تصویر کارت ملی' ]}
                                                                     className='col-4'/>
                                     <ChichiManInfoCollapseWithImage store={subRow.vehicle} col={'col-6'} id={id} step={'step4'}
                                                                     image={[subRow['vehicle']['images']['LicenseImage'], subRow['vehicle']['images']['VehicleCardImage']]}
-                                                                    label={['تصویر کارت وسیله نقلیه', 'تصویر گواهی نامه ']}
+                                                                    label={[ 'تصویر گواهی نامه ','تصویر کارت وسیله نقلیه']}
                                                                     className='col-6'/>
                                     <ChichiManInfoCollapseWithImage store={subRow.contract} col={'col-4'} id={id} step={'step5'}
                                                                     image={[subRow['contract']['images']['contract'], subRow['contract']['images']['soePishine'],subRow['contract']['images']['safteh']]}
-                                                                    label={['تصویر سفته', 'تصویر گواهی سو پیشینه']}
+                                                                    label={['تصویر قرارداد' ,'تصویر گواهی سو پیشینه' ,'تصویر سفته']}
                                                                     className='col-4'/>
 
                                     <ChichimanInfoCollapseWithoutImg  store={subRow.BankInfo} col={'col-6'} id={id} step={'step6'} />

@@ -22,7 +22,7 @@ class JustCropImg extends Component {
         super(props);
         this.state =
             {
-                src: '',
+                src: '',clickButton:false,
                 cropResult: null,
                 type:'',name:'',
                  error:{'name':"",'DestinationString':''}
@@ -258,9 +258,14 @@ class JustCropImg extends Component {
                     src={this.state.src}
                     ref={cropper => { this.cropper = cropper; }}
                 />
-                <button onClick={this.cropImage} style={{ float: 'right' }} className='btn btn-primary'>
-                    crop img
-                </button>
+                {
+                    this.state.clickButton?"":   <button onClick={this.cropImage} style={{ float: 'right' }} className='btn btn-primary'>
+                        crop img
+                    </button>
+                }
+
+                {/*<button onClick={this.handelCrop.bind(this)} className={this.state.clickButton?"btn btn-primary":"btn btn-warning"}>{this.state.clickButton?'send':'crop'}</button>*/}
+
                 {/*<img src={this.state.cropResult} alt="img"/>*/}
                 {/*<img src='' id='uploadPreview' alt='aa'/>*/}
             </div>
