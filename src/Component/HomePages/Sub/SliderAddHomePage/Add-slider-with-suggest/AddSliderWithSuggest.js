@@ -60,10 +60,10 @@ class AddSliderWithSuggest extends Component {
 
     }
     GetDestinationString(DestinationString , Destination){
-        console.log('DestinationString');
-        console.log(DestinationString);
-        console.log('DestinationID');
-        console.log(Destination);
+        // console.log('DestinationString');
+        // console.log(DestinationString);
+        // console.log('DestinationID');
+        // console.log(Destination);
         this.setState({
             DestinationString,Destination
         })
@@ -84,6 +84,8 @@ class AddSliderWithSuggest extends Component {
                error:"باید مقصد انتخاب شود "
            })
         }else {
+
+
             this.props.GetData(file, Destination, label, Base64, DestinationString);
             this.setState({
                 error:""
@@ -91,6 +93,7 @@ class AddSliderWithSuggest extends Component {
         }
 
     }
+
 
 
 

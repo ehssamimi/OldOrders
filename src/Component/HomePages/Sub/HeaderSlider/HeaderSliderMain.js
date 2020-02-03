@@ -69,9 +69,14 @@ class HeaderSliderMain extends Component {
         }));
     };
     GetData(file, Destination, label, Base64, DestinationString){
+        console.log('file');
+        console.log(file);
+        console.log('Destination');
+        console.log(Destination);
+        console.log('label');
+        console.log(label);
         console.log('DestinationString');
         console.log(DestinationString);
-
 
         let NewLabel=label.slice(4,5);
         // let imgdetail={Position:NewLabel,Image:file,Destination:DestinationString};
@@ -95,6 +100,7 @@ class HeaderSliderMain extends Component {
 
                 Sliders[NewLabel - 1].Image=file;
                 Sliders[NewLabel - 1].Destination=DestinationString;
+                Sliders[NewLabel - 1].DestinationId=Destination;
 
 
                 // let NewImg = {Position: id, Image: file, Destination: Destination};
@@ -201,13 +207,14 @@ class HeaderSliderMain extends Component {
                 }));
                 Submit=false;
             }
-            console.log('SliderID',SliderId);
-            console.log(SliderId);
+            // console.log('SliderID',SliderId);
+            // console.log(SliderId);
+            console.log('Sliders' );
+            console.log(Sliders);
             for (i = 0 ; i < Sliders.length; i++) {
                 if (Sliders[i].Destination.length>1) {
-
-                    let idax1 = await sendImg(Sliders[i].Image, 'Public');
-                    let updateCategories1 = await UpdateHeaderSliders(header, Sliders[i].Position, idax1, Sliders[i].Destination, idax1);
+                     let idax1 = await sendImg(Sliders[i].Image, 'Public');
+                    let updateCategories1 = await UpdateHeaderSliders(header, Sliders[i].Position, idax1, Sliders[i].Destination, Sliders[i].DestinationId);
                     if (idax1==='error' || updateCategories1!==200) {
                         NotificationManager.error(
                             "error",
@@ -386,7 +393,6 @@ class HeaderSliderMain extends Component {
                 >
                     <ModalHeader toggle={this.toggleLarge}  >
                         <span className=''>  انتخاب عکس</span>
-
                     </ModalHeader>
                     <ModalBody>
                         <div className='col-12 d-flex flex-column'>

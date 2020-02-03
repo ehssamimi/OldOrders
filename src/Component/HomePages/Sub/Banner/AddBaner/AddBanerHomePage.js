@@ -6,6 +6,7 @@ import NotificationManager from "../../../../../components/common/react-notifica
 import {FormGroup, Input, InputGroup, Label, Modal, ModalBody, ModalHeader} from "reactstrap";
 import ax from './../../../../../assets/img/4th.jpg'
  import Loader from "../../Loader/Loader";
+import JustCropImg from "../../CropImg/JustCropImg";
 
 class AddBanerHomePage extends Component {
     constructor(props) {
@@ -158,9 +159,9 @@ class AddBanerHomePage extends Component {
     //     return null;
     // }
 
-    GetDestinationString(DestinationString){
+    GetDestinationString(DestinationString , Destination){
         this.setState({
-            DestinationString
+            DestinationString,Destination
         })
     }
     handelChangeName(e){
@@ -189,9 +190,9 @@ class AddBanerHomePage extends Component {
         // console.log(file);
         // console.log(Base64);
         // console.log(label);
-        console.log(Destination);
+        // console.log(Destination);
         this.setState({
-            ax:Base64, axFile:file,Destination:Destination.length>1?Destination:''
+            ax:Base64, axFile:file
         });
         this.toggleLarge()
     }
@@ -241,7 +242,7 @@ class AddBanerHomePage extends Component {
                             {/*className='border-0 fS1vw backgroundDefault col-12' placeholder={header || 'Name'}/>*/}
                             {/*</span>*/}
                             <Destination GetDestinationString={this.GetDestinationString.bind(this)}
-                                         Destination={this.props.Destination}/>
+                                       />
                             <div className='d-flex col-12 flex-column paddingZero   '>
                                 <div className='col-12'>
                                     <div className='height30vh   mt-1 mb-1 pointer   '
@@ -276,8 +277,12 @@ class AddBanerHomePage extends Component {
                                 </ModalHeader>
                                 <ModalBody>
                                     <div className='col-12 d-flex flex-column'>
-                                        <CropImgCropper label='عکس بنر' aspect={3 / 1}
-                                                        GetImgFile={this.GetImgFile.bind(this)}/>
+                                        <JustCropImg label='عکس بنر' aspect={3 / 1}
+                                                     GetImgFile={this.GetImgFile.bind(this)}/>
+
+
+                                        {/*<CropImgCropper label='عکس بنر' aspect={3 / 1}*/}
+                                                        {/*GetImgFile={this.GetImgFile.bind(this)}/>*/}
                                     </div>
                                 </ModalBody>
                             </Modal>

@@ -24,6 +24,7 @@ import {Link} from "react-scroll/modules";
 import Loader from "../Loader/Loader";
 import NotificationManager from "../../../../components/common/react-notifications/NotificationManager";
 import {TweenMax} from "gsap/TweenMax";
+import AddSliderWithSuggest from "./Add-slider-with-suggest/AddSliderWithSuggest";
  class SliderAddHomePage extends Component {
     constructor(props) {
         super(props);
@@ -85,6 +86,7 @@ import {TweenMax} from "gsap/TweenMax";
                 files[NewLabel - 1].img = Base64;
                 Sliders[NewLabel - 1].Image=file;
                 Sliders[NewLabel - 1].Destination=DestinationString;
+                Sliders[NewLabel - 1].DestinationId=Destination;
                 return {
                     files, Sliders
                 };
@@ -190,7 +192,7 @@ import {TweenMax} from "gsap/TweenMax";
              for (i = 0 ; i < Sliders.length; i++) {
                  if (Sliders[i].Destination.length>1) {
                      let idax1 = await sendImg(Sliders[i].Image, 'Public');
-                     let updateCategories1 = await UpdateSliders(header, Sliders[i].Position, idax1, Sliders[i].Destination, idax1);
+                     let updateCategories1 = await UpdateSliders(header, Sliders[i].Position, idax1, Sliders[i].Destination, Sliders[i].DestinationId);
                      console.log(updateCategories1);
                      if (idax1==='error' || updateCategories1!==200) {
                          NotificationManager.error(
@@ -362,7 +364,8 @@ import {TweenMax} from "gsap/TweenMax";
                     </ModalHeader>
                     <ModalBody>
                         <div className='col-12 d-flex flex-column'>
-                            <FormAddSlider header={`عکس(${this.state.id+1 })`} GetData={this.GetData.bind(this)}/>
+                            {/*<FormAddSlider header={`عکس(${this.state.id+1 })`} GetData={this.GetData.bind(this)}/>*/}
+                            <AddSliderWithSuggest header={`عکس(${this.state.id+1 })`} GetData={this.GetData.bind(this)}/>
                         </div>
                     </ModalBody>
                 </Modal>
