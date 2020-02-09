@@ -62,11 +62,12 @@ class PreviewMainSlider extends Component {
         }));
         let data= await DeleteSlider(this.props.slider.Name);
         // let{Data}=this.props.items;
+        let {Description}=data;
         let id=this.props.slider.Name;
         this.setState(prevState => ({
             deleteLoader: !prevState.deleteLoader
         }));
-        if(data===200){
+        if(data.state===200){
             NotificationManager.success(
 
                 "congratulation",
@@ -84,6 +85,17 @@ class PreviewMainSlider extends Component {
             setTimeout(() => {
                 $el.remove();
             }, 2000)
+        }else {
+
+            NotificationManager.error(
+
+                "خطا",
+                `شما نمی توانید این اسللایدر را حذف کنید چون در صفحه   ${Description} استفاده شده است `,
+                4000,
+                null,
+                null,
+                "error"
+            );
         }
         this.toggleLarge()
     }

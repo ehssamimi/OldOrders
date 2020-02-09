@@ -119,10 +119,10 @@ class AddSliderWithSuggest extends Component {
 
                 <JustCropImg  label={this.props.header} aspect={3/2} GetImgFile={this.GetImgFile.bind(this)}/>
                 {
-                    this.state.file!==''?      <button className='btn  btn-warning' onClick={this.HandelSend.bind(this)}>send</button>:''
+                    this.state.file!==''?      <button className='btn  btn-primary mt-2' onClick={this.HandelSend.bind(this)}>ثبت </button>:''
                 }
                 {
-                    this.state.error!==''?<div className='alert alert-warning col-6 offset-3'> {this.state.error}</div>:""
+                    this.state.error!==''?<div className='alert alert-warning col-6 offset-3 text-center'> {this.state.error}</div>:""
                 }
 
 

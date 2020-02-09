@@ -17,6 +17,7 @@ import initialData from './initial-data'
 import Column from './column'
 import {Modal, ModalBody, ModalHeader} from "reactstrap";
 import AddNewHomePageComponent from "../../Edit/AddNewHomePageComponent/AddNewHomePageComponent";
+import NotificationManager from "../../../../../components/common/react-notifications/NotificationManager";
 
 const Container = styled.div`
   display:block;
@@ -512,6 +513,27 @@ export default class MoveRowIndex extends React.Component {
     async HandelActive(){
         console.log(this.props.item.Name);
         let data= await ActiveHomePages(this.props.item.Name);
+        // state:status,Description:data
+        let {state,Description}=data;
+        if (state===200){
+            NotificationManager.success(
+                "تبریک !!!",
+                "این صفحه اصلی فعال شد ",
+                3000,
+                null,
+                null,
+                "success"
+            )
+        }else {
+            NotificationManager.error(
+                " موفق نشدید",
+                {Description},
+                3000,
+                null,
+                null,
+                "success"
+            )
+        }
         console.log(data);
 
     }

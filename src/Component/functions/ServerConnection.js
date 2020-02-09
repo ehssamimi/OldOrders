@@ -123,20 +123,38 @@ export async  function  DeleteCategoriey(Name){
         'Id': Const.ID
         // 'category_name':Name,
     };
-let resp='';
- await axios.delete(`${Const.HomePage}admin/category/${Name}/delete`, {headers: headers}).then(function (response) {
-        // console.log(response);
-        let { status } = response ;
-        resp=status;
+    let resp ={state:false,Description:""};
+    await axios.delete(`${Const.HomePage}admin/category/${Name}/delete`, {headers: headers}).then(function (response) {
+        console.log(response);
+        let{status,data}= response ;
+        console.log(status);
+        console.log( data);
+        if (status===200 ){
+            resp ={state:status,Description:data};
+        }else {
+            resp ={state:status,Description:data};
+        }
     }).catch(function (error) {
         console.log(error);
-        resp='error'
+        console.log(error.response.data.detail[0]['Name']);
+        resp ={state:false,Description:error.response.data.detail[0]['Name']};
     });
     return resp;
-    // let { status } = res ;
-    // console.log(res);
-    // // console.log(data);
-    // return status;
+
+
+
+
+// let resp='';
+//  await axios.delete(`${Const.HomePage}admin/category/${Name}/delete`, {headers: headers}).then(function (response) {
+//         // console.log(response);
+//         let { status } = response ;
+//         resp=status;
+//     }).catch(function (error) {
+//         console.log(error);
+//         resp='error'
+//     });
+//     return resp;
+
 }
 export async  function  GetCategoriesNameID(){
 
@@ -385,10 +403,29 @@ export async  function  DeleteSlider(Name){
         'Id': Const.ID
         // 'category_name':Name,
     };
-    let res = await axios.delete(`${Const.HomePage}admin/slider/${Name}/delete`, {headers: headers});
-    let { status } = res ;
-    console.log(res);
-    return status;
+
+    let resp ={state:false,Description:""};
+    await axios.delete(`${Const.HomePage}admin/slider/${Name}/delete`, {headers: headers}).then(function (response) {
+        console.log(response);
+        let{status,data}= response ;
+        console.log(status);
+        console.log( data);
+        if (status===200 ){
+            resp ={state:status,Description:data};
+        }else {
+            resp ={state:status,Description:data};
+        }
+    }).catch(function (error) {
+        console.log(error);
+        console.log(error.response.data.detail[0]['Name']);
+        resp ={state:false,Description:error.response.data.detail[0]['Name']};
+    });
+    return resp;
+
+    // let res = await axios.delete(`${Const.HomePage}admin/slider/${Name}/delete`, {headers: headers});
+    // let { status } = res ;
+    // console.log(res);
+    // return status;
 }
 
 // *****Add Baner******
@@ -447,16 +484,25 @@ export async  function  DeleteBanner(id){
         'Token': Const.Token,
         'Id': Const.ID
     };
-    let resp='';
-  await axios.delete(`${Const.HomePage}banners/${id}`, {headers: headers}).then(function (response) {
-        // console.log(response);
-        let { status } = response ;
-         resp=status;
-     }).catch(function (error) {
+
+    let resp ={state:false,Description:""};
+    await axios.delete(`${Const.HomePage}banners/${id}`, {headers: headers}).then(function (response) {
+        console.log(response);
+        let{status,data}= response ;
+        console.log(status);
+        console.log( data);
+        if (status===200 ){
+            resp ={state:status,Description:data};
+        }else {
+            resp ={state:status,Description:data};
+        }
+    }).catch(function (error) {
         console.log(error);
-        resp='error'
+        console.log(error.response.data.detail[0]['Name']);
+        resp ={state:false,Description:error.response.data.detail[0]['Name']};
     });
-     return resp
+    return resp;
+
 }
 export async  function  GetBanerDetail(Name){
     let headers = {
@@ -550,12 +596,34 @@ export async  function  DeleteCitemList(Name){
     let headers = {
         'Token': Const.Token,
         'Id': Const.ID
-        // 'category_name':Name,
     };
-    let res = await axios.delete(`${Const.HomePage}admin/item-list/${Name}/delete`, {headers: headers});
-    let { status } = res ;
-    console.log(res);
-    return status;
+    let resp ={state:false,Description:""};
+    await axios.delete(`${Const.HomePage}admin/item-list/${Name}/delete`, {headers: headers}).then(function (response) {
+        console.log(response);
+        let{status,data}= response ;
+        console.log(status);
+        console.log( data);
+        if (status===200 ){
+            resp ={state:status,Description:data};
+        }else {
+            resp ={state:status,Description:data};
+        }
+    }).catch(function (error) {
+        console.log(error);
+        console.log(error.response.data.detail[0]['Name']);
+        resp ={state:false,Description:error.response.data.detail[0]['Name']};
+    });
+    return resp;
+
+    // let headers = {
+    //     'Token': Const.Token,
+    //     'Id': Const.ID
+    //     // 'category_name':Name,
+    // };
+    // let res = await axios.delete(`${Const.HomePage}admin/item-list/${Name}/delete`, {headers: headers});
+    // let { status } = res ;
+    // console.log(res);
+    // return status;
 }
 
 // *************headerSlider**********
@@ -625,10 +693,30 @@ export async  function  DeleteHeaderSlider(Name){
         'Id': Const.ID
         // 'category_name':Name,
     };
-    let res = await axios.delete(`${Const.HomePage}admin/header/slider/${Name}/delete`, {headers: headers});
-    let { status } = res ;
-    console.log(res);
-    return status;
+
+
+    let resp ={state:false,Description:""};
+    await axios.delete(`${Const.HomePage}admin/header/slider/${Name}/delete`, {headers: headers}).then(function (response) {
+        console.log(response);
+        let{status,data}= response ;
+        console.log(status);
+        console.log( data);
+        if (status===200 ){
+            resp ={state:status,Description:data};
+        }else {
+            resp ={state:status,Description:data};
+        }
+    }).catch(function (error) {
+        console.log(error);
+        console.log(error.response.data.detail[0]['Name']);
+        resp ={state:false,Description:error.response.data.detail[0]['Name']};
+    });
+    return resp;
+
+    // let res = await axios.delete(`${Const.HomePage}admin/header/slider/${Name}/delete`, {headers: headers});
+    // let { status } = res ;
+    // console.log(res);
+    // return resp;
 }
 
 // *************************HomePages*******************
@@ -745,10 +833,27 @@ export async  function  ActiveHomePages(Name){
         'Id': Const.ID,
         // 'category_id': CatId,
     };
-    // formData.append("Position",Position);
-    // formData.append("Image",Image);
-    // formData.append("DestinationId",DestinationId);
-    // formData.append("Destination",Destination);
+    // console.log(error);
+    // console.log(error.response.data.detail[0]['Name']);
+    // resp ={state:false,Description:error.response.data.detail[0]['Name']};
+    let resp ={state:false,Description:""};
+    await   axios.put(`${Const.HomePage}admin/homepage/${Name}/active`, {headers: headers}).then(function (response) {
+        console.log(response);
+        let{status,data}= response ;
+        console.log(status);
+        console.log( data);
+        if (status===200 ){
+            resp ={state:status,Description:data};
+        }else {
+            resp ={state:status,Description:data};
+        }
+    }).catch(function (error) {
+          resp ={state:false,Description:error.response.data.detail};
+    });
+    return resp;
+
+
+
     let res = await axios.put(`${Const.HomePage}admin/homepage/${Name}/active`,  {headers: headers});
     console.log(res);
     let { ItemId } = res.data ;

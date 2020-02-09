@@ -36,11 +36,12 @@ class PreviewCategories extends Component {
             deleteLoader: !prevState.deleteLoader
         }));
         let data= await DeleteCategoriey(this.props.header);
+        let {Description}=data;
         let id=this.props.header;
         this.setState(prevState => ({
             deleteLoader: !prevState.deleteLoader
         }));
-        if(data===200){
+        if(data.state===200){
             NotificationManager.success(
                 "congratulation",
                 "your categories deleted",
@@ -59,9 +60,9 @@ class PreviewCategories extends Component {
             }, 2000)
         }else {
             NotificationManager.error(
-                "error",
-                "your categories cant deleted",
-                3000,
+                "خطا",
+                `شما نمی توانید این اسللایدر را حذف کنید چون در صفحه   ${Description} استفاده شده است `,
+                4000,
                 null,
                 null,
                 "error"

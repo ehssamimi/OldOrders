@@ -61,12 +61,15 @@ class PreviewHeaderSlider extends Component {
         }));
         let data= await DeleteHeaderSlider(this.props.slider.Name);
         // let{Data}=this.props.items;
+        console.log('data Delete');
+        console.log(data);
+        let {Description}=data
         this.setState(prevState => ({
             deleteLoader: !prevState.deleteLoader
         }));
         let id=this.props.slider.Name;
 
-        if(data===200){
+        if(data.state===200){
             NotificationManager.success(
 
                 "congratulation",
@@ -85,11 +88,12 @@ class PreviewHeaderSlider extends Component {
                 $el.remove();
             }, 2000)
         }else {
+
             NotificationManager.error(
 
                 "error",
-                "your can't do it !",
-                3000,
+                `شما نمی توانید این اسللایدر را حذف کنید چون در صفحه   ${Description} استفاده شده است `,
+                4000,
                 null,
                 null,
                 "error"

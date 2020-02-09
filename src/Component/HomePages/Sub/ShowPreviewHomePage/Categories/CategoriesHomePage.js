@@ -49,11 +49,16 @@ class CategoriesHomePage extends Component {
                 </div>
 
                 <div className='d-flex flex-column col-12'>
+                    {/*{*/}
+                        {/*error['name'].length>1?<span className='alert alert-danger mt-3 col-12 text-right'>{  error['name']}</span>:""*/}
+                    {/*}*/}
+                    {/*{*/}
+                        {/*error['component'].length>1?<span className='alert alert-danger mt-3 col-12 text-right'>{ error['component']}</span>:""*/}
+                    {/*}*/}
+
+
                     {
-                        error['name'].length>1?<span className='alert alert-danger mt-3 col-12'>{  error['name']}</span>:""
-                    }
-                    {
-                        error['component'].length>1?<span className='alert alert-danger mt-3 col-12'>{ error['component']}</span>:""
+                        error['component'].length>1 || error['name'].length>1 ?<span className='alert alert-danger mt-3 col-12 text-right'> {  error['name']+error['component']} </span>:""
                     }
 
                 </div>

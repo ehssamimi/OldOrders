@@ -12,12 +12,12 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import HeaderPreviewComponentHomePage from "../../../HeaderPreviewComponentHomePage/HeaderPreviewComponentHomePage";
 import Loader from "../../../Loader/Loader";
-const NoControlCarouselItem = ({ Name, Images, CurrentPrice, PrevPrice }) => {
+const NoControlCarouselItem = ({ Name, Image, CurrentPrice, PrevPrice }) => {
     return (
         <div className="glide-item">
             <Card>
                 <div className="position-relative vh25">
-                    <img className="card-img-top img-self-fill " src={Images} alt={Name} />
+                    <img className="card-img-top img-self-fill " src={Image} alt={Name} />
                     {/*{badges &&*/}
                     {/*badges.map((b, index) => {*/}
                         {/*return (*/}
@@ -83,7 +83,8 @@ class SliderItems extends Component {
         let data= await DeleteCitemList(this.props.items.Title);
         // let{Data}=this.props.items;
         let id=this.props.Title;
-        if(data===200){
+        let {Description}=data;
+        if(data.state===200){
             NotificationManager.success(
                 "congratulation",
                 "your categories deleted",
@@ -106,9 +107,10 @@ class SliderItems extends Component {
 
         }else {
             NotificationManager.error(
-                "error",
-                "your item is not  deleted",
-                3000,
+
+                "خطا",
+                `شما نمی توانید این اسلایدر را حذف کنید چون در صفحه   ${Description} استفاده شده است `,
+                4000,
                 null,
                 null,
                 "error"

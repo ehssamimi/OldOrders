@@ -41,9 +41,7 @@ class HeaderSliderMain extends Component {
     }
     async componentDidMount(){
         let Sliders=  await allHeaderSlider();
-
-        // console.log( Sliders);
-        this.setState({
+         this.setState({
             SlidersPrev:Sliders
         })
     }
@@ -69,60 +67,31 @@ class HeaderSliderMain extends Component {
         }));
     };
     GetData(file, Destination, label, Base64, DestinationString){
-        console.log('file');
-        console.log(file);
-        console.log('Destination');
-        console.log(Destination);
-        console.log('label');
         console.log(label);
-        console.log('DestinationString');
-        console.log(DestinationString);
-
         let NewLabel=label.slice(4,5);
-        // let imgdetail={Position:NewLabel,Image:file,Destination:DestinationString};
-        // this.state.Sliders.push(imgdetail);
-        // console.log(this.state.files[NewLabel-1].img);
-        // let img={id:NewLabel-1,img:Base64};
-        // console.log(img);
         this.setState(state => {
-            // const files = state.files.filter(item => item.id !== NewLabel-1);
-            // let files = state.files ;
-
             let situation=state.files.filter(item => item.id === NewLabel-1);
             if (situation.length > 0) {
-                let files = state.files;
-                let Sliders = state.Sliders;
+                // ***edit file in history *****
+                let {files,Sliders}=state;
                 files[NewLabel - 1].img = Base64;
-                // Sliders[NewLabel - 1].Image = file;
-                // Sliders[NewLabel - 1].Destination = DestinationString;
-                // let id = files.length;
-
-
                 Sliders[NewLabel - 1].Image=file;
                 Sliders[NewLabel - 1].Destination=DestinationString;
                 Sliders[NewLabel - 1].DestinationId=Destination;
-
-
-                // let NewImg = {Position: id, Image: file, Destination: Destination};
-                // Sliders.push(NewImg);
                 return {
                     files, Sliders
                 };
             } else {
-                let files = state.files;
-                let Sliders = state.Sliders;
+                // ****add new file ******
+                let {files,Sliders}=state;
                 let id = files.length;
                 let img = {id: id, img: Base64};
-                // console.log('aaaaaaaaaaaa')
-                let NewImg = {Position: id, Image: file, Destination: DestinationString,DestinationId:Destination};
+                 let NewImg = {Position: id, Image: file, Destination: DestinationString,DestinationId:Destination};
                 files.push(img);
-                // Sliders[NewLabel - 1].Image = file;
-                // Sliders[NewLabel - 1].Destination = DestinationString;
                 Sliders.push(NewImg);
                 return {
                     files, Sliders
                 };
-
             }
 
         });

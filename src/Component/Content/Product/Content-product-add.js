@@ -17,7 +17,7 @@ const FormInput = ({ label,name,placeHolder,setFieldTouched,errors,touched }) =>
             <span>{label}</span>
         </Label>
         <Field className="form-control" name={name}   onBlur={setFieldTouched}
-               placeholder="نام محصول را وارد کنید !" />
+               placeholder={placeHolder} />
         {errors[`${name}`]  && touched[`${name}`] ? (
             <div className="invalid-feedback d-block">
                 {errors[`${name}`]}
@@ -380,8 +380,8 @@ class ContentProductAdd extends Component {
     render() {
 
         let{axError,ax1,CategoryOption,SubsOption,catError}=this.state;
-        console.log('SubsOption')
-        console.log(SubsOption)
+        console.log('SubsOption');
+        console.log(SubsOption);
          return (
             this.state.showLoader || Object.entries(CategoryOption).length===0?   // *******checking for submit form or get category Option is then loader start then loader close**********
                 <div className='d-flex justify-content-center align-items-center'>
@@ -455,11 +455,11 @@ class ContentProductAdd extends Component {
                                                         </div>
 
                                                         <div className="col-sm-12 col-md-6 ">
-                                                            <FormInput label='قیمت' name='Price' placeHolder='نام محصول را وارد کنید !' setFieldTouched={setFieldTouched} errors={errors} touched={touched}/>
+                                                            <FormInput label='قیمت' name='Price' placeHolder='قیمت  محصول را وارد کنید !' setFieldTouched={setFieldTouched} errors={errors} touched={touched}/>
                                                         </div>
 
                                                         <div className="col-sm-12 col-md-6 ">
-                                                            <FormInput label='تعداد' name='Count' placeHolder='تعداد را مشخص کنید !' setFieldTouched={setFieldTouched} errors={errors} touched={touched}/>
+                                                            <FormInput label='تعداد' name='Count' placeHolder='تعداد محصول  را مشخص کنید !' setFieldTouched={setFieldTouched} errors={errors} touched={touched}/>
                                                         </div>
 
                                                         <div className="col-sm-12 col-md-6  ">

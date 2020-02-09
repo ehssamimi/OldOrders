@@ -105,11 +105,8 @@ class ModalGetIdImgCategories extends Component {
             // file,Destination , label ,base64;
             // let row={value: product[i]['name'],label: product[i]['name'],destination:product[0]['_id'],image:product[0]['image']};
             let res = ImgAttr['image'].split("/");
-            this.props.GetImgFile(res[4], ImgAttr['destination'], this.props.label, ImgAttr['image']);
-
+             this.props.GetImgFile(res[6], ImgAttr['destination'], this.props.label, ImgAttr['image']);
         }
-
-
 
     };
 

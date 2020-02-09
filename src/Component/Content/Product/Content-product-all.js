@@ -29,7 +29,7 @@ class ContentProductAll extends Component {
            Products.map((each, index) => {
                let sub = {"تعداد": each['Count'],"تولید": each['Manufacture'],"دسته بندی": each['Category'] };
                let Main = {
-                   "name": each['UniqueValue'],
+                   "name": each['Name'],
                    "Attribute": each['Attribute'],
                    "Description": each['Description'],
                    "PrevPrice": each['PrevPrice'],

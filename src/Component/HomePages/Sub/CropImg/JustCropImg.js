@@ -41,15 +41,20 @@ class JustCropImg extends Component {
         } else if (e.target) {
             files = e.target.files;
         }
-        const reader = new FileReader();
-        reader.onload = () => {
-            this.setState({
-                src: reader.result ,
-                type:files[0].type,
-                name:files[0].name,
-            });
-        };
-        reader.readAsDataURL(files[0]);
+
+
+        if (files[0]!==undefined){
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.setState({
+                    src: reader.result ,
+                    type:files[0].type,
+                    name:files[0].name,
+                });
+            };
+            reader.readAsDataURL(files[0]);
+        }
+
     }
 
     async cropImage()
@@ -244,7 +249,7 @@ class JustCropImg extends Component {
 
                     </FormGroup>
                     {
-                        this.state.error['name']!==''?<span className='fs-08vw color-theme-1 mr-3 d-flex justify-content-end mb-5'  >{this.state.error['name']}</span>:''
+                        this.state.error['name']!==''?<span className='fs-08vw color-theme-1 mr-3 d-flex justify-content-end mb-5 text-center'  >{this.state.error['name']}</span>:''
                     }
                 </div>
 
@@ -259,8 +264,8 @@ class JustCropImg extends Component {
                     ref={cropper => { this.cropper = cropper; }}
                 />
                 {
-                    this.state.clickButton?"":   <button onClick={this.cropImage} style={{ float: 'right' }} className='btn btn-primary'>
-                        crop img
+                    this.state.clickButton?"":   <button onClick={this.cropImage}   className='btn btn-secondary mt-2 '>
+                        انتخاب عکس
                     </button>
                 }
 

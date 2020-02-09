@@ -23,7 +23,7 @@ class MainBaner extends Component {
         })
     }
     async updateListComponents(){
-        let AllBanners = await GetBanners();
+         let AllBanners = await GetBanners();
         console.log(AllBanners);
         this.setState({
             AllBanners

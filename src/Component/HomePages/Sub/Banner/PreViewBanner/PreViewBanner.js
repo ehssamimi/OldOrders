@@ -30,8 +30,10 @@ class PreViewBanner extends Component {
         }));
         console.log(this.props.id);
         let data= await DeleteBanner(this.props.id);
+        let {Description}=data;
+
         let id=this.props.header;
-        if(data===200){
+        if(data.state===200){
             this.setState(prevState => ({
                 showLoader:!prevState.showLoader,
             }));
@@ -56,9 +58,9 @@ class PreViewBanner extends Component {
                 showLoader:!prevState.showLoader,
             }));
             NotificationManager.error(
-                "error",
-                "your Banner is not deleted",
-                3000,
+                "خطا",
+                `شما نمی توانید این بنر را حذف کنید چون در صفحه   ${Description} استفاده شده است `,
+                4000,
                 null,
                 null,
                 "error"

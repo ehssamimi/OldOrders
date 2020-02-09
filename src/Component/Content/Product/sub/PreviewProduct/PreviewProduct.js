@@ -76,6 +76,7 @@ class PreviewProduct extends Component {
         let{sub,Keys,Main}=this.state;
         let {Off}=Main;
 
+
         return (
             <div className={['   h-50vh align-items-center  mt-3 position-relative', this.props.class.length>1?this.props.class:"" ].join(' ')} id={Main['id']}>
 

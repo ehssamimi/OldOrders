@@ -72,7 +72,7 @@ class AddBanerHomePage extends Component {
            }));
 
            let img = await sendImg(axFile, 'Public');
-           let Destination = img;
+           let Destination = this.state.Destination;
 
            console.log('name');
            console.log(name);
@@ -228,6 +228,7 @@ class AddBanerHomePage extends Component {
                                             type="text"
                                             id="name"
                                             name="name"
+                                            dir='rtl'
                                             // value={this.state.name}
                                             onChange={this.handelChangeName.bind(this)}
                                             label={this.state.name || 'انتخاب نام'}

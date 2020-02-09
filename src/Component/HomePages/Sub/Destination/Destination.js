@@ -180,12 +180,13 @@ class Destination extends Component {
                     {
                         selectedOption['value']!==undefined?  <FormGroup className="form-group has-float-label position-relative ">
                             <Label>
-                                <IntlMessages id="item name" />
+                                <IntlMessages id="نام نمونه مورد نظر" />
                             </Label>
                             {
                                 <AutoSuggestEdit
-                                    placeholder={"type item name"}
+                                    placeholder={"نام نمونه مورد نظر را وارد کنید "}
                                     data={dataNAme}
+                                    className="react-select"
                                     onChange={value => this.handelChange(this, value ||'n')}
 
                                 />

@@ -190,6 +190,7 @@ class CategoriesAddHomePage extends Component {
             })
         }
         if (validateSlider===true){
+
             this.setState(prevState => ({
                 showLoader:!prevState.showLoader,
             }));
@@ -213,6 +214,7 @@ class CategoriesAddHomePage extends Component {
             }
             if (acceptCategoryName===true){
                 var axandCategoryok=true;
+
                 for (let i=0;i<ctaImg.length;i++) {
                     // let idax = await sendImg(ctaImg[i], 'Public');
                     let idax = true;
@@ -234,7 +236,8 @@ class CategoriesAddHomePage extends Component {
                     }else {
                         // CatId,Position,Image,DestinationId
                         // let updateCategories1 = await UpdateCategories(catNameServer, i, idax , catNameServer);
-                        let updateCategories1 = await UpdateCategories(catNameServer, i, ctaImg[i] ,Destinations[i] );
+                         let updateCategories1 = await UpdateCategories(catNameServer, i, ctaImg[i] ,Destinations[i] );
+                         console.log("items");
                         console.log(catNameServer, i, ctaImg[i] ,Destinations[i]);
                         console.log(updateCategories1);
                         if (updateCategories1==='error'){
@@ -332,7 +335,12 @@ class CategoriesAddHomePage extends Component {
         this.setState(prevState => ({
             showLoader:!prevState.showLoader,
          }));
-        let {ax1File, ax2File, ax3File, ax4File, CatName, Destination1, Destination2, Destination3, Destination4,id} = this.state;
+         let {ax1File, ax2File, ax3File, ax4File, CatName, Destination1, Destination2, Destination3, Destination4,id} = this.state;
+        // let ctaImg=[ax1File, ax2File, ax3File, ax4File];
+
+        let Destinations=[Destination1,Destination2,Destination3,Destination4];
+
+
         var catNameServer = id ;
          // if (CatName!==''){
          //     catNameServer = await GetCatNameFunction(CatName);
@@ -343,9 +351,13 @@ class CategoriesAddHomePage extends Component {
         // console.log(catNameServer);
         var submit=false;
         if (ax1File!==''){
-            let idax1 = await sendImg(ax1File, 'Public');
-            let updateCategories1 = await UpdateCategories(catNameServer, "0", idax1 , catNameServer);
-            if (idax1 === 'error' || updateCategories1 === 'error'){
+            // let idax1 = await sendImg(ax1File, 'Public');
+
+            // let updateCategories1 = await UpdateCategories(catNameServer, i, ctaImg[i] ,Destinations[0] );
+
+            let updateCategories1 = await UpdateCategories(catNameServer, "0", ax1File , Destinations[0]);
+            // if (idax1 === 'error' || updateCategories1 === 'error'){
+            if (  updateCategories1 === 'error'){
                 NotificationManager.error(
                     "error",
                     "your category don't accept",
@@ -365,9 +377,10 @@ class CategoriesAddHomePage extends Component {
         }
 
         if (ax2File!==''){
-            let idax2 = await sendImg(ax2File, 'Public');
-            let updateCategories2 = await UpdateCategories(catNameServer, "1", idax2 , catNameServer);
-            if (idax2 === 'error' || updateCategories2 === 'error'){
+            // let idax2 = await sendImg(ax2File, 'Public');
+            let updateCategories2 = await UpdateCategories(catNameServer, "1", ax2File , Destinations[1]);
+            // if (idax2 === 'error' || updateCategories2 === 'error'){
+            if ( updateCategories2 === 'error'){
                 NotificationManager.error(
                     "error",
                     "your category don't accept",
@@ -386,9 +399,11 @@ class CategoriesAddHomePage extends Component {
             }
         }
         if (ax3File!==''){
-            let idax3 = await sendImg(ax3File, 'Public');
-            let updateCategories3 = await UpdateCategories(catNameServer, "2", idax3 , catNameServer);
-            if (idax3 === 'error' || updateCategories3 === 'error'){
+            // let idax3 = await sendImg(ax3File, 'Public');
+            // let updateCategories3 = await UpdateCategories(catNameServer, "2", idax3 , catNameServer);
+            let updateCategories3 =  await UpdateCategories(catNameServer, "2", ax3File , Destinations[2]);
+            // if (idax3 === 'error' || updateCategories3 === 'error'){
+            if (  updateCategories3 === 'error'){
                 NotificationManager.error(
                     "error",
                     "your category don't accept",
@@ -407,9 +422,11 @@ class CategoriesAddHomePage extends Component {
             }
         }
         if (ax4File!=='') {
-            let idax4 = await sendImg(ax4File, 'Public');
-            let updateCategories4 = await UpdateCategories(catNameServer, "3", idax4, catNameServer);
-            if (idax4 === 'error' || updateCategories4 === 'error'){
+            // let idax4 = await sendImg(ax4File, 'Public');
+            // let updateCategories4 = await UpdateCategories(catNameServer, "3", idax4, catNameServer);
+            let updateCategories4 = await UpdateCategories(catNameServer, "3", ax4File , Destinations[3]);;
+            // if (idax4 === 'error' || updateCategories4 === 'error'){
+            if (  updateCategories4 === 'error'){
                 NotificationManager.error(
                     "error",
                     "your category don't accept",

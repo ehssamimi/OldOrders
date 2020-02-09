@@ -13,9 +13,13 @@ class HeaderCategoriyInput extends Component {
 
     handelChangeName(e){
         // console.log(e.target.value);
+        let val=e.target.value;
         this.setState({
-            id:e.target.value
+            // id:val.trim()
+            id:val.trim()
         },()=>{
+            console.log(this.state.id);
+            console.log(this.state.id.trim());
             this.props.GetCategoriesName(this.state.id)
         })
 

@@ -7,12 +7,12 @@ import NotificationManager from "../../../../../../components/common/react-notif
 import {TweenMax} from "gsap/TweenMax";
 import PreviewPackages from "../../../../Sub/WonderPackageAddHomePage/subPackage/PreviewPackages";
 import PreviewItems from "../../../../Sub/ItemList/PreviewItems/PreviewItems";
-const NoControlCarouselItem = ({ Name, Images, CurrentPrice, PrevPrice }) => {
+const NoControlCarouselItem = ({ Name, Image, CurrentPrice, PrevPrice }) => {
     return (
         <div className="glide-item">
             <Card>
                 <div className="position-relative vh25">
-                    <img className="card-img-top img-self-fill " src={Images} alt={Name} />
+                    <img className="card-img-top img-self-fill " src={Image} alt={Name} />
                     {/*{badges &&*/}
                     {/*badges.map((b, index) => {*/}
                     {/*return (*/}
