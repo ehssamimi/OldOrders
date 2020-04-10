@@ -161,6 +161,7 @@ class HeaderSliderMain extends Component {
                 showLoader:!prevState.showLoader,
             }));
             let Submit=true;
+
             let SliderId = await AddHeaderSlider(header,Number);
             if (SliderId ==='error') {
                 NotificationManager.error(

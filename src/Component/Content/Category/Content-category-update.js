@@ -157,7 +157,7 @@ class ContentCategoryUpdate extends Component {
                         <ModalBody>
                             <div className='col-12 d-flex flex-column'>
                                 {
-                                    <JustCropImg label='عکس اول' aspect={3/2} GetImgFile={this.GetImgFile.bind(this)}  />
+                                    <JustCropImg label='عکس اول' aspect={1/1} GetImgFile={this.GetImgFile.bind(this)}  />
                                 }
                             </div>
                         </ModalBody>
